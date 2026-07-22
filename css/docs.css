@@ -116,7 +116,7 @@ body {
   display: none !important;
 }
 
-.ds-panel > h2,
+.ds-panel > h2:not(.ds-h2),
 .ds-hero h1 {
   font-family: var(--rf-font-serif);
   font-size: var(--rf-text-3xl);
@@ -136,7 +136,7 @@ body {
 }
 
 @media (max-width: 800px) {
-  .ds-panel > h2 {
+  .ds-panel > h2:not(.ds-h2) {
     font-size: var(--rf-text-2xl);
   }
 
@@ -193,6 +193,7 @@ body {
   }
 }
 
+.ds-h2,
 .ds-h3 {
   font-family: var(--rf-font-serif);
   font-size: var(--rf-text-xl);
@@ -203,6 +204,10 @@ body {
   line-height: var(--rf-leading-display);
   box-sizing: content-box;
   max-inline-size: var(--rf-measure);
+}
+
+.ds-panel > h2.ds-h2:first-of-type {
+  margin-block-start: var(--rf-space-5);
 }
 
 .ds-caption {

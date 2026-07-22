@@ -758,11 +758,15 @@
     <section class="ds-panel" id="buttons" role="tabpanel" aria-labelledby="tab-buttons" hidden>
       <h2 id="buttons-title">Buttons &amp; links</h2>
       <p class="ds-lede">
-        Primary actions use moss green. Reserve orange for a single high-stakes call to action on a view
-        (for example “Book” or “Pay”), not for every button. Prefer one primary button per section so hierarchy stays obvious.
-        Product blue is for app chrome only (selected nav, in-tool actions), never marketing heroes.
+        Two lanes: moss and orange for public Roots &amp; Fruit surfaces, product blue for app chrome.
+        Keep one clear primary in a cluster so hierarchy stays obvious.
       </p>
 
+      <h2 class="ds-h2" id="buttons-marketing">Marketing UI</h2>
+      <p class="ds-caption">
+        Use these on the website, decks, and other public brand surfaces. Moss is the default main action.
+        Reserve orange for a single high-stakes call to action on a view (for example “Book” or “Pay”), not for every button.
+      </p>
       <div class="rf-cluster" style="margin-bottom:var(--rf-space-5)">
         <button type="button" class="btn btn--primary">Primary</button>
         <button type="button" class="btn btn--secondary">Secondary</button>
@@ -771,10 +775,16 @@
         <button type="button" class="btn btn--ghost">Ghost</button>
         <button type="button" class="btn btn--primary" disabled>Disabled</button>
       </div>
-
-      <h3 class="ds-h3">Product UI</h3>
       <p class="ds-caption">
-        Filled product blue for the current view or primary in-tool action. Quiet siblings for the rest of a nav cluster.
+        Inline text uses a
+        <a class="link-text" href="#buttons">standard link</a>
+        in moss green. Avoid default browser blue links; they break the warm palette.
+      </p>
+
+      <h2 class="ds-h2" id="buttons-product">Product UI</h2>
+      <p class="ds-caption">
+        Use these inside tools and dashboards (Phloem, plugin chrome, ops boards). Filled product blue marks the
+        current view or a primary in-tool action. Quiet siblings fill out a nav cluster. Do not put these on marketing heroes.
       </p>
       <div class="rf-cluster" style="margin-bottom:var(--rf-space-5)">
         <button type="button" class="btn btn--product-quiet">Overview</button>
@@ -782,12 +792,6 @@
         <button type="button" class="btn btn--product-quiet">Settings</button>
         <button type="button" class="btn btn--product">Save view</button>
       </div>
-
-      <p>
-        Inline text uses a
-        <a class="link-text" href="#buttons">standard link</a>
-        in moss green. Avoid default browser blue links; they break the warm palette.
-      </p>
     </section>
 
     <section class="ds-panel" id="forms" role="tabpanel" aria-labelledby="tab-forms" hidden>
