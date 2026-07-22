@@ -116,11 +116,18 @@
   /* Code (warm paper chrome; syntax base is moss-teal, not cool cyan) */
   --rf-code-bg: #f3ece2;
   --rf-code-fg: #3d5c4e;
-  --rf-code-border: rgba(44, 41, 34, 0.12);
+  --rf-code-border: rgba(44, 41, 34, 0.12); /* block chrome / quiet hairline if needed */
+  --rf-code-label-border: rgba(44, 41, 34, 0.28); /* .inline-label outline */
   --rf-code-meta: #9a948c;
   --rf-font-mono: "JetBrains Mono", "SFMono-Regular", Consolas, "Liberation Mono", Menlo, monospace;
 
   /* Layout */
   --rf-max: 56rem; /* shell / grid; prose still uses --rf-measure */
   --rf-focus: 0 0 0 3px color-mix(in srgb, var(--rf-green) 35%, transparent);
+
+  /* Atmosphere (illustrations as soft background — not logos).
+     PDS vendors a copy via .cursor/skills/rf-reveal/sync-cds-tokens.ps1. */
+  --rf-atmosphere: 0.1; /* roots watermark on most surfaces */
+  --rf-atmosphere-quiet: 0.065; /* roots under dense title/hero text */
+  --rf-atmosphere-spot: 0.45; /* apples / corner spot art */
 }

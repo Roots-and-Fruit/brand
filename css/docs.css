@@ -247,10 +247,13 @@ body {
 
 .rf-code--doc .rf-code__body {
   max-height: min(70vh, 42rem);
-  overflow: auto;
+  overflow-x: hidden; /* soft-wrap; no horizontal scrollbar */
+  overflow-y: auto; /* tall Agent contract may scroll vertically */
   font-size: var(--rf-text-sm);
   line-height: var(--rf-leading-ui);
-  white-space: pre;
+  white-space: pre-wrap;
+  overflow-wrap: anywhere;
+  word-break: break-word;
 }
 
 /* —— Specimens —— */

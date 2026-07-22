@@ -2,9 +2,10 @@
 version: alpha
 name: Roots & Fruit
 description: >-
-  Agent contract for Roots & Fruit visual identity. Use for marketing pages,
-  presentations, product UI, and plugin surfaces. Prefer CSS variables in
-  css/tokens.css (--rf-*) when implementing in this repo.
+  Core Design System (CDS) agent contract for Roots & Fruit visual identity.
+  Use for marketing pages, product UI, plugin surfaces, and as the token source
+  for the presentation layer (PDS / rf-reveal) that sits on top of CDS. Prefer
+  CSS variables in css/tokens.css (--rf-*) when implementing in this repo.
 colors:
   primary: "#62744d"
   primary-deep: "#4b5e2e"
@@ -39,6 +40,7 @@ colors:
   code-bg: "#f3ece2"
   code-fg: "#3d5c4e"
   code-border: "rgba(44, 41, 34, 0.12)"
+  code-label-border: "rgba(44, 41, 34, 0.28)"
   code-meta: "#9a948c"
   green-1: "#c5d4b8"
   green-2: "#9aaf86"
@@ -240,7 +242,13 @@ components:
     backgroundColor: "{colors.code-bg}"
     textColor: "{colors.code-fg}"
     rounded: "{rounded.sm}"
-    padding: 0.12em 0.4em
+    padding: 0.08em 0.35em
+  code-inline-label:
+    backgroundColor: "{colors.code-bg}"
+    textColor: "{colors.code-fg}"
+    borderColor: "{colors.code-label-border}"
+    rounded: "{rounded.sm}"
+    padding: 0.1em 0.45em
   code-block:
     backgroundColor: "{colors.code-bg}"
     textColor: "{colors.code-fg}"
@@ -290,6 +298,7 @@ Semantic roles (use these names in reasoning; hex values are in front matter):
 | On dark | `on-dark` | `#ffffff` | Titles on `surface-dark` |
 | Code bg | `code-bg` | `#f3ece2` | Inline and block code paper |
 | Code fg | `code-fg` | `#3d5c4e` | Default monospace / syntax base (moss-teal) |
+| Code label border | `code-label-border` | `rgba(44, 41, 34, 0.28)` | Outline for `.inline-label` / `.rf-inline-label` |
 | Info | `info` | `#1a5276` | Product nav / informational UI only |
 | Danger | `danger` | `#b42318` | Errors and destructive states |
 
@@ -472,8 +481,10 @@ Implement with these behaviors. Class names in this repo: `.btn`, `.input`, `.su
 - Do not restyle as bullets, pills, or icon rows
 
 **Code**
-- Inline `code`: warm `code-bg`, moss-teal `code-fg`, soft border — matches paper, not cool gray IDEs
-- Block `.rf-code`: same paper fill; optional window dots + copy control + language meta (matches the site’s Code Block Pro chrome)
+- Inline `code` (quiet): warm `code-bg`, moss-teal `code-fg`, **no border** — for terms in sentence flow (`write-a-skill`, short flags)
+- Inline label (`.inline-label` / `.rf-inline-label`): same paper + `code-fg`, **outlined** with `code-label-border` — for named objects (files, paths: `SKILL.md`). Prefer this when the token is a thing the reader should clock as a label, not a slip of code in prose
+- Do not use both chromes on the same string; do not outline every `<code>` by default
+- Block `.rf-code`: same paper fill; optional window dots + copy control + language meta (matches the site’s Code Block Pro chrome). Soft-wrap long lines (`pre-wrap`); do not use horizontal scrollbars in snippets
 - Keep the window chrome; retune syntax base to `code-fg` / warm Solarized-light on `code-bg` rather than cool cyan on gray
 - One language label in `code-meta`; do not add neon terminal themes
 
@@ -485,10 +496,13 @@ Implement with these behaviors. Class names in this repo: `.btn`, `.input`, `.su
 
 **Brand assets (non-token but mandatory)**
 - Wordmark vs tree icon: wordmark when naming the brand; tree icon for favicons, avatars, tight badges
-- Illustrations (`illustrations/roots-1.svg`, `illustrations/apples-1.svg`): atmosphere only. Roots watermark ~10–12% opacity on most surfaces; on dense title/hero slides where roots sit under body/lede, drop to ~6–7% (or strengthen lede to Nunito semibold / ink-soft). One watermark per surface. Apples as corner spot art ~40–50% opacity. Never treat illustrations as logos or links.
+- Illustrations (`illustrations/roots-1.svg`, `illustrations/apples-1.svg`): atmosphere only. Use tokens `--rf-atmosphere` (≈0.10), `--rf-atmosphere-quiet` (≈0.065 under dense title/hero text), `--rf-atmosphere-spot` (≈0.45 for apples). Utilities: `.rf-atmosphere`, `.rf-atmosphere--quiet`, `.rf-atmosphere--spot`. When small copy sits on roots, prefer `.rf-lede-over-atmosphere` (Nunito 600 + `--rf-ink-muted`) before frosting or further dimming art. One watermark per surface. Never treat illustrations as logos or links.
 - Prefer SVG for on-screen marks; PNG profile/square exports for host uploads that require raster
 
-**Presentations**
+**Presentations (PDS layer on CDS)**
+- One design system: CDS owns tokens here; the presentation layer (`/rf-reveal`) owns Pitch layouts and reveal.js chrome
+- PDS vendors `css/tokens.css` via `sync-cds-tokens.ps1` (`cds-tokens.css`); do not invent parallel hex, opacities, or lede weights in the deck
+- Content patterns and Surfaces & data from this package (takeaways, surfaces, quiet `rf-table`, buttons/pills, `code` / `.inline-label`, `.rf-code`) are dogfooded in the reveal `template-deck` — reuse those layout ids instead of inventing slide-only variants
 - Same color/type language; more whitespace; fixed slide canvas is fine
 - One atmosphere treatment per slide; do not stack watermarks
 
@@ -518,6 +532,7 @@ Implement with these behaviors. Class names in this repo: `.btn`, `.input`, `.su
 - Don't mix a moss primary and a filled product button as competing “main” actions in the same cluster
 - Don't create a dark-mode palette unless explicitly asked (light cream system is default)
 - Don't use cool cyan/gray IDE chrome for code; stay on warm `code-bg` + moss-teal base
+- Don't outline every inline `code` (that chrome is for `.inline-label` only); don't use `.inline-label` for ordinary in-flow terms
 - Don't put white text on orange CTAs (including on dark cards); use `ink-deep` on `tertiary`
 - Don't invent a second takeaways pattern (cards, checkmarks, emoji numbers)
 - Don't introduce an `xs` size or any readable text below `sm` (16px)
