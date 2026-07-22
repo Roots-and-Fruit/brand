@@ -22,7 +22,8 @@ body {
   align-self: start;
   height: 100vh;
   overflow-y: auto;
-  padding: var(--rf-space-5) var(--rf-space-4);
+  padding-block: var(--rf-space-5);
+  padding-inline: var(--rf-space-4) var(--rf-space-6);
   border-right: 1px solid var(--rf-rule);
   background: var(--rf-cream-deep);
   display: flex;
@@ -103,7 +104,8 @@ body {
 
 .ds-content {
   min-width: 0;
-  padding: var(--rf-space-6) var(--rf-space-6) var(--rf-space-8);
+  padding-block: var(--rf-space-6) var(--rf-space-8);
+  padding-inline: var(--rf-space-7) var(--rf-space-6);
 }
 
 .ds-content__inner {
