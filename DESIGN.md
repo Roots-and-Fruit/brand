@@ -28,7 +28,7 @@ colors:
   danger: "#b42318"
   danger-soft: "#f8e4e2"
   on-primary: "#ffffff"
-  on-tertiary: "#ffffff"
+  on-tertiary: "#1a1a1a"
   surface-dark: "#4b5e2e"
   on-dark: "#ffffff"
   on-dark-muted: "rgba(255, 255, 255, 0.78)"
@@ -191,6 +191,11 @@ components:
     textColor: "{colors.danger}"
     rounded: "{rounded.md}"
     padding: 0.75rem 1rem
+  alert-note:
+    backgroundColor: "{colors.panel-soft}"
+    textColor: "{colors.ink}"
+    rounded: "{rounded.sm}"
+    padding: 1.5rem
   pill:
     backgroundColor: "{colors.panel}"
     textColor: "{colors.ink}"
@@ -278,7 +283,7 @@ Rules:
 - Marketing surfaces usually omit `info` blue; product UI may use it for nav and info alerts
 - Never promote `tertiary` (orange) into a second brand theme or large background fills
 - Before shipping text-on-color pairs, require WCAG AA (4.5:1) for body text; AA large (3:1) only for Knile headings / big stats
-- Safe defaults: `ink` or `ink-deep` on `neutral`, `neutral-deep`, `surface`, `panel`, `primary-soft`; `on-primary` on `primary` / `primary-deep`; `on-tertiary` on `tertiary`
+- Safe defaults: `ink` or `ink-deep` on `neutral`, `neutral-deep`, `surface`, `panel`, `primary-soft`; `on-primary` on `primary` / `primary-deep`; `on-tertiary` (`ink-deep`) on `tertiary` for CTA fills — never white on orange
 
 Green scale (`green-1` … `green-6`) is for charts, illustrations, and progressive emphasis, not random decoration.
 
@@ -416,7 +421,7 @@ Focus ring: soft green halo (`0 0 0 3px` color-mix of primary at ~35% opacity). 
 
 ## Components
 
-Implement with these behaviors. Class names in this repo: `.btn`, `.input`, `.surface`, `.alert`, `.pill` (see `css/components.css`).
+Implement with these behaviors. Class names in this repo: `.btn`, `.input`, `.surface`, `.alert` (including `.alert--note`), `.pill`, plus layout primitives `.rf-stack` / `.rf-center` / `.rf-cluster` / `.rf-prose` (see `css/components.css`, `css/layouts.css`).
 
 **Buttons**
 - `button-primary`: default main action (moss). One primary per section/view.
@@ -455,7 +460,8 @@ Implement with these behaviors. Class names in this repo: `.btn`, `.input`, `.su
 
 **Feedback**
 - Pills for compact status
-- Alerts for full-sentence page messages (`alert-*`)
+- Alerts for full-sentence page messages (`alert-info`, `alert-success`, `alert-warning`, `alert-danger`)
+- `alert-note` (`.alert--note`): instructional how-to / guidance on `panel-soft` with a moss left rule — not a status message
 - Spinner for indeterminate wait; progress bar only when percent is known
 
 **Brand assets (non-token but mandatory)**

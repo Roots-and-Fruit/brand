@@ -262,7 +262,7 @@ a:hover {
 /* —— Alerts —— */
 .alert {
   display: grid;
-  gap: 0.25rem;
+  gap: var(--rf-space-1);
   padding-block: var(--rf-space-3);
   padding-inline: var(--rf-space-4);
   border-radius: var(--rf-radius);
@@ -295,6 +295,24 @@ a:hover {
 .alert--danger {
   background: var(--rf-danger-bg);
   border-color: color-mix(in srgb, var(--rf-danger) 30%, transparent);
+}
+
+/* Instructional callout (how-to / guidance), distinct from status alerts */
+.alert--note {
+  background: var(--rf-panel-soft);
+  border: 0;
+  border-inline-start: 3px solid var(--rf-green);
+  border-radius: 0 var(--rf-radius-sm) var(--rf-radius-sm) 0;
+  padding-block: var(--rf-space-5);
+  padding-inline: var(--rf-space-5);
+  color: var(--rf-ink-muted);
+  line-height: var(--rf-leading-callout);
+  box-sizing: content-box;
+  max-inline-size: var(--rf-measure);
+}
+
+.alert--note strong {
+  color: var(--rf-ink);
 }
 
 /* —— Surfaces —— */
@@ -402,16 +420,16 @@ ol.rf-keytakeaways > li {
   border-left: 2px solid var(--rf-orange);
   color: var(--rf-ink);
   font-size: var(--rf-text-sm);
-  line-height: 1.5;
+  line-height: var(--rf-leading-callout);
 }
 
 .rf-takeaways__num {
   font-family: var(--rf-font-sans);
   font-size: var(--rf-text-sm);
-  font-weight: 800;
+  font-weight: var(--rf-weight-bold);
   color: var(--rf-orange);
   letter-spacing: 0.02em;
-  line-height: 1.5;
+  line-height: var(--rf-leading-callout);
 }
 
 /* Auto 01 / 02 when site markup uses ol.rf-keytakeaways without manual nums */
@@ -427,10 +445,10 @@ ol.rf-keytakeaways > li::before {
   content: counter(rf-takeaway, decimal-leading-zero);
   font-family: var(--rf-font-sans);
   font-size: var(--rf-text-sm);
-  font-weight: 800;
+  font-weight: var(--rf-weight-bold);
   color: var(--rf-orange);
   letter-spacing: 0.02em;
-  line-height: 1.5;
+  line-height: var(--rf-leading-callout);
 }
 
 /* Manual numbers: suppress auto ::before */

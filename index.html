@@ -6,7 +6,7 @@
   <title>Roots &amp; Fruit — Design System</title>
   <link rel="preconnect" href="https://fonts.googleapis.com" />
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
-  <link href="https://fonts.googleapis.com/css2?family=JetBrains+Mono:wght@400;500&family=Nunito+Sans:ital,wght@0,400;0,600;0,700;1,400;1,600;1,700&display=swap" rel="stylesheet" />
+  <link href="https://fonts.googleapis.com/css2?family=JetBrains+Mono:wght@400&family=Nunito+Sans:ital,wght@0,400;0,600;0,700;1,400;1,600;1,700&display=swap" rel="stylesheet" />
   <link rel="stylesheet" href="css/rf.css" />
   <link rel="stylesheet" href="css/docs.css" />
 </head>
@@ -38,22 +38,24 @@
 
     <main class="ds-content">
       <div class="ds-content__inner">
-        <section class="ds-panel ds-hero" id="overview" role="tabpanel" aria-labelledby="tab-overview">
-          <p class="ds-type-meta" style="margin:0 0 var(--rf-space-3)">Brand</p>
+        <section class="ds-panel ds-hero rf-stack rf-stack--md" id="overview" role="tabpanel" aria-labelledby="tab-overview">
+          <p class="ds-type-meta">Brand</p>
           <h1>Roots &amp; Fruit</h1>
-          <p>
-            Roots &amp; Fruit is Matt Cromwell’s practice for WordPress operators and product teams:
-            clear strategy, practical systems, and work that holds up in the real world.
-            The tone is earned and calm. We favor craft over hype, and tools that stay out of the way
-            of the people doing the work.
-            <a class="link-text" href="https://rootsandfruit.com/">Learn more here</a>.
-          </p>
-          <p>
-            This site is the visual language for that practice: cream paper, warm ink, Knile for voice,
-            Nunito Sans for reading, and moss green as the steady accent. Use it whenever something
-            should feel like Roots &amp; Fruit—the website, decks, product UI, or compact plugin chrome.
-          </p>
-          <p class="ds-note">
+          <div class="rf-prose">
+            <p>
+              Roots &amp; Fruit is Matt Cromwell’s practice for WordPress operators and product teams:
+              clear strategy, practical systems, and work that holds up in the real world.
+              The tone is earned and calm. We favor craft over hype, and tools that stay out of the way
+              of the people doing the work.
+              <a class="link-text" href="https://rootsandfruit.com/">Learn more here</a>.
+            </p>
+            <p>
+              This site is the visual language for that practice: cream paper, warm ink, Knile for voice,
+              Nunito Sans for reading, and moss green as the steady accent. Use it whenever something
+              should feel like Roots &amp; Fruit—the website, decks, product UI, or compact plugin chrome.
+            </p>
+          </div>
+          <div class="alert alert--note" role="note">
             <strong>How to use this design system.</strong>
             Open one section at a time from the sidebar. Start with logos and color when matching an
             existing surface. Check the accessibility matrix before locking text-on-background pairs.
@@ -63,7 +65,7 @@
             Content patterns (takeaways, dark card, code) have their own tab.
             Generators and agents should follow <code>DESIGN.md</code> (Agent contract tab); humans can
             browse the specimens here and treat that file as the written rules.
-          </p>
+          </div>
           <footer class="ds-footer">
             <p>
               Brand feel in one line: earned, calm, and rooted. Avoid purple gradients, cool gray glass,
@@ -283,13 +285,13 @@
         </figure>
       </div>
 
-      <p class="ds-note" style="margin-top:var(--rf-space-5);margin-bottom:0">
+      <div class="alert alert--note" role="note" style="margin-top:var(--rf-space-5);margin-bottom:0">
         <strong>File map.</strong>
         <code>logos/SVG/</code> holds wordmarks,
         <code>logos/icons/</code> holds stand-alone marks, and
         <code>logos/PNG/</code> holds raster exports (including 500 / 1000px sizes and profile crops).
         Keep proportions locked; never add drop shadows, gradients, or glow to the official files.
-      </p>
+      </div>
     </section>
 
     <section class="ds-panel" id="illustrations" role="tabpanel" aria-labelledby="tab-illustrations" hidden>
@@ -392,11 +394,11 @@
         </figure>
       </div>
 
-      <p class="ds-note" style="margin-top:var(--rf-space-5);margin-bottom:0">
+      <div class="alert alert--note" role="note" style="margin-top:var(--rf-space-5);margin-bottom:0">
         <strong>Implementation tip.</strong>
         Prefer an <code>&lt;img&gt;</code> with CSS opacity over <code>background-image</code> when you need predictable fading
         and simpler contrast control. Do not recolor, crop into a new mark, or treat illustrations as clickable branding.
-      </p>
+      </div>
     </section>
 
     <section class="ds-panel" id="tokens" role="tabpanel" aria-labelledby="tab-tokens" hidden>
@@ -407,11 +409,11 @@
         marketing pages usually stay in cream, green, and ink alone.
       </p>
 
-      <p class="ds-note">
+      <div class="alert alert--note" role="note">
         <strong>Designer checklist.</strong>
         Body text should sit on cream, white, or soft panels with ink or ink-deep. Links and primary actions use green.
         Before shipping a new text-on-color combo, confirm it in the accessibility matrix below (aim for AA or better on body copy).
-      </p>
+      </div>
 
       <h3 class="ds-h3">Paper &amp; ink</h3>
       <div class="ds-swatch-grid">
@@ -468,12 +470,12 @@
         </table>
       </div>
 
-      <p class="ds-note" style="margin-top:var(--rf-space-4);margin-bottom:0">
+      <div class="alert alert--note" role="note" style="margin-top:var(--rf-space-4);margin-bottom:0">
         <strong>How to read it.</strong>
         Prefer AAA or AA for body copy and form labels. Links and compact UI chrome can sit at AA.
         AA large is acceptable for Knile headings and oversized stats only. Fail means pick another pair.
         Ratios are computed live from the CSS variables on this page using WCAG 2 relative luminance.
-      </p>
+      </div>
     </section>
 
     <section class="ds-panel" id="type" role="tabpanel" aria-labelledby="tab-type" hidden>
@@ -484,11 +486,11 @@
         and italic each have a job; do not improvise a second scale.
       </p>
 
-      <p class="ds-note">
+      <div class="alert alert--note" role="note">
         <strong>Floor.</strong>
         <code>sm</code> (16px) is the smallest size. There is no <code>xs</code>.
         Long-form uses <code>md</code> (18px) at <code>60ch</code> with Nunito leading <code>1.65</code>.
-      </p>
+      </div>
 
       <h3 class="ds-h3">Size scale</h3>
       <dl>
@@ -696,16 +698,16 @@
     <section class="ds-panel" id="space" role="tabpanel" aria-labelledby="tab-space" hidden>
       <h2 id="space-title">Space, radius, elevation</h2>
       <p class="ds-lede">
-        Spacing follows an 8px grid so margins, gaps, and padding feel related across pages and UI.
+        Spacing uses a modular scale from <code>--rf-space-4</code> (1rem) with <code>--rf-ratio</code> 1.5, so gaps and padding stay related across pages and UI.
         Corners stay soft but not bubbly. Use shadow sparingly: lift interactive surfaces, not every box on the page.
       </p>
 
-      <p class="ds-note">
+      <div class="alert alert--note" role="note">
         <strong>Every Layout (selected).</strong>
         Measure axiom: text stays within <code>60ch</code>. Space from <code>4</code> upward multiplies by
         <code>--rf-ratio</code> (1.5). Prefer <code>.rf-stack</code>, <code>.rf-center</code>, and <code>.rf-cluster</code>
         over one-off margins. Suggest size; do not prescribe fixed widths.
-      </p>
+      </div>
 
       <h3 class="ds-h3">Spacing</h3>
       <div class="ds-space-row">
@@ -760,7 +762,7 @@
         (for example “Book” or “Pay”), not for every button. Prefer one primary button per section so hierarchy stays obvious.
       </p>
 
-      <div class="ds-row">
+      <div class="rf-cluster" style="margin-bottom:var(--rf-space-5)">
         <button type="button" class="btn btn--primary">Primary</button>
         <button type="button" class="btn btn--secondary">Secondary</button>
         <button type="button" class="btn btn--tertiary">Tertiary</button>
@@ -782,7 +784,7 @@
         not color alone, so the state remains understandable without relying on red fill.
       </p>
 
-      <form class="ds-form" action="#" method="get" onsubmit="return false">
+      <form class="rf-stack rf-stack--md" style="max-inline-size:var(--rf-measure)" action="#" method="get" onsubmit="return false">
         <div class="field">
           <label for="name">Name</label>
           <input class="input" id="name" name="name" type="text" placeholder="Jordan Lee" autocomplete="name" />
@@ -809,12 +811,12 @@
           <input type="checkbox" name="updates" />
           <span>Send me product updates (opt-in).</span>
         </label>
-        <fieldset style="border:0;padding:0;margin:0;display:grid;gap:0.5rem">
-          <legend style="font-size:var(--rf-text-sm);font-weight:600;margin-bottom:0.25rem">Preference</legend>
+        <fieldset class="rf-stack rf-stack--sm" style="border:0;padding:0;margin:0">
+          <legend style="font-size:var(--rf-text-sm);font-weight:var(--rf-weight-semibold)">Preference</legend>
           <label class="radio"><input type="radio" name="pref" checked /> Cream paper UI</label>
           <label class="radio"><input type="radio" name="pref" /> High-contrast ink</label>
         </fieldset>
-        <div class="ds-row" style="margin:0">
+        <div class="rf-cluster" style="margin:0">
           <button type="submit" class="btn btn--primary">Save</button>
           <button type="button" class="btn btn--ghost">Cancel</button>
         </div>
@@ -828,7 +830,7 @@
         Keep motion minimal: a spinner for indeterminate waits and a progress bar when completion percentage is known.
       </p>
 
-      <div class="ds-row">
+      <div class="rf-cluster" style="margin-bottom:var(--rf-space-5)">
         <span class="pill">Neutral</span>
         <span class="pill pill--green">Active</span>
         <span class="pill pill--orange">Waiting</span>
@@ -838,12 +840,13 @@
       </div>
 
       <div class="progress" aria-label="Progress 62%"><span style="width:62%"></span></div>
-      <p style="font-size:var(--rf-text-sm);color:var(--rf-ink-soft);margin:0.5rem 0 1.25rem">Progress · 62%</p>
+      <p class="ds-caption" style="margin-block:var(--rf-space-2) var(--rf-space-5)">Progress · 62%</p>
 
       <div class="alert alert--info"><strong>Info</strong><span>Neutral guidance that does not require an immediate decision.</span></div>
       <div class="alert alert--success"><strong>Success</strong><span>Changes saved. You can leave this page.</span></div>
       <div class="alert alert--warning"><strong>Warning</strong><span>This action is reversible, but double-check the target first.</span></div>
       <div class="alert alert--danger"><strong>Error</strong><span>Something went wrong. Review the details and try again.</span></div>
+      <div class="alert alert--note" role="note"><strong>Note</strong><span>Instructional guidance for how to use a pattern. Not a success or error state.</span></div>
     </section>
 
     <section class="ds-panel" id="data" role="tabpanel" aria-labelledby="tab-data" hidden>
@@ -937,7 +940,7 @@
             <li>Keep the list short enough to scan without scrolling twice.</li>
           </ol>
         </aside>
-        <div class="ds-note">
+        <div class="alert alert--note" role="note">
           <strong>Site tweak.</strong>
           Keep the vertical orange rules and numbering. Title color should be brand moss
           (<code>--rf-green</code>, not a one-off olive. Body text stays warm ink on cream.
@@ -949,12 +952,12 @@
         Moss-deep callout for a short pitch plus one CTA. Prefer one per sidebar or section.
       </p>
       <div class="ds-pattern-split">
-        <article class="surface surface--dark" style="max-width:22rem">
+        <article class="surface surface--dark ds-specimen-narrow">
           <h3>Ready for clearer next steps?</h3>
           <p>A short pitch belongs here. Keep it to two or three sentences, then one button.</p>
           <button type="button" class="btn btn--cta">Book a call</button>
         </article>
-        <div class="ds-note">
+        <div class="alert alert--note" role="note">
           <strong>Required tweak.</strong>
           Orange buttons use <strong>ink-deep on orange</strong> for WCAG AA (not white on orange).
           Background maps to <code>--rf-surface-dark</code> / primary-deep.
@@ -966,10 +969,10 @@
         Keep the window chrome, copy control, and language meta. Swap cool cyan/gray IDE colors
         for warm paper and moss-teal base text so code sits in the same system as the page.
       </p>
-      <p style="margin:0 0 var(--rf-space-4);max-width:40rem">
+      <p class="ds-caption" style="margin-bottom:var(--rf-space-4)">
         Inline example: invoke with <code>@robots-txt-audit</code> when you want a focused pass.
       </p>
-      <div class="rf-code" style="max-width:40rem">
+      <div class="rf-code ds-specimen-code">
         <div class="rf-code__chrome">
           <div class="rf-code__dots" aria-hidden="true"><span></span><span></span><span></span></div>
           <button type="button" class="rf-code__copy" data-rf-copy aria-label="Copy code">
@@ -981,7 +984,7 @@
         <pre class="rf-code__body"><code>Use @robots-txt-audit on mattcromwell.com with a focus on maximum discoverability</code></pre>
         <span class="rf-code__lang">Bash</span>
       </div>
-      <div class="ds-note">
+      <div class="alert alert--note" role="note">
         <strong>Site tweak.</strong>
         Keep Code Block Pro headlights + copy UI. Point the theme background at
         <code>--rf-code-bg</code> and default text at <code>--rf-code-fg</code>
@@ -1035,7 +1038,7 @@ colors:
   danger: &quot;#b42318&quot;
   danger-soft: &quot;#f8e4e2&quot;
   on-primary: &quot;#ffffff&quot;
-  on-tertiary: &quot;#ffffff&quot;
+  on-tertiary: &quot;#1a1a1a&quot;
   surface-dark: &quot;#4b5e2e&quot;
   on-dark: &quot;#ffffff&quot;
   on-dark-muted: &quot;rgba(255, 255, 255, 0.78)&quot;
@@ -1198,6 +1201,11 @@ components:
     textColor: &quot;{colors.danger}&quot;
     rounded: &quot;{rounded.md}&quot;
     padding: 0.75rem 1rem
+  alert-note:
+    backgroundColor: &quot;{colors.panel-soft}&quot;
+    textColor: &quot;{colors.ink}&quot;
+    rounded: &quot;{rounded.sm}&quot;
+    padding: 1.5rem
   pill:
     backgroundColor: &quot;{colors.panel}&quot;
     textColor: &quot;{colors.ink}&quot;
@@ -1285,7 +1293,7 @@ Rules:
 - Marketing surfaces usually omit `info` blue; product UI may use it for nav and info alerts
 - Never promote `tertiary` (orange) into a second brand theme or large background fills
 - Before shipping text-on-color pairs, require WCAG AA (4.5:1) for body text; AA large (3:1) only for Knile headings / big stats
-- Safe defaults: `ink` or `ink-deep` on `neutral`, `neutral-deep`, `surface`, `panel`, `primary-soft`; `on-primary` on `primary` / `primary-deep`; `on-tertiary` on `tertiary`
+- Safe defaults: `ink` or `ink-deep` on `neutral`, `neutral-deep`, `surface`, `panel`, `primary-soft`; `on-primary` on `primary` / `primary-deep`; `on-tertiary` (`ink-deep`) on `tertiary` for CTA fills — never white on orange
 
 Green scale (`green-1` … `green-6`) is for charts, illustrations, and progressive emphasis, not random decoration.
 
@@ -1423,7 +1431,7 @@ Focus ring: soft green halo (`0 0 0 3px` color-mix of primary at ~35% opacity). 
 
 ## Components
 
-Implement with these behaviors. Class names in this repo: `.btn`, `.input`, `.surface`, `.alert`, `.pill` (see `css/components.css`).
+Implement with these behaviors. Class names in this repo: `.btn`, `.input`, `.surface`, `.alert` (including `.alert--note`), `.pill`, plus layout primitives `.rf-stack` / `.rf-center` / `.rf-cluster` / `.rf-prose` (see `css/components.css`, `css/layouts.css`).
 
 **Buttons**
 - `button-primary`: default main action (moss). One primary per section/view.
@@ -1462,7 +1470,8 @@ Implement with these behaviors. Class names in this repo: `.btn`, `.input`, `.su
 
 **Feedback**
 - Pills for compact status
-- Alerts for full-sentence page messages (`alert-*`)
+- Alerts for full-sentence page messages (`alert-info`, `alert-success`, `alert-warning`, `alert-danger`)
+- `alert-note` (`.alert--note`): instructional how-to / guidance on `panel-soft` with a moss left rule — not a status message
 - Spinner for indeterminate wait; progress bar only when percent is known
 
 **Brand assets (non-token but mandatory)**

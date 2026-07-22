@@ -10,7 +10,7 @@ body {
 
 /* —— App shell (sidebar + tab panels) —— */
 .ds-shell {
-  --ds-brand-text-inset: calc(1.75rem + 0.65rem); /* logo width + gap; aligns with “Design System” */
+  --ds-brand-text-inset: calc(1.75rem + var(--rf-space-3)); /* logo width + gap; aligns with “Design System” */
   display: grid;
   grid-template-columns: 18.5rem minmax(0, 1fr);
   min-height: 100vh;
@@ -24,7 +24,7 @@ body {
   overflow-y: auto;
   padding: var(--rf-space-5) var(--rf-space-4);
   border-right: 1px solid var(--rf-rule);
-  background: color-mix(in srgb, var(--rf-cream) 88%, var(--rf-white));
+  background: var(--rf-cream-deep);
   display: flex;
   flex-direction: column;
   gap: var(--rf-space-5);
@@ -33,19 +33,19 @@ body {
 .ds-sidebar__brand {
   display: flex;
   flex-direction: column;
-  gap: 0.35rem;
+  gap: var(--rf-space-1);
 }
 
 .ds-brand {
   display: flex;
   align-items: center;
-  gap: 0.65rem;
+  gap: var(--rf-space-3);
   font-family: var(--rf-font-serif);
-  font-weight: 700;
+  font-weight: var(--rf-weight-bold);
   font-size: var(--rf-text-lg);
   color: var(--rf-ink);
   text-decoration: none;
-  letter-spacing: -0.02em;
+  letter-spacing: var(--rf-tracking-display);
 }
 
 .ds-brand img {
@@ -58,28 +58,16 @@ body {
   padding-left: var(--ds-brand-text-inset);
   font-family: var(--rf-font-sans);
   font-size: var(--rf-text-sm);
-  font-weight: 700;
-  letter-spacing: 0.06em;
+  font-weight: var(--rf-weight-bold);
+  letter-spacing: var(--rf-tracking-meta);
   text-transform: uppercase;
   color: var(--rf-ink-soft);
-}
-
-.ds-badge-draft {
-  align-self: flex-start;
-  font-size: var(--rf-text-sm);
-  font-weight: 700;
-  letter-spacing: 0.06em;
-  text-transform: uppercase;
-  color: var(--rf-brown);
-  background: var(--rf-orange-soft);
-  padding: 0.2rem 0.55rem;
-  border-radius: var(--rf-radius-pill);
 }
 
 .ds-nav {
   display: flex;
   flex-direction: column;
-  gap: 0.2rem;
+  gap: var(--rf-space-1);
   padding-left: var(--ds-brand-text-inset);
 }
 
@@ -92,8 +80,8 @@ body {
   background: transparent;
   color: var(--rf-ink-muted);
   font-size: var(--rf-text-sm);
-  font-weight: 600;
-  padding: 0.55rem 0.7rem;
+  font-weight: var(--rf-weight-semibold);
+  padding: var(--rf-space-2) var(--rf-space-3);
   border-radius: var(--rf-radius-sm);
   transition: background 0.12s ease, color 0.12s ease;
 }
@@ -104,9 +92,9 @@ body {
 }
 
 .ds-nav button[aria-selected="true"] {
-  color: var(--rf-ink);
-  background: var(--rf-white);
-  box-shadow: var(--rf-shadow);
+  color: var(--rf-green-deep);
+  background: var(--rf-green-soft);
+  font-weight: var(--rf-weight-bold);
 }
 
 .ds-nav button:focus-visible {
@@ -129,8 +117,9 @@ body {
 .ds-panel > h2,
 .ds-hero h1 {
   font-family: var(--rf-font-serif);
-  font-size: clamp(1.75rem, 3vw, var(--rf-text-3xl));
-  letter-spacing: -0.02em;
+  font-size: var(--rf-text-3xl);
+  font-weight: var(--rf-weight-bold);
+  letter-spacing: var(--rf-tracking-display);
   margin-block: 0 var(--rf-space-5);
   margin-inline: 0;
   color: var(--rf-ink-deep);
@@ -140,18 +129,18 @@ body {
 }
 
 .ds-hero h1 {
-  font-size: clamp(2rem, 4vw, var(--rf-text-4xl));
+  font-size: var(--rf-text-4xl);
   margin-block-end: var(--rf-space-5);
 }
 
-.ds-hero p {
-  margin-block: 0 var(--rf-space-5);
-  margin-inline: 0;
-  box-sizing: content-box;
-  max-inline-size: var(--rf-measure);
-  color: var(--rf-ink-muted);
-  font-size: var(--rf-text-md);
-  line-height: var(--rf-leading-body);
+@media (max-width: 800px) {
+  .ds-panel > h2 {
+    font-size: var(--rf-text-2xl);
+  }
+
+  .ds-hero h1 {
+    font-size: var(--rf-text-3xl);
+  }
 }
 
 .ds-lede {
@@ -179,16 +168,16 @@ body {
     border-bottom: 1px solid var(--rf-rule);
     padding: var(--rf-space-3) var(--rf-space-4);
     gap: var(--rf-space-3);
-    backdrop-filter: blur(8px);
+    background: var(--rf-cream-deep);
   }
 
   .ds-nav {
     flex-direction: row;
     flex-wrap: nowrap;
     overflow-x: auto;
-    gap: 0.25rem;
+    gap: var(--rf-space-1);
     padding-left: 0;
-    padding-bottom: 0.15rem;
+    padding-bottom: var(--rf-space-1);
     -webkit-overflow-scrolling: touch;
   }
 
@@ -208,36 +197,27 @@ body {
   color: var(--rf-green);
   margin-block: var(--rf-space-6) var(--rf-space-4);
   margin-inline: 0;
-  letter-spacing: -0.02em;
+  letter-spacing: var(--rf-tracking-display);
   line-height: var(--rf-leading-display);
   box-sizing: content-box;
   max-inline-size: var(--rf-measure);
-}
-
-.ds-note {
-  background: var(--rf-panel-soft);
-  border-inline-start: 3px solid var(--rf-green);
-  padding-block: var(--rf-space-5);
-  padding-inline: 1.75rem;
-  border-radius: 0 var(--rf-radius-sm) var(--rf-radius-sm) 0;
-  color: var(--rf-ink-muted);
-  font-size: var(--rf-text-sm);
-  line-height: var(--rf-leading-callout);
-  box-sizing: content-box;
-  max-inline-size: var(--rf-measure);
-  margin-block: 0 var(--rf-space-5);
-  margin-inline: 0;
-}
-
-.ds-note strong {
-  color: var(--rf-ink);
 }
 
 .ds-caption {
   margin: 0 0 var(--rf-space-4);
   color: var(--rf-ink-muted);
   font-size: var(--rf-text-sm);
-  max-width: 40rem;
+  max-inline-size: var(--rf-measure);
+  line-height: var(--rf-leading-body);
+}
+
+/* Narrow specimen column (code / dark card demos), still in ch */
+.ds-specimen-narrow {
+  max-inline-size: 36ch;
+}
+
+.ds-specimen-code {
+  max-inline-size: var(--rf-measure);
 }
 
 .ds-pattern-split {
@@ -262,7 +242,7 @@ body {
   max-height: min(70vh, 42rem);
   overflow: auto;
   font-size: var(--rf-text-sm);
-  line-height: 1.45;
+  line-height: var(--rf-leading-ui);
   white-space: pre;
 }
 
@@ -287,14 +267,14 @@ body {
 }
 
 .ds-swatch__meta {
-  padding: 0.65rem 0.75rem 0.8rem;
+  padding: var(--rf-space-3);
   font-size: var(--rf-text-sm);
-  line-height: 1.35;
+  line-height: var(--rf-leading-ui);
 }
 
 .ds-swatch__meta code {
   display: block;
-  font-family: ui-monospace, SFMono-Regular, Menlo, Consolas, monospace;
+  font-family: var(--rf-font-mono);
   color: var(--rf-ink);
   margin-bottom: 0.15rem;
   font-size: var(--rf-text-sm);
@@ -318,7 +298,7 @@ body {
   margin: 0;
   font-size: var(--rf-text-sm);
   color: var(--rf-ink-soft);
-  font-family: ui-monospace, SFMono-Regular, Menlo, Consolas, monospace;
+  font-family: var(--rf-font-mono);
 }
 
 .ds-type-row dd {
@@ -445,20 +425,6 @@ body {
   color: var(--rf-ink-muted);
 }
 
-.ds-row {
-  display: flex;
-  flex-wrap: wrap;
-  gap: var(--rf-space-3);
-  align-items: center;
-  margin-bottom: var(--rf-space-4);
-}
-
-.ds-form {
-  display: grid;
-  gap: var(--rf-space-4);
-  max-width: 28rem;
-}
-
 .ds-surface-grid {
   display: grid;
   grid-template-columns: repeat(auto-fit, minmax(14rem, 1fr));
@@ -474,7 +440,7 @@ body {
 }
 
 .ds-footer code {
-  font-family: ui-monospace, SFMono-Regular, Menlo, Consolas, monospace;
+  font-family: var(--rf-font-mono);
   font-size: 1em;
   color: var(--rf-ink-muted);
 }
@@ -553,7 +519,7 @@ body {
 
 .ds-logo-tile__meta code {
   display: block;
-  font-family: ui-monospace, SFMono-Regular, Menlo, Consolas, monospace;
+  font-family: var(--rf-font-mono);
   font-size: var(--rf-text-sm);
   color: var(--rf-ink-muted);
   word-break: break-all;
@@ -625,7 +591,7 @@ body {
 .ds-profile-card__tile {
   width: 5.5rem;
   height: 5.5rem;
-  border-radius: 1.15rem;
+  border-radius: var(--rf-radius-lg);
   overflow: hidden;
   background: var(--rf-white);
   border: 1px solid var(--rf-rule);
@@ -679,7 +645,7 @@ body {
 
 .ds-profile-card__meta code {
   display: block;
-  font-family: ui-monospace, SFMono-Regular, Menlo, Consolas, monospace;
+  font-family: var(--rf-font-mono);
   font-size: var(--rf-text-sm);
   color: var(--rf-ink-muted);
   word-break: break-all;
@@ -821,7 +787,7 @@ body {
 
 .ds-illu-tile__meta code {
   display: block;
-  font-family: ui-monospace, SFMono-Regular, Menlo, Consolas, monospace;
+  font-family: var(--rf-font-mono);
   font-size: var(--rf-text-sm);
   color: var(--rf-ink-muted);
   word-break: break-all;
@@ -890,10 +856,10 @@ body {
   border: 1px solid var(--rf-rule);
 }
 
-.ds-a11y-dot--aaa { background: #2f6b3a; }
-.ds-a11y-dot--aa { background: #62744d; }
-.ds-a11y-dot--large { background: #c4a882; }
-.ds-a11y-dot--fail { background: #d8cfc2; }
+.ds-a11y-dot--aaa { background: var(--rf-green-6); }
+.ds-a11y-dot--aa { background: var(--rf-green); }
+.ds-a11y-dot--large { background: var(--rf-tan); }
+.ds-a11y-dot--fail { background: var(--rf-panel); }
 
 .ds-a11y-wrap {
   overflow: auto;
@@ -951,7 +917,7 @@ table.ds-a11y {
   text-align: left;
   padding: 0.45rem 0.55rem;
   min-width: 7.5rem;
-  font-family: ui-monospace, SFMono-Regular, Menlo, Consolas, monospace;
+  font-family: var(--rf-font-mono);
   font-size: var(--rf-text-sm);
   font-weight: 600;
   color: var(--rf-ink);
