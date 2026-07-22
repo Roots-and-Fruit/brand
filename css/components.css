@@ -501,9 +501,16 @@ ol.rf-keytakeaways > li:has(.rf-takeaways__num)::before {
   background: transparent;
   color: var(--rf-code-meta);
   cursor: pointer;
-  padding: 0.15rem;
+  padding: 0.2rem 0.35rem;
   border-radius: var(--rf-radius-sm);
   line-height: 0;
+  display: inline-flex;
+  align-items: center;
+  gap: 0.35rem;
+  font-family: var(--rf-font-sans);
+  font-size: var(--rf-text-sm);
+  font-weight: 600;
+  transition: color 0.15s ease, background 0.15s ease;
 }
 
 .rf-code__copy:hover {
@@ -515,9 +522,28 @@ ol.rf-keytakeaways > li:has(.rf-takeaways__num)::before {
   box-shadow: var(--rf-focus);
 }
 
+.rf-code__copy::after {
+  content: "Copied";
+  font-size: var(--rf-text-sm);
+  font-weight: 600;
+  letter-spacing: 0.01em;
+  line-height: 1;
+  color: var(--rf-green-deep);
+  max-width: 0;
+  opacity: 0;
+  overflow: hidden;
+  white-space: nowrap;
+  transition: max-width 0.2s ease, opacity 0.18s ease;
+}
+
 .rf-code__copy[data-copied] {
   color: var(--rf-green-deep);
   background: color-mix(in srgb, var(--rf-green) 14%, transparent);
+}
+
+.rf-code__copy[data-copied]::after {
+  max-width: 4.5rem;
+  opacity: 1;
 }
 
 .rf-code__body {
