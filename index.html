@@ -40,19 +40,29 @@
     <main class="ds-content">
       <div class="ds-content__inner">
         <section class="ds-panel ds-hero" id="overview" role="tabpanel" aria-labelledby="tab-overview">
-          <h1>Design system</h1>
+          <p class="ds-type-meta" style="margin:0 0 var(--rf-space-3)">Brand</p>
+          <h1>Roots &amp; Fruit</h1>
           <p>
-            The visual language for Roots &amp; Fruit: cream paper, warm ink, Knile display type,
-            Nunito Sans for reading, and moss green as the steady accent. Use this reference when
-            designing marketing pages, presentations, product UI, or anything that should feel like the brand.
+            Roots &amp; Fruit is Matt Cromwell’s practice for WordPress operators and product teams:
+            clear strategy, practical systems, and work that holds up in the real world.
+            The tone is earned and calm. We favor craft over hype, and tools that stay out of the way
+            of the people doing the work.
+          </p>
+          <p>
+            This site is the visual language for that practice: cream paper, warm ink, Knile for voice,
+            Nunito Sans for reading, and moss green as the steady accent. Use it whenever something
+            should feel like Roots &amp; Fruit—the website, decks, product UI, or compact plugin chrome.
           </p>
           <p class="ds-note">
-            <strong>How to use this page.</strong>
-            Open one section at a time from the sidebar. Start with logos and color if you are matching an existing surface.
-            Check the accessibility matrix before locking text-on-background pairs. Prefer the shared CSS tokens
-            (<code>--rf-*</code>) over hard-coded hex so future refinements stay consistent.
-            Content patterns (takeaways, dark card, code) live under that tab; the agent contract is
-            <code>DESIGN.md</code>, also rendered in the Agent contract tab.
+            <strong>How to use this design system.</strong>
+            Open one section at a time from the sidebar. Start with logos and color when matching an
+            existing surface. Check the accessibility matrix before locking text-on-background pairs.
+            Prefer shared CSS tokens (<code>--rf-*</code>) over hard-coded hex.
+            For reading layout, keep long-form text within the <code>60ch</code> measure and prefer
+            <code>.rf-stack</code>, <code>.rf-center</code>, and <code>.rf-cluster</code> over one-off margins.
+            Content patterns (takeaways, dark card, code) have their own tab.
+            Generators and agents should follow <code>DESIGN.md</code> (Agent contract tab); humans can
+            browse the specimens here and treat that file as the written rules.
           </p>
           <footer class="ds-footer">
             <p>
@@ -1227,9 +1237,11 @@ components:
 
 ## Overview
 
-Roots &amp; Fruit is earned, calm, and rooted. Visual identity feels like warm paper and moss: cream canvas, warm ink, Knile for voice, Nunito Sans for clarity, moss green as the steady accent.
+Roots &amp; Fruit is Matt Cromwell’s practice for WordPress operators and product teams: clear strategy, practical systems, and work that holds up in the real world. The tone is earned and calm—craft over hype.
 
-Agents must treat this file as normative for any new UI, page, slide, dashboard, or plugin surface. When this repo already ships CSS under `css/tokens.css` and `css/components.css`, map tokens here to `--rf-*` custom properties instead of inventing parallel values.
+Visual identity feels like warm paper and moss: cream canvas, warm ink, Knile for voice, Nunito Sans for clarity, moss green as the steady accent.
+
+Agents must treat this file as normative for any new UI, page, slide, dashboard, or plugin surface. When this repo already ships CSS under `css/tokens.css` and `css/components.css`, map tokens here to `--rf-*` custom properties instead of inventing parallel values. The human reference is `index.html` (Overview leads with who we are, then how to use the system).
 
 Brand feel (always):
 - Warm cream paper, not cool gray or pure white as the default page wash

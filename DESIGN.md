@@ -230,9 +230,11 @@ components:
 
 ## Overview
 
-Roots & Fruit is earned, calm, and rooted. Visual identity feels like warm paper and moss: cream canvas, warm ink, Knile for voice, Nunito Sans for clarity, moss green as the steady accent.
+Roots & Fruit is Matt Cromwell’s practice for WordPress operators and product teams: clear strategy, practical systems, and work that holds up in the real world. The tone is earned and calm—craft over hype.
 
-Agents must treat this file as normative for any new UI, page, slide, dashboard, or plugin surface. When this repo already ships CSS under `css/tokens.css` and `css/components.css`, map tokens here to `--rf-*` custom properties instead of inventing parallel values.
+Visual identity feels like warm paper and moss: cream canvas, warm ink, Knile for voice, Nunito Sans for clarity, moss green as the steady accent.
+
+Agents must treat this file as normative for any new UI, page, slide, dashboard, or plugin surface. When this repo already ships CSS under `css/tokens.css` and `css/components.css`, map tokens here to `--rf-*` custom properties instead of inventing parallel values. The human reference is `index.html` (Overview leads with who we are, then how to use the system).
 
 Brand feel (always):
 - Warm cream paper, not cool gray or pure white as the default page wash
