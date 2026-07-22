@@ -148,6 +148,47 @@ a:hover {
   background: var(--rf-green-soft);
 }
 
+/* Product UI — app chrome / tool nav (not marketing) */
+.btn--product {
+  background: var(--rf-blue-nav);
+  color: var(--rf-white);
+  border-color: var(--rf-blue-nav);
+}
+
+.btn--product:hover:not(:disabled) {
+  background: var(--rf-blue);
+  border-color: var(--rf-blue);
+  color: var(--rf-white);
+}
+
+.btn--product:focus-visible {
+  box-shadow: 0 0 0 3px color-mix(in srgb, var(--rf-blue) 35%, transparent);
+}
+
+.btn--product-quiet {
+  background: var(--rf-white);
+  color: var(--rf-ink-muted);
+  border-color: var(--rf-cream-deep);
+}
+
+.btn--product-quiet:hover:not(:disabled) {
+  color: var(--rf-blue);
+  border-color: var(--rf-blue-muted);
+  background: var(--rf-white);
+}
+
+.btn--product-quiet:focus-visible {
+  box-shadow: 0 0 0 3px color-mix(in srgb, var(--rf-blue) 35%, transparent);
+}
+
+.btn--product-quiet[aria-current="page"],
+.btn--product-quiet[aria-pressed="true"],
+.btn--product-quiet.is-active {
+  background: var(--rf-blue-nav);
+  border-color: var(--rf-blue-nav);
+  color: var(--rf-white);
+}
+
 .link-text {
   font-weight: 600;
   text-underline-offset: 0.15em;

@@ -29,7 +29,10 @@ colors:
   danger: "#b42318"
   danger-soft: "#f8e4e2"
   on-primary: "#ffffff"
+  on-info: "#ffffff"
   on-tertiary: "#1a1a1a"
+  blue-nav: "#2a5f8f"
+  blue-mid: "#245f8c"
   surface-dark: "#4b5e2e"
   on-dark: "#ffffff"
   on-dark-muted: "rgba(255, 255, 255, 0.78)"
@@ -156,6 +159,17 @@ components:
     textColor: "{colors.secondary}"
     rounded: "{rounded.pill}"
     padding: 0.45rem 0.65rem
+  button-product:
+    backgroundColor: "{colors.blue-nav}"
+    textColor: "{colors.on-info}"
+    rounded: "{rounded.pill}"
+    padding: 0.7rem 1.15rem
+    typography: "{typography.label}"
+  button-product-quiet:
+    backgroundColor: "{colors.surface}"
+    textColor: "{colors.secondary}"
+    rounded: "{rounded.pill}"
+    padding: 0.7rem 1.15rem
   input:
     backgroundColor: "{colors.surface}"
     textColor: "{colors.ink}"
@@ -425,15 +439,19 @@ Focus ring: soft green halo (`0 0 0 3px` color-mix of primary at ~35% opacity). 
 Implement with these behaviors. Class names in this repo: `.btn`, `.input`, `.surface`, `.alert` (including `.alert--note`), `.pill`, plus layout primitives `.rf-stack` / `.rf-center` / `.rf-cluster` / `.rf-prose` (see `css/components.css`, `css/layouts.css`).
 
 **Buttons**
-- `button-primary`: default main action (moss). One primary per section/view.
+- `button-primary` (`.btn--primary`): default main action (moss). One primary per section/view on marketing or mixed surfaces.
 - `button-secondary`: warm panel fill for secondary actions.
 - `button-tertiary`: outlined green for low-emphasis actions.
 - `button-cta`: orange fill with dark ink text for contrast; at most one high-stakes CTA on a view (Book, Pay, Submit final). Do not use white text on orange.
 - `button-ghost`: text-like dismissal / tertiary navigation.
+- `button-product` (`.btn--product`): **product UI only** — filled info blue (`blue-nav`) with white text. Use for selected app nav, board switches, and primary in-tool actions inside dashboards (Phloem, plugin chrome, ops boards). Signals “you’re in the product,” not a marketing pitch. Do not use on marketing heroes or as a brand CTA.
+- `button-product-quiet` (`.btn--product-quiet`): idle product nav chrome (white + soft border). Hover tints toward info blue; selected state uses `aria-current="page"`, `aria-pressed="true"`, or `.is-active` and matches `button-product` fill.
+- In a product nav cluster, prefer quiet siblings + one current product fill — not a row of filled blue buttons.
 - Disabled: reduce opacity; do not invent a gray system.
 
 **Links**
-- Use `primary` green, semibold when inline. Never default browser blue.
+- Marketing / long-form: `primary` green, semibold when inline. Never default browser blue.
+- Product UI title links may use `info` blue (as in Phloem task titles); do not use that blue for marketing body links.
 
 **Forms**
 - Labels above fields (`typography.label`)
@@ -496,7 +514,8 @@ Implement with these behaviors. Class names in this repo: `.btn`, `.input`, `.su
 - Don't add drop shadows, outlines, recolors, or stretch transforms to official logo files
 - Don't build dense marketing heroes with stats, chip rows, and multiple competing CTAs
 - Don't remove focus indicators
-- Don't use blue (`info`) as a marketing accent; reserve it for product/info UI
+- Don't use blue (`info` / `button-product`) as a marketing accent or site-wide primary; reserve it for product/info UI
+- Don't mix a moss primary and a filled product button as competing “main” actions in the same cluster
 - Don't create a dark-mode palette unless explicitly asked (light cream system is default)
 - Don't use cool cyan/gray IDE chrome for code; stay on warm `code-bg` + moss-teal base
 - Don't put white text on orange CTAs (including on dark cards); use `ink-deep` on `tertiary`
