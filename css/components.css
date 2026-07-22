@@ -515,6 +515,11 @@ ol.rf-keytakeaways > li:has(.rf-takeaways__num)::before {
   box-shadow: var(--rf-focus);
 }
 
+.rf-code__copy[data-copied] {
+  color: var(--rf-green-deep);
+  background: color-mix(in srgb, var(--rf-green) 14%, transparent);
+}
+
 .rf-code__body {
   margin: 0;
   padding: var(--rf-space-4) var(--rf-space-4) 1.75rem;
