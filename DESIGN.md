@@ -25,6 +25,7 @@ colors:
   rule: "rgba(44, 41, 34, 0.14)"
   info: "#1a5276"
   info-soft: "#d6e6f2"
+  blue-muted: "#b8d0e4"
   danger: "#b42318"
   danger-soft: "#f8e4e2"
   on-primary: "#ffffff"

@@ -41,6 +41,7 @@
   --rf-blue-mid: #245f8c;
   --rf-blue-nav: #2a5f8f;
   --rf-blue-soft: #d6e6f2;
+  --rf-blue-muted: #b8d0e4; /* quieter blue border / focus companion */
 
   /* Semantic */
   --rf-success: var(--rf-green);
