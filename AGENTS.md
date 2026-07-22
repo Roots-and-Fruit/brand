@@ -2,6 +2,8 @@
 
 Open this folder when changing visual identity, the design-system reference page, or the agent design contract.
 
+**Hub rule:** anything built to look like Roots & Fruit (site, plugin chrome, Phloem UI, decks, internal R&F tools) must follow this package. Hub index: root `AGENTS.md` → Brand / design system. Skill: `rf-brand`.
+
 ## Source of truth
 
 | Artifact | Path | Role |
@@ -13,6 +15,15 @@ Open this folder when changing visual identity, the design-system reference page
 | Public repo | [Roots-and-Fruit/brand](https://github.com/Roots-and-Fruit/brand) | Published at brand.rootsandfruit.com |
 
 `DESIGN.md` is canonical. The Agent contract tab in `index.html` is a **rendered copy** of that file inside the `.rf-code` block so the page works when opened as a local file.
+
+## When building R&F UI (any job)
+
+1. Read `DESIGN.md` before choosing color, type, radius, or components.
+2. Prefer `--rf-*` from `css/tokens.css` and primitives in `css/layouts.css` / `css/components.css` (`.rf-stack`, `.rf-cluster`, `.rf-prose`, `.btn`, `.alert`, `.surface`, …).
+3. Do not invent parallel palettes, type stacks, or component patterns.
+4. Specimens and human reference: `index.html` or https://brand.rootsandfruit.com
+
+**Out of scope for this contract:** public `skills/` packages (domain-agnostic) and third-party client brands, unless the deliverable is explicitly Roots & Fruit branded.
 
 ## Keep the HTML copy in sync
 
