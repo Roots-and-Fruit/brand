@@ -132,7 +132,7 @@ a:hover {
 }
 
 .btn--cta:hover:not(:disabled) {
-  background: color-mix(in srgb, var(--rf-orange) 85%, var(--rf-brown));
+  background: color-mix(in srgb, var(--rf-orange) 85%, var(--rf-cream));
   color: var(--rf-ink-deep);
 }
 

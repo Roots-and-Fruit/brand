@@ -442,7 +442,7 @@ Implement with these behaviors. Class names in this repo: `.btn`, `.input`, `.su
 - `button-primary` (`.btn--primary`): default main action (moss). One primary per section/view on marketing or mixed surfaces.
 - `button-secondary`: warm panel fill for secondary actions.
 - `button-tertiary`: outlined green for low-emphasis actions.
-- `button-cta`: orange fill with dark ink text for contrast; at most one high-stakes CTA on a view (Book, Pay, Submit final). Do not use white text on orange.
+- `button-cta`: orange fill with dark ink text for contrast; at most one high-stakes CTA on a view (Book, Pay, Submit final). Do not use white text on orange. Hover lightens toward cream (`85%` orange / `15%` cream) so contrast improves; do not darken with brown.
 - `button-ghost`: text-like dismissal / tertiary navigation.
 - `button-product` (`.btn--product`): **product UI only** — filled info blue (`blue-nav`) with white text. Use for selected app nav, board switches, and primary in-tool actions inside dashboards (Phloem, plugin chrome, ops boards). Signals “you’re in the product,” not a marketing pitch. Do not use on marketing heroes or as a brand CTA.
 - `button-product-quiet` (`.btn--product-quiet`): idle product nav chrome (white + soft border). Hover tints toward info blue; selected state uses `aria-current="page"`, `aria-pressed="true"`, or `.is-active` and matches `button-product` fill.
