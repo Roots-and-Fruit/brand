@@ -10,8 +10,9 @@ body {
 
 /* —— App shell (sidebar + tab panels) —— */
 .ds-shell {
+  --ds-brand-text-inset: calc(1.75rem + 0.65rem); /* logo width + gap; aligns with “Design System” */
   display: grid;
-  grid-template-columns: 15.5rem minmax(0, 1fr);
+  grid-template-columns: 18.5rem minmax(0, 1fr);
   min-height: 100vh;
 }
 
@@ -54,7 +55,7 @@ body {
 
 .ds-sidebar__subtitle {
   margin: 0;
-  padding-left: calc(1.75rem + 0.65rem);
+  padding-left: var(--ds-brand-text-inset);
   font-family: var(--rf-font-sans);
   font-size: var(--rf-text-sm);
   font-weight: 700;
@@ -79,15 +80,7 @@ body {
   display: flex;
   flex-direction: column;
   gap: 0.2rem;
-}
-
-.ds-nav__label {
-  font-size: var(--rf-text-sm);
-  font-weight: 700;
-  letter-spacing: 0.06em;
-  text-transform: uppercase;
-  color: var(--rf-ink-soft);
-  margin: 0 0 0.35rem 0.55rem;
+  padding-left: var(--ds-brand-text-inset);
 }
 
 .ds-nav button {
@@ -194,12 +187,9 @@ body {
     flex-wrap: nowrap;
     overflow-x: auto;
     gap: 0.25rem;
+    padding-left: 0;
     padding-bottom: 0.15rem;
     -webkit-overflow-scrolling: touch;
-  }
-
-  .ds-nav__label {
-    display: none;
   }
 
   .ds-nav button {
