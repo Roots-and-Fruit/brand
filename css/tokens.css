@@ -1,0 +1,125 @@
+/* Roots & Fruit — design tokens
+   Shared CSS custom properties for brand color, type, space, and shape. */
+
+:root {
+  /* Paper & ink */
+  --rf-cream: #faf6ee;
+  --rf-cream-deep: #f3ede2;
+  --rf-white: #ffffff;
+  --rf-ink: #2c2922;
+  --rf-ink-deep: #1a1a1a;
+  --rf-ink-muted: #6b6560;
+  --rf-ink-soft: #9a948c;
+  --rf-brown: #40352a;
+  --rf-rule: rgba(44, 41, 34, 0.14);
+
+  /* Brand accents */
+  --rf-green: #62744d;
+  --rf-green-deep: #4b5e2e;
+  --rf-green-mid: #6d7d5d;
+  --rf-green-soft: #e4eadc;
+  --rf-green-1: #c5d4b8;
+  --rf-green-2: #9aaf86;
+  --rf-green-3: #7a9268;
+  --rf-green-4: #62744d;
+  --rf-green-5: #4a5a38;
+  --rf-green-6: #2f3a24;
+
+  --rf-orange: #d4844e;
+  --rf-orange-soft: #f0d5c0;
+  --rf-orange-web: #e28b56; /* alternate warmer orange if a host palette requires it */
+
+  /* Surfaces */
+  --rf-panel: #ebe4d8;
+  --rf-panel-deep: #dfd6c6;
+  --rf-panel-soft: #f3ece2;
+  --rf-tan: #c4a882;
+  --rf-tan-soft: #f0e8dc;
+
+  /* Product UI */
+  --rf-blue: #1a5276;
+  --rf-blue-mid: #245f8c;
+  --rf-blue-nav: #2a5f8f;
+  --rf-blue-soft: #d6e6f2;
+
+  /* Semantic */
+  --rf-success: var(--rf-green);
+  --rf-success-bg: var(--rf-green-soft);
+  --rf-warning: var(--rf-orange);
+  --rf-warning-bg: var(--rf-orange-soft);
+  --rf-danger: #b42318;
+  --rf-danger-bg: #f8e4e2;
+  --rf-info: var(--rf-blue);
+  --rf-info-bg: var(--rf-blue-soft);
+
+  /* Type */
+  --rf-font-serif: "Knile", Georgia, "Times New Roman", serif;
+  --rf-font-sans: "Nunito Sans", system-ui, sans-serif;
+
+  /* Type scale — sm (16px) is the floor; no xs */
+  --rf-text-sm: 1rem;      /* 16 · compact UI, labels, meta */
+  --rf-text-md: 1.125rem;  /* 18 · default body / long-form */
+  --rf-text-lg: 1.375rem;  /* 22 · lead */
+  --rf-text-xl: 1.75rem;   /* 28 · display-sm */
+  --rf-text-2xl: 2.25rem;  /* 36 · display-md */
+  --rf-text-3xl: 3rem;     /* 48 · display-lg */
+  --rf-text-4xl: 3.5rem;   /* 56 · display-xl */
+
+  /* Optical type (not fluid size ranges) */
+  --rf-leading-display: 1.1;   /* Knile large display */
+  --rf-leading-snug: 1.15;     /* Knile subheads / short titles */
+  --rf-leading-body: 1.65;     /* Nunito: high x-height needs air */
+  --rf-leading-callout: 1.55;  /* Contained notes / cards */
+  --rf-leading-ui: 1.35;       /* Compact UI at sm (16px) */
+
+  /* Weights — Knile: 400 / 600 / 700 only (no italic faces). Nunito: same + italic. */
+  --rf-weight-regular: 400;
+  --rf-weight-semibold: 600;
+  --rf-weight-bold: 700;
+
+  /* Tracking */
+  --rf-tracking-display: -0.02em; /* Knile titles */
+  --rf-tracking-meta: 0.06em;     /* uppercase eyebrows */
+
+  /* Measure axiom: never exceed ~60 characters per line (Every Layout / Bringhurst band) */
+  --rf-measure: 60ch;
+
+  /* Modular space ratio (Every Layout: seed rhythm from text, multiply by one ratio) */
+  --rf-ratio: 1.5;
+
+  /* Space: fine steps below 1rem for UI chrome; from s0 up, prefer modular * ratio */
+  --rf-space-1: 0.25rem;
+  --rf-space-2: 0.5rem;
+  --rf-space-3: 0.75rem;
+  --rf-space-4: 1rem; /* s0 · text base */
+  --rf-space-5: calc(var(--rf-space-4) * var(--rf-ratio)); /* 1.5 · one line @ lh 1.5 */
+  --rf-space-6: calc(var(--rf-space-5) * var(--rf-ratio)); /* 2.25 */
+  --rf-space-7: calc(var(--rf-space-6) * var(--rf-ratio)); /* 3.375 */
+  --rf-space-8: calc(var(--rf-space-7) * var(--rf-ratio)); /* 5.0625 */
+
+  --rf-gutter: var(--rf-space-5); /* default inset for .rf-center--gutter */
+
+  /* Shape */
+  --rf-radius-sm: 0.55rem;
+  --rf-radius: 0.75rem;
+  --rf-radius-lg: 1.25rem;
+  --rf-radius-pill: 999px;
+  --rf-shadow: 0 2px 12px rgba(44, 41, 34, 0.06);
+  --rf-shadow-md: 0 8px 28px rgba(44, 41, 34, 0.1);
+
+  /* Dark surface (headers, callout cards on cream pages) */
+  --rf-surface-dark: #4b5e2e;
+  --rf-on-dark: #ffffff;
+  --rf-on-dark-muted: rgba(255, 255, 255, 0.78);
+
+  /* Code (warm paper chrome; syntax base is moss-teal, not cool cyan) */
+  --rf-code-bg: #f3ece2;
+  --rf-code-fg: #3d5c4e;
+  --rf-code-border: rgba(44, 41, 34, 0.12);
+  --rf-code-meta: #9a948c;
+  --rf-font-mono: "JetBrains Mono", "SFMono-Regular", Consolas, "Liberation Mono", Menlo, monospace;
+
+  /* Layout */
+  --rf-max: 56rem; /* shell / grid; prose still uses --rf-measure */
+  --rf-focus: 0 0 0 3px color-mix(in srgb, var(--rf-green) 35%, transparent);
+}

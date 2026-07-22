@@ -1,0 +1,56 @@
+/* Roots & Fruit — layout primitives
+   Inspired by Every Layout (Pickering & Bell): suggest size, compose with gap,
+   keep vertical rhythm stable. Prefer these over one-off margin stacks. */
+
+/* —— Stack: vertical flow with even gap (2nd ed uses gap) —— */
+.rf-stack {
+  display: flex;
+  flex-direction: column;
+  justify-content: flex-start;
+  gap: var(--rf-stack-space, var(--rf-space-5));
+}
+
+.rf-stack > * {
+  margin-block: 0;
+}
+
+.rf-stack--sm {
+  --rf-stack-space: var(--rf-space-3);
+}
+
+.rf-stack--md {
+  --rf-stack-space: var(--rf-space-5);
+}
+
+.rf-stack--lg {
+  --rf-stack-space: var(--rf-space-7);
+}
+
+/* —— Center: measured reading column, auto side margins, optional gutter —— */
+.rf-center {
+  box-sizing: content-box;
+  max-inline-size: var(--rf-measure);
+  margin-inline: auto;
+  padding-inline: var(--rf-gutter, 0);
+}
+
+.rf-center--gutter {
+  --rf-gutter: var(--rf-space-5);
+}
+
+/* —— Cluster: horizontal wrap group (buttons, pills, tags) —— */
+.rf-cluster {
+  display: flex;
+  flex-wrap: wrap;
+  gap: var(--rf-cluster-space, var(--rf-space-3));
+  justify-content: flex-start;
+  align-items: center;
+}
+
+.rf-cluster--center {
+  justify-content: center;
+}
+
+.rf-cluster--end {
+  justify-content: flex-end;
+}

@@ -1,0 +1,1763 @@
+﻿<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>Roots &amp; Fruit — Design System</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=JetBrains+Mono:wght@400;500&family=Nunito+Sans:ital,wght@0,400;0,600;0,700;1,400;1,600;1,700&display=swap" rel="stylesheet" />
+  <link rel="stylesheet" href="css/rf.css" />
+  <link rel="stylesheet" href="css/docs.css" />
+</head>
+<body>
+  <div class="ds-shell">
+    <aside class="ds-sidebar">
+      <div class="ds-sidebar__brand">
+        <a class="ds-brand" href="#overview" data-ds-tab="overview">
+          <img src="rf-mark.svg" alt="" width="28" height="27" />
+          Roots &amp; Fruit
+        </a>
+        <p class="ds-sidebar__subtitle">Design System</p>
+      </div>
+      <nav class="ds-nav" role="tablist" aria-label="Design system sections" aria-orientation="vertical">
+        <p class="ds-nav__label">Browse</p>
+        <button type="button" role="tab" id="tab-overview" aria-controls="overview" aria-selected="true" data-ds-tab="overview">Overview</button>
+        <button type="button" role="tab" id="tab-logos" aria-controls="logos" aria-selected="false" data-ds-tab="logos" tabindex="-1">Logos &amp; icons</button>
+        <button type="button" role="tab" id="tab-illustrations" aria-controls="illustrations" aria-selected="false" data-ds-tab="illustrations" tabindex="-1">Illustrations</button>
+        <button type="button" role="tab" id="tab-tokens" aria-controls="tokens" aria-selected="false" data-ds-tab="tokens" tabindex="-1">Color</button>
+        <button type="button" role="tab" id="tab-type" aria-controls="type" aria-selected="false" data-ds-tab="type" tabindex="-1">Typography</button>
+        <button type="button" role="tab" id="tab-space" aria-controls="space" aria-selected="false" data-ds-tab="space" tabindex="-1">Space &amp; shape</button>
+        <button type="button" role="tab" id="tab-buttons" aria-controls="buttons" aria-selected="false" data-ds-tab="buttons" tabindex="-1">Buttons</button>
+        <button type="button" role="tab" id="tab-forms" aria-controls="forms" aria-selected="false" data-ds-tab="forms" tabindex="-1">Forms</button>
+        <button type="button" role="tab" id="tab-feedback" aria-controls="feedback" aria-selected="false" data-ds-tab="feedback" tabindex="-1">Feedback</button>
+        <button type="button" role="tab" id="tab-data" aria-controls="data" aria-selected="false" data-ds-tab="data" tabindex="-1">Surfaces &amp; data</button>
+        <button type="button" role="tab" id="tab-patterns" aria-controls="patterns" aria-selected="false" data-ds-tab="patterns" tabindex="-1">Content patterns</button>
+        <button type="button" role="tab" id="tab-contract" aria-controls="contract" aria-selected="false" data-ds-tab="contract" tabindex="-1">Agent contract</button>
+      </nav>
+    </aside>
+
+    <main class="ds-content">
+      <div class="ds-content__inner">
+        <section class="ds-panel ds-hero" id="overview" role="tabpanel" aria-labelledby="tab-overview">
+          <h1>Design system</h1>
+          <p>
+            The visual language for Roots &amp; Fruit: cream paper, warm ink, Knile display type,
+            Nunito Sans for reading, and moss green as the steady accent. Use this reference when
+            designing marketing pages, presentations, product UI, or anything that should feel like the brand.
+          </p>
+          <p class="ds-note">
+            <strong>How to use this page.</strong>
+            Open one section at a time from the sidebar. Start with logos and color if you are matching an existing surface.
+            Check the accessibility matrix before locking text-on-background pairs. Prefer the shared CSS tokens
+            (<code>--rf-*</code>) over hard-coded hex so future refinements stay consistent.
+            Content patterns (takeaways, dark card, code) live under that tab; the agent contract is
+            <code>DESIGN.md</code>, also rendered in the Agent contract tab.
+          </p>
+          <footer class="ds-footer">
+            <p>
+              Brand feel in one line: earned, calm, and rooted. Avoid purple gradients, cool gray glass,
+              generic system fonts (Inter, Roboto, Arial), and treating orange as a full theme color.
+              Orange is a rare call-to-action accent only.
+            </p>
+          </footer>
+        </section>
+
+    <section class="ds-panel" id="logos" role="tabpanel" aria-labelledby="tab-logos" hidden>
+      <h2 id="logos-title">Logos &amp; icons</h2>
+      <p class="ds-lede">
+        Two lockups cover most needs. The wordmark pairs the tree with the Roots &amp; Fruit name for headers,
+        title slides, and signed brand moments. The stand-alone tree icon is for tight spaces where the name
+        already appears nearby, or where only a square badge will fit. Prefer SVG for screens; use the PNG
+        exports when a host requires raster (social uploads, email clients, some CMS media libraries).
+      </p>
+
+      <div class="ds-logo-rules">
+        <div class="ds-logo-rule">
+          <strong>Light backgrounds</strong>
+          Use full-color or flat-color light variants on cream, white, or soft warm panels. This is the default.
+        </div>
+        <div class="ds-logo-rule">
+          <strong>Dark backgrounds</strong>
+          Use the DarkBG or flat white / off-white wordmarks. Never place a light-background color mark on ink or photography.
+        </div>
+        <div class="ds-logo-rule">
+          <strong>One-color</strong>
+          Flat black or flat white when the job is monochrome: print, emboss, stamps, or a quiet watermark.
+        </div>
+        <div class="ds-logo-rule">
+          <strong>Clear space</strong>
+          Leave empty margin about the height of the tree canopy around the mark. Do not retype “Roots &amp; Fruit”
+          next to the icon, and do not stretch, outline, or recolor the canopy greens.
+        </div>
+      </div>
+
+      <h3 class="ds-h3">Wordmark (logo)</h3>
+      <div class="ds-logo-grid">
+        <figure class="ds-logo-tile">
+          <div class="ds-logo-tile__stage ds-logo-tile__stage--cream">
+            <img src="logos/SVG/R%26F_Logo.svg" alt="Roots &amp; Fruit wordmark, full color" />
+          </div>
+          <figcaption class="ds-logo-tile__meta">
+            <strong>Full color</strong>
+            <code>logos/SVG/R&amp;F_Logo.svg</code>
+            <span>Default on cream or white. Use this for primary marketing and presentation title slides.</span>
+          </figcaption>
+        </figure>
+        <figure class="ds-logo-tile">
+          <div class="ds-logo-tile__stage ds-logo-tile__stage--ink">
+            <img src="logos/SVG/R%26F_Logo_DarkBG.svg" alt="Roots &amp; Fruit wordmark for dark backgrounds" />
+          </div>
+          <figcaption class="ds-logo-tile__meta">
+            <strong>Dark background</strong>
+            <code>logos/SVG/R&amp;F_Logo_DarkBG.svg</code>
+            <span>Full-color treatment tuned for ink, brown, and dark photography.</span>
+          </figcaption>
+        </figure>
+        <figure class="ds-logo-tile">
+          <div class="ds-logo-tile__stage ds-logo-tile__stage--white">
+            <img src="logos/SVG/R%26F_Logo_Flat_Color_LightBG.svg" alt="Flat color wordmark for light backgrounds" />
+          </div>
+          <figcaption class="ds-logo-tile__meta">
+            <strong>Flat color · light BG</strong>
+            <code>…_Flat_Color_LightBG.svg</code>
+            <span>Simplified fills when small sizes make the full canopy too busy.</span>
+          </figcaption>
+        </figure>
+        <figure class="ds-logo-tile">
+          <div class="ds-logo-tile__stage ds-logo-tile__stage--brown">
+            <img src="logos/SVG/R%26F_Logo_Flat_Color_DarkBG.svg" alt="Flat color wordmark for dark backgrounds" />
+          </div>
+          <figcaption class="ds-logo-tile__meta">
+            <strong>Flat color · dark BG</strong>
+            <code>…_Flat_Color_DarkBG.svg</code>
+            <span>Same simplification, contrast-safe on dark UI or photo backgrounds.</span>
+          </figcaption>
+        </figure>
+        <figure class="ds-logo-tile">
+          <div class="ds-logo-tile__stage ds-logo-tile__stage--cream">
+            <img src="logos/SVG/R%26F_Logo_Flat_Black.svg" alt="Flat black wordmark" />
+          </div>
+          <figcaption class="ds-logo-tile__meta">
+            <strong>Flat black</strong>
+            <code>logos/SVG/R&amp;F_Logo_Flat_Black.svg</code>
+            <span>Single-ink print, fax-style reproduction, or quiet mono treatments.</span>
+          </figcaption>
+        </figure>
+        <figure class="ds-logo-tile">
+          <div class="ds-logo-tile__stage ds-logo-tile__stage--green">
+            <img src="logos/SVG/R%26F_Logo_Flat_White.svg" alt="Flat white wordmark" />
+          </div>
+          <figcaption class="ds-logo-tile__meta">
+            <strong>Flat white / off-white</strong>
+            <code>…_Flat_White.svg</code>
+            <span>Reverse mono on dark color fields. PNG also includes a softer off-white export.</span>
+          </figcaption>
+        </figure>
+      </div>
+
+      <h3 class="ds-h3">Stand-alone icon (tree mark)</h3>
+      <p class="ds-lede" style="margin-top:0">
+        Use the tree alone when the brand name is already visible in type, or when the container is square or circular
+        (favicon, avatar, social profile, slide corner mark). Do not invent a new icon or substitute a lettermark.
+      </p>
+      <div class="ds-icon-grid">
+        <figure class="ds-logo-tile ds-logo-tile--icon">
+          <div class="ds-logo-tile__stage ds-logo-tile__stage--cream">
+            <img src="logos/icons/R%26F_Icon_1000px.svg" alt="Full color tree icon" />
+          </div>
+          <figcaption class="ds-logo-tile__meta">
+            <strong>Full color</strong>
+            <code>logos/icons/R&amp;F_Icon_1000px.svg</code>
+            <span>Default mark. Multi-green canopy reads best at medium sizes and up.</span>
+          </figcaption>
+        </figure>
+        <figure class="ds-logo-tile ds-logo-tile--icon">
+          <div class="ds-logo-tile__stage ds-logo-tile__stage--white">
+            <img src="logos/icons/R%26F_Icon_Flat_Color_LightBG_1000px.svg" alt="Flat color tree icon for light backgrounds" />
+          </div>
+          <figcaption class="ds-logo-tile__meta">
+            <strong>Flat color · light BG</strong>
+            <code>…_Flat_Color_LightBG_1000px.svg</code>
+            <span>Single moss fill. Cleaner at favicon and 32–64px sizes.</span>
+          </figcaption>
+        </figure>
+        <figure class="ds-logo-tile ds-logo-tile--icon">
+          <div class="ds-logo-tile__stage ds-logo-tile__stage--ink">
+            <img src="logos/icons/R%26F_Icon_Flat_Color_DarkBG_1000px.svg" alt="Flat color tree icon for dark backgrounds" />
+          </div>
+          <figcaption class="ds-logo-tile__meta">
+            <strong>Flat color · dark BG</strong>
+            <code>…_Flat_Color_DarkBG_1000px.svg</code>
+            <span>Lighter flat fill so the silhouette holds on ink and charcoal.</span>
+          </figcaption>
+        </figure>
+        <figure class="ds-logo-tile ds-logo-tile--icon">
+          <div class="ds-logo-tile__stage ds-logo-tile__stage--panel">
+            <img src="logos/icons/R%26F_Icon_Flat_Black_1000px.svg" alt="Flat black tree icon" />
+          </div>
+          <figcaption class="ds-logo-tile__meta">
+            <strong>Flat black</strong>
+            <code>…_Flat_Black_1000px.svg</code>
+            <span>Mono UI chrome, stamps, and watermarks on light paper.</span>
+          </figcaption>
+        </figure>
+        <figure class="ds-logo-tile ds-logo-tile--icon">
+          <div class="ds-logo-tile__stage ds-logo-tile__stage--brown">
+            <img src="logos/icons/R%26F_Icon_Flat_White_1000px.svg" alt="Flat white tree icon" />
+          </div>
+          <figcaption class="ds-logo-tile__meta">
+            <strong>Flat white</strong>
+            <code>…_Flat_White_1000px.svg</code>
+            <span>Mono reverse on dark fields or photography.</span>
+          </figcaption>
+        </figure>
+      </div>
+
+      <h3 class="ds-h3">Profile &amp; square crops (PNG)</h3>
+      <p class="ds-lede" style="margin-top:0">
+        These files already include safe padding for circular avatars and square tiles. Prefer them over hand-cropping
+        the wordmark, which often clips the canopy or leaves the mark looking off-center. The mocks below show how
+        each crop reads in a typical profile or tile context.
+      </p>
+      <div class="ds-profile-grid">
+        <figure class="ds-profile-card">
+          <div class="ds-profile-card__chrome">
+            <div class="ds-profile-card__avatar" aria-hidden="true">
+              <img src="logos/icons/R%26F_Icon_1000px.svg" alt="" />
+            </div>
+            <div class="ds-profile-card__identity">
+              <strong>Roots &amp; Fruit</strong>
+              <span>@rootsandfruit</span>
+            </div>
+            <button type="button" class="btn btn--secondary" tabindex="-1">Follow</button>
+          </div>
+          <figcaption class="ds-profile-card__meta">
+            <strong>Profile safe</strong>
+            <code>…_LogoMark-ProfileSafe.png</code>
+            <span>Upload this PNG for round social crops. Mock above uses the SVG mark so the preview stays sharp.</span>
+          </figcaption>
+        </figure>
+        <figure class="ds-profile-card">
+          <div class="ds-profile-card__chrome">
+            <div class="ds-profile-card__avatar ds-profile-card__avatar--beige" aria-hidden="true">
+              <img src="logos/icons/R%26F_Icon_1000px.svg" alt="" />
+            </div>
+            <div class="ds-profile-card__identity">
+              <strong>Roots &amp; Fruit</strong>
+              <span>@rootsandfruit</span>
+            </div>
+            <button type="button" class="btn btn--secondary" tabindex="-1">Follow</button>
+          </div>
+          <figcaption class="ds-profile-card__meta">
+            <strong>Profile safe · beige</strong>
+            <code>…_ProfileSafe-BeigeBG.png</code>
+            <span>PNG with a baked cream field for hosts that add no background. Preview uses SVG on cream for clarity.</span>
+          </figcaption>
+        </figure>
+        <figure class="ds-profile-card">
+          <div class="ds-profile-card__chrome ds-profile-card__chrome--tile">
+            <div class="ds-profile-card__tile" aria-hidden="true">
+              <img src="logos/icons/R%26F_Icon_1000px.svg" alt="" />
+            </div>
+            <div class="ds-profile-card__identity">
+              <strong>Roots &amp; Fruit</strong>
+              <span>App / share tile</span>
+            </div>
+          </div>
+          <figcaption class="ds-profile-card__meta">
+            <strong>Square mark</strong>
+            <code>…_LogoMark-SQUARE.png</code>
+            <span>PNG for square tiles and share fallbacks. Preview uses the SVG mark at the same safe inset.</span>
+          </figcaption>
+        </figure>
+      </div>
+
+      <p class="ds-note" style="margin-top:var(--rf-space-5);margin-bottom:0">
+        <strong>File map.</strong>
+        <code>logos/SVG/</code> holds wordmarks,
+        <code>logos/icons/</code> holds stand-alone marks, and
+        <code>logos/PNG/</code> holds raster exports (including 500 / 1000px sizes and profile crops).
+        Keep proportions locked; never add drop shadows, gradients, or glow to the official files.
+      </p>
+    </section>
+
+    <section class="ds-panel" id="illustrations" role="tabpanel" aria-labelledby="tab-illustrations" hidden>
+      <h2 id="illu-title">Illustrations</h2>
+      <p class="ds-lede">
+        Roots and apples are brand illustrations, not logos. They add atmosphere behind or beside content
+        so layouts feel warmer and more grounded. Keep them secondary to type: if a viewer notices the art
+        before the headline, the opacity is too high or the placement is too loud.
+      </p>
+
+      <table class="ds-term-table">
+        <tbody>
+          <tr>
+            <th>Illustration</th>
+            <td>The asset category: decorative brand art (roots, apples). Never substitute these for the logo or tree icon.</td>
+          </tr>
+          <tr>
+            <th>Atmosphere</th>
+            <td>The role they play: soft visual depth on a surface. Typography and UI stay in front; art stays quiet.</td>
+          </tr>
+          <tr>
+            <th>Watermark</th>
+            <td>Roots used large, centered, and faint (about 10–12% opacity) behind copy. One per surface. Decorative only (<code>alt=""</code>, <code>aria-hidden="true"</code>).</td>
+          </tr>
+          <tr>
+            <th>Spot art</th>
+            <td>Apples (or a smaller roots crop) anchored to a corner or sidebar at higher opacity (~40–50%), still secondary to the headline.</td>
+          </tr>
+        </tbody>
+      </table>
+
+      <div class="ds-logo-rules">
+        <div class="ds-logo-rule">
+          <strong>Support, don’t compete</strong>
+          If the illustration fights the headline for attention, lower opacity or remove it.
+        </div>
+        <div class="ds-logo-rule">
+          <strong>One roots watermark</strong>
+          Never stack two watermarks on the same surface. Prefer a single <code>&lt;img&gt;</code> with opacity over layered CSS backgrounds that can double-print during transitions.
+        </div>
+        <div class="ds-logo-rule">
+          <strong>Not interactive</strong>
+          No links, no hover states, no captions as content. Atmosphere is scenery.
+        </div>
+        <div class="ds-logo-rule">
+          <strong>Cream paper first</strong>
+          These line arts are tuned for <code>--rf-cream</code>. On dark surfaces, prefer reverse logos or icons instead of forcing the roots art.
+        </div>
+      </div>
+
+      <h3 class="ds-h3">Roots · watermark (atmosphere)</h3>
+      <div class="ds-illu-grid">
+        <figure class="ds-illu-tile">
+          <div class="ds-illu-tile__stage ds-illu-tile__stage--demo">
+            <img src="illustrations/roots-1.svg" alt="" aria-hidden="true" />
+          </div>
+          <figcaption class="ds-illu-tile__meta">
+            <strong>In use · ~12% opacity</strong>
+            <code>illustrations/roots-1.svg</code>
+            <span>Default wash behind titles, quotes, and quiet content slides.</span>
+          </figcaption>
+        </figure>
+        <figure class="ds-illu-tile">
+          <div class="ds-illu-tile__stage ds-illu-tile__stage--full">
+            <img src="illustrations/roots-1.svg" alt="Roots illustration at full opacity for reference" />
+          </div>
+          <figcaption class="ds-illu-tile__meta">
+            <strong>Reference · full opacity</strong>
+            <code>illustrations/roots-1.svg</code>
+            <span>Inspect detail here only. Do not ship full-strength behind body copy.</span>
+          </figcaption>
+        </figure>
+      </div>
+
+      <h3 class="ds-h3">Apples · spot art</h3>
+      <div class="ds-illu-grid">
+        <figure class="ds-illu-tile">
+          <div class="ds-illu-tile__stage ds-illu-tile__stage--spot">
+            <img src="illustrations/apples-1.svg" alt="" aria-hidden="true" />
+            <div class="ds-illu-label">
+              <h4>Section break</h4>
+              <p>Headline stays primary. Apples sit upper-right as fruit atmosphere.</p>
+            </div>
+          </div>
+          <figcaption class="ds-illu-tile__meta">
+            <strong>In use · corner spot ~50%</strong>
+            <code>illustrations/apples-1.svg</code>
+            <span>Section dividers and hero accents. Leave breathing room so type does not collide with the fruit.</span>
+          </figcaption>
+        </figure>
+        <figure class="ds-illu-tile">
+          <div class="ds-illu-tile__stage ds-illu-tile__stage--full">
+            <img src="illustrations/apples-1.svg" alt="Apples illustration at full opacity for reference" />
+          </div>
+          <figcaption class="ds-illu-tile__meta">
+            <strong>Reference · full opacity</strong>
+            <code>illustrations/apples-1.svg</code>
+            <span>Full-strength view for production checks. In layouts, pull opacity down until type remains the hero.</span>
+          </figcaption>
+        </figure>
+      </div>
+
+      <p class="ds-note" style="margin-top:var(--rf-space-5);margin-bottom:0">
+        <strong>Implementation tip.</strong>
+        Prefer an <code>&lt;img&gt;</code> with CSS opacity over <code>background-image</code> when you need predictable fading
+        and simpler contrast control. Do not recolor, crop into a new mark, or treat illustrations as clickable branding.
+      </p>
+    </section>
+
+    <section class="ds-panel" id="tokens" role="tabpanel" aria-labelledby="tab-tokens" hidden>
+      <h2 id="tokens-title">Color</h2>
+      <p class="ds-lede">
+        Start from cream paper and warm ink, then add moss green as the primary accent. Orange is a rare
+        call-to-action, not a second brand color. Blue is optional for product navigation and informational UI;
+        marketing pages usually stay in cream, green, and ink alone.
+      </p>
+
+      <p class="ds-note">
+        <strong>Designer checklist.</strong>
+        Body text should sit on cream, white, or soft panels with ink or ink-deep. Links and primary actions use green.
+        Before shipping a new text-on-color combo, confirm it in the accessibility matrix below (aim for AA or better on body copy).
+      </p>
+
+      <h3 class="ds-h3">Paper &amp; ink</h3>
+      <div class="ds-swatch-grid">
+        <div class="ds-swatch"><div class="ds-swatch__chip" style="background:var(--rf-cream)"></div><div class="ds-swatch__meta"><code>--rf-cream</code><span>#faf6ee</span></div></div>
+        <div class="ds-swatch"><div class="ds-swatch__chip" style="background:var(--rf-cream-deep)"></div><div class="ds-swatch__meta"><code>--rf-cream-deep</code><span>#f3ede2</span></div></div>
+        <div class="ds-swatch"><div class="ds-swatch__chip" style="background:var(--rf-white)"></div><div class="ds-swatch__meta"><code>--rf-white</code><span>#ffffff</span></div></div>
+        <div class="ds-swatch"><div class="ds-swatch__chip" style="background:var(--rf-ink)"></div><div class="ds-swatch__meta"><code>--rf-ink</code><span>#2c2922 · on cream</span></div></div>
+        <div class="ds-swatch"><div class="ds-swatch__chip" style="background:var(--rf-ink-deep)"></div><div class="ds-swatch__meta"><code>--rf-ink-deep</code><span>#1a1a1a · headings</span></div></div>
+        <div class="ds-swatch"><div class="ds-swatch__chip" style="background:var(--rf-ink-muted)"></div><div class="ds-swatch__meta"><code>--rf-ink-muted</code><span>#6b6560</span></div></div>
+        <div class="ds-swatch"><div class="ds-swatch__chip" style="background:var(--rf-ink-soft)"></div><div class="ds-swatch__meta"><code>--rf-ink-soft</code><span>#9a948c</span></div></div>
+        <div class="ds-swatch"><div class="ds-swatch__chip" style="background:var(--rf-brown)"></div><div class="ds-swatch__meta"><code>--rf-brown</code><span>#40352a</span></div></div>
+      </div>
+
+      <h3 class="ds-h3">Green scale</h3>
+      <div class="ds-swatch-grid">
+        <div class="ds-swatch"><div class="ds-swatch__chip" style="background:var(--rf-green-soft)"></div><div class="ds-swatch__meta"><code>--rf-green-soft</code><span>#e4eadc</span></div></div>
+        <div class="ds-swatch"><div class="ds-swatch__chip" style="background:var(--rf-green-1)"></div><div class="ds-swatch__meta"><code>--rf-green-1</code><span>#c5d4b8</span></div></div>
+        <div class="ds-swatch"><div class="ds-swatch__chip" style="background:var(--rf-green-2)"></div><div class="ds-swatch__meta"><code>--rf-green-2</code><span>#9aaf86</span></div></div>
+        <div class="ds-swatch"><div class="ds-swatch__chip" style="background:var(--rf-green)"></div><div class="ds-swatch__meta"><code>--rf-green</code><span>#62744d · primary</span></div></div>
+        <div class="ds-swatch"><div class="ds-swatch__chip" style="background:var(--rf-green-deep)"></div><div class="ds-swatch__meta"><code>--rf-green-deep</code><span>#4b5e2e</span></div></div>
+        <div class="ds-swatch"><div class="ds-swatch__chip" style="background:var(--rf-green-6)"></div><div class="ds-swatch__meta"><code>--rf-green-6</code><span>#2f3a24</span></div></div>
+      </div>
+
+      <h3 class="ds-h3">Accent &amp; UI</h3>
+      <div class="ds-swatch-grid">
+        <div class="ds-swatch"><div class="ds-swatch__chip" style="background:var(--rf-orange)"></div><div class="ds-swatch__meta"><code>--rf-orange</code><span>#d4844e · rare CTA</span></div></div>
+        <div class="ds-swatch"><div class="ds-swatch__chip" style="background:var(--rf-orange-soft)"></div><div class="ds-swatch__meta"><code>--rf-orange-soft</code><span>#f0d5c0</span></div></div>
+        <div class="ds-swatch"><div class="ds-swatch__chip" style="background:var(--rf-panel)"></div><div class="ds-swatch__meta"><code>--rf-panel</code><span>#ebe4d8</span></div></div>
+        <div class="ds-swatch"><div class="ds-swatch__chip" style="background:var(--rf-blue)"></div><div class="ds-swatch__meta"><code>--rf-blue</code><span>#1a5276 · product UI</span></div></div>
+        <div class="ds-swatch"><div class="ds-swatch__chip" style="background:var(--rf-blue-soft)"></div><div class="ds-swatch__meta"><code>--rf-blue-soft</code><span>#d6e6f2</span></div></div>
+        <div class="ds-swatch"><div class="ds-swatch__chip" style="background:var(--rf-danger)"></div><div class="ds-swatch__meta"><code>--rf-danger</code><span>#b42318</span></div></div>
+      </div>
+
+      <h3 class="ds-h3">Accessibility matrix</h3>
+      <p class="ds-lede" style="margin-top:0">
+        Use this grid to choose readable pairs before you design. Rows are backgrounds; columns are text colors.
+        Each cell shows the live combo plus its WCAG 2 contrast ratio and the best level it reaches for normal body text
+        (AAA ≥ 7:1, AA ≥ 4.5:1). “AA large” only clears the 3:1 bar for large type (≥18pt / 14pt bold), so treat it as
+        headings-only, never paragraph text.
+      </p>
+
+      <div class="ds-a11y-legend" aria-hidden="true">
+        <span><i class="ds-a11y-dot ds-a11y-dot--aaa"></i> AAA</span>
+        <span><i class="ds-a11y-dot ds-a11y-dot--aa"></i> AA</span>
+        <span><i class="ds-a11y-dot ds-a11y-dot--large"></i> AA large only</span>
+        <span><i class="ds-a11y-dot ds-a11y-dot--fail"></i> Fail</span>
+      </div>
+
+      <div class="ds-a11y-wrap">
+        <table class="ds-a11y" id="ds-a11y-matrix">
+          <caption class="visually-hidden">Contrast ratios for Roots and Fruit color tokens</caption>
+          <thead></thead>
+          <tbody></tbody>
+        </table>
+      </div>
+
+      <p class="ds-note" style="margin-top:var(--rf-space-4);margin-bottom:0">
+        <strong>How to read it.</strong>
+        Prefer AAA or AA for body copy and form labels. Links and compact UI chrome can sit at AA.
+        AA large is acceptable for Knile headings and oversized stats only. Fail means pick another pair.
+        Ratios are computed live from the CSS variables on this page using WCAG 2 relative luminance.
+      </p>
+    </section>
+
+    <section class="ds-panel" id="type" role="tabpanel" aria-labelledby="tab-type" hidden>
+      <h2 id="type-title">Typography</h2>
+      <p class="ds-lede">
+        Knile is the display serif for titles and section headers. Nunito Sans carries body copy, UI labels,
+        and denser reading. Pair them consistently: Knile for voice, Nunito for clarity. Size, leading, weight,
+        and italic each have a job; do not improvise a second scale.
+      </p>
+
+      <p class="ds-note">
+        <strong>Floor.</strong>
+        <code>sm</code> (16px) is the smallest size. There is no <code>xs</code>.
+        Long-form uses <code>md</code> (18px) at <code>60ch</code> with Nunito leading <code>1.65</code>.
+      </p>
+
+      <h3 class="ds-h3">Size scale</h3>
+      <dl>
+        <div class="ds-type-row">
+          <dt>4xl · 56</dt>
+          <dd class="ds-serif" style="font-size:var(--rf-text-4xl);font-weight:var(--rf-weight-bold);line-height:var(--rf-leading-display)">Grow with clarity</dd>
+        </div>
+        <div class="ds-type-row">
+          <dt>3xl · 48</dt>
+          <dd class="ds-serif" style="font-size:var(--rf-text-3xl);font-weight:var(--rf-weight-bold);line-height:var(--rf-leading-display)">Section title</dd>
+        </div>
+        <div class="ds-type-row">
+          <dt>2xl · 36</dt>
+          <dd class="ds-serif" style="font-size:var(--rf-text-2xl);font-weight:var(--rf-weight-bold);line-height:var(--rf-leading-display)">Card heading</dd>
+        </div>
+        <div class="ds-type-row">
+          <dt>xl · 28</dt>
+          <dd class="ds-serif" style="font-size:var(--rf-text-xl);font-weight:var(--rf-weight-semibold);line-height:var(--rf-leading-snug);color:var(--rf-green)">Accent subhead</dd>
+        </div>
+        <div class="ds-type-row">
+          <dt>lg · 22</dt>
+          <dd class="ds-sans" style="font-size:var(--rf-text-lg);font-weight:var(--rf-weight-regular);line-height:var(--rf-leading-body)">Short lead / intro emphasis.</dd>
+        </div>
+        <div class="ds-type-row">
+          <dt>md · 18</dt>
+          <dd class="ds-sans" style="font-size:var(--rf-text-md);font-weight:var(--rf-weight-regular);line-height:var(--rf-leading-body)">Default body and long-form.</dd>
+        </div>
+        <div class="ds-type-row">
+          <dt>sm · 16</dt>
+          <dd class="ds-sans" style="font-size:var(--rf-text-sm);font-weight:var(--rf-weight-regular);line-height:var(--rf-leading-ui);color:var(--rf-ink-muted)">Floor. Labels, meta, table cells, helper text.</dd>
+        </div>
+      </dl>
+
+      <h3 class="ds-h3">Line-height</h3>
+      <p class="ds-caption">
+        Leading tokens live on <code>:root</code>. Pair them with the size role; do not invent one-off values.
+      </p>
+      <table class="ds-type-table">
+        <thead>
+          <tr>
+            <th>Token</th>
+            <th>Value</th>
+            <th>Use with</th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr>
+            <td><code>--rf-leading-display</code></td>
+            <td>1.1</td>
+            <td>Knile <code>2xl</code>–<code>4xl</code> (heavy slab, short lines)</td>
+          </tr>
+          <tr>
+            <td><code>--rf-leading-snug</code></td>
+            <td>1.15</td>
+            <td>Knile <code>xl</code> subheads and tight titles</td>
+          </tr>
+          <tr>
+            <td><code>--rf-leading-body</code></td>
+            <td>1.65</td>
+            <td>Nunito <code>md</code> / <code>lg</code> (high x-height)</td>
+          </tr>
+          <tr>
+            <td><code>--rf-leading-callout</code></td>
+            <td>1.55</td>
+            <td>Notes, alerts, and other contained copy</td>
+          </tr>
+          <tr>
+            <td><code>--rf-leading-ui</code></td>
+            <td>1.35</td>
+            <td>Nunito <code>sm</code> labels, meta, compact UI</td>
+          </tr>
+        </tbody>
+      </table>
+      <div class="ds-type-specimen">
+        <div class="ds-type-specimen__card">
+          <p class="ds-serif" style="margin:0 0 var(--rf-space-3);font-size:var(--rf-text-2xl);font-weight:var(--rf-weight-bold);line-height:var(--rf-leading-display)">
+            Display leading keeps Knile lines close.
+          </p>
+          <p class="ds-sans" style="margin:0;font-size:var(--rf-text-md);line-height:var(--rf-leading-body);color:var(--rf-ink-muted)">
+            Body leading gives Nunito room between lines so the high x-height does not crowd. Prefer this pairing
+            for article paragraphs and section ledes.
+          </p>
+        </div>
+      </div>
+
+      <h3 class="ds-h3">Weights</h3>
+      <p class="ds-caption">
+        Three weights only: regular (400), semibold (600), bold (700). Knile ships those three upright files.
+        Prefer semibold for UI labels and accent subheads; bold for primary Knile titles and strong Nunito emphasis.
+      </p>
+      <div class="ds-weight-row ds-serif">
+        <p style="font-weight:var(--rf-weight-regular)">Knile regular 400 — rare on screen; prefer 600/700 for titles.</p>
+        <p style="font-weight:var(--rf-weight-semibold)">Knile semibold 600 — accent subheads and quieter titles.</p>
+        <p style="font-weight:var(--rf-weight-bold)">Knile bold 700 — default for <code>2xl</code>–<code>4xl</code> display.</p>
+      </div>
+      <div class="ds-weight-row ds-sans">
+        <p style="font-weight:var(--rf-weight-regular)">Nunito regular 400 — body, leads, most UI copy.</p>
+        <p style="font-weight:var(--rf-weight-semibold)">Nunito semibold 600 — labels, buttons, inline strong.</p>
+        <p style="font-weight:var(--rf-weight-bold)">Nunito bold 700 — meta eyebrows and rare emphasis.</p>
+      </div>
+
+      <h3 class="ds-h3">Italic</h3>
+      <p class="ds-caption">
+        Italic is a Nunito tool for inline emphasis in body copy. Knile has no italic faces in this package;
+        do not fake Knile italic with <code>font-style: italic</code> (synthetic slant). For title emphasis, change weight or color instead.
+      </p>
+      <div class="ds-type-specimen">
+        <div class="ds-type-specimen__card ds-sans" style="font-size:var(--rf-text-md);line-height:var(--rf-leading-body)">
+          <p style="margin:0 0 var(--rf-space-4)">
+            Regular body with <em>true italic</em> for a short phrase, and
+            <strong>semibold</strong> when the stress should stay upright.
+          </p>
+          <p style="margin:0;font-style:italic;color:var(--rf-ink-muted)">
+            A full italic sentence is fine for a pull quote or attributed line; keep it Nunito, not Knile.
+          </p>
+        </div>
+      </div>
+      <table class="ds-type-table">
+        <thead>
+          <tr>
+            <th>Family</th>
+            <th>Italic</th>
+            <th>Guidance</th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr>
+            <td>Knile</td>
+            <td>None loaded</td>
+            <td>Upright only (400 / 600 / 700). No oblique fallback for brand titles.</td>
+          </tr>
+          <tr>
+            <td>Nunito Sans</td>
+            <td>400 / 600 / 700 italic</td>
+            <td>Use <code>&lt;em&gt;</code> or <code>font-style: italic</code> in body and UI. Prefer regular italic for prose.</td>
+          </tr>
+          <tr>
+            <td>JetBrains Mono</td>
+            <td>Optional</td>
+            <td>Code stays upright by default; italic only if a host theme needs it.</td>
+          </tr>
+        </tbody>
+      </table>
+
+      <h3 class="ds-h3">Spacing around type</h3>
+      <p class="ds-caption">
+        Prefer <code>.rf-stack</code> (or modular space tokens) for vertical rhythm. Headings need more space
+        <em>below</em> than a tight default so Knile does not sit on the lead.
+      </p>
+      <table class="ds-type-table">
+        <thead>
+          <tr>
+            <th>Context</th>
+            <th>Spacing</th>
+            <th>Notes</th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr>
+            <td>Display title → lead</td>
+            <td><code>margin-block-end: var(--rf-space-5)</code> (1.5rem)</td>
+            <td>Default on docs titles; keep at least one modular step</td>
+          </tr>
+          <tr>
+            <td>Body paragraphs</td>
+            <td>Stack gap or <code>space-5</code> between <code>p</code></td>
+            <td><code>.rf-prose</code> uses space-5 under paragraphs</td>
+          </tr>
+          <tr>
+            <td>Section blocks</td>
+            <td><code>.rf-stack</code> / <code>space-5</code>–<code>space-7</code></td>
+            <td>Do not mix ad-hoc margins with stack gap on the same children</td>
+          </tr>
+          <tr>
+            <td>Meta eyebrow → title</td>
+            <td><code>space-2</code> or <code>space-3</code></td>
+            <td>Keep the pair tight; the large gap belongs under the title</td>
+          </tr>
+          <tr>
+            <td>Measure</td>
+            <td><code>max-inline-size: var(--rf-measure)</code> (60ch)</td>
+            <td>Applies to reading lines, not the whole page shell</td>
+          </tr>
+          <tr>
+            <td>Letter-spacing</td>
+            <td>Display <code>-0.02em</code>; meta <code>0.06em</code></td>
+            <td><code>--rf-tracking-display</code> / <code>--rf-tracking-meta</code></td>
+          </tr>
+        </tbody>
+      </table>
+      <div class="ds-type-specimen">
+        <div class="ds-type-specimen__card rf-stack rf-stack--md">
+          <p class="ds-type-meta" style="margin:0">Practice note</p>
+          <h3 class="ds-serif" style="margin:0;font-size:var(--rf-text-2xl);font-weight:var(--rf-weight-bold);line-height:var(--rf-leading-display);color:var(--rf-ink-deep)">
+            Title, then air, then lead
+          </h3>
+          <p class="ds-sans" style="margin:0;font-size:var(--rf-text-md);line-height:var(--rf-leading-body);color:var(--rf-ink-muted)">
+            Meta sits close above the title. The stack gap under the title gives the lead room to breathe.
+            Tracking on the eyebrow uses <code>--rf-tracking-meta</code>.
+          </p>
+        </div>
+      </div>
+    </section>
+
+    <section class="ds-panel" id="space" role="tabpanel" aria-labelledby="tab-space" hidden>
+      <h2 id="space-title">Space, radius, elevation</h2>
+      <p class="ds-lede">
+        Spacing follows an 8px grid so margins, gaps, and padding feel related across pages and UI.
+        Corners stay soft but not bubbly. Use shadow sparingly: lift interactive surfaces, not every box on the page.
+      </p>
+
+      <p class="ds-note">
+        <strong>Every Layout (selected).</strong>
+        Measure axiom: text stays within <code>60ch</code>. Space from <code>4</code> upward multiplies by
+        <code>--rf-ratio</code> (1.5). Prefer <code>.rf-stack</code>, <code>.rf-center</code>, and <code>.rf-cluster</code>
+        over one-off margins. Suggest size; do not prescribe fixed widths.
+      </p>
+
+      <h3 class="ds-h3">Spacing</h3>
+      <div class="ds-space-row">
+        <div class="ds-space-item"><div class="ds-space-item__bar" style="height:var(--rf-space-1)"></div>1 · fine</div>
+        <div class="ds-space-item"><div class="ds-space-item__bar" style="height:var(--rf-space-2)"></div>2 · fine</div>
+        <div class="ds-space-item"><div class="ds-space-item__bar" style="height:var(--rf-space-3)"></div>3 · fine</div>
+        <div class="ds-space-item"><div class="ds-space-item__bar" style="height:var(--rf-space-4)"></div>4 · 1rem</div>
+        <div class="ds-space-item"><div class="ds-space-item__bar" style="height:var(--rf-space-5)"></div>5 · ×1.5</div>
+        <div class="ds-space-item"><div class="ds-space-item__bar" style="height:var(--rf-space-6)"></div>6 · ×1.5²</div>
+        <div class="ds-space-item"><div class="ds-space-item__bar" style="height:var(--rf-space-7)"></div>7 · ×1.5³</div>
+        <div class="ds-space-item"><div class="ds-space-item__bar" style="height:var(--rf-space-8)"></div>8 · ×1.5⁴</div>
+      </div>
+
+      <h3 class="ds-h3">Stack · Center · Cluster</h3>
+      <div class="ds-pattern-split">
+        <div class="rf-stack rf-stack--md surface surface--cream">
+          <strong class="ds-serif" style="font-size:var(--rf-text-xl);line-height:var(--rf-leading-display)">Stack</strong>
+          <p style="margin:0;font-size:var(--rf-text-sm);color:var(--rf-ink-muted)">Even vertical gap. Children do not bring their own block margins.</p>
+          <p style="margin:0;font-size:var(--rf-text-sm);color:var(--rf-ink-muted)">Default gap is space-5 (one modular step above 1rem).</p>
+        </div>
+        <div class="rf-stack">
+          <div class="rf-center rf-center--gutter surface" style="max-inline-size:28ch">
+            <p style="margin:0;font-size:var(--rf-text-sm)">Center keeps a measured column with optional gutter.</p>
+          </div>
+          <div class="rf-cluster">
+            <button type="button" class="btn btn--primary">Primary</button>
+            <button type="button" class="btn btn--secondary">Secondary</button>
+            <span class="pill pill--green">Cluster</span>
+          </div>
+        </div>
+      </div>
+
+      <h3 class="ds-h3">Radius</h3>
+      <div class="ds-radius-row">
+        <div class="ds-radius-item" style="border-radius:var(--rf-radius-sm)">sm<br />0.55</div>
+        <div class="ds-radius-item" style="border-radius:var(--rf-radius)">md<br />0.75</div>
+        <div class="ds-radius-item" style="border-radius:var(--rf-radius-lg)">lg<br />1.25</div>
+        <div class="ds-radius-item" style="border-radius:var(--rf-radius-pill)">pill</div>
+      </div>
+
+      <h3 class="ds-h3">Shadow</h3>
+      <div class="ds-shadow-demo">
+        <div style="box-shadow:var(--rf-shadow)">--rf-shadow</div>
+        <div style="box-shadow:var(--rf-shadow-md)">--rf-shadow-md</div>
+      </div>
+    </section>
+
+    <section class="ds-panel" id="buttons" role="tabpanel" aria-labelledby="tab-buttons" hidden>
+      <h2 id="buttons-title">Buttons &amp; links</h2>
+      <p class="ds-lede">
+        Primary actions use moss green. Reserve orange for a single high-stakes call to action on a view
+        (for example “Book” or “Pay”), not for every button. Prefer one primary button per section so hierarchy stays obvious.
+      </p>
+
+      <div class="ds-row">
+        <button type="button" class="btn btn--primary">Primary</button>
+        <button type="button" class="btn btn--secondary">Secondary</button>
+        <button type="button" class="btn btn--tertiary">Tertiary</button>
+        <button type="button" class="btn btn--cta">Rare CTA</button>
+        <button type="button" class="btn btn--ghost">Ghost</button>
+        <button type="button" class="btn btn--primary" disabled>Disabled</button>
+      </div>
+      <p>
+        Inline text uses a
+        <a class="link-text" href="#buttons">standard link</a>
+        in moss green. Avoid default browser blue links; they break the warm palette.
+      </p>
+    </section>
+
+    <section class="ds-panel" id="forms" role="tabpanel" aria-labelledby="tab-forms" hidden>
+      <h2 id="forms-title">Forms</h2>
+      <p class="ds-lede">
+        Forms stay quiet: clear labels, soft borders, and a green focus ring. Put error messages under the field in words,
+        not color alone, so the state remains understandable without relying on red fill.
+      </p>
+
+      <form class="ds-form" action="#" method="get" onsubmit="return false">
+        <div class="field">
+          <label for="name">Name</label>
+          <input class="input" id="name" name="name" type="text" placeholder="Jordan Lee" autocomplete="name" />
+          <span class="hint">Helper text stays muted.</span>
+        </div>
+        <div class="field field--error">
+          <label for="email">Email</label>
+          <input class="input" id="email" name="email" type="email" value="not-an-email" aria-invalid="true" aria-describedby="email-error" />
+          <span class="error" id="email-error">Enter a valid email address.</span>
+        </div>
+        <div class="field">
+          <label for="role">Role</label>
+          <select class="select" id="role" name="role">
+            <option>Designer</option>
+            <option>Developer</option>
+            <option>Marketing</option>
+          </select>
+        </div>
+        <div class="field">
+          <label for="notes">Notes</label>
+          <textarea class="textarea" id="notes" name="notes" placeholder="Short context…"></textarea>
+        </div>
+        <label class="check">
+          <input type="checkbox" name="updates" />
+          <span>Send me product updates (opt-in).</span>
+        </label>
+        <fieldset style="border:0;padding:0;margin:0;display:grid;gap:0.5rem">
+          <legend style="font-size:var(--rf-text-sm);font-weight:600;margin-bottom:0.25rem">Preference</legend>
+          <label class="radio"><input type="radio" name="pref" checked /> Cream paper UI</label>
+          <label class="radio"><input type="radio" name="pref" /> High-contrast ink</label>
+        </fieldset>
+        <div class="ds-row" style="margin:0">
+          <button type="submit" class="btn btn--primary">Save</button>
+          <button type="button" class="btn btn--ghost">Cancel</button>
+        </div>
+      </form>
+    </section>
+
+    <section class="ds-panel" id="feedback" role="tabpanel" aria-labelledby="tab-feedback" hidden>
+      <h2 id="feedback-title">Feedback</h2>
+      <p class="ds-lede">
+        Pills mark compact status. Alerts carry page-level messages that need a full sentence.
+        Keep motion minimal: a spinner for indeterminate waits and a progress bar when completion percentage is known.
+      </p>
+
+      <div class="ds-row">
+        <span class="pill">Neutral</span>
+        <span class="pill pill--green">Active</span>
+        <span class="pill pill--orange">Waiting</span>
+        <span class="pill pill--blue">Info</span>
+        <span class="pill pill--danger">Blocked</span>
+        <span class="spinner" role="status" aria-label="Loading"></span>
+      </div>
+
+      <div class="progress" aria-label="Progress 62%"><span style="width:62%"></span></div>
+      <p style="font-size:var(--rf-text-sm);color:var(--rf-ink-soft);margin:0.5rem 0 1.25rem">Progress · 62%</p>
+
+      <div class="alert alert--info"><strong>Info</strong><span>Neutral guidance that does not require an immediate decision.</span></div>
+      <div class="alert alert--success"><strong>Success</strong><span>Changes saved. You can leave this page.</span></div>
+      <div class="alert alert--warning"><strong>Warning</strong><span>This action is reversible, but double-check the target first.</span></div>
+      <div class="alert alert--danger"><strong>Error</strong><span>Something went wrong. Review the details and try again.</span></div>
+    </section>
+
+    <section class="ds-panel" id="data" role="tabpanel" aria-labelledby="tab-data" hidden>
+      <h2 id="data-title">Surfaces &amp; data</h2>
+      <p class="ds-lede">
+        Surfaces group related content without turning every block into a heavy card.
+        Tables stay quiet: Knile headers, Nunito cells, and hairline rules on cream or white.
+      </p>
+
+      <div class="ds-surface-grid" style="margin-bottom:var(--rf-space-5)">
+        <article class="surface">
+          <h3>White surface</h3>
+          <p>Default container for interactive content on cream.</p>
+          <button type="button" class="btn btn--primary">Open</button>
+        </article>
+        <article class="surface surface--panel">
+          <h3>Panel</h3>
+          <p>Warm inset grouping without a heavy card look.</p>
+          <button type="button" class="btn btn--secondary">Details</button>
+        </article>
+        <article class="surface surface--cream">
+          <h3>Cream deep</h3>
+          <p>Alternate band when the page background is already cream.</p>
+          <button type="button" class="btn btn--tertiary">Learn more</button>
+        </article>
+        <article class="surface surface--dark">
+          <h3>Dark callout</h3>
+          <p>Moss-deep surface for sidebar CTAs and short pitches on cream pages.</p>
+          <button type="button" class="btn btn--cta">Get started</button>
+        </article>
+      </div>
+
+      <div class="table-wrap">
+        <table class="rf-table">
+          <thead>
+            <tr>
+              <th>Surface</th>
+              <th>When to use</th>
+              <th>Watch-outs</th>
+            </tr>
+          </thead>
+          <tbody>
+            <tr>
+              <td>White</td>
+              <td>Forms, interactive modules, and content that needs clear lift on cream</td>
+              <td>Do not stack multiple white cards just to fill space</td>
+            </tr>
+            <tr>
+              <td>Panel</td>
+              <td>Warm grouping for related items without a strong shadow</td>
+              <td>Keep borders soft; panel is structure, not decoration</td>
+            </tr>
+            <tr>
+              <td>Cream deep</td>
+              <td>Alternate bands when the page background is already cream</td>
+              <td>Check text contrast if you place muted ink on top</td>
+            </tr>
+            <tr>
+              <td>Dark</td>
+              <td>Short callouts and CTAs that need stronger contrast on cream</td>
+              <td>Orange CTA uses ink-deep text, not white</td>
+            </tr>
+            <tr>
+              <td>Table</td>
+              <td>Comparisons, schedules, and compact reference data</td>
+              <td>Avoid zebra stripes in loud colors; hairlines are enough</td>
+            </tr>
+          </tbody>
+        </table>
+      </div>
+    </section>
+
+    <section class="ds-panel" id="patterns" role="tabpanel" aria-labelledby="tab-patterns" hidden>
+      <h2 id="patterns-title">Content patterns</h2>
+      <p class="ds-lede">
+        Article and marketing patterns already live on the site. Specimens below are the brand-aligned versions:
+        keep the shapes you like, retune color and contrast to the shared tokens.
+      </p>
+
+      <h3 class="ds-h3">Key takeaways</h3>
+      <p class="ds-caption">
+        Sidebar or post-intro list. Knile title in moss, orange left rules, zero-padded numbers.
+        Site class <code>ol.rf-keytakeaways</code> is supported.
+      </p>
+      <div class="ds-pattern-split">
+        <aside class="rf-takeaways">
+          <h3>Key Takeaways</h3>
+          <ol class="rf-keytakeaways">
+            <li>Lead with one clear action the reader can take this week.</li>
+            <li>Name the constraint before you name the tactic.</li>
+            <li>Keep the list short enough to scan without scrolling twice.</li>
+          </ol>
+        </aside>
+        <div class="ds-note">
+          <strong>Site tweak.</strong>
+          Keep the vertical orange rules and numbering. Title color should be brand moss
+          (<code>--rf-green</code>, not a one-off olive. Body text stays warm ink on cream.
+        </div>
+      </div>
+
+      <h3 class="ds-h3">Dark card</h3>
+      <p class="ds-caption">
+        Moss-deep callout for a short pitch plus one CTA. Prefer one per sidebar or section.
+      </p>
+      <div class="ds-pattern-split">
+        <article class="surface surface--dark" style="max-width:22rem">
+          <h3>Ready for clearer next steps?</h3>
+          <p>A short pitch belongs here. Keep it to two or three sentences, then one button.</p>
+          <button type="button" class="btn btn--cta">Book a call</button>
+        </article>
+        <div class="ds-note">
+          <strong>Required tweak.</strong>
+          Orange buttons use <strong>ink-deep on orange</strong> for WCAG AA (not white on orange).
+          Background maps to <code>--rf-surface-dark</code> / primary-deep.
+        </div>
+      </div>
+
+      <h3 class="ds-h3">Code</h3>
+      <p class="ds-caption">
+        Keep the window chrome, copy control, and language meta. Swap cool cyan/gray IDE colors
+        for warm paper and moss-teal base text so code sits in the same system as the page.
+      </p>
+      <p style="margin:0 0 var(--rf-space-4);max-width:40rem">
+        Inline example: invoke with <code>@robots-txt-audit</code> when you want a focused pass.
+      </p>
+      <div class="rf-code" style="max-width:40rem">
+        <div class="rf-code__chrome">
+          <div class="rf-code__dots" aria-hidden="true"><span></span><span></span><span></span></div>
+          <button type="button" class="rf-code__copy" data-rf-copy aria-label="Copy code">
+            <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2" aria-hidden="true">
+              <path stroke-linecap="round" stroke-linejoin="round" d="M16.5 8.25V6A2.25 2.25 0 0014.25 3.75H6A2.25 2.25 0 003.75 6v8.25A2.25 2.25 0 006 16.5h2.25m8.25-8.25H18A2.25 2.25 0 0120.25 10.5V18A2.25 2.25 0 0118 20.25h-7.5A2.25 2.25 0 018.25 18v-1.5m8.25-8.25h-6A2.25 2.25 0 008.25 10.5v6" />
+            </svg>
+          </button>
+        </div>
+        <pre class="rf-code__body"><code>Use @robots-txt-audit on mattcromwell.com with a focus on maximum discoverability</code></pre>
+        <span class="rf-code__lang">Bash</span>
+      </div>
+      <div class="ds-note">
+        <strong>Site tweak.</strong>
+        Keep Code Block Pro headlights + copy UI. Point the theme background at
+        <code>--rf-code-bg</code> and default text at <code>--rf-code-fg</code>
+        (warm Solarized-light on cream is fine; cool gray panels are not).
+      </div>
+    </section>
+
+    <section class="ds-panel" id="contract" role="tabpanel" aria-labelledby="tab-contract" hidden>
+      <h2 id="contract-title">Agent contract</h2>
+      <p class="ds-lede">
+        Full <code>DESIGN.md</code> for agents and generators, shown in the code pattern below.
+        Edit the markdown file, then run <code>sync-design-md-embed.ps1</code> so this page stays current
+        (see <code>AGENTS.md</code> in this folder).
+      </p>
+      <div class="rf-code rf-code--doc" id="design-md-block">
+        <div class="rf-code__chrome">
+          <div class="rf-code__dots" aria-hidden="true"><span></span><span></span><span></span></div>
+          <button type="button" class="rf-code__copy" data-rf-copy aria-label="Copy DESIGN.md">
+            <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2" aria-hidden="true">
+              <path stroke-linecap="round" stroke-linejoin="round" d="M16.5 8.25V6A2.25 2.25 0 0014.25 3.75H6A2.25 2.25 0 003.75 6v8.25A2.25 2.25 0 006 16.5h2.25m8.25-8.25H18A2.25 2.25 0 0120.25 10.5V18A2.25 2.25 0 0118 20.25h-7.5A2.25 2.25 0 018.25 18v-1.5m8.25-8.25h-6A2.25 2.25 0 008.25 10.5v6" />
+            </svg>
+          </button>
+        </div>
+        <pre class="rf-code__body"><code id="design-md-source">---
+version: alpha
+name: Roots &amp; Fruit
+description: &gt;-
+  Agent contract for Roots &amp; Fruit visual identity. Use for marketing pages,
+  presentations, product UI, and plugin surfaces. Prefer CSS variables in
+  css/tokens.css (--rf-*) when implementing in this repo.
+colors:
+  primary: &quot;#62744d&quot;
+  primary-deep: &quot;#4b5e2e&quot;
+  primary-soft: &quot;#e4eadc&quot;
+  secondary: &quot;#6b6560&quot;
+  tertiary: &quot;#d4844e&quot;
+  tertiary-soft: &quot;#f0d5c0&quot;
+  neutral: &quot;#faf6ee&quot;
+  neutral-deep: &quot;#f3ede2&quot;
+  surface: &quot;#ffffff&quot;
+  panel: &quot;#ebe4d8&quot;
+  panel-deep: &quot;#dfd6c6&quot;
+  panel-soft: &quot;#f3ece2&quot;
+  ink: &quot;#2c2922&quot;
+  ink-deep: &quot;#1a1a1a&quot;
+  ink-soft: &quot;#9a948c&quot;
+  brown: &quot;#40352a&quot;
+  rule: &quot;rgba(44, 41, 34, 0.14)&quot;
+  info: &quot;#1a5276&quot;
+  info-soft: &quot;#d6e6f2&quot;
+  danger: &quot;#b42318&quot;
+  danger-soft: &quot;#f8e4e2&quot;
+  on-primary: &quot;#ffffff&quot;
+  on-tertiary: &quot;#ffffff&quot;
+  surface-dark: &quot;#4b5e2e&quot;
+  on-dark: &quot;#ffffff&quot;
+  on-dark-muted: &quot;rgba(255, 255, 255, 0.78)&quot;
+  code-bg: &quot;#f3ece2&quot;
+  code-fg: &quot;#3d5c4e&quot;
+  code-border: &quot;rgba(44, 41, 34, 0.12)&quot;
+  code-meta: &quot;#9a948c&quot;
+  green-1: &quot;#c5d4b8&quot;
+  green-2: &quot;#9aaf86&quot;
+  green-3: &quot;#7a9268&quot;
+  green-5: &quot;#4a5a38&quot;
+  green-6: &quot;#2f3a24&quot;
+typography:
+  display-xl:
+    fontFamily: Knile, Georgia, Times New Roman, serif
+    fontSize: 3.5rem
+    fontWeight: 700
+    lineHeight: 1.1
+    letterSpacing: -0.02em
+  display-lg:
+    fontFamily: Knile, Georgia, Times New Roman, serif
+    fontSize: 3rem
+    fontWeight: 700
+    lineHeight: 1.1
+    letterSpacing: -0.02em
+  display-md:
+    fontFamily: Knile, Georgia, Times New Roman, serif
+    fontSize: 2.25rem
+    fontWeight: 700
+    lineHeight: 1.1
+    letterSpacing: -0.02em
+  display-sm:
+    fontFamily: Knile, Georgia, Times New Roman, serif
+    fontSize: 1.75rem
+    fontWeight: 600
+    lineHeight: 1.15
+    letterSpacing: -0.02em
+  body-lg:
+    fontFamily: Nunito Sans, system-ui, sans-serif
+    fontSize: 1.375rem
+    fontWeight: 400
+    lineHeight: 1.65
+  body-md:
+    fontFamily: Nunito Sans, system-ui, sans-serif
+    fontSize: 1.125rem
+    fontWeight: 400
+    lineHeight: 1.65
+  body-sm:
+    fontFamily: Nunito Sans, system-ui, sans-serif
+    fontSize: 1rem
+    fontWeight: 400
+    lineHeight: 1.5
+  label:
+    fontFamily: Nunito Sans, system-ui, sans-serif
+    fontSize: 1rem
+    fontWeight: 600
+    lineHeight: 1.35
+  meta:
+    fontFamily: Nunito Sans, system-ui, sans-serif
+    fontSize: 1rem
+    fontWeight: 700
+    lineHeight: 1.35
+    letterSpacing: 0.06em
+rounded:
+  sm: 0.55rem
+  md: 0.75rem
+  lg: 1.25rem
+  pill: 999px
+spacing:
+  1: 0.25rem
+  2: 0.5rem
+  3: 0.75rem
+  4: 1rem
+  5: 1.5rem
+  6: 2.25rem
+  7: 3.375rem
+  8: 5.0625rem
+components:
+  page:
+    backgroundColor: &quot;{colors.neutral}&quot;
+    textColor: &quot;{colors.ink}&quot;
+    typography: &quot;{typography.body-md}&quot;
+  heading:
+    textColor: &quot;{colors.ink-deep}&quot;
+    typography: &quot;{typography.display-md}&quot;
+  subhead:
+    textColor: &quot;{colors.primary}&quot;
+    typography: &quot;{typography.display-sm}&quot;
+  body:
+    textColor: &quot;{colors.ink}&quot;
+    typography: &quot;{typography.body-md}&quot;
+  muted:
+    textColor: &quot;{colors.secondary}&quot;
+    typography: &quot;{typography.body-sm}&quot;
+  link:
+    textColor: &quot;{colors.primary}&quot;
+    typography: &quot;{typography.label}&quot;
+  button-primary:
+    backgroundColor: &quot;{colors.primary}&quot;
+    textColor: &quot;{colors.on-primary}&quot;
+    rounded: &quot;{rounded.pill}&quot;
+    padding: 0.7rem 1.15rem
+    typography: &quot;{typography.label}&quot;
+  button-primary-hover:
+    backgroundColor: &quot;{colors.primary-deep}&quot;
+    textColor: &quot;{colors.on-primary}&quot;
+  button-secondary:
+    backgroundColor: &quot;{colors.panel}&quot;
+    textColor: &quot;{colors.ink}&quot;
+    rounded: &quot;{rounded.pill}&quot;
+    padding: 0.7rem 1.15rem
+  button-tertiary:
+    backgroundColor: &quot;transparent&quot;
+    textColor: &quot;{colors.primary}&quot;
+    rounded: &quot;{rounded.pill}&quot;
+    padding: 0.7rem 1.15rem
+  button-cta:
+    backgroundColor: &quot;{colors.tertiary}&quot;
+    textColor: &quot;{colors.ink-deep}&quot;
+    rounded: &quot;{rounded.pill}&quot;
+    padding: 0.7rem 1.15rem
+  button-ghost:
+    backgroundColor: &quot;transparent&quot;
+    textColor: &quot;{colors.secondary}&quot;
+    rounded: &quot;{rounded.pill}&quot;
+    padding: 0.45rem 0.65rem
+  input:
+    backgroundColor: &quot;{colors.surface}&quot;
+    textColor: &quot;{colors.ink}&quot;
+    rounded: &quot;{rounded.sm}&quot;
+    padding: 0.65rem 0.8rem
+    typography: &quot;{typography.body-md}&quot;
+  surface:
+    backgroundColor: &quot;{colors.surface}&quot;
+    textColor: &quot;{colors.ink}&quot;
+    rounded: &quot;{rounded.md}&quot;
+    padding: 1.5rem
+  surface-panel:
+    backgroundColor: &quot;{colors.panel}&quot;
+    textColor: &quot;{colors.ink}&quot;
+    rounded: &quot;{rounded.md}&quot;
+    padding: 1.5rem
+  alert-info:
+    backgroundColor: &quot;{colors.info-soft}&quot;
+    textColor: &quot;{colors.ink}&quot;
+    rounded: &quot;{rounded.md}&quot;
+    padding: 0.75rem 1rem
+  alert-success:
+    backgroundColor: &quot;{colors.primary-soft}&quot;
+    textColor: &quot;{colors.ink}&quot;
+    rounded: &quot;{rounded.md}&quot;
+    padding: 0.75rem 1rem
+  alert-warning:
+    backgroundColor: &quot;{colors.tertiary-soft}&quot;
+    textColor: &quot;{colors.brown}&quot;
+    rounded: &quot;{rounded.md}&quot;
+    padding: 0.75rem 1rem
+  alert-danger:
+    backgroundColor: &quot;{colors.danger-soft}&quot;
+    textColor: &quot;{colors.danger}&quot;
+    rounded: &quot;{rounded.md}&quot;
+    padding: 0.75rem 1rem
+  pill:
+    backgroundColor: &quot;{colors.panel}&quot;
+    textColor: &quot;{colors.ink}&quot;
+    rounded: &quot;{rounded.pill}&quot;
+    padding: 0.25rem 0.65rem
+    typography: &quot;{typography.meta}&quot;
+  pill-active:
+    backgroundColor: &quot;{colors.primary-soft}&quot;
+    textColor: &quot;{colors.primary-deep}&quot;
+    rounded: &quot;{rounded.pill}&quot;
+    padding: 0.25rem 0.65rem
+  surface-dark:
+    backgroundColor: &quot;{colors.surface-dark}&quot;
+    textColor: &quot;{colors.on-dark}&quot;
+    rounded: &quot;{rounded.md}&quot;
+    padding: 1.5rem
+  takeaways-title:
+    textColor: &quot;{colors.primary}&quot;
+    typography: &quot;{typography.display-sm}&quot;
+  takeaways-item:
+    textColor: &quot;{colors.ink}&quot;
+    typography: &quot;{typography.body-sm}&quot;
+  takeaways-num:
+    textColor: &quot;{colors.tertiary}&quot;
+    typography: &quot;{typography.label}&quot;
+  code-inline:
+    backgroundColor: &quot;{colors.code-bg}&quot;
+    textColor: &quot;{colors.code-fg}&quot;
+    rounded: &quot;{rounded.sm}&quot;
+    padding: 0.12em 0.4em
+  code-block:
+    backgroundColor: &quot;{colors.code-bg}&quot;
+    textColor: &quot;{colors.code-fg}&quot;
+    rounded: &quot;{rounded.md}&quot;
+    padding: 1rem
+---
+
+## Overview
+
+Roots &amp; Fruit is earned, calm, and rooted. Visual identity feels like warm paper and moss: cream canvas, warm ink, Knile for voice, Nunito Sans for clarity, moss green as the steady accent.
+
+Agents must treat this file as normative for any new UI, page, slide, dashboard, or plugin surface. When this repo already ships CSS under `css/tokens.css` and `css/components.css`, map tokens here to `--rf-*` custom properties instead of inventing parallel values.
+
+Brand feel (always):
+- Warm cream paper, not cool gray or pure white as the default page wash
+- Soft, organic, grounded; never cyberpunk, glassmorphism, or neon
+- One primary interactive accent (moss green); orange is rare and intentional
+- Air over density; prefer an extra section or slide over crowding
+
+Use cases this system must serve equally well:
+1. Marketing / website pages
+2. Presentations and client decks
+3. Product UI (boards, forms, dashboards)
+4. Compact plugin or admin chrome
+
+## Colors
+
+Semantic roles (use these names in reasoning; hex values are in front matter):
+
+| Role | Token | Hex | Use |
+| --- | --- | --- | --- |
+| Page wash | `neutral` | `#faf6ee` | Default page/background |
+| Wash deep | `neutral-deep` | `#f3ede2` | Alternate bands on cream |
+| Surface | `surface` | `#ffffff` | Cards, inputs, lifted modules |
+| Panel | `panel` | `#ebe4d8` | Warm grouping without heavy shadow |
+| Ink | `ink` | `#2c2922` | Body text on cream/white |
+| Ink deep | `ink-deep` | `#1a1a1a` | Headings |
+| Secondary | `secondary` | `#6b6560` | Captions, meta, helper text |
+| Soft ink | `ink-soft` | `#9a948c` | Disabled-adjacent meta only |
+| Primary | `primary` | `#62744d` | Links, primary buttons, accent subheads |
+| Primary deep | `primary-deep` | `#4b5e2e` | Primary hover / pressed |
+| Primary soft | `primary-soft` | `#e4eadc` | Soft fills, success wash, chips |
+| Tertiary | `tertiary` | `#d4844e` | Rare CTA only (one per view max); takeaway rules / numbers |
+| Surface dark | `surface-dark` | `#4b5e2e` | Dark callout cards and article hero bands |
+| On dark | `on-dark` | `#ffffff` | Titles on `surface-dark` |
+| Code bg | `code-bg` | `#f3ece2` | Inline and block code paper |
+| Code fg | `code-fg` | `#3d5c4e` | Default monospace / syntax base (moss-teal) |
+| Info | `info` | `#1a5276` | Product nav / informational UI only |
+| Danger | `danger` | `#b42318` | Errors and destructive states |
+
+Rules:
+- Default stack: `neutral` background + `ink` / `ink-deep` text + `primary` for interaction
+- Marketing surfaces usually omit `info` blue; product UI may use it for nav and info alerts
+- Never promote `tertiary` (orange) into a second brand theme or large background fills
+- Before shipping text-on-color pairs, require WCAG AA (4.5:1) for body text; AA large (3:1) only for Knile headings / big stats
+- Safe defaults: `ink` or `ink-deep` on `neutral`, `neutral-deep`, `surface`, `panel`, `primary-soft`; `on-primary` on `primary` / `primary-deep`; `on-tertiary` on `tertiary`
+
+Green scale (`green-1` … `green-6`) is for charts, illustrations, and progressive emphasis, not random decoration.
+
+## Typography
+
+Three families only:
+- **Knile** (serif): display, titles, section headers, accent subheads. Tracking `--rf-tracking-display` (`-0.02em`). Upright weights 400 / 600 / 700 only (files in `fonts/`). **No italic faces** — do not synthesize Knile italic.
+- **Nunito Sans** (sans): body, UI labels, tables, forms, meta. High x-height: body leading `1.65`. Weights 400 / 600 / 700, each with a true italic.
+- **JetBrains Mono** (or system mono stack): code only. Never use mono for marketing body copy.
+
+Size scale (CSS `--rf-text-*`; **no `xs`**):
+
+| Token | Size | Role |
+| --- | --- | --- |
+| `sm` | 16px (`1rem`) | Floor. Compact UI, labels, meta, table cells |
+| `md` | 18px (`1.125rem`) | Default body and long-form (`.rf-prose`, ledes) |
+| `lg` | 22px (`1.375rem`) | Short lead / intro emphasis |
+| `xl` | 28px (`1.75rem`) | Display sm (Knile subhead) |
+| `2xl` | 36px (`2.25rem`) | Display md |
+| `3xl` | 48px (`3rem`) | Display lg |
+| `4xl` | 56px (`3.5rem`) | Display xl |
+
+### Line-height
+
+| Token | Value | Use |
+| --- | --- | --- |
+| `--rf-leading-display` | 1.1 | Knile `2xl`–`4xl` |
+| `--rf-leading-snug` | 1.15 | Knile `xl` / short titles |
+| `--rf-leading-body` | 1.65 | Nunito `md` / `lg` |
+| `--rf-leading-callout` | 1.55 | Notes, alerts, contained copy |
+| `--rf-leading-ui` | 1.35 | Nunito `sm` |
+
+### Weights
+
+| Token | Value | Typical use |
+| --- | --- | --- |
+| `--rf-weight-regular` | 400 | Nunito body; Knile regular rarely on screen |
+| `--rf-weight-semibold` | 600 | Labels, buttons, Knile accent subheads |
+| `--rf-weight-bold` | 700 | Knile display titles; Nunito meta / strong stress |
+
+Do not introduce 500 or 800. Prefer semibold before bold for UI chrome.
+
+### Italic
+
+- **Nunito:** use `&lt;em&gt;` / `font-style: italic` for short inline emphasis in body; regular italic is the default stress. Semibold/bold italic are available but rare.
+- **Knile:** upright only. For title emphasis, change weight or color — never fake an oblique.
+- Do not italicize whole marketing heroes.
+
+### Spacing around type
+
+- Display title → following lead: at least `--rf-space-5` below the title (docs default).
+- Body paragraphs: `.rf-prose` paragraph gap `--rf-space-5`, or a parent `.rf-stack`.
+- Meta eyebrow → title: tight (`space-2`–`space-3`); large air belongs *under* the title.
+- Measure: `--rf-measure` (`60ch`) on reading lines; tracking meta `--rf-tracking-meta` (`0.06em`) for uppercase eyebrows.
+- Do not mix ad-hoc vertical margins with `.rf-stack` gap on the same children.
+
+Roles:
+- `display-*` = Knile hierarchy (xl → sm) with display/snug leading
+- `body-lg` = short lead (`--rf-text-lg`)
+- `body-md` = default reading (`--rf-text-md`)
+- `body-sm` / `label` / `meta` = compact UI at `sm` (16px)
+- `meta` = uppercase eyebrows at `sm` + bold + meta tracking
+
+Optical rules (size scales alone will not fix these):
+- Constrain reading columns with `--rf-measure` (`60ch`), not only the layout shell (`--rf-max`)
+- Use `.rf-prose` for long-form: measure + `body-md` + body leading
+- Inside callouts, use `--rf-leading-callout` and generous padding
+- Do not rely on fluid viewport type alone to “fix” readability
+
+Rules:
+- Do not introduce Inter, Roboto, Arial, system-ui-only stacks, or a third display font
+- Do not put Knile on long paragraphs
+- Do not put Nunito Sans on the primary page title when Knile is available
+- Prefer sentence case; never force all-caps on Knile display titles (meta uppercase is allowed for eyebrows only)
+- If Knile webfonts are unavailable, fall back to Georgia / Times New Roman; still declare Knile first
+- Do not use a size below `sm` (16px). There is no `xs` token
+- Do not synthesize Knile italic; do not invent weights outside 400 / 600 / 700
+
+## Layout
+
+Principles drawn from *Every Layout* (Pickering &amp; Bell): clarity and stability come from a few axioms and composable primitives, not from hard-coded breakpoints for every block. Do not invent one-off spacing like `13px` or `22px`.
+
+### Axioms
+
+- **Measure:** no line of text should exceed `--rf-measure` (`60ch`). Use `ch`, never a fixed `px` width, so measure tracks font-size. Flow text is capped; structural shells (`html`, `body`, `main`, nav, generic wrappers) are not.
+- **Suggestion over prescription:** prefer `max-inline-size`, `min-block-size`, `gap`, and `flex-basis` over fixed `width`/`height`. Avoid data loss from overflow.
+- **One space ratio:** `--rf-ratio` (`1.5`) seeds modular space from `1rem` (`spacing.4` / s0). Larger steps (`5`–`8`) multiply by the ratio. Fine UI steps `1`–`3` stay below s0 for chrome only.
+- **Boxes:** global `border-box`; logical properties (`margin-block`, `padding-inline`, `max-inline-size`); reading columns may use `content-box` so `ch` measures text, not padding. See also [Every Layout &#183; Boxes](https://every-layout.dev/rudiments/boxes/).
+
+### Primitives (`css/layouts.css`)
+
+| Class | Job |
+| --- | --- |
+| `.rf-stack` | Vertical rhythm via `gap` (default `spacing.5`). Variants: `--sm`, `--md`, `--lg`. Child block margins reset so gap owns the rhythm. |
+| `.rf-center` | Centered column at `--rf-measure`. Optional `.rf-center--gutter` for inline padding. |
+| `.rf-cluster` | Wrapping horizontal group (buttons, pills) with even `gap`. |
+| `.rf-prose` | Long-form type + measure (see Typography). |
+
+Shell / product chrome may still use grids and sidebars (this docs page’s `.ds-shell` is a sidebar composition). Prefer Stack + Center for article-like content.
+
+Hierarchy:
+- One job per section: one heading, one short supporting line, then content
+- Prefer `.rf-stack` (or `spacing.5`–`spacing.7` gaps) between major blocks
+- Heading margin below should usually be larger than the gap into the following paragraph
+- Avoid dashboard clutter on brand/marketing surfaces (no stat strips, pill clusters, or competing callout stacks in the first viewport)
+
+Page shell:
+- `--rf-max` (~56rem) may wrap sidebars and specimens; paragraphs still obey `--rf-measure`
+- Marketing heroes may go full-bleed for atmosphere; text blocks keep measure
+
+Breakpoints (practical defaults):
+- Compact: below ~800px, collapse sidebars, stack columns, keep tap targets pill-button sized
+- Comfortable: 800px+
+- Prefer intrinsic layouts (Stack, Cluster, Center) over adding many width breakpoints
+
+## Elevation &amp; Depth
+
+Depth is quiet.
+- Default surfaces: 1px `rule` border, optional light shadow `0 2px 12px rgba(44, 41, 34, 0.06)`
+- Stronger lift only when needed: `0 8px 28px rgba(44, 41, 34, 0.1)`
+- Prefer border + background shift (`surface` / `panel` / `neutral-deep`) over stacked shadows
+- No neon glow, no multi-layer colored shadows, no glass blur as a brand device
+
+## Shapes
+
+Corner radii:
+- `rounded.sm` (0.55rem): inputs, small controls
+- `rounded.md` (0.75rem): surfaces, alerts, tiles
+- `rounded.lg` (1.25rem): large media frames when needed
+- `rounded.pill` (999px): buttons, pills, chips
+
+Buttons are pills by default. Do not mix sharp 0-radius chrome with pill buttons in the same view unless documenting a deliberate exception.
+
+Focus ring: soft green halo (`0 0 0 3px` color-mix of primary at ~35% opacity). Never remove focus styles.
+
+## Components
+
+Implement with these behaviors. Class names in this repo: `.btn`, `.input`, `.surface`, `.alert`, `.pill` (see `css/components.css`).
+
+**Buttons**
+- `button-primary`: default main action (moss). One primary per section/view.
+- `button-secondary`: warm panel fill for secondary actions.
+- `button-tertiary`: outlined green for low-emphasis actions.
+- `button-cta`: orange fill with dark ink text for contrast; at most one high-stakes CTA on a view (Book, Pay, Submit final). Do not use white text on orange.
+- `button-ghost`: text-like dismissal / tertiary navigation.
+- Disabled: reduce opacity; do not invent a gray system.
+
+**Links**
+- Use `primary` green, semibold when inline. Never default browser blue.
+
+**Forms**
+- Labels above fields (`typography.label`)
+- Inputs: white surface, soft ink border, `rounded.sm`, green focus ring
+- Errors: danger border + text message under the field (never color-only)
+
+**Surfaces**
+- `surface`: white module on cream
+- `surface-panel`: warm panel grouping without heavy card shadow
+- Cream-deep bands for alternating page sections
+- `surface-dark` (`.surface--dark`): moss-deep callout on cream pages; white titles, muted white body; CTAs use `button-cta` with `ink-deep` on orange (not white on orange). Prefer one dark card per sidebar or section.
+- Do not wrap every block in a shadowed card
+
+**Key takeaways** (`.rf-takeaways` / `ol.rf-keytakeaways`)
+- Knile title in `primary` green (“Key Takeaways”)
+- Ordered items with 2px `tertiary` left rule, zero-padded numbers (`01`, `02`) in orange, body in `ink`
+- Use in article sidebars or after the intro; keep to a short list (about 3–5 items)
+- Do not restyle as bullets, pills, or icon rows
+
+**Code**
+- Inline `code`: warm `code-bg`, moss-teal `code-fg`, soft border — matches paper, not cool gray IDEs
+- Block `.rf-code`: same paper fill; optional window dots + copy control + language meta (matches the site’s Code Block Pro chrome)
+- Keep the window chrome; retune syntax base to `code-fg` / warm Solarized-light on `code-bg` rather than cool cyan on gray
+- One language label in `code-meta`; do not add neon terminal themes
+
+**Feedback**
+- Pills for compact status
+- Alerts for full-sentence page messages (`alert-*`)
+- Spinner for indeterminate wait; progress bar only when percent is known
+
+**Brand assets (non-token but mandatory)**
+- Wordmark vs tree icon: wordmark when naming the brand; tree icon for favicons, avatars, tight badges
+- Illustrations (`illustrations/roots-1.svg`, `illustrations/apples-1.svg`): atmosphere only. Roots watermark ~10–12% opacity, one per surface. Apples as corner spot art ~40–50% opacity. Never treat illustrations as logos or links.
+- Prefer SVG for on-screen marks; PNG profile/square exports for host uploads that require raster
+
+**Presentations**
+- Same color/type language; more whitespace; fixed slide canvas is fine
+- One atmosphere treatment per slide; do not stack watermarks
+
+## Do&#39;s and Don&#39;ts
+
+**Do**
+- Start from cream (`neutral`) + ink + moss (`primary`)
+- Use Knile for titles and Nunito Sans for reading/UI
+- Keep orange (`tertiary`) rare and singular
+- Check contrast for body text (AA) before shipping
+- Use the spacing and radius scales exactly
+- Keep sections simple: one purpose, clear hierarchy
+- Reuse `css/rf.css` (or tokens + components) when working in this brand package
+
+**Don&#39;t**
+- Don&#39;t use purple gradients, indigo glow, cool gray glass, or “AI slop” aesthetic defaults
+- Don&#39;t use Inter, Roboto, Arial, or comic display fonts
+- Don&#39;t make orange a theme color or page background
+- Don&#39;t put more than one primary button (or one orange CTA) in a single view
+- Don&#39;t use pure black (`#000`) or pure white as the default page wash
+- Don&#39;t invent new hex values when a token exists
+- Don&#39;t use illustrations as logos, or logos as decorative watermarks at full opacity
+- Don&#39;t add drop shadows, outlines, recolors, or stretch transforms to official logo files
+- Don&#39;t build dense marketing heroes with stats, chip rows, and multiple competing CTAs
+- Don&#39;t remove focus indicators
+- Don&#39;t use blue (`info`) as a marketing accent; reserve it for product/info UI
+- Don&#39;t create a dark-mode palette unless explicitly asked (light cream system is default)
+- Don&#39;t use cool cyan/gray IDE chrome for code; stay on warm `code-bg` + moss-teal base
+- Don&#39;t put white text on orange CTAs (including on dark cards); use `ink-deep` on `tertiary`
+- Don&#39;t invent a second takeaways pattern (cards, checkmarks, emoji numbers)
+- Don&#39;t introduce an `xs` size or any readable text below `sm` (16px)
+- Don&#39;t invent parallel layout utilities when `.rf-stack`, `.rf-center`, or `.rf-cluster` already fit
+- Don&#39;t set paragraph measure in `px`; use `--rf-measure` (`ch`)
+- Don&#39;t fake Knile italic or add font weights outside 400 / 600 / 700
+
+## Agent directives
+
+When generating or editing UI for Roots &amp; Fruit:
+
+1. Read this file before choosing colors, type, radius, or components.
+2. Prefer token names and `{colors.*}` references over raw hex in reasoning; emit CSS variables `--rf-*` when editing this repo’s brand CSS.
+3. If a request conflicts with Do&#39;s and Don&#39;ts, follow this file and note the conflict briefly.
+4. Validate text/background pairs against WCAG AA for body copy.
+5. After UI changes, self-check: cream paper present? Knile on titles? One primary action? No purple/gray-glass drift? No extra orange?
+6. For brand marks and illustrations, use files under `logos/` and `illustrations/`; do not regenerate lookalikes.
+7. Unknown patterns (modals, tabs, toasts, dark mode) are out of scope until added here; improvise with existing tokens and keep the same constraints rather than inventing a new visual language.
+</code></pre>
+        <span class="rf-code__lang">Markdown</span>
+      </div>
+      <p class="ds-caption" style="margin-top:var(--rf-space-3)">
+        Canonical: <code>company-docs/brand/DESIGN.md</code> · this block is a synced copy for local browsing.
+      </p>
+    </section>
+      </div>
+    </main>
+  </div>
+
+  <script>
+    (function () {
+      var tabs = Array.prototype.slice.call(document.querySelectorAll("[data-ds-tab]"));
+      var tabButtons = tabs.filter(function (el) { return el.getAttribute("role") === "tab"; });
+      var panels = Array.prototype.slice.call(document.querySelectorAll(".ds-panel"));
+      var valid = {};
+      tabButtons.forEach(function (btn) { valid[btn.getAttribute("data-ds-tab")] = true; });
+
+      function show(id, pushHash) {
+        if (!valid[id]) id = "overview";
+
+        tabButtons.forEach(function (btn) {
+          var on = btn.getAttribute("data-ds-tab") === id;
+          btn.setAttribute("aria-selected", on ? "true" : "false");
+          btn.tabIndex = on ? 0 : -1;
+        });
+
+        panels.forEach(function (panel) {
+          var on = panel.id === id;
+          if (on) panel.removeAttribute("hidden");
+          else panel.setAttribute("hidden", "");
+        });
+
+        if (pushHash) {
+          if (history.replaceState) history.replaceState(null, "", "#" + id);
+          else location.hash = id;
+        }
+
+        window.scrollTo(0, 0);
+      }
+
+      function idFromHash() {
+        var raw = (location.hash || "").replace(/^#/, "");
+        return valid[raw] ? raw : "overview";
+      }
+
+      tabButtons.forEach(function (btn) {
+        btn.addEventListener("click", function () {
+          show(btn.getAttribute("data-ds-tab"), true);
+        });
+      });
+
+      document.querySelectorAll('a[data-ds-tab]').forEach(function (link) {
+        link.addEventListener("click", function (e) {
+          e.preventDefault();
+          show(link.getAttribute("data-ds-tab"), true);
+        });
+      });
+
+      tabButtons.forEach(function (btn, index) {
+        btn.addEventListener("keydown", function (e) {
+          var next = null;
+          if (e.key === "ArrowDown" || e.key === "ArrowRight") next = tabButtons[(index + 1) % tabButtons.length];
+          if (e.key === "ArrowUp" || e.key === "ArrowLeft") next = tabButtons[(index - 1 + tabButtons.length) % tabButtons.length];
+          if (e.key === "Home") next = tabButtons[0];
+          if (e.key === "End") next = tabButtons[tabButtons.length - 1];
+          if (!next) return;
+          e.preventDefault();
+          next.focus();
+          show(next.getAttribute("data-ds-tab"), true);
+        });
+      });
+
+      window.addEventListener("hashchange", function () {
+        show(idFromHash(), false);
+      });
+
+      show(idFromHash(), false);
+
+      /* —— WCAG contrast matrix (Color panel) —— */
+      (function buildContrastMatrix() {
+        var table = document.getElementById("ds-a11y-matrix");
+        if (!table) return;
+
+        var backgrounds = [
+          "--rf-cream",
+          "--rf-cream-deep",
+          "--rf-white",
+          "--rf-panel",
+          "--rf-green-soft",
+          "--rf-orange-soft",
+          "--rf-blue-soft",
+          "--rf-green",
+          "--rf-green-deep",
+          "--rf-surface-dark",
+          "--rf-orange",
+          "--rf-blue",
+          "--rf-brown",
+          "--rf-ink",
+          "--rf-danger",
+          "--rf-code-bg"
+        ];
+
+        var foregrounds = [
+          "--rf-ink-deep",
+          "--rf-ink",
+          "--rf-ink-muted",
+          "--rf-ink-soft",
+          "--rf-brown",
+          "--rf-green",
+          "--rf-green-deep",
+          "--rf-orange",
+          "--rf-blue",
+          "--rf-danger",
+          "--rf-white",
+          "--rf-cream"
+        ];
+
+        var rootStyle = getComputedStyle(document.documentElement);
+
+        function shortName(token) {
+          return token.replace(/^--rf-/, "");
+        }
+
+        function parseColor(value) {
+          if (!value) return null;
+          value = value.trim();
+          var m = value.match(/^#([0-9a-f]{3}|[0-9a-f]{6})$/i);
+          if (m) {
+            var hex = m[1];
+            if (hex.length === 3) {
+              hex = hex.split("").map(function (c) { return c + c; }).join("");
+            }
+            return {
+              r: parseInt(hex.slice(0, 2), 16),
+              g: parseInt(hex.slice(2, 4), 16),
+              b: parseInt(hex.slice(4, 6), 16)
+            };
+          }
+          m = value.match(/^rgba?\(\s*([\d.]+)\s*,\s*([\d.]+)\s*,\s*([\d.]+)/i);
+          if (m) {
+            return { r: +m[1], g: +m[2], b: +m[3] };
+          }
+          return null;
+        }
+
+        function channel(c) {
+          c = c / 255;
+          return c <= 0.03928 ? c / 12.92 : Math.pow((c + 0.055) / 1.055, 2.4);
+        }
+
+        function luminance(rgb) {
+          return 0.2126 * channel(rgb.r) + 0.7152 * channel(rgb.g) + 0.0722 * channel(rgb.b);
+        }
+
+        function contrastRatio(fg, bg) {
+          var L1 = luminance(fg);
+          var L2 = luminance(bg);
+          var lighter = Math.max(L1, L2);
+          var darker = Math.min(L1, L2);
+          return (lighter + 0.05) / (darker + 0.05);
+        }
+
+        function levelFor(ratio) {
+          if (ratio >= 7) return { key: "aaa", label: "AAA" };
+          if (ratio >= 4.5) return { key: "aa", label: "AA" };
+          if (ratio >= 3) return { key: "large", label: "AA large" };
+          return { key: "fail", label: "Fail" };
+        }
+
+        function tokenColor(token) {
+          return parseColor(rootStyle.getPropertyValue(token));
+        }
+
+        var thead = table.querySelector("thead");
+        var tbody = table.querySelector("tbody");
+        thead.innerHTML = "";
+        tbody.innerHTML = "";
+
+        var headRow = document.createElement("tr");
+        var corner = document.createElement("th");
+        corner.scope = "col";
+        corner.textContent = "BG \\ Text";
+        headRow.appendChild(corner);
+
+        foregrounds.forEach(function (fgToken) {
+          var th = document.createElement("th");
+          th.scope = "col";
+          th.textContent = shortName(fgToken);
+          headRow.appendChild(th);
+        });
+        thead.appendChild(headRow);
+
+        backgrounds.forEach(function (bgToken) {
+          var bg = tokenColor(bgToken);
+          var tr = document.createElement("tr");
+          var th = document.createElement("th");
+          th.scope = "row";
+          var chip = document.createElement("span");
+          chip.className = "ds-a11y-bgchip";
+          chip.style.background = "var(" + bgToken + ")";
+          th.appendChild(chip);
+          th.appendChild(document.createTextNode(shortName(bgToken)));
+          tr.appendChild(th);
+
+          foregrounds.forEach(function (fgToken) {
+            var td = document.createElement("td");
+            var fg = tokenColor(fgToken);
+            var cell = document.createElement("div");
+            cell.className = "ds-a11y-cell";
+
+            if (!bg || !fg) {
+              cell.textContent = "—";
+              cell.style.background = "var(--rf-panel-soft)";
+              cell.style.color = "var(--rf-ink-soft)";
+              td.appendChild(cell);
+              tr.appendChild(td);
+              return;
+            }
+
+            var ratio = contrastRatio(fg, bg);
+            var level = levelFor(ratio);
+            cell.dataset.level = level.key;
+            cell.style.background = "var(" + bgToken + ")";
+            cell.style.color = "var(" + fgToken + ")";
+            cell.innerHTML = ratio.toFixed(2) + "<small>" + level.label + "</small>";
+            cell.title = shortName(fgToken) + " on " + shortName(bgToken) + ": " + ratio.toFixed(2) + ":1 (" + level.label + ")";
+            td.appendChild(cell);
+            tr.appendChild(td);
+          });
+
+          tbody.appendChild(tr);
+        });
+      })();
+
+      /* —— Copy buttons for .rf-code —— */
+      function codeTextFrom(block) {
+        var code = block.querySelector(".rf-code__body code") || block.querySelector(".rf-code__body");
+        return code ? code.textContent : "";
+      }
+
+      document.querySelectorAll("[data-rf-copy]").forEach(function (btn) {
+        btn.addEventListener("click", function () {
+          var block = btn.closest(".rf-code");
+          if (!block || !navigator.clipboard) return;
+          navigator.clipboard.writeText(codeTextFrom(block)).then(function () {
+            btn.setAttribute("data-copied", "true");
+            setTimeout(function () { btn.removeAttribute("data-copied"); }, 1500);
+          });
+        });
+      });
+    })();
+  </script>
+</body>
+</html>

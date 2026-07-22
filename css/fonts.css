@@ -1,0 +1,25 @@
+/* Roots & Fruit — Knile (local). Pair with Nunito Sans from Google Fonts or site CDN. */
+
+@font-face {
+  font-family: "Knile";
+  src: url("../fonts/knile-regular.woff2") format("woff2");
+  font-weight: 400;
+  font-style: normal;
+  font-display: swap;
+}
+
+@font-face {
+  font-family: "Knile";
+  src: url("../fonts/knile-semibold.woff2") format("woff2");
+  font-weight: 600;
+  font-style: normal;
+  font-display: swap;
+}
+
+@font-face {
+  font-family: "Knile";
+  src: url("../fonts/knile-bold.woff2") format("woff2");
+  font-weight: 700;
+  font-style: normal;
+  font-display: swap;
+}
