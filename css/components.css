@@ -97,12 +97,12 @@ a:hover {
 
 .btn--primary {
   background: var(--rf-green);
-  color: var(--rf-white);
+  color: var(--rf-on-primary);
 }
 
 .btn--primary:hover:not(:disabled) {
   background: var(--rf-green-deep);
-  color: var(--rf-white);
+  color: var(--rf-on-primary);
 }
 
 .btn--secondary {
@@ -303,6 +303,13 @@ a:hover {
 }
 
 .pill--green {
+  background: var(--rf-green-soft);
+  color: var(--rf-green-deep);
+}
+
+/* Selected / active chip (DESIGN pill-active). Soft fill — not solid primary + ink. */
+.pill--active,
+.pill.is-active {
   background: var(--rf-green-soft);
   color: var(--rf-green-deep);
 }

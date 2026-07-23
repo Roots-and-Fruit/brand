@@ -466,6 +466,13 @@ Implement with these behaviors. Class names in this repo: `.btn`, `.input`, `.su
 - Labels above fields (`typography.label`)
 - Inputs: white surface, soft ink border, `rounded.sm`, green focus ring
 - Errors: danger border + text message under the field (never color-only)
+- Selected choice chips / toggles: use `pill-active` (`.pill--active` or `.pill.is-active`) — `primary-soft` fill with `primary-deep` text. Do not use solid `primary` with `ink` (fails contrast). Solid `primary` fills must use `on-primary` (white).
+
+**Pills**
+- Default `.pill`: panel fill + ink
+- `.pill--active` / `.pill.is-active`: selected state (`pill-active` in front matter)
+- `.pill--green`: same soft-green recipe as active (status “success / in play”)
+- Filled moss buttons use `on-primary`, not bare `ink`
 
 **Surfaces**
 - `surface`: white module on cream

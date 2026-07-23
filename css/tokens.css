@@ -113,6 +113,11 @@
   --rf-on-dark: #ffffff;
   --rf-on-dark-muted: rgba(255, 255, 255, 0.78);
 
+  /* Text on filled brand surfaces (pair with primary / info / tertiary fills) */
+  --rf-on-primary: #ffffff; /* on primary / primary-deep moss fills */
+  --rf-on-info: #ffffff; /* on info / blue-nav fills */
+  --rf-on-tertiary: #1a1a1a; /* on orange CTA — never white on orange */
+
   /* Code (warm paper chrome; syntax base is moss-teal, not cool cyan) */
   --rf-code-bg: #f3ece2;
   --rf-code-fg: #3d5c4e;
