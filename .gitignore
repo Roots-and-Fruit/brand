@@ -3,3 +3,7 @@ Thumbs.db
 *.tmp
 _every-layout*
 _el-*
+
+# Knile is licensed for R&F properties; load from rootsandfruit.com (not this repo)
+fonts/knile-*.woff2
+fonts/knile-*.woff

@@ -314,7 +314,7 @@ Green scale (`green-1` … `green-6`) is for charts, illustrations, and progress
 ## Typography
 
 Three families only:
-- **Knile** (serif): display, titles, section headers, accent subheads. Tracking `--rf-tracking-display` (`-0.02em`). Upright weights 400 / 600 / 700 only (files in `fonts/`). **No italic faces** — do not synthesize Knile italic.
+- **Knile** (serif): display, titles, section headers, accent subheads. Tracking `--rf-tracking-display` (`-0.02em`). Upright weights 400 / 600 / 700 only (WOFF2s hosted on rootsandfruit.com; see `css/fonts.css`). **No italic faces** — do not synthesize Knile italic.
 - **Nunito Sans** (sans): body, UI labels, tables, forms, meta. High x-height: body leading `1.65`. Weights 400 / 600 / 700, each with a true italic.
 - **JetBrains Mono** (or system mono stack): code only. Never use mono for marketing body copy.
 

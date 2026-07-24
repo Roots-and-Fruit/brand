@@ -28,6 +28,14 @@ After editing `DESIGN.md`:
 
 See `AGENTS.md` for agent workflow.
 
+## Fonts
+
+Knile WOFF2 files are **not** stored in this repository. `css/fonts.css` loads them from the marketing site:
+
+`https://rootsandfruit.com/wp-content/uploads/rnf_assets/fonts/knile-*-webfont.woff2`
+
+That path must allow CORS (Cloudflare response header on `/wp-content/uploads/rnf_assets/fonts/`).
+
 ## License
 
-Brand marks and Knile webfonts are licensed for Roots & Fruit web use (including this site). Do not redistribute the font files outside Roots & Fruit properties without a matching license.
+Brand marks and Knile webfonts are licensed for Roots & Fruit web use. Knile binaries live only on rootsandfruit.com (and other R&F-controlled hosts), not in this public GitHub tree.

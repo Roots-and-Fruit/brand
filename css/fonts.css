@@ -1,8 +1,10 @@
-/* Roots & Fruit — Knile (local). Pair with Nunito Sans from Google Fonts or site CDN. */
+/* Roots & Fruit — Knile (hosted on marketing site; not in this repo).
+   Source: https://rootsandfruit.com/wp-content/uploads/rnf_assets/fonts/
+   Requires CORS on that path (Cloudflare). Pair with Nunito Sans from Google Fonts. */
 
 @font-face {
   font-family: "Knile";
-  src: url("../fonts/knile-regular.woff2") format("woff2");
+  src: url("https://rootsandfruit.com/wp-content/uploads/rnf_assets/fonts/knile-regular-webfont.woff2") format("woff2");
   font-weight: 400;
   font-style: normal;
   font-display: swap;
@@ -10,7 +12,7 @@
 
 @font-face {
   font-family: "Knile";
-  src: url("../fonts/knile-semibold.woff2") format("woff2");
+  src: url("https://rootsandfruit.com/wp-content/uploads/rnf_assets/fonts/knile-semibold-webfont.woff2") format("woff2");
   font-weight: 600;
   font-style: normal;
   font-display: swap;
@@ -18,7 +20,7 @@
 
 @font-face {
   font-family: "Knile";
-  src: url("../fonts/knile-bold.woff2") format("woff2");
+  src: url("https://rootsandfruit.com/wp-content/uploads/rnf_assets/fonts/knile-bold-webfont.woff2") format("woff2");
   font-weight: 700;
   font-style: normal;
   font-display: swap;
