@@ -441,6 +441,8 @@ Corner radii:
 
 Buttons are pills by default. Do not mix sharp 0-radius chrome with pill buttons in the same view unless documenting a deliberate exception.
 
+Chart / meta accents (shared with presentations): `--rf-orange-deep` for meta text; `--rf-chart-1`…`--rf-chart-4` (green-deep · orange · blue · brown) for multi-series charts. Do not build segments from adjacent soft greens.
+
 Focus ring: soft green halo (`0 0 0 3px` color-mix of primary at ~35% opacity). Never remove focus styles.
 
 ## Components
@@ -509,7 +511,7 @@ Implement with these behaviors. Class names in this repo: `.btn`, `.input`, `.su
 **Presentations (PDS layer on CDS)**
 - One design system: CDS owns tokens here; the presentation layer (`/rf-reveal`) owns Pitch layouts and reveal.js chrome
 - PDS vendors `css/tokens.css` via `sync-cds-tokens.ps1` (`cds-tokens.css`); do not invent parallel hex, opacities, or lede weights in the deck
-- Content patterns and Surfaces & data from this package (takeaways, surfaces, quiet `rf-table`, buttons/pills, `code` / `.inline-label`, `.rf-code`) are dogfooded in the reveal `template-deck` — reuse those layout ids instead of inventing slide-only variants
+- Presentations pick a PDS **layout id** first, then compose elements from this package (surfaces, quiet `rf-table`, buttons/pills, `code` / `.inline-label`, `.rf-code`). Element-kit gallery slides are operator QA only — not client layout ids (`/rf-reveal` · `REFERENCE.md`)
 - Same color/type language; more whitespace; fixed slide canvas is fine
 - One atmosphere treatment per slide; do not stack watermarks
 
@@ -546,6 +548,7 @@ Implement with these behaviors. Class names in this repo: `.btn`, `.input`, `.su
 - Don't invent parallel layout utilities when `.rf-stack`, `.rf-center`, or `.rf-cluster` already fit
 - Don't set paragraph measure in `px`; use `--rf-measure` (`ch`)
 - Don't fake Knile italic or add font weights outside 400 / 600 / 700
+- Don't commit Knile WOFF/WOFF2 binaries to any public GitHub repo (`brand`, `slides`, or forks). Host Knile only on rootsandfruit.com (`/wp-content/uploads/rnf_assets/fonts/`); load via absolute URL in `css/fonts.css` / PDS `tokens.css`. Offline/file opens may fall back to Georgia.
 
 ## Agent directives
 

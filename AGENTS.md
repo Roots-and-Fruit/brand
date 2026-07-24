@@ -49,9 +49,22 @@ If you change brand tokens or components, update in this order:
 
 Optional lint: `npx -p "@google/design.md" designmd lint DESIGN.md`
 
+## Knile fonts (hard stop)
+
+Knile webfont **binaries are not part of this package** and must **never** be committed to public GitHub (`Roots-and-Fruit/brand`, `Roots-and-Fruit/slides`, or any public fork).
+
+| Host | Role |
+| --- | --- |
+| `https://rootsandfruit.com/wp-content/uploads/rnf_assets/fonts/` | Only place Knile WOFF2s are stored for web use |
+| `css/fonts.css` | `@font-face` points at those absolute URLs (CORS on that path) |
+| Georgia / Times | Fallback when the CDN is unreachable (`file://`, offline) |
+
+**Agents:** do not add `fonts/knile-*.woff2` (or copies under `assets/fonts/`) to git. Do not vendor Knile into client repos for “convenience.” If a surface needs Knile, load from the marketing-site URLs (or keep binaries only in private hub storage, never in a public remote).
+
 ## Boundaries
 
 - Do not invent hex, type, or component patterns that are not in `DESIGN.md` / tokens.
 - Do not commit secrets into this package (none should live here).
+- Do not commit Knile font files to GitHub (see Knile hard stop above).
 - Website theme/CSS on rootsandfruit.com is a separate apply step; this package is the brand SoR.
 - Do not grow CDS into a slide layout library — that stays in the PDS layer.
