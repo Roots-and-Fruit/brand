@@ -16,6 +16,7 @@ Open this folder when changing visual identity, the design-system reference page
 | Disclosure | `css/disclosure.css` · `.rf-disclosure` · `icons/leaf-arrow.svg` | Expand/collapse secondary content |
 | Tool column | `--rf-content-max` (`52rem`) | Shared shell for app/task UI; do not nest `--rf-measure` inside it |
 | Reference page | `index.html` | Human-browsable specimens (+ embedded contract); GitHub Pages entry |
+| Media Kit | `index.html` → Media Kit tab (`#media-kit`) | Outsider-facing logo pack, usage, boilerplate, contact |
 | Docs-only chrome | `css/docs.css` | Styles for the reference page shell only |
 | Public repo | [Roots-and-Fruit/brand](https://github.com/Roots-and-Fruit/brand) | Published at brand.rootsandfruit.com |
 | PDS layer | `company-docs/03-Marketing (CMO)/social/pds/` | Slide layouts; consumes CDS via `cds-tokens.css` |

@@ -706,6 +706,142 @@ body {
   letter-spacing: -0.01em;
 }
 
+/* —— Media Kit usage (Good vs Bad) —— */
+.ds-usage-grid {
+  display: grid;
+  grid-template-columns: repeat(2, minmax(0, 1fr));
+  gap: var(--rf-space-4);
+  margin: 0 0 var(--rf-space-5);
+}
+
+@media (max-width: 48rem) {
+  .ds-usage-grid {
+    grid-template-columns: 1fr;
+  }
+}
+
+.ds-usage-card {
+  margin: 0;
+  border: 1px solid var(--rf-rule);
+  border-radius: var(--rf-radius);
+  background: var(--rf-white);
+  overflow: hidden;
+  display: flex;
+  flex-direction: column;
+  min-width: 0;
+}
+
+.ds-usage-card__title {
+  margin: 0;
+  padding: 0.75rem 1rem;
+  border-bottom: 1px solid var(--rf-rule);
+  font-family: var(--rf-font-serif);
+  font-size: var(--rf-text-sm);
+  font-weight: 600;
+  color: var(--rf-ink);
+  letter-spacing: -0.01em;
+}
+
+.ds-usage-pair {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 1px;
+  background: var(--rf-rule);
+  flex: 1;
+}
+
+.ds-usage-example {
+  display: flex;
+  flex-direction: column;
+  gap: var(--rf-space-2);
+  padding: var(--rf-space-3);
+  background: var(--rf-white);
+  min-width: 0;
+}
+
+.ds-usage-example .pill {
+  align-self: flex-start;
+}
+
+.ds-usage-example__stage {
+  display: grid;
+  place-items: center;
+  min-height: 6.5rem;
+  padding: var(--rf-space-4);
+  border-radius: var(--rf-radius-sm);
+  overflow: hidden;
+}
+
+.ds-usage-example__stage img {
+  display: block;
+  width: auto;
+  height: auto;
+  max-width: 100%;
+  max-height: 2.75rem;
+}
+
+.ds-usage-example__stage--airy {
+  padding: var(--rf-space-5);
+}
+
+.ds-usage-example__stage--crowded {
+  display: flex;
+  align-items: center;
+  justify-content: flex-start;
+  gap: 0.2rem;
+  padding: 0.35rem 0.4rem;
+}
+
+.ds-usage-example__stage--crowded img {
+  max-height: 2.1rem;
+  max-width: 55%;
+  flex-shrink: 0;
+}
+
+.ds-usage-crowd-label {
+  font-family: var(--rf-font-sans);
+  font-size: 0.7rem;
+  font-weight: 700;
+  color: var(--rf-ink);
+  white-space: nowrap;
+  line-height: 1;
+}
+
+.ds-usage-example__stage--stretch img {
+  transform: scaleX(1.55);
+  max-width: none;
+  width: 8.5rem;
+}
+
+.ds-usage-example__stage--invent {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 0.45rem;
+}
+
+.ds-usage-invent-icon {
+  max-height: 2.35rem !important;
+  max-width: 2.35rem !important;
+  filter: hue-rotate(85deg) saturate(1.4);
+}
+
+.ds-usage-invent-type {
+  font-family: Georgia, "Times New Roman", serif;
+  font-size: 0.85rem;
+  font-weight: 700;
+  color: #6b4cff;
+  letter-spacing: -0.02em;
+  white-space: nowrap;
+}
+
+.ds-usage-example__note {
+  margin: 0;
+  font-size: 0.78rem;
+  line-height: 1.4;
+  color: var(--rf-ink-soft);
+}
+
 /* —— Illustrations —— */
 .ds-illu-grid {
   display: grid;

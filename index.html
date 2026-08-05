@@ -7,8 +7,8 @@
   <link rel="preconnect" href="https://fonts.googleapis.com" />
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
   <link href="https://fonts.googleapis.com/css2?family=JetBrains+Mono:wght@400&family=Nunito+Sans:ital,wght@0,400;0,600;0,700;1,400;1,600;1,700&display=swap" rel="stylesheet" />
-  <link rel="stylesheet" href="css/rf.css?v=2026-08-05-btn-sm" />
-  <link rel="stylesheet" href="css/docs.css?v=2026-08-05-btn-sm" />
+  <link rel="stylesheet" href="css/rf.css?v=2026-08-05-media-kit" />
+  <link rel="stylesheet" href="css/docs.css?v=2026-08-05-media-kit" />
 </head>
 <body>
   <div class="ds-shell">
@@ -22,6 +22,7 @@
       </div>
       <nav class="ds-nav" role="tablist" aria-label="Design system sections" aria-orientation="vertical">
         <button type="button" role="tab" id="tab-overview" aria-controls="overview" aria-selected="true" data-ds-tab="overview">Overview</button>
+        <button type="button" role="tab" id="tab-media-kit" aria-controls="media-kit" aria-selected="false" data-ds-tab="media-kit" tabindex="-1">Media Kit</button>
         <button type="button" role="tab" id="tab-logos" aria-controls="logos" aria-selected="false" data-ds-tab="logos" tabindex="-1">Logos &amp; icons</button>
         <button type="button" role="tab" id="tab-illustrations" aria-controls="illustrations" aria-selected="false" data-ds-tab="illustrations" tabindex="-1">Illustrations</button>
         <button type="button" role="tab" id="tab-tokens" aria-controls="tokens" aria-selected="false" data-ds-tab="tokens" tabindex="-1">Color</button>
@@ -75,6 +76,219 @@
           </footer>
         </section>
 
+    <section class="ds-panel" id="media-kit" role="tabpanel" aria-labelledby="tab-media-kit" hidden>
+      <h2 id="media-kit-title">Media Kit</h2>
+      <p class="ds-lede">
+        For partners, sponsors, and anyone adding Roots &amp; Fruit to a website blurb or event page.
+        Download a logo, follow the short rules below, and paste the copy if you need a description.
+        Designers building full Roots &amp; Fruit UI should use
+        <a class="link-text" href="#logos" data-ds-tab="logos">Logos &amp; icons</a>
+        and the rest of this design system instead.
+      </p>
+
+      <h3 class="ds-h3">Logo pack</h3>
+      <p class="ds-lede" style="margin-top:0">
+        These three wordmarks cover almost every partner placement. Prefer SVG on the web; use PNG when a host requires raster.
+      </p>
+      <div class="ds-logo-grid">
+        <figure class="ds-logo-tile">
+          <div class="ds-logo-tile__stage ds-logo-tile__stage--cream">
+            <img src="logos/SVG/R%26F_Logo.svg" alt="Roots &amp; Fruit wordmark, full color" />
+          </div>
+          <figcaption class="ds-logo-tile__meta">
+            <strong>Full color</strong>
+            <code>logos/SVG/R&amp;F_Logo.svg</code>
+            <span>Default on white, cream, or light backgrounds.</span>
+            <div class="ds-logo-tile__downloads rf-stack rf-stack--sm">
+              <span class="text-muted">Download as:</span>
+              <div class="rf-cluster">
+                <a class="btn btn--tertiary btn--sm" href="logos/SVG/R%26F_Logo.svg" download="R&amp;F_Logo.svg">SVG</a>
+                <a class="btn btn--tertiary btn--sm" href="logos/PNG/R%26F_Logo_1000px.png" download="R&amp;F_Logo_1000px.png">PNG</a>
+              </div>
+            </div>
+          </figcaption>
+        </figure>
+        <figure class="ds-logo-tile">
+          <div class="ds-logo-tile__stage ds-logo-tile__stage--ink">
+            <img src="logos/SVG/R%26F_Logo_Flat_White.svg" alt="Flat white Roots &amp; Fruit wordmark for dark backgrounds" />
+          </div>
+          <figcaption class="ds-logo-tile__meta">
+            <strong>Flat white</strong>
+            <code>logos/SVG/R&amp;F_Logo_Flat_White.svg</code>
+            <span>Monotone reverse for dark panels, photography, or dark website sections.</span>
+            <div class="ds-logo-tile__downloads rf-stack rf-stack--sm">
+              <span class="text-muted">Download as:</span>
+              <div class="rf-cluster">
+                <a class="btn btn--tertiary btn--sm" href="logos/SVG/R%26F_Logo_Flat_White.svg" download="R&amp;F_Logo_Flat_White.svg">SVG</a>
+                <a class="btn btn--tertiary btn--sm" href="logos/PNG/R%26F_Logo_Flat_White_1000px.png" download="R&amp;F_Logo_Flat_White_1000px.png">PNG</a>
+              </div>
+            </div>
+          </figcaption>
+        </figure>
+        <figure class="ds-logo-tile">
+          <div class="ds-logo-tile__stage ds-logo-tile__stage--cream">
+            <img src="logos/SVG/R%26F_Logo_Flat_Black.svg" alt="Flat black Roots &amp; Fruit wordmark" />
+          </div>
+          <figcaption class="ds-logo-tile__meta">
+            <strong>Flat black</strong>
+            <code>logos/SVG/R&amp;F_Logo_Flat_Black.svg</code>
+            <span>One-color print, mono layouts, or when color is not available.</span>
+            <div class="ds-logo-tile__downloads rf-stack rf-stack--sm">
+              <span class="text-muted">Download as:</span>
+              <div class="rf-cluster">
+                <a class="btn btn--tertiary btn--sm" href="logos/SVG/R%26F_Logo_Flat_Black.svg" download="R&amp;F_Logo_Flat_Black.svg">SVG</a>
+                <a class="btn btn--tertiary btn--sm" href="logos/PNG/R%26F_Logo_Flat_Black_1000px.png" download="R&amp;F_Logo_Flat_Black_1000px.png">PNG</a>
+              </div>
+            </div>
+          </figcaption>
+        </figure>
+      </div>
+
+      <h3 class="ds-h3">Usage</h3>
+      <p class="ds-lede" style="margin-top:0">
+        Four common mistakes, each with a good example and a bad one. If it looks like the bad side, don’t ship it.
+      </p>
+      <div class="ds-usage-grid">
+        <article class="ds-usage-card">
+          <h4 class="ds-usage-card__title">Clear space</h4>
+          <div class="ds-usage-pair">
+            <div class="ds-usage-example">
+              <span class="pill pill--green">Good</span>
+              <div class="ds-usage-example__stage ds-logo-tile__stage--cream ds-usage-example__stage--airy">
+                <img src="logos/SVG/R%26F_Logo.svg" alt="" />
+              </div>
+              <p class="ds-usage-example__note">Leave room around the mark so it can breathe.</p>
+            </div>
+            <div class="ds-usage-example">
+              <span class="pill pill--danger">Bad</span>
+              <div class="ds-usage-example__stage ds-logo-tile__stage--cream ds-usage-example__stage--crowded" aria-hidden="true">
+                <img src="logos/SVG/R%26F_Logo.svg" alt="" />
+                <span class="ds-usage-crowd-label">Partner Co</span>
+              </div>
+              <p class="ds-usage-example__note">Don’t crowd the logo with other names or edges.</p>
+            </div>
+          </div>
+        </article>
+        <article class="ds-usage-card">
+          <h4 class="ds-usage-card__title">Proportions</h4>
+          <div class="ds-usage-pair">
+            <div class="ds-usage-example">
+              <span class="pill pill--green">Good</span>
+              <div class="ds-usage-example__stage ds-logo-tile__stage--cream">
+                <img src="logos/SVG/R%26F_Logo.svg" alt="" />
+              </div>
+              <p class="ds-usage-example__note">Scale evenly. Keep the natural wordmark shape.</p>
+            </div>
+            <div class="ds-usage-example">
+              <span class="pill pill--danger">Bad</span>
+              <div class="ds-usage-example__stage ds-logo-tile__stage--cream ds-usage-example__stage--stretch" aria-hidden="true">
+                <img src="logos/SVG/R%26F_Logo.svg" alt="" />
+              </div>
+              <p class="ds-usage-example__note">Don’t stretch, squash, rotate, or add effects.</p>
+            </div>
+          </div>
+        </article>
+        <article class="ds-usage-card">
+          <h4 class="ds-usage-card__title">Contrast</h4>
+          <div class="ds-usage-pair">
+            <div class="ds-usage-example">
+              <span class="pill pill--green">Good</span>
+              <div class="ds-usage-example__stage ds-logo-tile__stage--ink">
+                <img src="logos/SVG/R%26F_Logo_Flat_White.svg" alt="" />
+              </div>
+              <p class="ds-usage-example__note">Flat white mark on a dark field.</p>
+            </div>
+            <div class="ds-usage-example">
+              <span class="pill pill--danger">Bad</span>
+              <div class="ds-usage-example__stage ds-logo-tile__stage--cream" aria-hidden="true">
+                <img src="logos/SVG/R%26F_Logo_Flat_White.svg" alt="" />
+              </div>
+              <p class="ds-usage-example__note">Don’t put a light mark on a light background.</p>
+            </div>
+          </div>
+        </article>
+        <article class="ds-usage-card">
+          <h4 class="ds-usage-card__title">Don’t invent a mark</h4>
+          <div class="ds-usage-pair">
+            <div class="ds-usage-example">
+              <span class="pill pill--green">Good</span>
+              <div class="ds-usage-example__stage ds-logo-tile__stage--cream">
+                <img src="logos/SVG/R%26F_Logo.svg" alt="" />
+              </div>
+              <p class="ds-usage-example__note">Use the official wordmark as provided.</p>
+            </div>
+            <div class="ds-usage-example">
+              <span class="pill pill--danger">Bad</span>
+              <div class="ds-usage-example__stage ds-logo-tile__stage--cream ds-usage-example__stage--invent" aria-hidden="true">
+                <img src="logos/icons/R%26F_Icon_1000px.svg" alt="" class="ds-usage-invent-icon" />
+                <span class="ds-usage-invent-type">Roots &amp; Fruit</span>
+              </div>
+              <p class="ds-usage-example__note">Don’t retype the name or recolor the canopy.</p>
+            </div>
+          </div>
+        </article>
+      </div>
+
+      <h3 class="ds-h3">Name &amp; copy</h3>
+      <table class="ds-term-table">
+        <tbody>
+          <tr>
+            <th>Official name</th>
+            <td>Roots &amp; Fruit</td>
+          </tr>
+          <tr>
+            <th>Short</th>
+            <td>R&amp;F <span class="text-muted">(fine in tight UI; prefer the full name in sentences)</span></td>
+          </tr>
+          <tr>
+            <th>Website</th>
+            <td><a class="link-text" href="https://rootsandfruit.com/">https://rootsandfruit.com/</a></td>
+          </tr>
+        </tbody>
+      </table>
+
+      <p class="ds-caption" style="margin-top:var(--rf-space-4)">Pasteable description</p>
+      <div class="rf-code" style="margin-top:var(--rf-space-2)">
+        <div class="rf-code__chrome">
+          <div class="rf-code__dots" aria-hidden="true"><span></span><span></span><span></span></div>
+          <button type="button" class="rf-code__copy" data-rf-copy aria-label="Copy description">
+            <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2" aria-hidden="true">
+              <path stroke-linecap="round" stroke-linejoin="round" d="M16.5 8.25V6A2.25 2.25 0 0014.25 3.75H6A2.25 2.25 0 003.75 6v8.25A2.25 2.25 0 006 16.5h2.25m8.25-8.25H18A2.25 2.25 0 0120.25 10.5V18A2.25 2.25 0 0118 20.25h-7.5A2.25 2.25 0 018.25 18v-1.5m8.25-8.25h-6A2.25 2.25 0 008.25 10.5v6" />
+            </svg>
+          </button>
+        </div>
+        <pre class="rf-code__body"><code>Roots &amp; Fruit is Matt Cromwell’s practice for WordPress operators and product teams: clear strategy, practical systems, and work that holds up in the real world.</code></pre>
+      </div>
+
+      <p class="ds-caption">One-liner</p>
+      <div class="rf-code" style="margin-top:var(--rf-space-2)">
+        <div class="rf-code__chrome">
+          <div class="rf-code__dots" aria-hidden="true"><span></span><span></span><span></span></div>
+          <button type="button" class="rf-code__copy" data-rf-copy aria-label="Copy one-liner">
+            <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2" aria-hidden="true">
+              <path stroke-linecap="round" stroke-linejoin="round" d="M16.5 8.25V6A2.25 2.25 0 0014.25 3.75H6A2.25 2.25 0 003.75 6v8.25A2.25 2.25 0 006 16.5h2.25m8.25-8.25H18A2.25 2.25 0 0120.25 10.5V18A2.25 2.25 0 0118 20.25h-7.5A2.25 2.25 0 018.25 18v-1.5m8.25-8.25h-6A2.25 2.25 0 008.25 10.5v6" />
+            </svg>
+          </button>
+        </div>
+        <pre class="rf-code__body"><code>Clear strategy and practical systems for WordPress operators and product teams.</code></pre>
+      </div>
+
+      <h3 class="ds-h3">Permission &amp; contact</h3>
+      <div class="rf-prose">
+        <p>
+          You may use these logos to identify Roots &amp; Fruit as a partner, sponsor, speaker, or featured brand,
+          as long as the usage rules above are followed and the mark is not altered.
+          For anything else (co-branded campaigns, merchandise, or questions), email
+          <a class="link-text" href="mailto:matt@rootsandfruit.com">matt@rootsandfruit.com</a>.
+        </p>
+      </div>
+      <div class="alert alert--note" role="note" style="margin-top:var(--rf-space-4);margin-bottom:0">
+        <strong>Need more assets?</strong>
+        Icons, profile crops, colors, and type live in the other sections of this design system
+        (<a class="link-text" href="#logos" data-ds-tab="logos">Logos &amp; icons</a>).
+      </div>
+    </section>
+
     <section class="ds-panel" id="logos" role="tabpanel" aria-labelledby="tab-logos" hidden>
       <h2 id="logos-title">Logos &amp; icons</h2>
       <p class="ds-lede">
@@ -82,6 +296,8 @@
         title slides, and signed brand moments. The stand-alone tree icon is for tight spaces where the name
         already appears nearby, or where only a square badge will fit. Prefer SVG for screens; use the PNG
         exports when a host requires raster (social uploads, email clients, some CMS media libraries).
+        Partners and sponsors looking for a short logo pack should start with the
+        <a class="link-text" href="#media-kit" data-ds-tab="media-kit">Media Kit</a>.
       </p>
 
       <div class="ds-logo-rules">
