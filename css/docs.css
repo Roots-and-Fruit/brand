@@ -458,23 +458,26 @@ body {
 /* —— Logos & icons —— */
 .ds-logo-grid {
   display: grid;
-  grid-template-columns: repeat(auto-fill, minmax(16rem, 1fr));
+  grid-template-columns: repeat(auto-fill, minmax(18rem, 1fr));
   gap: var(--rf-space-4);
 }
 
 .ds-icon-grid {
   display: grid;
-  grid-template-columns: repeat(auto-fill, minmax(11rem, 1fr));
+  /* Wider than before (11rem) so meta + download row stay readable */
+  grid-template-columns: repeat(auto-fill, minmax(16.5rem, 1fr));
   gap: var(--rf-space-4);
 }
 
 .ds-logo-tile {
+  margin: 0;
   border: 1px solid var(--rf-rule);
   border-radius: var(--rf-radius);
   overflow: hidden;
   background: var(--rf-white);
   display: flex;
   flex-direction: column;
+  min-width: 0;
 }
 
 .ds-logo-tile__stage {
@@ -501,20 +504,25 @@ body {
 }
 
 .ds-logo-tile--icon .ds-logo-tile__stage {
-  min-height: 9.5rem;
+  min-height: 10.5rem;
+  padding: var(--rf-space-6);
 }
 
 .ds-logo-tile--icon .ds-logo-tile__stage img {
-  max-height: 5.5rem;
-  max-width: 5.5rem;
+  max-height: 6.5rem;
+  max-width: 6.5rem;
 }
 
 .ds-logo-tile__meta {
-  padding: 0.75rem 0.9rem 0.95rem;
+  padding: 0.85rem 1rem 1rem;
   border-top: 1px solid var(--rf-rule);
   background: var(--rf-white);
   font-size: var(--rf-text-sm);
-  line-height: 1.4;
+  line-height: 1.45;
+  display: flex;
+  flex-direction: column;
+  flex: 1;
+  min-width: 0;
 }
 
 .ds-logo-tile__meta strong {
@@ -524,20 +532,29 @@ body {
   font-weight: 600;
   color: var(--rf-ink);
   letter-spacing: -0.01em;
-  margin-bottom: 0.2rem;
+  margin-bottom: 0.25rem;
 }
 
-.ds-logo-tile__meta code {
+.ds-logo-tile__meta > code {
   display: block;
   font-family: var(--rf-font-mono);
-  font-size: var(--rf-text-sm);
+  font-size: 0.78rem;
   color: var(--rf-ink-muted);
-  word-break: break-all;
-  margin-bottom: 0.35rem;
+  overflow-wrap: anywhere;
+  word-break: break-word;
+  margin-bottom: 0.4rem;
 }
 
-.ds-logo-tile__meta span {
+.ds-logo-tile__meta > span {
   color: var(--rf-ink-soft);
+  flex: 1;
+}
+
+/* Specimen card chrome only — layout/buttons come from CDS (.rf-stack, .rf-cluster, .btn--sm). */
+.ds-logo-tile__downloads {
+  margin-top: var(--rf-space-3);
+  padding-top: var(--rf-space-3);
+  border-top: 1px solid var(--rf-rule);
 }
 
 /* —— Profile / tile mocks —— */

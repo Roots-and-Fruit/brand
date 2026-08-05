@@ -27,8 +27,8 @@ colors:
   info: "#1a5276"
   info-soft: "#d6e6f2"
   blue-muted: "#b8d0e4"
-  danger: "#b42318"
-  danger-soft: "#f8e4e2"
+  danger: "#ad3a22"
+  danger-soft: "#f7e4dc"
   on-primary: "#ffffff"
   on-info: "#ffffff"
   on-tertiary: "#1a1a1a"
@@ -161,6 +161,10 @@ components:
     textColor: "{colors.secondary}"
     rounded: "{rounded.pill}"
     padding: 0.45rem 0.65rem
+  button-sm:
+    rounded: "{rounded.pill}"
+    padding: 0.28rem 0.7rem
+    # 14px control label — denser than body-sm; not a type-scale step
   button-product:
     backgroundColor: "{colors.blue-nav}"
     textColor: "{colors.on-info}"
@@ -300,7 +304,7 @@ Semantic roles (use these names in reasoning; hex values are in front matter):
 | Code fg | `code-fg` | `#3d5c4e` | Default monospace / syntax base (moss-teal) |
 | Code label border | `code-label-border` | `rgba(44, 41, 34, 0.28)` | Outline for `.inline-label` / `.rf-inline-label` |
 | Info | `info` | `#1a5276` | Product nav / informational UI only |
-| Danger | `danger` | `#b42318` | Errors and destructive states |
+| Danger | `danger` | `#ad3a22` | Errors and destructive states (brick, not fire-engine — stays in the warm family) |
 
 Rules:
 - Default stack: `neutral` background + `ink` / `ink-deep` text + `primary` for interaction
@@ -361,21 +365,25 @@ Do not introduce 500 or 800. Prefer semibold before bold for UI chrome.
 - Display title → following lead: at least `--rf-space-5` below the title (docs default).
 - Body paragraphs: `.rf-prose` paragraph gap `--rf-space-5`, or a parent `.rf-stack`.
 - Meta eyebrow → title: tight (`space-2`–`space-3`); large air belongs *under* the title.
-- Measure: `--rf-measure` (`60ch`) on reading lines; tracking meta `--rf-tracking-meta` (`0.06em`) for uppercase eyebrows.
+- Measure: `--rf-measure` (`60ch`) on reading lines for articles and marketing; tracking meta `--rf-tracking-meta` (`0.06em`) for uppercase eyebrows.
+- Analytical HTML reports (`rf-html-report`): use `.rf-prose--wide` (or report `.prose-block`) at `--rf-measure-report` (`64ch`) and `body-lg` (`--rf-text-lg`). Larger type makes each `ch` wider, so the measured column fills more of the shell without abandoning measure.
+- Tool/product UI: prefer `--rf-content-max` for the shared column; do not nest article measure inside a wider card.
 - Do not mix ad-hoc vertical margins with `.rf-stack` gap on the same children.
 
 Roles:
 - `display-*` = Knile hierarchy (xl → sm) with display/snug leading
-- `body-lg` = short lead (`--rf-text-lg`)
+- `body-lg` = short lead (`--rf-text-lg`); also report narrative with `--rf-measure-report`
 - `body-md` = default reading (`--rf-text-md`)
 - `body-sm` / `label` / `meta` = compact UI at `sm` (16px)
 - `meta` = uppercase eyebrows at `sm` + bold + meta tracking
 
 Optical rules (size scales alone will not fix these):
-- Constrain reading columns with `--rf-measure` (`60ch`), not only the layout shell (`--rf-max`)
-- Use `.rf-prose` for long-form: measure + `body-md` + body leading
+- Constrain reading columns with a `ch` measure, not only the layout shell (`--rf-max`)
+- Use `.rf-prose` for long-form articles: `--rf-measure` (`60ch`) + `body-md` + body leading
+- Use `.rf-prose--wide` in analytical reports: `--rf-measure-report` (`64ch`) + `body-lg` so narrative feels balanced next to full-shell tables
 - Inside callouts, use `--rf-leading-callout` and generous padding
 - Do not rely on fluid viewport type alone to “fix” readability
+- Do not drop measure to “full shell” for report prose; widen measure and type instead
 
 Rules:
 - Do not introduce Inter, Roboto, Arial, system-ui-only stacks, or a third display font
@@ -392,7 +400,8 @@ Principles drawn from *Every Layout* (Pickering & Bell): clarity and stability c
 
 ### Axioms
 
-- **Measure:** no line of text should exceed `--rf-measure` (`60ch`). Use `ch`, never a fixed `px` width, so measure tracks font-size. Flow text is capped; structural shells (`html`, `body`, `main`, nav, generic wrappers) are not.
+- **Measure:** no line of narrative text should exceed its measure token. Use `ch`, never a fixed `px` width, so measure tracks font-size. Articles and marketing use `--rf-measure` (`60ch`). Analytical HTML reports use `--rf-measure-report` (`64ch`) at `body-lg` so the column is physically wider next to full-shell tables while staying measure-constrained. Structural shells (`html`, `body`, `main`, nav, generic wrappers) are not capped by measure.
+- **Tool / product columns:** dashboards and task UIs (Phloem, plugin chrome) use a shared content shell `--rf-content-max` (`52rem`) so title, chrome, and body share one right edge. Do **not** nest `--rf-measure` on paragraphs inside a wider surface of the same component (that pinches copy next to full-width cards). Prefer shell-led width for tools; keep `ch` measure for article and report prose.
 - **Suggestion over prescription:** prefer `max-inline-size`, `min-block-size`, `gap`, and `flex-basis` over fixed `width`/`height`. Avoid data loss from overflow.
 - **One space ratio:** `--rf-ratio` (`1.5`) seeds modular space from `1rem` (`spacing.4` / s0). Larger steps (`5`–`8`) multiply by the ratio. Fine UI steps `1`–`3` stay below s0 for chrome only.
 - **Boxes:** global `border-box`; logical properties (`margin-block`, `padding-inline`, `max-inline-size`); reading columns may use `content-box` so `ch` measures text, not padding. See also [Every Layout · Boxes](https://every-layout.dev/rudiments/boxes/).
@@ -405,6 +414,7 @@ Principles drawn from *Every Layout* (Pickering & Bell): clarity and stability c
 | `.rf-center` | Centered column at `--rf-measure`. Optional `.rf-center--gutter` for inline padding. |
 | `.rf-cluster` | Wrapping horizontal group (buttons, pills) with even `gap`. |
 | `.rf-prose` | Long-form type + measure (see Typography). |
+| `.rf-prose--wide` | Report long-form: `--rf-measure-report` (`64ch`) + `body-lg`. Wider measured column for analytical HTML reports; not the default for marketing articles. |
 
 Shell / product chrome may still use grids and sidebars (this docs page’s `.ds-shell` is a sidebar composition). Prefer Stack + Center for article-like content.
 
@@ -415,7 +425,9 @@ Hierarchy:
 - Avoid dashboard clutter on brand/marketing surfaces (no stat strips, pill clusters, or competing callout stacks in the first viewport)
 
 Page shell:
-- `--rf-max` (~56rem) may wrap sidebars and specimens; paragraphs still obey `--rf-measure`
+- `--rf-max` (~56rem) may wrap sidebars and specimens; article paragraphs obey `--rf-measure`
+- `--rf-content-max` (~52rem) wraps tool/product reading columns (task detail, similar app views) when chrome and prose should share one edge
+- Analytical reports: body prose uses `.rf-prose--wide` (`64ch` + `body-lg`); tables and charts may still span the full shell
 - Marketing heroes may go full-bleed for atmosphere; text blocks keep measure
 
 Breakpoints (practical defaults):
@@ -441,13 +453,13 @@ Corner radii:
 
 Buttons are pills by default. Do not mix sharp 0-radius chrome with pill buttons in the same view unless documenting a deliberate exception.
 
-Chart / meta accents (shared with presentations): `--rf-orange-deep` for meta text; `--rf-chart-1`…`--rf-chart-4` (green-deep · orange · blue · brown) for multi-series charts. Do not build segments from adjacent soft greens.
+Chart / meta accents (shared with presentations): `--rf-orange-deep` for meta text; `--rf-chart-1`…`--rf-chart-4` (green-deep · orange · blue · brown) for multi-series charts. Do not build segments from adjacent soft greens. HTML report bar geometry (single series vs paired dual-metric rows; never two series on one baseline) is owned by the `rf-html-report` skill, not by these tokens.
 
 Focus ring: soft green halo (`0 0 0 3px` color-mix of primary at ~35% opacity). Never remove focus styles.
 
 ## Components
 
-Implement with these behaviors. Class names in this repo: `.btn`, `.input`, `.surface`, `.alert` (including `.alert--note`), `.pill`, plus layout primitives `.rf-stack` / `.rf-center` / `.rf-cluster` / `.rf-prose` (see `css/components.css`, `css/layouts.css`).
+Implement with these behaviors. Class names in this repo: `.btn`, `.input`, `.surface`, `.alert` (including `.alert--note`), `.pill`, `.rf-disclosure`, plus layout primitives `.rf-stack` / `.rf-center` / `.rf-cluster` / `.rf-prose` (see `css/components.css`, `css/disclosure.css`, `css/layouts.css`).
 
 **Buttons**
 - `button-primary` (`.btn--primary`): default main action (moss). One primary per section/view on marketing or mixed surfaces.
@@ -455,6 +467,7 @@ Implement with these behaviors. Class names in this repo: `.btn`, `.input`, `.su
 - `button-tertiary`: outlined green for low-emphasis actions.
 - `button-cta`: orange fill with dark ink text for contrast; at most one high-stakes CTA on a view (Book, Pay, Submit final). Do not use white text on orange. Hover lightens toward cream (`85%` orange / `15%` cream) so contrast improves; do not darken with brown.
 - `button-ghost`: text-like dismissal / tertiary navigation.
+- `button-sm` (`.btn--sm`): compact control size for cards, toolbars, and download rows. Compose with a color variant (e.g. `.btn--tertiary.btn--sm`). Keeps the pill radius; uses denser padding and a 14px control label (not a new body type-scale step — still no `xs` in the type ramp).
 - `button-product` (`.btn--product`): **product UI only** — filled info blue (`blue-nav`) with white text. Use for selected app nav, board switches, and primary in-tool actions inside dashboards (Phloem, plugin chrome, ops boards). Signals “you’re in the product,” not a marketing pitch. Do not use on marketing heroes or as a brand CTA.
 - `button-product-quiet` (`.btn--product-quiet`): idle product nav chrome (white + soft border). Hover tints toward info blue; selected state uses `aria-current="page"`, `aria-pressed="true"`, or `.is-active` and matches `button-product` fill.
 - In a product nav cluster, prefer quiet siblings + one current product fill — not a row of filled blue buttons.
@@ -474,6 +487,7 @@ Implement with these behaviors. Class names in this repo: `.btn`, `.input`, `.su
 - Default `.pill`: panel fill + ink
 - `.pill--active` / `.pill.is-active`: selected state (`pill-active` in front matter)
 - `.pill--green`: same soft-green recipe as active (status “success / in play”)
+- Pills are **single-line chips**: `white-space: nowrap` and `flex-shrink: 0` (see `elements.css`). Keep labels short (about 1–3 words or a compact metric). In flex headers next to titles, allow the row to wrap (`flex-wrap: wrap`) so a tight card moves the pill below as a full chip instead of squeezing it into a tall oval.
 - Filled moss buttons use `on-primary`, not bare `ink`
 
 **Surfaces**
@@ -486,8 +500,12 @@ Implement with these behaviors. Class names in this repo: `.btn`, `.input`, `.su
 **Key takeaways** (`.rf-takeaways` / `ol.rf-keytakeaways`)
 - Knile title in `primary` green (“Key Takeaways”)
 - Ordered items with 2px `tertiary` left rule, zero-padded numbers (`01`, `02`) in orange, body in `ink`
+- Optional lead line: `<strong>` as the first child of each `li` (renders as a block title above the body). Do not put title and body in separate grid columns.
 - Use in article sidebars or after the intro; keep to a short list (about 3–5 items)
 - Do not restyle as bullets, pills, or icon rows
+
+**Tables** (`.table-wrap` + `table.rf-table`)
+- Every `th` and `td` is **left-aligned** (see `elements.css`). Do not right-align numeric columns (volume, CPC, counts) in R&F analytical reports or brand UI unless a product surface explicitly needs accounting-style columns.
 
 **Code**
 - Inline `code` (quiet): warm `code-bg`, moss-teal `code-fg`, **no border** — for terms in sentence flow (`write-a-skill`, short flags)
@@ -503,15 +521,26 @@ Implement with these behaviors. Class names in this repo: `.btn`, `.input`, `.su
 - `alert-note` (`.alert--note`): instructional how-to / guidance on `panel-soft` with a moss left rule — not a status message
 - Spinner for indeterminate wait; progress bar only when percent is known
 
+**Disclosure** (`.rf-disclosure` in `css/disclosure.css`)
+- One expandable section via native `<details>` / `<summary>` (a11y name: disclosure). Prefer this over custom accordion JS for a single panel.
+- Closed: bordered white box, meta-style uppercase label, leaf caret pointing right
+- Open: cream panel with generous padding; leaf rotates to point down
+- Summary label uses meta tracking; slight size nudge on hover / open is allowed
+- Leaf mark: `icons/leaf-arrow.svg` (Streamline Sharp geometry, CC BY 4.0, CDS greens). Tip is top-right at rest; CSS rotates +45° (closed → right) and +135° (open → down). Not the tree wordmark.
+- Use for secondary background (context, sources, footnotes) that should stay out of the way. Do not hide the primary action or completion test behind a disclosure.
+- An “accordion” (coordinated group, one-open-at-a-time) is out of scope for this primitive; stack independent `.rf-disclosure` elements when several sections collapse.
+
 **Brand assets (non-token but mandatory)**
 - Wordmark vs tree icon: wordmark when naming the brand; tree icon for favicons, avatars, tight badges
+- **Default wordmark (hard stop):** when Matt says “the logo,” “full logo,” “full wordmark,” “R&F logo,” or similar without naming a variant, use **`logos/SVG/R&F_Logo.svg`** — the multi-tone full-color canopy on cream/light. On dark fields, default to **`logos/SVG/R&F_Logo_DarkBG.svg`**. Do **not** default to `*_Flat_Color_*` (mono moss / simplified) or flat black/white. Flat / mono variants only when he explicitly asks for flat, mono, one-color, or small-size simplification.
+- UI caret leaf: `icons/leaf-arrow.svg` for disclosures and similar expand/collapse chrome (see Disclosure)
 - Illustrations (`illustrations/roots-1.svg`, `illustrations/apples-1.svg`): atmosphere only. Use tokens `--rf-atmosphere` (≈0.10), `--rf-atmosphere-quiet` (≈0.065 under dense title/hero text), `--rf-atmosphere-spot` (≈0.45 for apples). Utilities: `.rf-atmosphere`, `.rf-atmosphere--quiet`, `.rf-atmosphere--spot`. When small copy sits on roots, prefer `.rf-lede-over-atmosphere` (Nunito 600 + `--rf-ink-muted`) before frosting or further dimming art. One watermark per surface. Never treat illustrations as logos or links.
 - Prefer SVG for on-screen marks; PNG profile/square exports for host uploads that require raster
 
 **Presentations (PDS layer on CDS)**
 - One design system: CDS owns tokens here; the presentation layer (`/rf-reveal`) owns Pitch layouts and reveal.js chrome
 - PDS vendors `css/tokens.css` via `sync-cds-tokens.ps1` (`cds-tokens.css`); do not invent parallel hex, opacities, or lede weights in the deck
-- Presentations pick a PDS **layout id** first, then compose elements from this package (surfaces, quiet `rf-table`, buttons/pills, `code` / `.inline-label`, `.rf-code`). Element-kit gallery slides are operator QA only — not client layout ids (`/rf-reveal` · `REFERENCE.md`)
+- Presentations pick a PDS **layout id** first, then compose elements from this package (surfaces, quiet `rf-table`, buttons/pills, `code` / `.inline-label`, `.rf-code`). Element-kit gallery slides are operator QA only — not client layout ids (`/rf-reveal` · `company-docs/03-Marketing (CMO)/social/pds/REFERENCE.md`). Vertical social: open `company-docs/03-Marketing (CMO)/social/AGENTS.md` · templates `…/social/templates/` · forks `…/social/presentations/` · `/rf-shorts-li` · `/rf-shorts-yt`
 - Same color/type language; more whitespace; fixed slide canvas is fine
 - One atmosphere treatment per slide; do not stack watermarks
 
@@ -534,6 +563,7 @@ Implement with these behaviors. Class names in this repo: `.btn`, `.input`, `.su
 - Don't use pure black (`#000`) or pure white as the default page wash
 - Don't invent new hex values when a token exists
 - Don't use illustrations as logos, or logos as decorative watermarks at full opacity
+- Don't substitute `*_Flat_Color_*` or flat mono wordmarks when “full logo” / default brand mark is requested — use `R&F_Logo.svg` (light) or `R&F_Logo_DarkBG.svg` (dark)
 - Don't add drop shadows, outlines, recolors, or stretch transforms to official logo files
 - Don't build dense marketing heroes with stats, chip rows, and multiple competing CTAs
 - Don't remove focus indicators
@@ -547,6 +577,8 @@ Implement with these behaviors. Class names in this repo: `.btn`, `.input`, `.su
 - Don't introduce an `xs` size or any readable text below `sm` (16px)
 - Don't invent parallel layout utilities when `.rf-stack`, `.rf-center`, or `.rf-cluster` already fit
 - Don't set paragraph measure in `px`; use `--rf-measure` (`ch`)
+- Don't nest `--rf-measure` on prose inside a wider tool surface; use `--rf-content-max` for the shared column instead
+- Don't hide primary next actions inside `.rf-disclosure`
 - Don't fake Knile italic or add font weights outside 400 / 600 / 700
 - Don't commit Knile WOFF/WOFF2 binaries to any public GitHub repo (`brand`, `slides`, or forks). Host Knile only on rootsandfruit.com (`/wp-content/uploads/rnf_assets/fonts/`); load via absolute URL in `css/fonts.css` / PDS `tokens.css`. Offline/file opens may fall back to Georgia.
 

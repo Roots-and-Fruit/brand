@@ -1,0 +1,17 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" aria-hidden="true">
+  <!--
+    UI caret leaf  Streamline Sharp leaf geometry (CC BY 4.0), recolored to CDS greens.
+    Natural tip points top-right (~45deg). For disclosures: rotate +45deg (right) / +135deg (down).
+    Not the R&F tree wordmark. Source path: Iconify streamline-sharp:leaf
+  -->
+  <path
+    fill="#9aaf86"
+    d="M5.717 18.283c3.694 3.694 9.767 3.61 13.564-.187L22 2L5.903 4.719c-3.797 3.797-3.88 9.87-.186 13.564"
+  />
+  <path
+    stroke="#4b5e2e"
+    stroke-width="2.25"
+    stroke-linecap="round"
+    d="M2 22L11.5 12.5"
+  />
+</svg>

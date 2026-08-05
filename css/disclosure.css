@@ -1,0 +1,113 @@
+/* Roots & Fruit — disclosure (single expandable section).
+   Native <details>/<summary>. Prefer this over inventing accordion JS.
+   Load after tokens.css. Tip of icons/leaf-arrow.svg is top-right at rest. */
+
+.rf-disclosure {
+  --rf-disclosure-label: 0.8rem;
+  --rf-disclosure-leaf: 1rem;
+  --rf-disclosure-motion: 0.28s ease;
+  margin-block: var(--rf-space-5) 0;
+  margin-inline: 0;
+  border: 1.5px solid var(--rf-cream-deep);
+  border-radius: var(--rf-radius);
+  background: var(--rf-white);
+  overflow: clip;
+}
+
+.rf-disclosure + .rf-disclosure {
+  margin-block-start: var(--rf-space-3);
+}
+
+.rf-disclosure__summary {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: var(--rf-space-3);
+  list-style: none;
+  cursor: pointer;
+  min-block-size: calc(var(--rf-space-3) * 2 + var(--rf-text-sm) * var(--rf-leading-ui));
+  padding-block: var(--rf-space-3);
+  padding-inline: var(--rf-space-4);
+  box-sizing: border-box;
+  font-family: var(--rf-font-sans);
+  color: var(--rf-ink);
+}
+
+.rf-disclosure__summary:hover,
+.rf-disclosure__summary:focus-visible,
+.rf-disclosure[open] > .rf-disclosure__summary {
+  --rf-disclosure-label: 0.9rem;
+  --rf-disclosure-leaf: 1.1rem;
+}
+
+.rf-disclosure__summary::-webkit-details-marker {
+  display: none;
+}
+
+.rf-disclosure__summary::marker {
+  content: '';
+}
+
+.rf-disclosure__label {
+  font-size: var(--rf-disclosure-label);
+  font-weight: var(--rf-weight-bold);
+  letter-spacing: var(--rf-tracking-meta);
+  text-transform: uppercase;
+  color: var(--rf-ink-muted);
+  line-height: var(--rf-leading-ui);
+  transition:
+    font-size var(--rf-disclosure-motion),
+    color 0.2s ease;
+}
+
+.rf-disclosure__icon {
+  flex-shrink: 0;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  /* Asset tip is top-right; +45° → right (closed), +135° → down (open) */
+  transform: rotate(45deg);
+  transition: transform var(--rf-disclosure-motion);
+}
+
+.rf-disclosure[open] > .rf-disclosure__summary .rf-disclosure__icon {
+  transform: rotate(135deg);
+}
+
+.rf-disclosure__leaf {
+  display: block;
+  inline-size: var(--rf-disclosure-leaf);
+  block-size: var(--rf-disclosure-leaf);
+  transition:
+    inline-size var(--rf-disclosure-motion),
+    block-size var(--rf-disclosure-motion),
+    width var(--rf-disclosure-motion),
+    height var(--rf-disclosure-motion);
+}
+
+.rf-disclosure__summary:hover .rf-disclosure__label,
+.rf-disclosure__summary:focus-visible .rf-disclosure__label,
+.rf-disclosure[open] > .rf-disclosure__summary .rf-disclosure__label {
+  color: var(--rf-ink);
+}
+
+.rf-disclosure__summary:focus-visible {
+  outline: 2px solid var(--rf-blue);
+  outline-offset: -2px;
+}
+
+.rf-disclosure__panel {
+  padding-block: var(--rf-space-5) var(--rf-space-6);
+  padding-inline: var(--rf-space-5);
+  background: var(--rf-cream);
+  border-block-start: 1px solid var(--rf-cream-deep);
+  color: var(--rf-ink);
+}
+
+.rf-disclosure__panel > :first-child {
+  margin-block-start: 0;
+}
+
+.rf-disclosure__panel > :last-child {
+  margin-block-end: 0;
+}
