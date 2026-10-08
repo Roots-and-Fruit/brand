@@ -7,3 +7,8 @@ _el-*
 # Knile is licensed for R&F properties; load from rootsandfruit.com (not this repo)
 fonts/knile-*.woff2
 fonts/knile-*.woff
+
+node_modules/
+test-results/
+.playwright-cli/
+playwright-report/

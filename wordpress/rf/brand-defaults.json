@@ -1,0 +1,8 @@
+{
+  "$comment": "Generated from brand.json. Theme seeds Site Title / Tagline on first run, and when those options still match the last seed. Do not edit.",
+  "name": "Roots & Fruit",
+  "tagline": "",
+  "mark": "assets/mark.svg",
+  "logo": "assets/logos/R&F_Logo.svg",
+  "dark_logo": "assets/logos/R&F_Logo_DarkBG.svg"
+}

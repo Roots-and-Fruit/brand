@@ -12,7 +12,7 @@ body {
 .ds-shell {
   --ds-brand-text-inset: calc(1.75rem + var(--rf-space-3)); /* logo width + gap; aligns with “Design System” */
   display: grid;
-  grid-template-columns: 18.5rem minmax(0, 1fr);
+  grid-template-columns: 20.5rem minmax(0, 1fr);
   min-height: 100vh;
 }
 
@@ -68,17 +68,23 @@ body {
 .ds-nav {
   display: flex;
   flex-direction: column;
-  gap: var(--rf-space-1);
+  gap: var(--rf-space-4);
   padding-left: var(--ds-brand-text-inset);
 }
 
-.ds-nav button {
-  appearance: none;
-  font: inherit;
-  text-align: left;
-  cursor: pointer;
-  border: 0;
-  background: transparent;
+.ds-nav__group {
+  display: flex;
+  flex-direction: column;
+  gap: var(--rf-space-1);
+}
+
+.ds-nav a {
+  text-decoration: none;
+}
+
+.ds-nav__page,
+.ds-nav__sub a {
+  display: block;
   color: var(--rf-ink-muted);
   font-size: var(--rf-text-sm);
   font-weight: var(--rf-weight-semibold);
@@ -87,25 +93,66 @@ body {
   transition: background 0.12s ease, color 0.12s ease;
 }
 
-.ds-nav button:hover {
+.ds-nav__page--group {
+  font-weight: var(--rf-weight-bold);
+  letter-spacing: var(--rf-tracking-meta);
+  text-transform: uppercase;
+  color: var(--rf-ink-soft);
+}
+
+.ds-nav__sub {
+  display: flex;
+  flex-direction: column;
+  gap: 0;
+  margin: 0;
+  padding-left: var(--rf-space-3);
+}
+
+.ds-nav__sub a {
+  padding-block: var(--rf-space-1);
+}
+
+.ds-nav__page:hover,
+.ds-nav__sub a:hover {
   color: var(--rf-green-deep);
   background: var(--rf-green-soft);
 }
 
-.ds-nav button[aria-selected="true"] {
+.ds-nav__page[aria-current="page"] {
   color: var(--rf-green-deep);
   background: var(--rf-green-soft);
   font-weight: var(--rf-weight-bold);
 }
 
-.ds-nav button:focus-visible {
-  box-shadow: var(--rf-focus);
+.ds-nav__sub a[aria-current="location"] {
+  color: var(--rf-green-deep);
+  font-weight: var(--rf-weight-bold);
 }
 
 .ds-content {
+  container-type: inline-size;
+  --ds-pad-start: var(--rf-space-7);
+  --ds-pad-end: var(--rf-space-6);
   min-width: 0;
+  overflow-x: clip;
   padding-block: var(--rf-space-6) var(--rf-space-8);
-  padding-inline: var(--rf-space-7) var(--rf-space-6);
+  padding-inline: var(--ds-pad-start) var(--ds-pad-end);
+}
+
+/* The stripe fills this pane, from the sidebar to the window, and the
+   words stay in the same column as the rest of the tab. */
+.ds-content .rf-wash {
+  width: calc(100cqi + var(--ds-pad-start) + var(--ds-pad-end));
+  max-inline-size: none;
+  margin-inline: 0;
+  margin-inline-start: calc(var(--ds-pad-start) * -1);
+  padding-inline: var(--ds-pad-start) var(--ds-pad-end);
+}
+
+.ds-content .rf-wash__inner {
+  width: min(100%, var(--rf-max));
+  margin-inline: 0;
+  padding-inline: 0;
 }
 
 .ds-content__inner {
@@ -116,13 +163,45 @@ body {
   display: none !important;
 }
 
+.ds-panel > .ds-section {
+  scroll-margin-top: var(--rf-space-5);
+}
+
+.ds-panel > .ds-section + .ds-section {
+  margin-top: var(--rf-space-8);
+  padding-top: var(--rf-space-7);
+  border-top: 1px solid var(--rf-rule);
+}
+
+#buttons,
+#forms {
+  scroll-margin-top: var(--rf-space-5);
+}
+
+.ds-section > h2:not(.ds-h2) {
+  font-family: var(--rf-font-serif);
+  font-size: var(--rf-text-2xl);
+  font-weight: var(--rf-weight-bold);
+  letter-spacing: var(--rf-tracking-display);
+  margin-block: var(--rf-space-6) var(--rf-space-3);
+  margin-inline: 0;
+  color: var(--rf-ink-deep);
+  line-height: var(--rf-leading-display);
+  box-sizing: content-box;
+  max-inline-size: var(--rf-measure);
+}
+
+.ds-section > h2:not(.ds-h2):first-child {
+  margin-block-start: 0;
+}
+
 .ds-panel > h2:not(.ds-h2),
 .ds-hero h1 {
   font-family: var(--rf-font-serif);
   font-size: var(--rf-text-3xl);
   font-weight: var(--rf-weight-bold);
   letter-spacing: var(--rf-tracking-display);
-  margin-block: 0 var(--rf-space-5);
+  margin-block: 0 var(--rf-space-3);
   margin-inline: 0;
   color: var(--rf-ink-deep);
   line-height: var(--rf-leading-display);
@@ -136,7 +215,8 @@ body {
 }
 
 @media (max-width: 800px) {
-  .ds-panel > h2:not(.ds-h2) {
+  .ds-panel > h2:not(.ds-h2),
+  .ds-section > h2:not(.ds-h2) {
     font-size: var(--rf-text-2xl);
   }
 
@@ -175,21 +255,52 @@ body {
 
   .ds-nav {
     flex-direction: row;
-    flex-wrap: nowrap;
-    overflow-x: auto;
+    flex-wrap: wrap;
+    gap: var(--rf-space-2);
+    padding-left: 0;
+    padding-bottom: 0;
+  }
+
+  .ds-nav__group {
+    display: contents;
+  }
+
+  .ds-nav__page {
+    white-space: nowrap;
+    flex: 0 0 auto;
+  }
+
+  .ds-nav__sub {
+    display: none;
+    flex: 1 0 100%;
+    flex-direction: row;
     gap: var(--rf-space-1);
+    order: 1;
+    overflow-x: auto;
     padding-left: 0;
     padding-bottom: var(--rf-space-1);
     -webkit-overflow-scrolling: touch;
   }
 
-  .ds-nav button {
+  .ds-nav__group.is-current .ds-nav__sub {
+    display: flex;
+  }
+
+  .ds-nav__sub a {
     white-space: nowrap;
     flex: 0 0 auto;
   }
 
+  .ds-section,
+  #buttons,
+  #forms {
+    scroll-margin-top: 8rem;
+  }
+
   .ds-content {
-    padding: var(--rf-space-5) var(--rf-space-4) var(--rf-space-7);
+    --ds-pad-start: var(--rf-space-4);
+    --ds-pad-end: var(--rf-space-4);
+    padding: var(--rf-space-5) var(--ds-pad-end) var(--rf-space-7);
   }
 }
 
@@ -198,7 +309,7 @@ body {
   font-family: var(--rf-font-serif);
   font-size: var(--rf-text-xl);
   color: var(--rf-green);
-  margin-block: var(--rf-space-6) var(--rf-space-4);
+  margin-block: var(--rf-space-6) var(--rf-space-2);
   margin-inline: 0;
   letter-spacing: var(--rf-tracking-display);
   line-height: var(--rf-leading-display);
@@ -211,7 +322,7 @@ body {
 }
 
 .ds-caption {
-  margin: 0 0 var(--rf-space-4);
+  margin: 0 0 var(--rf-space-5);
   color: var(--rf-ink-muted);
   font-size: var(--rf-text-sm);
   max-inline-size: var(--rf-measure);
@@ -437,8 +548,15 @@ body {
 
 .ds-surface-grid {
   display: grid;
-  grid-template-columns: repeat(auto-fit, minmax(14rem, 1fr));
+  /* Four specimens: 2×2, never auto-fit 3+1 (grids are symmetrical by contract). */
+  grid-template-columns: repeat(2, minmax(0, 1fr));
   gap: var(--rf-space-4);
+}
+
+@media (max-width: 40rem) {
+  .ds-surface-grid {
+    grid-template-columns: 1fr;
+  }
 }
 
 .ds-footer {

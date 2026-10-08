@@ -7,8 +7,8 @@
   <link rel="preconnect" href="https://fonts.googleapis.com" />
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
   <link href="https://fonts.googleapis.com/css2?family=JetBrains+Mono:wght@400&family=Nunito+Sans:ital,wght@0,400;0,600;0,700;1,400;1,600;1,700&display=swap" rel="stylesheet" />
-  <link rel="stylesheet" href="css/rf.css?v=2026-08-05-media-kit" />
-  <link rel="stylesheet" href="css/docs.css?v=2026-08-05-media-kit" />
+  <link rel="stylesheet" href="css/rf.css?v=2026-10-05-proximity2" />
+  <link rel="stylesheet" href="css/docs.css?v=2026-10-05-proximity" />
 </head>
 <body>
   <div class="ds-shell">
@@ -20,26 +20,62 @@
         </a>
         <p class="ds-sidebar__subtitle">Design System</p>
       </div>
-      <nav class="ds-nav" role="tablist" aria-label="Design system sections" aria-orientation="vertical">
-        <button type="button" role="tab" id="tab-overview" aria-controls="overview" aria-selected="true" data-ds-tab="overview">Overview</button>
-        <button type="button" role="tab" id="tab-media-kit" aria-controls="media-kit" aria-selected="false" data-ds-tab="media-kit" tabindex="-1">Media Kit</button>
-        <button type="button" role="tab" id="tab-logos" aria-controls="logos" aria-selected="false" data-ds-tab="logos" tabindex="-1">Logos &amp; icons</button>
-        <button type="button" role="tab" id="tab-illustrations" aria-controls="illustrations" aria-selected="false" data-ds-tab="illustrations" tabindex="-1">Illustrations</button>
-        <button type="button" role="tab" id="tab-tokens" aria-controls="tokens" aria-selected="false" data-ds-tab="tokens" tabindex="-1">Color</button>
-        <button type="button" role="tab" id="tab-type" aria-controls="type" aria-selected="false" data-ds-tab="type" tabindex="-1">Typography</button>
-        <button type="button" role="tab" id="tab-space" aria-controls="space" aria-selected="false" data-ds-tab="space" tabindex="-1">Space &amp; shape</button>
-        <button type="button" role="tab" id="tab-buttons" aria-controls="buttons" aria-selected="false" data-ds-tab="buttons" tabindex="-1">Buttons</button>
-        <button type="button" role="tab" id="tab-forms" aria-controls="forms" aria-selected="false" data-ds-tab="forms" tabindex="-1">Forms</button>
-        <button type="button" role="tab" id="tab-feedback" aria-controls="feedback" aria-selected="false" data-ds-tab="feedback" tabindex="-1">Feedback</button>
-        <button type="button" role="tab" id="tab-data" aria-controls="data" aria-selected="false" data-ds-tab="data" tabindex="-1">Surfaces &amp; data</button>
-        <button type="button" role="tab" id="tab-patterns" aria-controls="patterns" aria-selected="false" data-ds-tab="patterns" tabindex="-1">Content patterns</button>
-        <button type="button" role="tab" id="tab-contract" aria-controls="contract" aria-selected="false" data-ds-tab="contract" tabindex="-1">Agent contract</button>
+      <nav class="ds-nav" aria-label="Design system sections">
+        <div class="ds-nav__group" data-ds-group="overview">
+          <a class="ds-nav__page" id="tab-overview" href="#overview">Overview</a>
+        </div>
+        <div class="ds-nav__group" data-ds-group="brand">
+          <a class="ds-nav__page ds-nav__page--group" id="tab-brand" href="#brand">Brand &amp; assets</a>
+          <div class="ds-nav__sub">
+            <a href="#media-kit">Media Kit</a>
+            <a href="#logos">Logos &amp; icons</a>
+            <a href="#illustrations">Illustrations</a>
+          </div>
+        </div>
+        <div class="ds-nav__group" data-ds-group="tokens">
+          <a class="ds-nav__page ds-nav__page--group" id="tab-tokens" href="#tokens">Tokens</a>
+          <div class="ds-nav__sub">
+            <a href="#color">Color</a>
+            <a href="#type">Typography</a>
+            <a href="#space">Space &amp; shape</a>
+          </div>
+        </div>
+        <div class="ds-nav__group" data-ds-group="components">
+          <a class="ds-nav__page ds-nav__page--group" id="tab-components" href="#components">Components</a>
+          <div class="ds-nav__sub">
+            <a href="#inputs">Inputs &amp; controls</a>
+            <a href="#data">Data &amp; display</a>
+            <a href="#navigation">Navigation</a>
+            <a href="#feedback">Feedback &amp; overlays</a>
+          </div>
+        </div>
+        <div class="ds-nav__group" data-ds-group="patterns-layout">
+          <a class="ds-nav__page ds-nav__page--group" id="tab-patterns-layout" href="#patterns-layout">Patterns &amp; layout</a>
+          <div class="ds-nav__sub">
+            <a href="#primitives">Primitives</a>
+            <a href="#proximity">Proximity</a>
+            <a href="#patterns">Content patterns</a>
+            <a href="#pages">Page jobs</a>
+          </div>
+        </div>
+        <div class="ds-nav__group" data-ds-group="showcase">
+          <a class="ds-nav__page ds-nav__page--group" id="tab-showcase" href="#showcase">Showcase</a>
+          <div class="ds-nav__sub">
+            <a href="#landing">Landing</a>
+            <a href="#plugin">Plugin page</a>
+            <a href="#article">Article</a>
+            <a href="#tool">Tool</a>
+          </div>
+        </div>
+        <div class="ds-nav__group" data-ds-group="design-md">
+          <a class="ds-nav__page" id="tab-design-md" href="#design-md">DESIGN.md</a>
+        </div>
       </nav>
     </aside>
 
     <main class="ds-content">
       <div class="ds-content__inner">
-        <section class="ds-panel ds-hero rf-stack rf-stack--md" id="overview" role="tabpanel" aria-labelledby="tab-overview">
+        <section class="ds-panel ds-hero rf-stack rf-stack--md" id="overview" aria-labelledby="tab-overview">
           <p class="ds-type-meta">Brand</p>
           <h1>Roots &amp; Fruit</h1>
           <div class="rf-prose">
@@ -58,13 +94,14 @@
           </div>
           <div class="alert alert--note" role="note">
             <strong>How to use this design system.</strong>
-            Open one section at a time from the sidebar. Start with logos and color when matching an
-            existing surface. Check the accessibility matrix before locking text-on-background pairs.
+            Each sidebar group is one page. The items under a group jump to a section on that page.
+            Start with logos and color when matching an existing surface. Check the accessibility
+            matrix before locking text-on-background pairs.
             Prefer shared CSS tokens (<code>--rf-*</code>) over hard-coded hex.
             For reading layout, keep long-form text within the <code>60ch</code> measure and prefer
             <code>.rf-stack</code>, <code>.rf-center</code>, and <code>.rf-cluster</code> over one-off margins.
-            Content patterns (takeaways, dark card, code) have their own tab.
-            Generators and agents should follow <code>DESIGN.md</code> (Agent contract tab); humans can
+            Content patterns (takeaways, dark card, code) are a section on Patterns &amp; layout.
+            Generators and agents should follow <code>DESIGN.md</code>, the last item in the sidebar; humans can
             browse the specimens here and treat that file as the written rules.
           </div>
           <footer class="ds-footer">
@@ -76,8 +113,12 @@
           </footer>
         </section>
 
-    <section class="ds-panel" id="media-kit" role="tabpanel" aria-labelledby="tab-media-kit" hidden>
-      <h2 id="media-kit-title">Media Kit</h2>
+    <section class="ds-panel" id="brand" aria-labelledby="brand-title" hidden>
+      <p class="rf-meta">Brand kit</p>
+      <h2 id="brand-title">Brand &amp; assets</h2>
+      <p class="ds-lede">The partner pack, the logo lockups, and the illustrations.</p>
+      <section class="ds-section" id="media-kit" aria-labelledby="media-kit-title">
+<h2 id="media-kit-title">Media Kit</h2>
       <p class="ds-lede">
         For partners, sponsors, and anyone adding Roots &amp; Fruit to a website blurb or event page.
         Download a logo, follow the short rules below, and paste the copy if you need a description.
@@ -287,10 +328,9 @@
         Icons, profile crops, colors, and type live in the other sections of this design system
         (<a class="link-text" href="#logos" data-ds-tab="logos">Logos &amp; icons</a>).
       </div>
-    </section>
-
-    <section class="ds-panel" id="logos" role="tabpanel" aria-labelledby="tab-logos" hidden>
-      <h2 id="logos-title">Logos &amp; icons</h2>
+      </section>
+      <section class="ds-section" id="logos" aria-labelledby="logos-title">
+<h2 id="logos-title">Logos &amp; icons</h2>
       <p class="ds-lede">
         Two lockups cover most needs. The wordmark pairs the tree with the Roots &amp; Fruit name for headers,
         title slides, and signed brand moments. The stand-alone tree icon is for tight spaces where the name
@@ -585,10 +625,9 @@
         <code>logos/PNG/</code> holds raster exports (including 500 / 1000px sizes and profile crops).
         Keep proportions locked; never add drop shadows, gradients, or glow to the official files.
       </div>
-    </section>
-
-    <section class="ds-panel" id="illustrations" role="tabpanel" aria-labelledby="tab-illustrations" hidden>
-      <h2 id="illu-title">Illustrations</h2>
+      </section>
+      <section class="ds-section" id="illustrations" aria-labelledby="illu-title">
+<h2 id="illu-title">Illustrations</h2>
       <p class="ds-lede">
         Roots and apples are brand illustrations, not logos. They add atmosphere behind or beside content
         so layouts feel warmer and more grounded. Keep them secondary to type: if a viewer notices the art
@@ -692,10 +731,15 @@
         Prefer an <code>&lt;img&gt;</code> with CSS opacity over <code>background-image</code> when you need predictable fading
         and simpler contrast control. Do not recolor, crop into a new mark, or treat illustrations as clickable branding.
       </div>
+      </section>
     </section>
 
-    <section class="ds-panel" id="tokens" role="tabpanel" aria-labelledby="tab-tokens" hidden>
-      <h2 id="tokens-title">Color</h2>
+    <section class="ds-panel" id="tokens" aria-labelledby="tokens-page-title" hidden>
+      <p class="rf-meta">Brand kit</p>
+      <h2 id="tokens-page-title">Tokens</h2>
+      <p class="ds-lede">Color, type, and the space scale. Pick from these before you reach for a component.</p>
+      <section class="ds-section" id="color" aria-labelledby="tokens-title">
+<h2 id="tokens-title">Color</h2>
       <p class="ds-lede">
         Start from cream paper and warm ink, then add moss green as the primary accent. Orange is a rare
         call-to-action, not a second brand color. Blue is optional for product navigation and informational UI;
@@ -726,6 +770,7 @@
         <div class="ds-swatch"><div class="ds-swatch__chip" style="background:var(--rf-green-1)"></div><div class="ds-swatch__meta"><code>--rf-green-1</code><span>#c5d4b8</span></div></div>
         <div class="ds-swatch"><div class="ds-swatch__chip" style="background:var(--rf-green-2)"></div><div class="ds-swatch__meta"><code>--rf-green-2</code><span>#9aaf86</span></div></div>
         <div class="ds-swatch"><div class="ds-swatch__chip" style="background:var(--rf-green)"></div><div class="ds-swatch__meta"><code>--rf-green</code><span>#62744d · primary</span></div></div>
+        <div class="ds-swatch"><div class="ds-swatch__chip" style="background:var(--rf-green-logo)"></div><div class="ds-swatch__meta"><code>--rf-green-logo</code><span>#505a49 · logo olive</span></div></div>
         <div class="ds-swatch"><div class="ds-swatch__chip" style="background:var(--rf-green-deep)"></div><div class="ds-swatch__meta"><code>--rf-green-deep</code><span>#4b5e2e</span></div></div>
         <div class="ds-swatch"><div class="ds-swatch__chip" style="background:var(--rf-green-6)"></div><div class="ds-swatch__meta"><code>--rf-green-6</code><span>#2f3a24</span></div></div>
       </div>
@@ -768,11 +813,14 @@
         Prefer AAA or AA for body copy and form labels. Links and compact UI chrome can sit at AA.
         AA large is acceptable for Knile headings and oversized stats only. Fail means pick another pair.
         Ratios are computed live from the CSS variables on this page using WCAG 2 relative luminance.
+        <strong>Dark green lock.</strong>
+        On <code>green-deep</code> / <code>surface-dark</code>, allowed text is only
+        <code>white</code>, <code>cream</code>, <code>blue-soft</code>, or <code>orange-soft</code>.
+        Solid <code>orange</code> fails on dark green — do not use it for eyebrows or labels there.
       </div>
-    </section>
-
-    <section class="ds-panel" id="type" role="tabpanel" aria-labelledby="tab-type" hidden>
-      <h2 id="type-title">Typography</h2>
+      </section>
+      <section class="ds-section" id="type" aria-labelledby="type-title">
+<h2 id="type-title">Typography</h2>
       <p class="ds-lede">
         Knile is the display serif for titles and section headers. Nunito Sans carries body copy, UI labels,
         and denser reading. Pair them consistently: Knile for voice, Nunito for clarity. Size, leading, weight,
@@ -786,34 +834,35 @@
       </div>
 
       <h3 class="ds-h3">Size scale</h3>
+      <p class="ds-caption">Each sample is the class for that step, at that size. Knile runs from a full-column title down to a subhead. Nunito picks up at the lead.</p>
       <dl>
         <div class="ds-type-row">
           <dt>4xl · 56</dt>
-          <dd class="ds-serif" style="font-size:var(--rf-text-4xl);font-weight:var(--rf-weight-bold);line-height:var(--rf-leading-display)">Grow with clarity</dd>
+          <dd class="rf-display rf-display--xl">Full-column title</dd>
         </div>
         <div class="ds-type-row">
           <dt>3xl · 48</dt>
-          <dd class="ds-serif" style="font-size:var(--rf-text-3xl);font-weight:var(--rf-weight-bold);line-height:var(--rf-leading-display)">Section title</dd>
+          <dd class="rf-display rf-display--lg">Title in a split</dd>
         </div>
         <div class="ds-type-row">
           <dt>2xl · 36</dt>
-          <dd class="ds-serif" style="font-size:var(--rf-text-2xl);font-weight:var(--rf-weight-bold);line-height:var(--rf-leading-display)">Card heading</dd>
+          <dd class="rf-display rf-display--md">Section title</dd>
         </div>
         <div class="ds-type-row">
           <dt>xl · 28</dt>
-          <dd class="ds-serif" style="font-size:var(--rf-text-xl);font-weight:var(--rf-weight-semibold);line-height:var(--rf-leading-snug);color:var(--rf-green)">Accent subhead</dd>
+          <dd class="rf-display rf-display--sm">Accent subhead</dd>
         </div>
         <div class="ds-type-row">
           <dt>lg · 22</dt>
-          <dd class="ds-sans" style="font-size:var(--rf-text-lg);font-weight:var(--rf-weight-regular);line-height:var(--rf-leading-body)">Short lead / intro emphasis.</dd>
+          <dd class="rf-lede">Short lead / intro emphasis.</dd>
         </div>
         <div class="ds-type-row">
           <dt>md · 18</dt>
-          <dd class="ds-sans" style="font-size:var(--rf-text-md);font-weight:var(--rf-weight-regular);line-height:var(--rf-leading-body)">Default body and long-form.</dd>
+          <dd>Default body and long-form.</dd>
         </div>
         <div class="ds-type-row">
           <dt>sm · 16</dt>
-          <dd class="ds-sans" style="font-size:var(--rf-text-sm);font-weight:var(--rf-weight-regular);line-height:var(--rf-leading-ui);color:var(--rf-ink-muted)">Floor. Labels, meta, table cells, helper text.</dd>
+          <dd class="rf-small">Floor. Labels, helper text, table cells.</dd>
         </div>
       </dl>
 
@@ -858,11 +907,11 @@
         </tbody>
       </table>
       <div class="ds-type-specimen">
-        <div class="ds-type-specimen__card">
-          <p class="ds-serif" style="margin:0 0 var(--rf-space-3);font-size:var(--rf-text-2xl);font-weight:var(--rf-weight-bold);line-height:var(--rf-leading-display)">
+        <div class="ds-type-specimen__card rf-stack rf-stack--sm">
+          <p class="rf-display rf-display--md">
             Display leading keeps Knile lines close.
           </p>
-          <p class="ds-sans" style="margin:0;font-size:var(--rf-text-md);line-height:var(--rf-leading-body);color:var(--rf-ink-muted)">
+          <p>
             Body leading gives Nunito room between lines so the high x-height does not crowd. Prefer this pairing
             for article paragraphs and section ledes.
           </p>
@@ -977,19 +1026,18 @@
       <div class="ds-type-specimen">
         <div class="ds-type-specimen__card rf-stack rf-stack--md">
           <p class="ds-type-meta" style="margin:0">Practice note</p>
-          <h3 class="ds-serif" style="margin:0;font-size:var(--rf-text-2xl);font-weight:var(--rf-weight-bold);line-height:var(--rf-leading-display);color:var(--rf-ink-deep)">
+          <h3 class="rf-display rf-display--md">
             Title, then air, then lead
           </h3>
-          <p class="ds-sans" style="margin:0;font-size:var(--rf-text-md);line-height:var(--rf-leading-body);color:var(--rf-ink-muted)">
+          <p class="rf-lede">
             Meta sits close above the title. The stack gap under the title gives the lead room to breathe.
             Tracking on the eyebrow uses <code>--rf-tracking-meta</code>.
           </p>
         </div>
       </div>
-    </section>
-
-    <section class="ds-panel" id="space" role="tabpanel" aria-labelledby="tab-space" hidden>
-      <h2 id="space-title">Space, radius, elevation</h2>
+      </section>
+      <section class="ds-section" id="space" aria-labelledby="space-title">
+<h2 id="space-title">Space &amp; shape</h2>
       <p class="ds-lede">
         Spacing uses a modular scale from <code>--rf-space-4</code> (1rem) with <code>--rf-ratio</code> 1.5, so gaps and padding stay related across pages and UI.
         Corners stay soft but not bubbly. Use shadow sparingly: lift interactive surfaces, not every box on the page.
@@ -999,7 +1047,7 @@
         <strong>Every Layout (selected).</strong>
         Measure axiom: text stays within <code>60ch</code>. Space from <code>4</code> upward multiplies by
         <code>--rf-ratio</code> (1.5). Prefer <code>.rf-stack</code>, <code>.rf-center</code>, and <code>.rf-cluster</code>
-        over one-off margins. Suggest size; do not prescribe fixed widths.
+        over one-off margins. Those three are on <a class="link-text" href="#primitives">Primitives</a>. Suggest size; do not prescribe fixed widths.
       </div>
 
       <h3 class="ds-h3">Spacing</h3>
@@ -1014,22 +1062,21 @@
         <div class="ds-space-item"><div class="ds-space-item__bar" style="height:var(--rf-space-8)"></div>8 · ×1.5⁴</div>
       </div>
 
-      <h3 class="ds-h3">Stack · Center · Cluster</h3>
-      <div class="ds-pattern-split">
-        <div class="rf-stack rf-stack--md surface surface--cream">
-          <strong class="ds-serif" style="font-size:var(--rf-text-xl);line-height:var(--rf-leading-display)">Stack</strong>
-          <p style="margin:0;font-size:var(--rf-text-sm);color:var(--rf-ink-muted)">Even vertical gap. Children do not bring their own block margins.</p>
-          <p style="margin:0;font-size:var(--rf-text-sm);color:var(--rf-ink-muted)">Default gap is space-5 (one modular step above 1rem).</p>
+
+
+      <h3 class="ds-h3">Wash</h3>
+      <p class="ds-caption">A stripe from the sidebar to the window edge. The words stay in the column. <code>.rf-wash</code> is cream-deep. <code>.rf-wash--dark</code> is the moss band.</p>
+      <div class="rf-wash">
+        <div class="rf-wash__inner">
+          <p class="rf-meta">Cream-deep</p>
+          <p style="margin:0">The color runs across the pane. This sentence stays with the other text on the page.</p>
         </div>
-        <div class="rf-stack">
-          <div class="rf-center rf-center--gutter surface" style="max-inline-size:28ch">
-            <p style="margin:0;font-size:var(--rf-text-sm)">Center keeps a measured column with optional gutter.</p>
-          </div>
-          <div class="rf-cluster">
-            <button type="button" class="btn btn--primary">Primary</button>
-            <button type="button" class="btn btn--secondary">Secondary</button>
-            <span class="pill pill--green">Cluster</span>
-          </div>
+      </div>
+      <div class="rf-wash rf-wash--dark" style="margin-block-start:var(--rf-space-5)">
+        <div class="rf-wash__inner rf-copy">
+          <p class="rf-meta">Moss</p>
+          <h3 class="ds-h3">One dark stripe</h3>
+          <p style="margin:0">Use this once, at the end of a page, sitting against the footer.</p>
         </div>
       </div>
 
@@ -1046,10 +1093,21 @@
         <div style="box-shadow:var(--rf-shadow)">--rf-shadow</div>
         <div style="box-shadow:var(--rf-shadow-md)">--rf-shadow-md</div>
       </div>
+      </section>
     </section>
 
-    <section class="ds-panel" id="buttons" role="tabpanel" aria-labelledby="tab-buttons" hidden>
-      <h2 id="buttons-title">Buttons &amp; links</h2>
+    <section class="ds-panel" id="components" aria-labelledby="components-title" hidden>
+      <h2 id="components-title">Components</h2>
+      <p class="ds-lede">Controls, the blocks that hold information, a short trail through the site, and the messages that report status.</p>
+      <section class="ds-section" id="inputs" aria-labelledby="inputs-title">
+<p class="rf-meta">Atoms</p>
+<h2 id="inputs-title">Inputs &amp; controls</h2>
+      <p class="ds-lede">
+        Buttons and links, then fields. The form holds a textarea, a number stepper, a slider, radio, checkbox, switch, and select.
+        Folder tabs live with <a class="link-text" href="#patterns">content patterns</a>.
+      </p>
+      <div id="buttons">
+<h2 class="ds-h2" id="buttons-title">Buttons &amp; links</h2>
       <p class="ds-lede">
         Two lanes: moss and orange for public Roots &amp; Fruit surfaces, product blue for app chrome.
         Keep one clear primary in a cluster so hierarchy stays obvious.
@@ -1096,10 +1154,9 @@
         <button type="button" class="btn btn--product-quiet">Settings</button>
         <button type="button" class="btn btn--product">Save view</button>
       </div>
-    </section>
-
-    <section class="ds-panel" id="forms" role="tabpanel" aria-labelledby="tab-forms" hidden>
-      <h2 id="forms-title">Forms</h2>
+      </div>
+      <div id="forms">
+<h2 class="ds-h2" id="forms-title">Forms</h2>
       <p class="ds-lede">
         Forms stay quiet: clear labels, soft borders, and a green focus ring. Put error messages under the field in words,
         not color alone, so the state remains understandable without relying on red fill.
@@ -1118,7 +1175,7 @@
         </div>
         <div class="field">
           <label for="role">Role</label>
-          <select class="select" id="role" name="role">
+          <select class="rf-select" id="role" name="role">
             <option>Designer</option>
             <option>Developer</option>
             <option>Marketing</option>
@@ -1126,7 +1183,19 @@
         </div>
         <div class="field">
           <label for="notes">Notes</label>
-          <textarea class="textarea" id="notes" name="notes" placeholder="Short context…"></textarea>
+          <textarea class="textarea" id="notes" name="notes" placeholder="Short context"></textarea>
+        </div>
+        <div class="field" id="number">
+          <label for="qty">Quantity</label>
+          <div class="rf-number">
+            <button type="button" class="rf-number__step" data-rf-step="-1" aria-label="Decrease quantity">−</button>
+            <input class="input" id="qty" name="qty" type="number" value="2" min="1" max="12" inputmode="numeric" />
+            <button type="button" class="rf-number__step" data-rf-step="1" aria-label="Increase quantity">+</button>
+          </div>
+        </div>
+        <div class="field" id="slider">
+          <label for="pace">Pace <output class="rf-slider__value" for="pace">40</output></label>
+          <input class="rf-slider" id="pace" name="pace" type="range" min="0" max="100" value="40" />
         </div>
         <label class="check">
           <input type="checkbox" name="updates" />
@@ -1137,71 +1206,22 @@
           <label class="radio"><input type="radio" name="pref" checked /> Cream paper UI</label>
           <label class="radio"><input type="radio" name="pref" /> High-contrast ink</label>
         </fieldset>
+        <label class="rf-toggle">
+          <input class="rf-toggle__input" type="checkbox" name="demo_mcp" checked />
+          <span class="rf-toggle__track" aria-hidden="true"></span>
+          <span class="rf-toggle__state" data-enabled="On" data-disabled="Off">On</span>
+          <span class="rf-toggle__note">Only agent accounts may use the MCP server.</span>
+        </label>
         <div class="rf-cluster" style="margin:0">
           <button type="submit" class="btn btn--primary">Save</button>
           <button type="button" class="btn btn--ghost">Cancel</button>
         </div>
       </form>
-    </section>
-
-    <section class="ds-panel" id="feedback" role="tabpanel" aria-labelledby="tab-feedback" hidden>
-      <h2 id="feedback-title">Feedback</h2>
-      <p class="ds-lede">
-        Pills mark compact status. Alerts carry page-level messages that need a full sentence.
-        Keep motion minimal: a spinner for indeterminate waits and a progress bar when completion percentage is known.
-      </p>
-
-      <div class="rf-cluster" style="margin-bottom:var(--rf-space-5)">
-        <span class="pill">Neutral</span>
-        <span class="pill pill--active">Active</span>
-        <span class="pill pill--orange">Waiting</span>
-        <span class="pill pill--blue">Info</span>
-        <span class="pill pill--danger">Blocked</span>
-        <span class="spinner" role="status" aria-label="Loading"></span>
       </div>
-
-      <div class="progress" aria-label="Progress 62%"><span style="width:62%"></span></div>
-      <p class="ds-caption" style="margin-block:var(--rf-space-2) var(--rf-space-5)">Progress · 62%</p>
-
-      <div class="alert alert--info"><strong>Info</strong><span>Neutral guidance that does not require an immediate decision.</span></div>
-      <div class="alert alert--success"><strong>Success</strong><span>Changes saved. You can leave this page.</span></div>
-      <div class="alert alert--warning"><strong>Warning</strong><span>This action is reversible, but double-check the target first.</span></div>
-      <div class="alert alert--danger"><strong>Error</strong><span>Something went wrong. Review the details and try again.</span></div>
-      <div class="alert alert--note" role="note"><strong>Note</strong><span>Instructional guidance for how to use a pattern. Not a success or error state.</span></div>
-
-      <h2 class="ds-h2" id="disclosure" style="margin-top:var(--rf-space-7)">Disclosure</h2>
-      <p class="ds-caption" style="margin-bottom:var(--rf-space-4)">
-        Native <code>&lt;details&gt;</code> for secondary background. Closed by default. Leaf caret from
-        <code>icons/leaf-arrow.svg</code> (not the tree wordmark). Class: <code>.rf-disclosure</code>.
-      </p>
-      <div class="rf-stack rf-stack--sm" style="max-inline-size:min(36rem, 100%)">
-        <details class="rf-disclosure">
-          <summary class="rf-disclosure__summary">
-            <span class="rf-disclosure__label">Context</span>
-            <span class="rf-disclosure__icon" aria-hidden="true">
-              <img class="rf-disclosure__leaf" src="icons/leaf-arrow.svg" alt="" width="18" height="18" />
-            </span>
-          </summary>
-          <div class="rf-disclosure__panel">
-            <p style="margin:0">Facts, people, and dates that support the task but should not lead the page.</p>
-          </div>
-        </details>
-        <details class="rf-disclosure" open>
-          <summary class="rf-disclosure__summary">
-            <span class="rf-disclosure__label">Sources</span>
-            <span class="rf-disclosure__icon" aria-hidden="true">
-              <img class="rf-disclosure__leaf" src="icons/leaf-arrow.svg" alt="" width="18" height="18" />
-            </span>
-          </summary>
-          <div class="rf-disclosure__panel">
-            <p style="margin:0">Optional paths and URLs. Never a substitute for putting the gist in Context.</p>
-          </div>
-        </details>
-      </div>
-    </section>
-
-    <section class="ds-panel" id="data" role="tabpanel" aria-labelledby="tab-data" hidden>
-      <h2 id="data-title">Surfaces &amp; data</h2>
+      </section>
+      <section class="ds-section" id="data" aria-labelledby="data-title">
+<p class="rf-meta">Molecules</p>
+<h2 id="data-title">Data &amp; display</h2>
       <p class="ds-lede">
         Surfaces group related content without turning every block into a heavy card.
         Tables stay quiet: Knile headers, Nunito cells, and hairline rules on cream or white.
@@ -1209,28 +1229,71 @@
 
       <div class="ds-surface-grid" style="margin-bottom:var(--rf-space-5)">
         <article class="surface">
+          <p class="rf-meta">Eyebrow</p>
           <h3>White surface</h3>
           <p>Default container for interactive content on cream.</p>
           <button type="button" class="btn btn--primary">Open</button>
         </article>
         <article class="surface surface--panel">
+          <p class="rf-meta">Eyebrow</p>
           <h3>Panel</h3>
           <p>Warm inset grouping without a heavy card look.</p>
           <button type="button" class="btn btn--secondary">Details</button>
         </article>
         <article class="surface surface--cream">
+          <p class="rf-meta">Eyebrow</p>
           <h3>Cream deep</h3>
           <p>Alternate band when the page background is already cream.</p>
           <button type="button" class="btn btn--tertiary">Learn more</button>
         </article>
         <article class="surface surface--dark">
+          <p class="rf-meta">Eyebrow</p>
           <h3>Dark callout</h3>
           <p>Moss-deep surface for sidebar CTAs and short pitches on cream pages.</p>
           <button type="button" class="btn btn--cta">Get started</button>
         </article>
       </div>
 
-      <div class="table-wrap">
+      <h3 class="ds-h3" id="card">Card</h3>
+      <p class="ds-caption">One title, one body, and an action in the footer. A surface stays the looser box when the group is a mix of things.</p>
+      <article class="rf-card">
+        <p class="rf-meta">Note</p>
+        <h3 class="rf-card__title">A plugin note</h3>
+        <p>The pattern stays in the editor. The popup reads from that same pattern.</p>
+        <footer class="rf-card__foot">
+          <button type="button" class="btn btn--tertiary btn--sm">Open</button>
+        </footer>
+      </article>
+
+      <h3 class="ds-h3" id="divider" style="margin-top:var(--rf-space-7)">Divider</h3>
+      <p class="ds-caption">A hairline between regions. The vertical form sits in a row.</p>
+      <hr class="rf-divider" />
+      <div class="rf-cluster">
+        <span>Notes</span>
+        <hr class="rf-divider rf-divider--vertical" />
+        <span>Sources</span>
+      </div>
+
+      <h3 class="ds-h3" id="badge" style="margin-top:var(--rf-space-7)">Badge</h3>
+      <p class="ds-caption">A badge carries a count or a status dot. A pill carries a short label.</p>
+      <div class="rf-cluster">
+        <span class="rf-badge-host">Inbox <span class="rf-badge">3</span></span>
+        <span class="rf-badge rf-badge--danger">2</span>
+        <span class="rf-badge-host">Online <span class="rf-badge rf-badge--dot" role="img" aria-label="Online"></span></span>
+      </div>
+
+      <h3 class="ds-h3" id="avatar" style="margin-top:var(--rf-space-7)">Avatar</h3>
+      <p class="ds-caption">Initials, a photo, or the tree mark when the space is too tight for the wordmark.</p>
+      <div class="rf-cluster">
+        <span class="rf-avatar" role="img" aria-label="Jordan Lee">JL</span>
+        <img class="rf-avatar rf-avatar--mark" src="rf-mark.svg" alt="Roots and Fruit" width="44" height="44" />
+      </div>
+
+      <h3 class="ds-h3" id="time" style="margin-top:var(--rf-space-7)">Relative time</h3>
+      <p class="ds-caption">The visible phrase is relative. The datetime attribute keeps the absolute moment.</p>
+      <p style="margin:0"><time class="rf-time" data-rf-offset="-10800000" datetime="2026-10-05T13:00:00Z">3 hours ago</time></p>
+
+      <div class="table-wrap" style="margin-top:var(--rf-space-7)">
         <table class="rf-table">
           <thead>
             <tr>
@@ -1268,14 +1331,278 @@
           </tbody>
         </table>
       </div>
+      </section>
+      <section class="ds-section" id="navigation" aria-labelledby="navigation-title">
+        <p class="rf-meta">Molecules</p>
+        <h2 id="navigation-title">Navigation</h2>
+        <p class="ds-lede">A trail back to the parent, and a way to move through a long list.</p>
+
+        <h3 class="ds-h3" id="breadcrumb">Breadcrumb</h3>
+        <nav aria-label="Breadcrumb">
+          <ol class="rf-breadcrumb">
+            <li><a class="link-text" href="#overview">Overview</a></li>
+            <li><a class="link-text" href="#components">Components</a></li>
+            <li><span aria-current="page">Navigation</span></li>
+          </ol>
+        </nav>
+
+        <h3 class="ds-h3" id="pagination" style="margin-top:var(--rf-space-7)">Pagination</h3>
+        <nav class="rf-pagination" aria-label="Pagination">
+          <button type="button" class="btn btn--ghost btn--sm">Previous</button>
+          <button type="button" class="btn btn--tertiary btn--sm">1</button>
+          <button type="button" class="btn btn--primary btn--sm" aria-current="page">2</button>
+          <button type="button" class="btn btn--tertiary btn--sm">3</button>
+          <button type="button" class="btn btn--ghost btn--sm">Next</button>
+        </nav>
+      </section>
+      <section class="ds-section" id="feedback" aria-labelledby="feedback-title">
+<p class="rf-meta">Organisms</p>
+<h2 id="feedback-title">Feedback &amp; overlays</h2>
+      <p class="ds-lede">
+        Pills mark a short label. Alerts carry a full sentence that stays on the page.
+        A toast is brief and leaves. A dialog waits for a decision. A spinner covers an unknown wait, and a progress bar covers a known one.
+      </p>
+
+      <div class="rf-cluster" style="margin-bottom:var(--rf-space-5)">
+        <span class="pill">Neutral</span>
+        <span class="pill pill--active">Active</span>
+        <span class="pill pill--orange">Waiting</span>
+        <span class="pill pill--blue">Info</span>
+        <span class="pill pill--danger">Blocked</span>
+        <span class="spinner" role="status" aria-label="Loading"></span>
+      </div>
+
+      <div class="progress" aria-label="Progress 62%"><span style="width:62%"></span></div>
+      <p class="ds-caption" style="margin-block:var(--rf-space-2) var(--rf-space-5)">Progress · 62%</p>
+
+      <div class="alert alert--info"><strong>Info</strong><span>Neutral guidance that does not require an immediate decision.</span></div>
+      <div class="alert alert--success"><strong>Success</strong><span>Changes saved. You can leave this page.</span></div>
+      <div class="alert alert--warning"><strong>Warning</strong><span>This action is reversible, but double-check the target first.</span></div>
+      <div class="alert alert--danger"><strong>Error</strong><span>Something went wrong. Review the details and try again.</span></div>
+      <div class="alert alert--note" role="note"><strong>Note</strong><span>Instructional guidance for how to use a pattern. Not a success or error state.</span></div>
+
+      <h3 class="ds-h3" id="skeleton" style="margin-top:var(--rf-space-7)">Skeleton</h3>
+      <p class="ds-caption">Placeholder shapes while a card loads. The pulse stops when the reader asks for less motion.</p>
+      <div class="rf-skeleton-card" aria-hidden="true">
+        <span class="rf-skeleton rf-skeleton--avatar"></span>
+        <span class="rf-skeleton rf-skeleton--line"></span>
+        <span class="rf-skeleton rf-skeleton--line rf-skeleton--short"></span>
+      </div>
+
+      <h3 class="ds-h3" id="tooltip" style="margin-top:var(--rf-space-7)">Tooltip</h3>
+      <p class="ds-caption">A short note on hover or keyboard focus. It sits under the trigger.</p>
+      <div style="padding-bottom:3rem">
+        <span class="rf-tooltip">
+          <button type="button" class="btn btn--tertiary btn--sm" aria-describedby="tip-measure">Measure</button>
+          <span class="rf-tooltip__bubble" id="tip-measure" role="tooltip">Hold the prose to the measure.</span>
+        </span>
+      </div>
+
+      <h3 class="ds-h3" id="dialog" style="margin-top:var(--rf-space-7)">Dialog</h3>
+      <p class="ds-caption">A native dialog. Escape closes it, and focus returns to the button that opened it.</p>
+      <button type="button" class="btn btn--primary" data-rf-dialog-open="rf-dialog-demo">Leave this draft</button>
+      <dialog class="rf-dialog" id="rf-dialog-demo" aria-labelledby="rf-dialog-demo-title">
+        <form method="dialog">
+          <h3 class="ds-h3" id="rf-dialog-demo-title">Leave this draft</h3>
+          <p>The draft stays on this computer. I can come back to it.</p>
+          <div class="rf-cluster">
+            <button type="submit" class="btn btn--ghost" value="cancel">Keep editing</button>
+            <button type="submit" class="btn btn--primary" value="leave">Leave draft</button>
+          </div>
+        </form>
+      </dialog>
+
+      <h3 class="ds-h3" id="toast" style="margin-top:var(--rf-space-7)">Toast</h3>
+      <p class="ds-caption">A short confirmation in the corner of this stage. It leaves on its own, or when I dismiss it.</p>
+      <div class="rf-toast-stage">
+        <button type="button" class="btn btn--secondary" data-rf-toast="Saved. The draft is on this computer.">Show a toast</button>
+        <div class="rf-toast" role="status" hidden>
+          <p>Saved. The draft is on this computer.</p>
+          <button type="button" class="rf-toast__close btn btn--ghost btn--sm">Dismiss</button>
+        </div>
+      </div>
+
+      <p class="rf-meta">Molecule</p>
+      <h2 class="ds-h2" id="disclosure" style="margin-top:var(--rf-space-7)">Disclosure</h2>
+      <p class="ds-caption" style="margin-bottom:var(--rf-space-4)">
+        Native <code>&lt;details&gt;</code> for secondary background. Closed by default. The arrow is inline SVG, so it travels with the markup. It points right, and open turns it down. Class: <code>.rf-disclosure</code>.
+      </p>
+      <div class="rf-stack rf-stack--sm" style="max-inline-size:min(36rem, 100%)">
+        <details class="rf-disclosure">
+          <summary class="rf-disclosure__summary">
+            <span class="rf-disclosure__label">Context</span>
+            <span class="rf-disclosure__icon" aria-hidden="true">
+              <svg class="rf-disclosure__arrow" viewBox="0 0 36 32" aria-hidden="true" focusable="false">
+                <path fill="var(--rf-green-1)" d="M6 5L30 16L6 16Z" />
+                <path fill="var(--rf-green-2)" d="M6 16L30 16L6 27Z" />
+                <path fill="none" stroke="var(--rf-brown)" stroke-width="2.6" stroke-linejoin="round" stroke-linecap="round" d="M6 5L30 16L6 27Z" />
+              </svg>
+            </span>
+          </summary>
+          <div class="rf-disclosure__panel">
+            <p style="margin:0">Facts, people, and dates that support the task but should not lead the page.</p>
+          </div>
+        </details>
+        <details class="rf-disclosure" open>
+          <summary class="rf-disclosure__summary">
+            <span class="rf-disclosure__label">Sources</span>
+            <span class="rf-disclosure__icon" aria-hidden="true">
+              <svg class="rf-disclosure__arrow" viewBox="0 0 36 32" aria-hidden="true" focusable="false">
+                <path fill="var(--rf-green-1)" d="M6 5L30 16L6 16Z" />
+                <path fill="var(--rf-green-2)" d="M6 16L30 16L6 27Z" />
+                <path fill="none" stroke="var(--rf-brown)" stroke-width="2.6" stroke-linejoin="round" stroke-linecap="round" d="M6 5L30 16L6 27Z" />
+              </svg>
+            </span>
+          </summary>
+          <div class="rf-disclosure__panel">
+            <p style="margin:0">Optional paths and URLs. Never a substitute for putting the gist in Context.</p>
+          </div>
+        </details>
+      </div>
+      </section>
     </section>
 
-    <section class="ds-panel" id="patterns" role="tabpanel" aria-labelledby="tab-patterns" hidden>
-      <h2 id="patterns-title">Content patterns</h2>
+    <section class="ds-panel" id="patterns-layout" aria-labelledby="patterns-layout-title" hidden>
+      <h2 id="patterns-layout-title">Patterns &amp; layout</h2>
+      <p class="ds-lede">Primitives, then the content patterns already on the site, then the eight page jobs.</p>
+      <section class="ds-section" id="primitives" aria-labelledby="primitives-title">
+<p class="rf-meta">Atoms</p>
+<h2 id="primitives-title">Primitives</h2>
+      <p class="ds-lede">
+        Composable layout from <code>css/layouts.css</code>. Page jobs are these classes put together.
+        The shells are <code>.rf-center</code>, <code>.rf-box</code>, <code>--rf-max</code>, and <code>--rf-content-max</code>.
+        Wash stays on <a class="link-text" href="#space">Space &amp; shape</a>.
+      </p>
+
+      <h3 class="ds-h3">Stack · Center · Cluster</h3>
+      <div class="ds-pattern-split">
+        <div class="rf-stack rf-stack--md surface surface--cream">
+          <strong class="ds-serif" style="font-size:var(--rf-text-xl);line-height:var(--rf-leading-display)">Stack</strong>
+          <p style="margin:0;font-size:var(--rf-text-sm);color:var(--rf-ink-muted)">Even vertical gap. Children do not bring their own block margins.</p>
+          <p style="margin:0;font-size:var(--rf-text-sm);color:var(--rf-ink-muted)">Default gap is space-5 (one modular step above 1rem).</p>
+        </div>
+        <div class="rf-stack">
+          <div class="rf-center rf-center--gutter surface" style="max-inline-size:28ch">
+            <p style="margin:0;font-size:var(--rf-text-sm)">Center keeps a measured column with optional gutter.</p>
+          </div>
+          <div class="rf-cluster">
+            <button type="button" class="btn btn--primary">Primary</button>
+            <button type="button" class="btn btn--secondary">Secondary</button>
+            <span class="pill pill--green">Cluster</span>
+          </div>
+        </div>
+      </div>
+
+      <h3 class="ds-h3">Copy · Split</h3>
+      <p class="ds-caption"><code>.rf-copy</code> keeps eyebrow, title, lede, and action in proximity. <code>.rf-split</code> sets media beside that column.</p>
+      <div class="rf-split" style="margin-block-end:var(--rf-space-6)">
+        <div class="rf-copy">
+          <span class="pill">Eyebrow</span>
+          <h3 class="ds-h3">Copy column</h3>
+          <p class="rf-lede">The lede sits closer to the title than the action does.</p>
+          <div class="rf-cluster">
+            <button type="button" class="btn btn--primary">Primary</button>
+          </div>
+        </div>
+        <img class="rf-frame" src="illustrations/apples-1.svg" alt="" />
+      </div>
+
+      <h3 class="ds-h3">Frame</h3>
+      <p class="ds-caption">The caption is as wide as the picture. <code>.rf-frame--fit</code> keeps a large photo at its own ratio. <code>.rf-frame--square</code> crops to 1:1 and <code>.rf-frame--wide</code> crops to 16:9. Those two use <code>.rf-figure--compact</code> so the name steps down.</p>
+      <div class="rf-grid rf-grid--three" style="margin-block-end:var(--rf-space-6)">
+        <figure class="rf-figure">
+          <img class="rf-frame rf-frame--fit" src="portraits/matt-stage.jpg" alt="Matt Cromwell speaking on stage." width="517" height="720">
+          <figcaption class="rf-caption">
+            <p class="rf-caption__name">Matt Cromwell</p>
+            <p class="rf-caption__role">Large. The frame keeps the photo's own ratio.</p>
+          </figcaption>
+        </figure>
+        <figure class="rf-figure rf-figure--compact">
+          <img class="rf-frame rf-frame--square" src="portraits/matt-stage.jpg" alt="" width="517" height="720">
+          <figcaption class="rf-caption">
+            <p class="rf-caption__name">Square</p>
+            <p class="rf-caption__role">1:1 crop. Compact name.</p>
+          </figcaption>
+        </figure>
+        <figure class="rf-figure rf-figure--compact">
+          <img class="rf-frame rf-frame--wide" src="portraits/matt-stage.jpg" alt="" width="517" height="720">
+          <figcaption class="rf-caption">
+            <p class="rf-caption__name">Wide</p>
+            <p class="rf-caption__role">16:9 crop. Compact name.</p>
+          </figcaption>
+        </figure>
+      </div>
+
+      <h3 class="ds-h3" id="proximity">Proximity</h3>
+      <p class="ds-lede">Inside one piece, the label sits with the title, and the title sits with the first line. The action takes a step. The next piece is a stack away, and that gap stays even.</p>
+      <div class="rf-copy" style="max-inline-size:28rem;margin-block-end:var(--rf-space-4)">
+        <span class="pill">Label</span>
+        <h3 class="ds-h3">Title sits with the label</h3>
+        <p class="rf-lede">The first line stays with the title.</p>
+        <div class="rf-cluster">
+          <button type="button" class="btn btn--primary">Action</button>
+        </div>
+      </div>
+      <p class="ds-caption">A label uses space-2 or space-3. A title uses space-3 above the first line. A byline between them uses space-2, and the excerpt after that byline uses space-6. An action uses space-5 or space-6. A note under that action uses space-4. Card, review, surface, quote, dialog, gallery, field, takeaways, and the settings panel follow this. Do not wrap that piece in a stack when the lines need more than one gap.</p>
+
+      <h3 class="ds-h3">Grid</h3>
+      <p class="ds-caption"><code>.rf-grid</code> wraps tiles at <code>--rf-grid-min</code>. Named tracks (<code>--two</code>, <code>--three</code>, <code>--five</code>, <code>--sym</code>) are on the page jobs below.</p>
+      <div class="rf-grid">
+        <article class="surface">
+          <h3>One</h3>
+          <p>Auto-fit. No breakpoint on the class.</p>
+        </article>
+        <article class="surface">
+          <h3>Two</h3>
+          <p>The row wraps when the tracks no longer fit.</p>
+        </article>
+        <article class="surface">
+          <h3>Three</h3>
+          <p>Same class. Add items, do not add a media query.</p>
+        </article>
+      </div>
+      </section>
+      <section class="ds-section" id="patterns" aria-labelledby="patterns-title">
+<p class="rf-meta">Organisms</p>
+<h2 id="patterns-title">Content patterns</h2>
       <p class="ds-lede">
         Article and marketing patterns already live on the site. Specimens below are the brand-aligned versions:
         keep the shapes you like, retune color and contrast to the shared tokens.
       </p>
+
+      <h3 class="ds-h3">Folder tabs</h3>
+      <p class="ds-caption">
+        Settings-style navigation for plugin and dashboard chrome. Class <code>.rf-tabs</code> in
+        <code>css/chrome.css</code>. Production often uses links that reload the screen; this specimen uses buttons.
+      </p>
+      <div class="rf-tabs" id="chrome-tabs-demo" style="max-inline-size:var(--rf-content-max);margin-bottom:var(--rf-space-6)">
+        <div class="rf-tabs__list" role="tablist" aria-label="Settings sections">
+          <button type="button" class="rf-tabs__tab is-current" role="tab" id="chrome-tab-agents" aria-selected="true" aria-controls="chrome-panel-agents" data-chrome-tab="agents">
+            <span class="rf-tabs__dot" aria-hidden="true"></span>
+            Agents
+            <svg class="rf-tabs__shoulder" viewBox="0 0 48 40" width="48" height="40" preserveAspectRatio="none" aria-hidden="true" focusable="false"><path class="rf-tabs__shoulder-face" d="M0 0H20Q26 0 30 8L46 40H0Z" /><path class="rf-tabs__shoulder-edge" d="M0 .5H20Q26 .5 30 8.5L46 40" /></svg>
+          </button>
+          <button type="button" class="rf-tabs__tab" role="tab" id="chrome-tab-settings" aria-selected="false" aria-controls="chrome-panel-settings" tabindex="-1" data-chrome-tab="settings">
+            <span class="rf-tabs__dot" aria-hidden="true"></span>
+            Settings
+            <svg class="rf-tabs__shoulder" viewBox="0 0 48 40" width="48" height="40" preserveAspectRatio="none" aria-hidden="true" focusable="false"><path class="rf-tabs__shoulder-face" d="M0 0H20Q26 0 30 8L46 40H0Z" /><path class="rf-tabs__shoulder-edge" d="M0 .5H20Q26 .5 30 8.5L46 40" /></svg>
+          </button>
+          <button type="button" class="rf-tabs__tab" role="tab" id="chrome-tab-activity" aria-selected="false" aria-controls="chrome-panel-activity" tabindex="-1" data-chrome-tab="activity">
+            <span class="rf-tabs__dot" aria-hidden="true"></span>
+            Activity
+            <svg class="rf-tabs__shoulder" viewBox="0 0 48 40" width="48" height="40" preserveAspectRatio="none" aria-hidden="true" focusable="false"><path class="rf-tabs__shoulder-face" d="M0 0H20Q26 0 30 8L46 40H0Z" /><path class="rf-tabs__shoulder-edge" d="M0 .5H20Q26 .5 30 8.5L46 40" /></svg>
+          </button>
+        </div>
+        <div class="rf-tabs__panel" id="chrome-panel-agents" role="tabpanel" aria-labelledby="chrome-tab-agents" data-chrome-panel="agents">
+          <p style="margin:0">Agent list and connection prompts.</p>
+        </div>
+        <div class="rf-tabs__panel" id="chrome-panel-settings" role="tabpanel" aria-labelledby="chrome-tab-settings" data-chrome-panel="settings" hidden>
+          <p style="margin:0">Site-wide limits and MCP gate options.</p>
+        </div>
+        <div class="rf-tabs__panel" id="chrome-panel-activity" role="tabpanel" aria-labelledby="chrome-tab-activity" data-chrome-panel="activity" hidden>
+          <p style="margin:0">Filterable log of ability calls and account changes.</p>
+        </div>
+      </div>
 
       <h3 class="ds-h3">Key takeaways</h3>
       <p class="ds-caption">
@@ -1350,13 +1677,631 @@
         <code>--rf-code-bg</code> and default text at <code>--rf-code-fg</code>
         (warm Solarized-light on cream is fine; cool gray panels are not).
       </div>
+      </section>
+      <section class="ds-section" id="pages" aria-labelledby="pages-title">
+<p class="rf-meta">Pages</p>
+<h2 id="pages-title">Page jobs</h2>
+      <p class="ds-lede">
+        Eight landing jobs composed from layout primitives and components — a hero is
+        <code>.rf-copy</code> + <code>.rf-split</code>, not a new component. Compose a job when a
+        section is missing; do not invent a ninth. Washes ride the R&amp;F bands: cream,
+        cream-deep, moss dark.
+      </p>
+
+      <h3 class="ds-h3">Hero</h3>
+      <p class="ds-caption">Eyebrow chip, display title, lede, one primary, optional proof meta, media right via <code>.rf-split</code>. Copy column is <code>.rf-copy</code> (proximity, not an even stack).</p>
+      <div class="rf-split" style="margin-block-end:var(--rf-space-6)">
+        <div class="rf-copy">
+          <span class="pill">Trusted by WordPress operators</span>
+          <h2 class="rf-display rf-display--lg">A system you can hand to an agent</h2>
+          <p class="rf-lede">Tokens, then primitives, then jobs. Authors compose; they do not design from scratch.</p>
+          <div class="rf-cluster">
+            <button type="button" class="btn btn--primary">See how it works</button>
+            <a class="btn btn--tertiary" href="#pages">The jobs &darr;</a>
+          </div>
+          <p class="rf-meta">Same tokens &middot; no second theme</p>
+        </div>
+        <img class="rf-frame" src="illustrations/apples-1.svg" alt="Illustration of an apple" />
+      </div>
+
+      <h3 class="ds-h3">Proof</h3>
+      <p class="ds-caption">Three or five stats, centered in even tracks. Cream-deep wash. No leftover tile, no CTA.</p>
+      <div class="rf-wash">
+        <div class="rf-wash__inner rf-grid rf-grid--center">
+          <div class="rf-stack rf-stack--sm">
+            <h3 class="ds-h3">60+</h3>
+            <p class="rf-meta">Free plugins</p>
+          </div>
+          <div class="rf-stack rf-stack--sm">
+            <h3 class="ds-h3">6</h3>
+            <p class="rf-meta">Solo products</p>
+          </div>
+          <div class="rf-stack rf-stack--sm">
+            <h3 class="ds-h3">5</h3>
+            <p class="rf-meta">Client retainers</p>
+          </div>
+        </div>
+      </div>
+
+      <h3 class="ds-h3" style="margin-block-start:var(--rf-space-6)">Card grid</h3>
+      <p class="ds-caption">Three paired fills: white, moss tint, dark. Title, one line, optional link. Not a dashboard; a path chooser is three of these.</p>
+      <div class="rf-grid" style="margin-block-end:var(--rf-space-6)">
+        <div class="surface">
+          <h3>Review the tokens</h3>
+          <p>Warm cream, white cards, moss primary, orange rarely.</p>
+          <a class="btn btn--tertiary btn--sm" href="#color">Color</a>
+        </div>
+        <div class="surface surface--tint">
+          <h3>Compose the system</h3>
+          <p>Copy, primitives, then jobs — no niece layout utilities.</p>
+          <a class="btn btn--tertiary btn--sm" href="#pages">Page jobs</a>
+        </div>
+        <div class="surface surface--dark">
+          <h3>One contract</h3>
+          <p>DESIGN.md is the source of truth. Agents read it before they choose.</p>
+          <a class="btn btn--tertiary btn--sm" href="#design-md">DESIGN.md</a>
+        </div>
+      </div>
+
+      <h3 class="ds-h3">Review card</h3>
+      <p class="ds-caption">Three of these in <code>.rf-grid--three</code>. Rating, title, words, person, and a date. Leave the role line out and the name stands alone. A star without <code>--on</code> stays the quiet orange. Markup is a schema.org Review: <code>reviewRating</code>, <code>name</code>, <code>reviewBody</code>, <code>author</code>, <code>datePublished</code>. A single attribution stays a quote.</p>
+      <div class="rf-grid rf-grid--three" style="margin-block-end:var(--rf-space-6)">
+        <article class="rf-review" itemscope itemtype="https://schema.org/Review">
+          <p class="rf-review__rating" itemprop="reviewRating" itemscope itemtype="https://schema.org/Rating">
+            <span class="rf-review__stars" aria-hidden="true"><span class="rf-review__star rf-review__star--on"></span><span class="rf-review__star rf-review__star--on"></span><span class="rf-review__star rf-review__star--on"></span><span class="rf-review__star rf-review__star--on"></span><span class="rf-review__star rf-review__star--on"></span></span>
+            <span class="rf-review__score"><span itemprop="ratingValue">5</span> out of <span itemprop="bestRating">5</span></span>
+          </p>
+          <h3 class="rf-review__title" itemprop="name">Impressive and easy to use</h3>
+          <p class="rf-review__body" itemprop="reviewBody">This plugin absolutely blew my mind. The modals are well-designed, and I didn't need to use CSS at all.</p>
+          <footer class="rf-review__by">
+            <div class="rf-review__who">
+              <span itemprop="author" itemscope itemtype="https://schema.org/Person"><span class="rf-review__name" itemprop="name">Angela Blake</span></span>
+            </div>
+            <time class="rf-review__date" itemprop="datePublished" datetime="2026-01-20">January 20, 2026</time>
+          </footer>
+        </article>
+        <article class="rf-review" itemscope itemtype="https://schema.org/Review">
+          <p class="rf-review__rating" itemprop="reviewRating" itemscope itemtype="https://schema.org/Rating">
+            <span class="rf-review__stars" aria-hidden="true"><span class="rf-review__star rf-review__star--on"></span><span class="rf-review__star rf-review__star--on"></span><span class="rf-review__star rf-review__star--on"></span><span class="rf-review__star rf-review__star--on"></span><span class="rf-review__star rf-review__star--on"></span></span>
+            <span class="rf-review__score"><span itemprop="ratingValue">5</span> out of <span itemprop="bestRating">5</span></span>
+          </p>
+          <h3 class="rf-review__title" itemprop="name">Simple great plugin</h3>
+          <p class="rf-review__body" itemprop="reviewBody">This plugin is simple and intuitive to use and does exactly what it says. It uses native block editor components.</p>
+          <footer class="rf-review__by">
+            <div class="rf-review__who">
+              <span itemprop="author" itemscope itemtype="https://schema.org/Person"><span class="rf-review__name" itemprop="name">Patrick Boehner</span></span>
+              <a class="rf-review__role" itemprop="url" href="https://wordpress.org/support/topic/simple-great-plugin-23/">WordPress.org</a>
+            </div>
+            <time class="rf-review__date" itemprop="datePublished" datetime="2026-01-15">January 15, 2026</time>
+          </footer>
+        </article>
+        <article class="rf-review" itemscope itemtype="https://schema.org/Review">
+          <p class="rf-review__rating" itemprop="reviewRating" itemscope itemtype="https://schema.org/Rating">
+            <span class="rf-review__stars" aria-hidden="true"><span class="rf-review__star rf-review__star--on"></span><span class="rf-review__star rf-review__star--on"></span><span class="rf-review__star rf-review__star--on"></span><span class="rf-review__star rf-review__star--on"></span><span class="rf-review__star rf-review__star--on"></span></span>
+            <span class="rf-review__score"><span itemprop="ratingValue">5</span> out of <span itemprop="bestRating">5</span></span>
+          </p>
+          <h3 class="rf-review__title" itemprop="name">Great for quick button modals</h3>
+          <p class="rf-review__body" itemprop="reviewBody">Create a synced pattern, add the trigger to a button, and you have a download modal.</p>
+          <footer class="rf-review__by">
+            <div class="rf-review__who">
+              <span itemprop="author" itemscope itemtype="https://schema.org/Person"><span class="rf-review__name" itemprop="name">Ronald Huereca</span></span>
+              <a class="rf-review__role" itemprop="url" href="https://wordpress.org/support/topic/great-for-quick-button-modals/">WordPress.org</a>
+            </div>
+            <time class="rf-review__date" itemprop="datePublished" datetime="2026-01-17">January 17, 2026</time>
+          </footer>
+        </article>
+      </div>
+
+      <h3 class="ds-h3">Gallery</h3>
+      <p class="ds-caption">One image on the mat, with the caption and the count. The others sit in the strip. The current thumb carries the brown edge. Open the image for the lightbox. Markup is an ItemList of ImageObject: position, caption, content URL, width, and height.</p>
+      <section class="rf-gallery" aria-label="Screenshots, 3" itemscope itemtype="https://schema.org/ItemList" style="margin-block-end:var(--rf-space-6)">
+        <figure class="rf-gallery__stage">
+          <button type="button" class="rf-gallery__open" aria-label="Open screenshot 1 of 3: A popup using a third-party block. This one is Kadence.">
+            <img class="rf-gallery__img" src="products/shot-1.jpg" alt="A popup using a Kadence block" width="1200" height="893">
+            <span class="rf-gallery__expand">Open</span>
+          </button>
+          <figcaption class="rf-gallery__caption">
+            <span class="rf-gallery__count">1 of 3</span>
+            <span class="rf-gallery__text">A popup using a third-party block. This one is Kadence.</span>
+          </figcaption>
+        </figure>
+        <ol class="rf-gallery__strip">
+          <li class="rf-gallery__item" itemprop="itemListElement" itemscope itemtype="https://schema.org/ListItem">
+            <meta itemprop="position" content="1">
+            <span itemprop="item" itemscope itemtype="https://schema.org/ImageObject">
+              <meta itemprop="contentUrl" content="products/shot-1.jpg">
+              <meta itemprop="caption" content="A popup using a third-party block. This one is Kadence.">
+              <meta itemprop="width" content="1200">
+              <meta itemprop="height" content="893">
+              <button type="button" class="rf-gallery__thumb" aria-current="true" aria-label="Show screenshot 1 of 3: A popup using a third-party block. This one is Kadence." data-src="products/shot-1.jpg" data-alt="A popup using a Kadence block" data-caption="A popup using a third-party block. This one is Kadence." data-width="1200" data-height="893"><img src="products/shot-1.jpg" alt="" width="1200" height="893"></button>
+            </span>
+          </li>
+          <li class="rf-gallery__item" itemprop="itemListElement" itemscope itemtype="https://schema.org/ListItem">
+            <meta itemprop="position" content="2">
+            <span itemprop="item" itemscope itemtype="https://schema.org/ImageObject">
+              <meta itemprop="contentUrl" content="products/shot-2.jpg">
+              <meta itemprop="caption" content="The patterns screen. Copy the trigger, edit, or clear the cache.">
+              <meta itemprop="width" content="1200">
+              <meta itemprop="height" content="1137">
+              <button type="button" class="rf-gallery__thumb" tabindex="-1" aria-label="Show screenshot 2 of 3: The patterns screen. Copy the trigger, edit, or clear the cache." data-src="products/shot-2.jpg" data-alt="The patterns list in wp-admin" data-caption="The patterns screen. Copy the trigger, edit, or clear the cache." data-width="1200" data-height="1137"><img src="products/shot-2.jpg" alt="" width="1200" height="1137"></button>
+            </span>
+          </li>
+          <li class="rf-gallery__item" itemprop="itemListElement" itemscope itemtype="https://schema.org/ListItem">
+            <meta itemprop="position" content="3">
+            <span itemprop="item" itemscope itemtype="https://schema.org/ImageObject">
+              <meta itemprop="contentUrl" content="products/shot-5.jpg">
+              <meta itemprop="caption" content="Tall content scrolls inside the modal.">
+              <meta itemprop="width" content="1200">
+              <meta itemprop="height" content="1156">
+              <button type="button" class="rf-gallery__thumb" tabindex="-1" aria-label="Show screenshot 3 of 3: Tall content scrolls inside the modal." data-src="products/shot-5.jpg" data-alt="Tall terms content scrolling in the modal" data-caption="Tall content scrolls inside the modal." data-width="1200" data-height="1156"><img src="products/shot-5.jpg" alt="" width="1200" height="1156"></button>
+            </span>
+          </li>
+        </ol>
+        <dialog class="rf-gallery__dialog" aria-label="Screenshot 1 of 3. A popup using a third-party block. This one is Kadence.">
+          <div class="rf-gallery__dialog-stage">
+            <div class="rf-gallery__dialog-scroll">
+              <img alt="" width="1200" height="893">
+            </div>
+            <button type="button" class="rf-gallery__float rf-gallery__prev" aria-label="Previous" tabindex="-1"><svg viewBox="0 0 20 20" width="18" height="18" aria-hidden="true"><path d="M12.5 4.5 7 10l5.5 5.5" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"/></svg></button>
+            <button type="button" class="rf-gallery__float rf-gallery__next" aria-label="Next" tabindex="-1"><svg viewBox="0 0 20 20" width="18" height="18" aria-hidden="true"><path d="M7.5 4.5 13 10l-5.5 5.5" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"/></svg></button>
+          </div>
+          <div class="rf-gallery__dialog-foot">
+            <div class="rf-gallery__dialog-actions">
+              <button type="button" class="rf-gallery__step rf-gallery__prev">← Previous</button>
+              <button type="button" class="rf-gallery__step rf-gallery__next">Next →</button>
+            </div>
+            <p class="rf-gallery__dialog-caption">A popup using a third-party block. This one is Kadence.</p>
+            <button type="button" class="rf-gallery__close"><svg class="rf-gallery__close-icon" viewBox="0 0 20 20" width="16" height="16" aria-hidden="true"><circle cx="10" cy="10" r="7.25" fill="none" stroke="currentColor" stroke-width="1.5"/><path d="M7.2 7.2 12.8 12.8M12.8 7.2 7.2 12.8" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round"/></svg>Close</button>
+            <p class="rf-gallery__dialog-count">1 of 3</p>
+          </div>
+        </dialog>
+      </section>
+
+      <h3 class="ds-h3">Split</h3>
+      <p class="ds-caption">Copy plus media on the cream-deep wash. <code>.rf-split</code> wraps when a track cannot hold its min.</p>
+      <div class="rf-wash">
+        <div class="rf-wash__inner rf-split">
+          <div class="rf-copy">
+            <h3 class="ds-h3">What the system gives you</h3>
+            <p class="rf-lede">A locked palette, a type scale, and starts for every job on this page.</p>
+            <div class="rf-cluster">
+              <button type="button" class="btn btn--primary">See the catalog</button>
+            </div>
+          </div>
+          <img class="rf-frame" src="illustrations/roots-1.svg" alt="Illustration of roots" />
+        </div>
+      </div>
+
+      <h3 class="ds-h3" style="margin-block-start:var(--rf-space-6)">Split with a screenshot</h3>
+      <p class="ds-caption"><code>.rf-split--shot</code> holds the copy at 28rem, and it will not exceed <code>--rf-measure</code>. The picture takes the rest of the row and can sit on either side. <code>.rf-frame--fit</code> shows the whole image. Illustrations stay on the plain <code>.rf-frame</code>, which crops to 4:3.</p>
+      <div class="rf-split rf-split--shot" style="margin-block-end:var(--rf-space-6)">
+        <div class="rf-copy">
+          <h3 class="ds-h3">The patterns screen</h3>
+          <p class="rf-lede">Copy the trigger, edit the pattern, or clear the cache.</p>
+        </div>
+        <img class="rf-frame rf-frame--fit" src="products/shot-2.jpg" alt="The patterns list in wp-admin" width="1200" height="1137" />
+      </div>
+
+      <h3 class="ds-h3" style="margin-block-start:var(--rf-space-6)">Quote</h3>
+      <p class="ds-caption">One attribution. <code>.rf-quote</code> is the words, a mark, and a person. Leave the photo out, the role out, or both, and the row closes up. Markup is a schema.org Quotation: <code>text</code> on the words, <code>author</code> as a Person. A source URL is <code>citation</code> on the quotation. A star rating belongs on the review card.</p>
+      <div class="rf-grid rf-grid--two" style="margin-block-end:var(--rf-space-6)">
+        <figure class="rf-quote" itemscope itemtype="https://schema.org/Quotation">
+          <blockquote>
+            <p itemprop="text">The setup was straightforward. When we needed a related fix, the team answered the same day.</p>
+          </blockquote>
+          <figcaption>
+            <span class="rf-quote__who">
+              <span class="rf-quote__id">
+                <span class="rf-quote__name" itemprop="author" itemscope itemtype="https://schema.org/Person"><span itemprop="name">A long-time WordPress operator</span></span>
+              </span>
+            </span>
+          </figcaption>
+        </figure>
+        <figure class="rf-quote" itemscope itemtype="https://schema.org/Quotation">
+          <blockquote>
+            <p itemprop="text">I believe there’s a short list of people you should listen to when building your product, and it doesn’t start with me.</p>
+          </blockquote>
+          <figcaption>
+            <span class="rf-quote__who" itemprop="author" itemscope itemtype="https://schema.org/Person">
+              <img class="rf-quote__avatar" itemprop="image" src="portraits/matt.jpg" alt="" width="44" height="44">
+              <span class="rf-quote__id">
+                <span class="rf-quote__name" itemprop="name">Matt Cromwell</span>
+                <span class="rf-quote__role" itemprop="jobTitle">Founder, Roots &amp; Fruit</span>
+              </span>
+            </span>
+          </figcaption>
+          <link itemprop="citation" href="https://rootsandfruit.com/articles/create-products-customers-love/">
+        </figure>
+      </div>
+
+      <h3 class="ds-h3">Dark band</h3>
+      <p class="ds-caption">Callout strip on moss. On-dark title, one accent CTA max. Not a second theme.</p>
+      <div class="rf-wash rf-wash--dark">
+        <div class="rf-wash__inner rf-copy">
+          <p class="rf-meta">Note</p>
+          <h3 class="ds-h3">One callout is enough</h3>
+          <p style="margin:0">Use this strip once per view. Do not turn orange into a page wash.</p>
+          <div class="rf-cluster">
+            <button type="button" class="btn btn--cta">Act now</button>
+          </div>
+        </div>
+      </div>
+
+      <h3 class="ds-h3">CTA</h3>
+      <p class="ds-caption">Short display title plus one button. Primary or orange CTA, not both.</p>
+      <div class="surface surface--panel rf-copy" style="margin-block-end:var(--rf-space-6)">
+        <h3 class="ds-h3">Ready when you are</h3>
+        <div class="rf-cluster">
+          <button type="button" class="btn btn--primary">Continue</button>
+        </div>
+      </div>
+
+      <h3 class="ds-h3">Alert</h3>
+      <p class="ds-caption">One status note on a landing — tones live under Feedback. Never a hero.</p>
+      <div class="alert alert--info"><strong>Heads up.</strong><span>This is a status note, not a hero. Swap the fill if the tone changes.</span></div>
+      <p class="ds-caption" style="margin-top:var(--rf-space-4)">
+        Tones in the pie: <code>alert--info</code>, <code>alert--success</code>, <code>alert--warning</code>,
+        <code>alert--danger</code>, and <code>alert--note</code> for guidance only.
+      </p>
+
+      <h3 class="ds-h3" style="margin-block-start:var(--rf-space-7)">A landing is a stack</h3>
+      <p class="ds-caption">Compose from the jobs; do not add a ninth. Article prose stays on the measure, not these jobs.</p>
+      <div class="table-wrap">
+        <table class="rf-table">
+          <thead>
+            <tr><th scope="col">Page</th><th scope="col">Jobs</th></tr>
+          </thead>
+          <tbody>
+            <tr><td><code>landing</code></td><td>Hero, proof, one card grid or split, then a CTA. The hero holds the primary.</td></tr>
+            <tr><td><code>article</code></td><td>Measured prose on cream. Not this catalog.</td></tr>
+          </tbody>
+        </table>
+      </div>
+      </section>
     </section>
 
-    <section class="ds-panel" id="contract" role="tabpanel" aria-labelledby="tab-contract" hidden>
-      <h2 id="contract-title">Agent contract</h2>
+        <section class="ds-panel" id="showcase" aria-labelledby="showcase-page-title" hidden>
+      <p class="rf-meta">Pages</p>
+      <h2 id="showcase-page-title">Showcase</h2>
+      <p class="ds-lede">Four layouts. Each one stacks the pieces into a surface you could ship.</p>
+      <section class="ds-section" id="landing" aria-labelledby="landing-title">
+        <h2 id="landing-title">Landing</h2>
+        <div class="rf-stack rf-stack--lg">
+          <div class="rf-split">
+            <div class="rf-copy">
+              <span class="pill">Since 2009</span>
+              <h2 class="ds-h2">WordPress partners for the long game</h2>
+              <p class="rf-lede">Plugins, websites, and fractional retainers for operators and product teams.</p>
+              <div class="rf-cluster">
+                <button type="button" class="btn btn--primary">Start a conversation</button>
+                <a class="btn btn--tertiary" href="#pages">Browse the work</a>
+              </div>
+            </div>
+            <img class="rf-frame" src="illustrations/roots-1.svg" alt="Illustration of roots" />
+          </div>
+          <div class="rf-wash">
+            <div class="rf-wash__inner rf-grid rf-grid--center" aria-label="Proof stats">
+              <div class="rf-stack rf-stack--sm">
+                <h3 class="ds-h3">60+</h3>
+                <p class="rf-meta">Plugins released</p>
+              </div>
+              <div class="rf-stack rf-stack--sm">
+                <h3 class="ds-h3">10+</h3>
+                <p class="rf-meta">Years in WordPress</p>
+              </div>
+              <div class="rf-stack rf-stack--sm">
+                <h3 class="ds-h3">100%</h3>
+                <p class="rf-meta">Away from chaos</p>
+              </div>
+            </div>
+          </div>
+          <div class="rf-grid">
+            <div class="surface">
+              <h3>Websites &amp; content</h3>
+              <p>Audits, rebuilds, and publishing workflows that ship without breaking.</p>
+              <a class="btn btn--tertiary btn--sm" href="https://rootsandfruit.com">rootsandfruit.com</a>
+            </div>
+            <div class="surface surface--tint">
+              <h3>Products &amp; plugins</h3>
+              <p>Locks for crates, fulltext search, synced popups. Tools for the block editor.</p>
+              <a class="btn btn--tertiary btn--sm" href="#tokens">Built on these tokens</a>
+            </div>
+            <div class="surface surface--dark">
+              <h3>Retainers &amp; coaching</h3>
+              <p>Fractional systems work for teams that are tired of yak-shaving.</p>
+              <a class="btn btn--tertiary btn--sm" href="#pages">The page jobs</a>
+            </div>
+          </div>
+          <div class="rf-wash rf-wash--dark">
+            <div class="rf-wash__inner rf-copy">
+              <p class="rf-meta">Get in touch</p>
+              <h3 class="ds-h3">Bring the messy middle</h3>
+              <p style="margin:0">A site on plugins, a plugin full of busywork, a team stuck in the tools. This system is what sorts that out.</p>
+              <div class="rf-cluster">
+                <a class="btn btn--cta" href="https://rootsandfruit.com/contact/">Start a conversation</a>
+              </div>
+            </div>
+          </div>
+        </div>
+      </section>
+      <section class="ds-section" id="plugin" aria-labelledby="plugin-title">
+        <h2 id="plugin-title">Plugin page</h2>
+        <div class="rf-stack rf-stack--lg">
+          <div class="rf-split rf-split--shot">
+            <div class="rf-copy">
+              <span class="pill">WordPress plugin</span>
+              <h2 class="ds-h2">A synced pattern, opened from a button</h2>
+              <p class="rf-lede">You edit the pattern in the editor. The popup stays in sync.</p>
+              <div class="rf-cluster">
+                <button type="button" class="btn btn--primary">See it in the editor</button>
+              </div>
+            </div>
+            <img class="rf-frame rf-frame--fit" src="products/shot-1.jpg" alt="A popup using a Kadence block" width="1200" height="893" />
+          </div>
+          <section class="rf-gallery" aria-label="Screenshots, 3" itemscope itemtype="https://schema.org/ItemList" style="margin-block-end:var(--rf-space-6)">
+        <figure class="rf-gallery__stage">
+          <button type="button" class="rf-gallery__open" aria-label="Open screenshot 1 of 3: A popup using a third-party block. This one is Kadence.">
+            <img class="rf-gallery__img" src="products/shot-1.jpg" alt="A popup using a Kadence block" width="1200" height="893">
+            <span class="rf-gallery__expand">Open</span>
+          </button>
+          <figcaption class="rf-gallery__caption">
+            <span class="rf-gallery__count">1 of 3</span>
+            <span class="rf-gallery__text">A popup using a third-party block. This one is Kadence.</span>
+          </figcaption>
+        </figure>
+        <ol class="rf-gallery__strip">
+          <li class="rf-gallery__item" itemprop="itemListElement" itemscope itemtype="https://schema.org/ListItem">
+            <meta itemprop="position" content="1">
+            <span itemprop="item" itemscope itemtype="https://schema.org/ImageObject">
+              <meta itemprop="contentUrl" content="products/shot-1.jpg">
+              <meta itemprop="caption" content="A popup using a third-party block. This one is Kadence.">
+              <meta itemprop="width" content="1200">
+              <meta itemprop="height" content="893">
+              <button type="button" class="rf-gallery__thumb" aria-current="true" aria-label="Show screenshot 1 of 3: A popup using a third-party block. This one is Kadence." data-src="products/shot-1.jpg" data-alt="A popup using a Kadence block" data-caption="A popup using a third-party block. This one is Kadence." data-width="1200" data-height="893"><img src="products/shot-1.jpg" alt="" width="1200" height="893"></button>
+            </span>
+          </li>
+          <li class="rf-gallery__item" itemprop="itemListElement" itemscope itemtype="https://schema.org/ListItem">
+            <meta itemprop="position" content="2">
+            <span itemprop="item" itemscope itemtype="https://schema.org/ImageObject">
+              <meta itemprop="contentUrl" content="products/shot-2.jpg">
+              <meta itemprop="caption" content="The patterns screen. Copy the trigger, edit, or clear the cache.">
+              <meta itemprop="width" content="1200">
+              <meta itemprop="height" content="1137">
+              <button type="button" class="rf-gallery__thumb" tabindex="-1" aria-label="Show screenshot 2 of 3: The patterns screen. Copy the trigger, edit, or clear the cache." data-src="products/shot-2.jpg" data-alt="The patterns list in wp-admin" data-caption="The patterns screen. Copy the trigger, edit, or clear the cache." data-width="1200" data-height="1137"><img src="products/shot-2.jpg" alt="" width="1200" height="1137"></button>
+            </span>
+          </li>
+          <li class="rf-gallery__item" itemprop="itemListElement" itemscope itemtype="https://schema.org/ListItem">
+            <meta itemprop="position" content="3">
+            <span itemprop="item" itemscope itemtype="https://schema.org/ImageObject">
+              <meta itemprop="contentUrl" content="products/shot-5.jpg">
+              <meta itemprop="caption" content="Tall content scrolls inside the modal.">
+              <meta itemprop="width" content="1200">
+              <meta itemprop="height" content="1156">
+              <button type="button" class="rf-gallery__thumb" tabindex="-1" aria-label="Show screenshot 3 of 3: Tall content scrolls inside the modal." data-src="products/shot-5.jpg" data-alt="Tall terms content scrolling in the modal" data-caption="Tall content scrolls inside the modal." data-width="1200" data-height="1156"><img src="products/shot-5.jpg" alt="" width="1200" height="1156"></button>
+            </span>
+          </li>
+        </ol>
+        <dialog class="rf-gallery__dialog" aria-label="Screenshot 1 of 3. A popup using a third-party block. This one is Kadence.">
+          <div class="rf-gallery__dialog-stage">
+            <div class="rf-gallery__dialog-scroll">
+              <img alt="" width="1200" height="893">
+            </div>
+            <button type="button" class="rf-gallery__float rf-gallery__prev" aria-label="Previous" tabindex="-1"><svg viewBox="0 0 20 20" width="18" height="18" aria-hidden="true"><path d="M12.5 4.5 7 10l5.5 5.5" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"/></svg></button>
+            <button type="button" class="rf-gallery__float rf-gallery__next" aria-label="Next" tabindex="-1"><svg viewBox="0 0 20 20" width="18" height="18" aria-hidden="true"><path d="M7.5 4.5 13 10l-5.5 5.5" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"/></svg></button>
+          </div>
+          <div class="rf-gallery__dialog-foot">
+            <div class="rf-gallery__dialog-actions">
+              <button type="button" class="rf-gallery__step rf-gallery__prev">← Previous</button>
+              <button type="button" class="rf-gallery__step rf-gallery__next">Next →</button>
+            </div>
+            <p class="rf-gallery__dialog-caption">A popup using a third-party block. This one is Kadence.</p>
+            <button type="button" class="rf-gallery__close"><svg class="rf-gallery__close-icon" viewBox="0 0 20 20" width="16" height="16" aria-hidden="true"><circle cx="10" cy="10" r="7.25" fill="none" stroke="currentColor" stroke-width="1.5"/><path d="M7.2 7.2 12.8 12.8M12.8 7.2 7.2 12.8" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round"/></svg>Close</button>
+            <p class="rf-gallery__dialog-count">1 of 3</p>
+          </div>
+        </dialog>
+      </section>
+          <div class="rf-grid rf-grid--three" style="margin-block-end:var(--rf-space-6)">
+        <article class="rf-review" itemscope itemtype="https://schema.org/Review">
+          <p class="rf-review__rating" itemprop="reviewRating" itemscope itemtype="https://schema.org/Rating">
+            <span class="rf-review__stars" aria-hidden="true"><span class="rf-review__star rf-review__star--on"></span><span class="rf-review__star rf-review__star--on"></span><span class="rf-review__star rf-review__star--on"></span><span class="rf-review__star rf-review__star--on"></span><span class="rf-review__star rf-review__star--on"></span></span>
+            <span class="rf-review__score"><span itemprop="ratingValue">5</span> out of <span itemprop="bestRating">5</span></span>
+          </p>
+          <h3 class="rf-review__title" itemprop="name">Impressive and easy to use</h3>
+          <p class="rf-review__body" itemprop="reviewBody">This plugin absolutely blew my mind. The modals are well-designed, and I didn't need to use CSS at all.</p>
+          <footer class="rf-review__by">
+            <div class="rf-review__who">
+              <span itemprop="author" itemscope itemtype="https://schema.org/Person"><span class="rf-review__name" itemprop="name">Angela Blake</span></span>
+            </div>
+            <time class="rf-review__date" itemprop="datePublished" datetime="2026-01-20">January 20, 2026</time>
+          </footer>
+        </article>
+        <article class="rf-review" itemscope itemtype="https://schema.org/Review">
+          <p class="rf-review__rating" itemprop="reviewRating" itemscope itemtype="https://schema.org/Rating">
+            <span class="rf-review__stars" aria-hidden="true"><span class="rf-review__star rf-review__star--on"></span><span class="rf-review__star rf-review__star--on"></span><span class="rf-review__star rf-review__star--on"></span><span class="rf-review__star rf-review__star--on"></span><span class="rf-review__star rf-review__star--on"></span></span>
+            <span class="rf-review__score"><span itemprop="ratingValue">5</span> out of <span itemprop="bestRating">5</span></span>
+          </p>
+          <h3 class="rf-review__title" itemprop="name">Simple great plugin</h3>
+          <p class="rf-review__body" itemprop="reviewBody">This plugin is simple and intuitive to use and does exactly what it says. It uses native block editor components.</p>
+          <footer class="rf-review__by">
+            <div class="rf-review__who">
+              <span itemprop="author" itemscope itemtype="https://schema.org/Person"><span class="rf-review__name" itemprop="name">Patrick Boehner</span></span>
+              <a class="rf-review__role" itemprop="url" href="https://wordpress.org/support/topic/simple-great-plugin-23/">WordPress.org</a>
+            </div>
+            <time class="rf-review__date" itemprop="datePublished" datetime="2026-01-15">January 15, 2026</time>
+          </footer>
+        </article>
+        <article class="rf-review" itemscope itemtype="https://schema.org/Review">
+          <p class="rf-review__rating" itemprop="reviewRating" itemscope itemtype="https://schema.org/Rating">
+            <span class="rf-review__stars" aria-hidden="true"><span class="rf-review__star rf-review__star--on"></span><span class="rf-review__star rf-review__star--on"></span><span class="rf-review__star rf-review__star--on"></span><span class="rf-review__star rf-review__star--on"></span><span class="rf-review__star rf-review__star--on"></span></span>
+            <span class="rf-review__score"><span itemprop="ratingValue">5</span> out of <span itemprop="bestRating">5</span></span>
+          </p>
+          <h3 class="rf-review__title" itemprop="name">Great for quick button modals</h3>
+          <p class="rf-review__body" itemprop="reviewBody">Create a synced pattern, add the trigger to a button, and you have a download modal.</p>
+          <footer class="rf-review__by">
+            <div class="rf-review__who">
+              <span itemprop="author" itemscope itemtype="https://schema.org/Person"><span class="rf-review__name" itemprop="name">Ronald Huereca</span></span>
+              <a class="rf-review__role" itemprop="url" href="https://wordpress.org/support/topic/great-for-quick-button-modals/">WordPress.org</a>
+            </div>
+            <time class="rf-review__date" itemprop="datePublished" datetime="2026-01-17">January 17, 2026</time>
+          </footer>
+        </article>
+      </div>
+          <figure class="rf-quote" itemscope itemtype="https://schema.org/Quotation">
+          <blockquote>
+            <p itemprop="text">The setup was straightforward. When we needed a related fix, the team answered the same day.</p>
+          </blockquote>
+          <figcaption>
+            <span class="rf-quote__who">
+              <span class="rf-quote__id">
+                <span class="rf-quote__name" itemprop="author" itemscope itemtype="https://schema.org/Person"><span itemprop="name">A long-time WordPress operator</span></span>
+              </span>
+            </span>
+          </figcaption>
+        </figure>
+          <div class="surface surface--panel rf-copy">
+            <h3 class="ds-h3">Ready when the pattern is</h3>
+            <div class="rf-cluster">
+              <button type="button" class="btn btn--primary">Get the plugin</button>
+            </div>
+          </div>
+        </div>
+      </section>
+      <section class="ds-section" id="article" aria-labelledby="article-title">
+        <h2 id="article-title">Article</h2>
+        <div class="rf-sidebar">
+          <aside class="rf-takeaways">
+            <h3>Key Takeaways</h3>
+            <ol class="rf-keytakeaways">
+              <li>Hold the prose to the measure.</li>
+              <li>Put the short list beside it.</li>
+              <li>One code block is enough.</li>
+            </ol>
+          </aside>
+          <div>
+            <div class="rf-prose">
+              <p>I keep running into the same thing with a design system. The parts look right in the catalog, and the page still feels assembled by a stranger.</p>
+              <p>The fix is dull. Hold the prose to the measure. Put the short list in the sidebar. Use one code block when the reader needs the command.</p>
+              <p>After that the page stays long without getting loud.</p>
+            </div>
+            <div class="rf-code" style="margin-top:var(--rf-space-5)">
+              <div class="rf-code__chrome">
+                <div class="rf-code__dots" aria-hidden="true"><span></span><span></span><span></span></div>
+                <button type="button" class="rf-code__copy" data-rf-copy aria-label="Copy code">
+                  <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2" aria-hidden="true">
+                    <path stroke-linecap="round" stroke-linejoin="round" d="M16.5 8.25V6A2.25 2.25 0 0014.25 3.75H6A2.25 2.25 0 003.75 6v8.25A2.25 2.25 0 006 16.5h2.25m8.25-8.25H18A2.25 2.25 0 0120.25 10.5V18A2.25 2.25 0 0118 20.25h-7.5A2.25 2.25 0 018.25 18v-1.5m8.25-8.25h-6A2.25 2.25 0 008.25 10.5v6" />
+                  </svg>
+                </button>
+              </div>
+              <pre class="rf-code__body"><code>.\sync-design-md-embed.ps1</code></pre>
+              <span class="rf-code__lang">PowerShell</span>
+            </div>
+          </div>
+        </div>
+      </section>
+      <section class="ds-section" id="tool" aria-labelledby="tool-title">
+        <h2 id="tool-title">Tool</h2>
+        <div class="rf-stack rf-stack--md" style="max-inline-size:var(--rf-content-max)">
+          <div class="rf-cluster">
+            <button type="button" class="btn btn--product-quiet">Activity</button>
+            <button type="button" class="btn btn--product" aria-current="page">Settings</button>
+            <button type="button" class="btn btn--product-quiet">Agents</button>
+          </div>
+          <div class="rf-tabs" id="tool-tabs">
+            <div class="rf-tabs__list" role="tablist" aria-label="Settings sections">
+          <button type="button" class="rf-tabs__tab is-current" role="tab" id="tool-tab-general" aria-selected="true" aria-controls="tool-panel-general" data-chrome-tab="general">
+            <span class="rf-tabs__dot" aria-hidden="true"></span>
+            General
+            <svg class="rf-tabs__shoulder" viewBox="0 0 48 40" width="48" height="40" preserveAspectRatio="none" aria-hidden="true" focusable="false"><path class="rf-tabs__shoulder-face" d="M0 0H20Q26 0 30 8L46 40H0Z" /><path class="rf-tabs__shoulder-edge" d="M0 .5H20Q26 .5 30 8.5L46 40" /></svg>
+          </button>
+          <button type="button" class="rf-tabs__tab" role="tab" id="tool-tab-access" aria-selected="false" aria-controls="tool-panel-access" data-chrome-tab="access" tabindex="-1">
+            <span class="rf-tabs__dot" aria-hidden="true"></span>
+            Access
+            <svg class="rf-tabs__shoulder" viewBox="0 0 48 40" width="48" height="40" preserveAspectRatio="none" aria-hidden="true" focusable="false"><path class="rf-tabs__shoulder-face" d="M0 0H20Q26 0 30 8L46 40H0Z" /><path class="rf-tabs__shoulder-edge" d="M0 .5H20Q26 .5 30 8.5L46 40" /></svg>
+          </button>
+          <button type="button" class="rf-tabs__tab" role="tab" id="tool-tab-log" aria-selected="false" aria-controls="tool-panel-log" data-chrome-tab="log" tabindex="-1">
+            <span class="rf-tabs__dot" aria-hidden="true"></span>
+            Log
+            <svg class="rf-tabs__shoulder" viewBox="0 0 48 40" width="48" height="40" preserveAspectRatio="none" aria-hidden="true" focusable="false"><path class="rf-tabs__shoulder-face" d="M0 0H20Q26 0 30 8L46 40H0Z" /><path class="rf-tabs__shoulder-edge" d="M0 .5H20Q26 .5 30 8.5L46 40" /></svg>
+          </button>
+            </div>
+            <div class="rf-tabs__panel" id="tool-panel-general" role="tabpanel" aria-labelledby="tool-tab-general" data-chrome-panel="general">
+              <div class="rf-settings">
+                <div class="rf-filter-row">
+                  <div class="rf-field-row">
+                    <span class="rf-field-row__label" id="tool-agent-label">Agent</span>
+                    <select class="rf-select" name="tool_agent" aria-labelledby="tool-agent-label">
+                      <option>All agents</option>
+                      <option>Cursor</option>
+                      <option>Web Dev</option>
+                    </select>
+                  </div>
+                  <div class="rf-field-row">
+                    <span class="rf-field-row__label" id="tool-event-label">Event</span>
+                    <select class="rf-select" name="tool_event" aria-labelledby="tool-event-label">
+                      <option>All events</option>
+                      <option>Success</option>
+                      <option>Denied</option>
+                    </select>
+                  </div>
+                </div>
+                <label class="rf-toggle">
+                  <input class="rf-toggle__input" type="checkbox" name="tool_mcp" checked />
+                  <span class="rf-toggle__track" aria-hidden="true"></span>
+                  <span class="rf-toggle__state" data-enabled="On" data-disabled="Off">On</span>
+                  <span class="rf-toggle__note">Only agent accounts may use the MCP server.</span>
+                </label>
+                <div class="table-wrap">
+                  <table class="rf-table">
+                    <thead>
+                      <tr>
+                        <th>Agent</th>
+                        <th>Event</th>
+                        <th>When</th>
+                      </tr>
+                    </thead>
+                    <tbody>
+                      <tr>
+                        <td>Cursor</td>
+                        <td>Success</td>
+                        <td>Today, 9:14</td>
+                      </tr>
+                      <tr>
+                        <td>Web Dev</td>
+                        <td>Denied</td>
+                        <td>Today, 8:02</td>
+                      </tr>
+                      <tr>
+                        <td>Cursor</td>
+                        <td>Success</td>
+                        <td>Yesterday</td>
+                      </tr>
+                    </tbody>
+                  </table>
+                </div>
+                <div class="alert alert--success"><strong>Saved.</strong><span>Settings are stored for this site.</span></div>
+              </div>
+            </div>
+            <div class="rf-tabs__panel" id="tool-panel-access" role="tabpanel" aria-labelledby="tool-tab-access" data-chrome-panel="access" hidden>
+              <label class="rf-toggle">
+                <input class="rf-toggle__input" type="checkbox" name="tool_ability" />
+                <span class="rf-toggle__track" aria-hidden="true"></span>
+                <span class="rf-toggle__state" data-enabled="Allowed" data-disabled="Denied">Denied</span>
+                <span class="rf-toggle__note">Block ability calls that are not on the allowlist.</span>
+              </label>
+            </div>
+            <div class="rf-tabs__panel" id="tool-panel-log" role="tabpanel" aria-labelledby="tool-tab-log" data-chrome-panel="log" hidden>
+              <p style="margin:0">Filterable log of ability calls and account changes.</p>
+            </div>
+          </div>
+        </div>
+      </section>
+    </section>
+
+    <section class="ds-panel" id="design-md" aria-labelledby="design-md-title" hidden>
+      <h2 id="design-md-title">DESIGN.md</h2>
       <p class="ds-lede">
-        Full <code>DESIGN.md</code> for agents and generators, shown in the code pattern below.
-        Edit the markdown file, then run <code>sync-design-md-embed.ps1</code> so this page stays current
+        Full contract for agents and generators. Edit the markdown file, then run
+        <code>sync-design-md-embed.ps1</code> so this page stays current
         (see <code>AGENTS.md</code> in this folder).
       </p>
       <div class="rf-code rf-code--doc" id="design-md-block">
@@ -1369,7 +2314,7 @@
           </button>
         </div>
         <pre class="rf-code__body"><code id="design-md-source">---
-version: alpha
+version: 1.0.0
 name: Roots &amp; Fruit
 description: &gt;-
   Core Design System (CDS) agent contract for Roots &amp; Fruit visual identity.
@@ -1417,6 +2362,7 @@ colors:
   green-3: &quot;#7a9268&quot;
   green-5: &quot;#4a5a38&quot;
   green-6: &quot;#2f3a24&quot;
+  green-logo: &quot;#505a49&quot;
 typography:
   display-xl:
     fontFamily: Knile, Georgia, Times New Roman, serif
@@ -1468,6 +2414,11 @@ typography:
     fontWeight: 700
     lineHeight: 1.35
     letterSpacing: 0.06em
+  code:
+    fontFamily: JetBrains Mono, ui-monospace, Consolas, monospace
+    fontSize: 1rem
+    fontWeight: 400
+    lineHeight: 1.5
 rounded:
   sm: 0.55rem
   md: 0.75rem
@@ -1628,6 +2579,22 @@ components:
     textColor: &quot;{colors.code-fg}&quot;
     rounded: &quot;{rounded.md}&quot;
     padding: 1rem
+layout:
+  measure: 60ch
+  content-size: 56rem
+  wide-size: 56rem
+  gutter: spacing.5
+  inset: spacing.6
+  cluster: spacing.3
+  stack: spacing.5
+  grid: spacing.5
+  section: spacing.6
+  split: spacing.7
+elevation:
+  sm: &quot;--rf-shadow&quot;
+  md: &quot;--rf-shadow-md&quot;
+focus:
+  ring: &quot;--rf-focus&quot;
 ---
 
 ## Overview
@@ -1636,7 +2603,7 @@ Roots &amp; Fruit is Matt Cromwell’s practice for WordPress operators and prod
 
 Visual identity feels like warm paper and moss: cream canvas, warm ink, Knile for voice, Nunito Sans for clarity, moss green as the steady accent.
 
-Agents must treat this file as normative for any new UI, page, slide, dashboard, or plugin surface. When this repo already ships CSS under `css/tokens.css` and `css/components.css`, map tokens here to `--rf-*` custom properties instead of inventing parallel values. The human reference is `index.html` (Overview leads with who we are, then how to use the system).
+Agents must treat this file as normative for any new UI, page, slide, dashboard, or plugin surface. Load `css/brand.css` for fonts and tokens, `css/ui.css` for layout and components, or `css/rf.css` for both. Map tokens here to `--rf-*` custom properties instead of inventing parallel values. App chrome (the catalog sidebar, and a site header or footer) stays outside those files. The human reference is `index.html` (Overview leads with who we are, then how to use the system).
 
 Brand feel (always):
 - Warm cream paper, not cool gray or pure white as the default page wash
@@ -1650,31 +2617,63 @@ Use cases this system must serve equally well:
 3. Product UI (boards, forms, dashboards)
 4. Compact plugin or admin chrome
 
+The human reference is `index.html`. Overview is its own page. The grouped pages are Brand &amp; assets, Tokens, Components, Patterns &amp; layout, and Showcase. Each group is one page, and the sidebar items under it jump to a section on that page. Brand &amp; assets and Tokens are the brand kit. On Components, Inputs is Atoms, Data &amp; display and Navigation are Molecules, Feedback &amp; overlays is Organisms, and Disclosure is a Molecule. On Patterns &amp; layout, Primitives is Atoms, Content patterns is Organisms, and Page jobs is Pages. Showcase is Pages. Those words are catalog labels. They are not folders. DESIGN.md is the last item, on its own page.
+
+## Token layers
+
+Tokens come in three layers. Keep the names; only values change on a rebrand.
+
+1. **Primitives** are the hue ramps in `css/tokens.css`: `--rf-green-1`…`--rf-green-6`, the cream / brown / tan / orange / blue families, and the `--rf-chart-1`…`--rf-chart-4` series aliases. Authors do not pick from this layer in a theme.
+2. **Semantic tokens** are jobs: `colors` in the front matter — `neutral` (cream wash), `ink` / `ink-deep` / `secondary` / `ink-soft`, `primary` / `primary-deep` / `primary-soft`, `tertiary` (rare orange CTA), `info` (product blue), `danger`, plus the pairing tokens `on-primary`, `on-info`, `on-tertiary`, `on-dark`, `on-dark-muted`. Compilers and the deck (PDS) use this layer’s names. Each role’s CSS custom property is the Colors table, not `--rf-` plus the semantic name. `--rf-success` and `--rf-warning` alias `--rf-green` and `--rf-orange`; they are not `colors` keys.
+3. **Component tokens** are the `components:` recipes (`button-primary`, `surface`, `pill`, `surface-tint`). Hierarchy words (`primary`, `tertiary`) belong to components, not to leftover brand colours.
+
+Gap jobs (`layout.cluster` / `stack` / `grid` / `section` / `split`) are names on the existing `spacing` scale — one gap, not a second scale — and map to `--rf-cluster-gap` … `--rf-split-gap` in CSS. `layout.content-size` and `layout.wide-size` both resolve to `--rf-max` (56rem). 56rem stays. A wider nav is a different chrome width. It is not a second token, and it is not an edit to `--rf-max`. Reading width stays `layout.measure` (60ch) on flow text and is seeded by `layout.inset` (step 6) for framed modules. Do not put a hue in the semantic map: `green-3` is a ramp member, `primary` is a job.
+
+## Pages
+
+Marketing pages are stacks of the page jobs documented under the **Page jobs** tab of the reference site. Compose them from the primitives and components in this file; do not invent a ninth job or a new layout to cover a one-off. Header and footer are chrome, not jobs.
+
+| Job | Composed from | Wash | CTA | Not |
+| --- | --- | --- | --- | --- |
+| Hero | `.rf-copy` + `.rf-split`; pill, `.rf-display--lg` (or `--xl` when the title has the full column), lede, the view&#39;s one `.btn--primary` when the hero holds it, optional proof meta, media right | cream | The view&#39;s one `.btn--primary` | A whole page, a bare `.rf-stack`, `core/columns`-style two-up |
+| Proof | Three or five stats in `.rf-grid--center` even tracks, or a logo cluster | cream-deep | None | A feature grid, a leftover tile |
+| Card grid | Three paired fills in `.rf-grid`: `surface`, `surface--tint`, `surface--dark`. A row of reviews is `.rf-review` in `.rf-grid--three` | cream | One tertiary link only when no `.btn--cta` has spent the page&#39;s orange | A dashboard, three identical whites |
+| Split | Copy plus media via `.rf-split`. A screenshot uses `.rf-split--shot` (copy at 28rem, never wider than `--rf-measure`, picture takes the rest) and `.rf-frame--fit` (whole image) | cream | The view&#39;s one `.btn--primary` only when no earlier job took it | A blog layout (use `.rf-sidebar` for that) |
+| Quote | `.rf-quote`. Words, a mark, and a person. Photo and role are optional. Schema.org Quotation: `text`, `author` as Person | cream | None | A reviews carousel |
+| Dark band | `.rf-copy` on `surface--dark`, soft-blue/soft-orange meta eyebrows | moss | One `.btn--cta` spends the page&#39;s orange | A second theme |
+| CTA | Short display title + one button | panel | No second `.btn--primary`. No second accent after a dark-band `.btn--cta` | Two buttons fighting |
+| Alert | One status note, tones under Feedback | soft status | None | A hero |
+
+Page recipes compose these: `landing` = hero → optional proof → one card grid or split → one CTA. One `.btn--primary` per view. A `.btn--cta` on a dark band spends the page&#39;s orange, so the closing job does not get a second accent. `article` is measured prose on cream — it is not this catalog. Washes (`cream-deep`, `surface-dark`) are viewport bands via `.rf-wash` and `.rf-wash--dark`. Copy stays in `.rf-wash__inner` on the header column (`--rf-max`). Never wrap `post-content` in a second constrained group, never mix `content` and `wide` on one landing. Grids are symmetrical (see Layout → Grid symmetry): three items, three tracks; five items, `--sym` or `--five`; never a leftover tile. A wash that is the last thing on the page flushes to the footer.
+
 ## Colors
 
-Semantic roles (use these names in reasoning; hex values are in front matter):
+Semantic roles. The compiler and `{colors.*}` use the Token column. CSS uses the custom property beside it. Hex values are in the front matter. Do not invent `--rf-` plus the semantic name.
 
-| Role | Token | Hex | Use |
-| --- | --- | --- | --- |
-| Page wash | `neutral` | `#faf6ee` | Default page/background |
-| Wash deep | `neutral-deep` | `#f3ede2` | Alternate bands on cream |
-| Surface | `surface` | `#ffffff` | Cards, inputs, lifted modules |
-| Panel | `panel` | `#ebe4d8` | Warm grouping without heavy shadow |
-| Ink | `ink` | `#2c2922` | Body text on cream/white |
-| Ink deep | `ink-deep` | `#1a1a1a` | Headings |
-| Secondary | `secondary` | `#6b6560` | Captions, meta, helper text |
-| Soft ink | `ink-soft` | `#9a948c` | Disabled-adjacent meta only |
-| Primary | `primary` | `#62744d` | Links, primary buttons, accent subheads |
-| Primary deep | `primary-deep` | `#4b5e2e` | Primary hover / pressed |
-| Primary soft | `primary-soft` | `#e4eadc` | Soft fills, success wash, chips |
-| Tertiary | `tertiary` | `#d4844e` | Rare CTA only (one per view max); takeaway rules / numbers |
-| Surface dark | `surface-dark` | `#4b5e2e` | Dark callout cards and article hero bands |
-| On dark | `on-dark` | `#ffffff` | Titles on `surface-dark` |
-| Code bg | `code-bg` | `#f3ece2` | Inline and block code paper |
-| Code fg | `code-fg` | `#3d5c4e` | Default monospace / syntax base (moss-teal) |
-| Code label border | `code-label-border` | `rgba(44, 41, 34, 0.28)` | Outline for `.inline-label` / `.rf-inline-label` |
-| Info | `info` | `#1a5276` | Product nav / informational UI only |
-| Danger | `danger` | `#ad3a22` | Errors and destructive states (brick, not fire-engine — stays in the warm family) |
+| Role | Token | CSS | Hex | Use |
+| --- | --- | --- | --- | --- |
+| Page wash | `neutral` | `--rf-cream` | `#faf6ee` | Default page/background |
+| Wash deep | `neutral-deep` | `--rf-cream-deep` | `#f3ede2` | Alternate bands on cream |
+| Surface | `surface` | `--rf-white` | `#ffffff` | Cards, inputs, lifted modules |
+| Panel | `panel` | `--rf-panel` | `#ebe4d8` | Warm grouping without heavy shadow |
+| Ink | `ink` | `--rf-ink` | `#2c2922` | Body text on cream/white |
+| Ink deep | `ink-deep` | `--rf-ink-deep` | `#1a1a1a` | Headings |
+| Secondary | `secondary` | `--rf-ink-muted` | `#6b6560` | Captions, meta, helper text |
+| Soft ink | `ink-soft` | `--rf-ink-soft` | `#9a948c` | Disabled-adjacent meta only |
+| Primary | `primary` | `--rf-green` | `#62744d` | Links, primary buttons, accent subheads |
+| Primary deep | `primary-deep` | `--rf-green-deep` | `#4b5e2e` | Primary hover / pressed |
+| Logo olive | `green-logo` | `--rf-green-logo` | `#505a49` | Designer logo dark (RGB 80, 90, 73). Article hero and footer bands |
+| Primary soft | `primary-soft` | `--rf-green-soft` | `#e4eadc` | Soft fills, success wash, chips |
+| Tertiary | `tertiary` | `--rf-orange` | `#d4844e` | Rare CTA only (one per view max); takeaway rules / numbers |
+| Surface dark | `surface-dark` | `--rf-surface-dark` | `#4b5e2e` | Dark callout cards and article hero bands (same as `primary-deep`) |
+| On dark | `on-dark` | `--rf-on-dark` | `#ffffff` | Titles on `surface-dark` / dark green |
+| Info soft | `info-soft` | `--rf-blue-soft` | `#d6e6f2` | Soft blue — allowed text on dark green (meta / eyebrows) |
+| Tertiary soft | `tertiary-soft` | `--rf-orange-soft` | `#f0d5c0` | Soft orange — allowed text on dark green (meta / eyebrows) |
+| Code bg | `code-bg` | `--rf-code-bg` | `#f3ece2` | Inline and block code paper |
+| Code fg | `code-fg` | `--rf-code-fg` | `#3d5c4e` | Default monospace / syntax base (moss-teal) |
+| Code label border | `code-label-border` | `--rf-code-label-border` | `rgba(44, 41, 34, 0.28)` | Outline for `.inline-label` / `.rf-inline-label` |
+| Info | `info` | `--rf-blue` | `#1a5276` | Product nav / informational UI only |
+| Danger | `danger` | `--rf-danger` | `#ad3a22` | Errors and destructive states (brick, not fire-engine — stays in the warm family) |
 
 Rules:
 - Default stack: `neutral` background + `ink` / `ink-deep` text + `primary` for interaction
@@ -1682,14 +2681,15 @@ Rules:
 - Never promote `tertiary` (orange) into a second brand theme or large background fills
 - Before shipping text-on-color pairs, require WCAG AA (4.5:1) for body text; AA large (3:1) only for Knile headings / big stats
 - Safe defaults: `ink` or `ink-deep` on `neutral`, `neutral-deep`, `surface`, `panel`, `primary-soft`; `on-primary` on `primary` / `primary-deep`; `on-tertiary` (`ink-deep`) on `tertiary` for CTA fills — never white on orange
+- **Text on dark green** (`primary-deep` / `surface-dark` / `--rf-green-deep`): only `on-dark` (white), `neutral` (cream), `info-soft` (soft blue), or `tertiary-soft` (soft orange). Solid `tertiary` orange and solid `info` blue **fail** contrast on dark green — do not use them for labels, eyebrows, or body on moss-deep heroes. Mid `primary` green is stricter: soft blue / soft orange clear AA large only (headings/stats), not body copy.
 
-Green scale (`green-1` … `green-6`) is for charts, illustrations, and progressive emphasis, not random decoration.
+Green scale (`green-1` … `green-6`) is for charts, illustrations, and progressive emphasis, not random decoration. `green-logo` (`#505a49`) is the logo olive from the designer palette. Article heroes and the site footer use it. `primary-deep` stays the press color.
 
 ## Typography
 
 Three families only:
 - **Knile** (serif): display, titles, section headers, accent subheads. Tracking `--rf-tracking-display` (`-0.02em`). Upright weights 400 / 600 / 700 only (WOFF2s hosted on rootsandfruit.com; see `css/fonts.css`). **No italic faces** — do not synthesize Knile italic.
-- **Nunito Sans** (sans): body, UI labels, tables, forms, meta. High x-height: body leading `1.65`. Weights 400 / 600 / 700, each with a true italic.
+- **Nunito Sans** (sans): body, UI labels, tables, forms, meta. High x-height: body leading `1.65`. Weights 400 / 600 / 700, each with a true italic. Host the latin variable-weight files (`nunito-sans-latin-wght-normal.woff2` + italic) on rootsandfruit.com next to Knile; load from `css/fonts.css`. Do not load Google Fonts.
 - **JetBrains Mono** (or system mono stack): code only. Never use mono for marketing body copy.
 
 Size scale (CSS `--rf-text-*`; **no `xs`**):
@@ -1697,8 +2697,8 @@ Size scale (CSS `--rf-text-*`; **no `xs`**):
 | Token | Size | Role |
 | --- | --- | --- |
 | `sm` | 16px (`1rem`) | Floor. Compact UI, labels, meta, table cells |
-| `md` | 18px (`1.125rem`) | Default body and long-form (`.rf-prose`, ledes) |
-| `lg` | 22px (`1.375rem`) | Short lead / intro emphasis |
+| `md` | 18px (`1.125rem`) | Default body and long-form (`.rf-prose`) |
+| `lg` | 22px (`1.375rem`) | Short lead (`.rf-lede`) |
 | `xl` | 28px (`1.75rem`) | Display sm (Knile subhead) |
 | `2xl` | 36px (`2.25rem`) | Display md |
 | `3xl` | 48px (`3rem`) | Display lg |
@@ -1732,19 +2732,19 @@ Do not introduce 500 or 800. Prefer semibold before bold for UI chrome.
 
 ### Spacing around type
 
-- Display title → following lead: at least `--rf-space-5` below the title (docs default).
-- Body paragraphs: `.rf-prose` paragraph gap `--rf-space-5`, or a parent `.rf-stack`.
-- Meta eyebrow → title: tight (`space-2`–`space-3`); large air belongs *under* the title.
+- Inside one piece, follow Gestalt proximity (Layout). The label sits with the title at `--rf-space-2` or `--rf-space-3`. The title sits with the first line at `--rf-space-3`. The action takes `--rf-space-5` or `--rf-space-6`.
+- Article body: every direct child of `.rf-prose` (and `.rf-prose--wide`) is separated by `--rf-space-5`. A heading that follows another block uses `--rf-space-6`. Child margins are reset so a paragraph, list, figure, quote, surface, or card cannot sit flush. Same idea as `.rf-stack`.
+- Meta eyebrow → title: `--rf-space-2` or `--rf-space-3`. The step of air is before the action.
 - Measure: `--rf-measure` (`60ch`) on reading lines for articles and marketing; tracking meta `--rf-tracking-meta` (`0.06em`) for uppercase eyebrows.
 - Analytical HTML reports (`rf-html-report`): use `.rf-prose--wide` (or report `.prose-block`) at `--rf-measure-report` (`64ch`) and `body-lg` (`--rf-text-lg`). Larger type makes each `ch` wider, so the measured column fills more of the shell without abandoning measure.
 - Tool/product UI: prefer `--rf-content-max` for the shared column; do not nest article measure inside a wider card.
 - Do not mix ad-hoc vertical margins with `.rf-stack` gap on the same children.
 
 Roles:
-- `display-*` = Knile hierarchy (xl → sm) with display/snug leading
-- `body-lg` = short lead (`--rf-text-lg`); also report narrative with `--rf-measure-report`
-- `body-md` = default reading (`--rf-text-md`)
-- `body-sm` / `label` / `meta` = compact UI at `sm` (16px)
+- `display-*` = Knile hierarchy (xl → sm) with display/snug leading. Class `.rf-display` plus one size: `--xl` (4xl, full-column page title), `--lg` (3xl, title inside a split), `--md` (2xl, section), `--sm` (xl, semibold subhead). Do not size a marketing title with a one-off rule.
+- `body-lg` = short lead (`.rf-lede`, `--rf-text-lg`); also report narrative with `--rf-measure-report`
+- `body-md` = default reading (`--rf-text-md` on the body, or `.rf-prose` for a measured column)
+- `body-sm` = `.rf-small` at `sm` (16px). An uppercase eyebrow is `.rf-meta`, not `.rf-small`.
 - `meta` = uppercase eyebrows at `sm` + bold + meta tracking
 
 Optical rules (size scales alone will not fix these):
@@ -1783,19 +2783,58 @@ Principles drawn from *Every Layout* (Pickering &amp; Bell): clarity and stabili
 | `.rf-stack` | Vertical rhythm via `gap` (default `spacing.5`). Variants: `--sm`, `--md`, `--lg`. Child block margins reset so gap owns the rhythm. |
 | `.rf-center` | Centered column at `--rf-measure`. Optional `.rf-center--gutter` for inline padding. |
 | `.rf-cluster` | Wrapping horizontal group (buttons, pills) with even `gap`. |
-| `.rf-prose` | Long-form type + measure (see Typography). |
+| `.rf-copy` | Mixed marketing column (eyebrow → title → lede → action → proof meta) with Gestalt proximity, not one even gap. |
+| `.rf-byline` | Credit line under a title inside `.rf-copy`. Tucks at `spacing.2`. The lede after it takes `spacing.6`. |
+| `.rf-box` | Even inset on all sides (`spacing.6`); paint (surface variants) sits on this. |
+| `.rf-grid` | Auto-fitting tiles that wrap at `--rf-grid-min`, no media query. Variants `--tight`, `--center`. |
+| `.rf-grid--two` / `--three` | Named even tracks for pairs / triples / 2&#215;2 rows. |
+| `.rf-grid--sym` | Symmetric rows of three for odd counts: every row centers, so 5 → 3+2 and 7 → 3+3+1 with the remainder centered. |
+| `.rf-grid--five` | Five even tracks (proof stats). Named exception; stacks to one column when the row cannot hold five. |
+| `.rf-split` | Switcher: two equal tracks that wrap at `--rf-split-min`. |
+| `.rf-split--shot` | Same split. The `.rf-copy` track is 28rem and will not exceed `--rf-measure`. The other track takes the rest of the row. The picture can sit on either side. |
+| `.rf-split--flip` | Same split, with the media on the other side. Under 40rem the tracks stack in source order. |
+| `.rf-sidebar` | One fixed side (`--rf-sidebar-side`) plus a fluid track; wraps at `--rf-sidebar-min`. |
+| `.rf-frame` | Media holds `--rf-frame-ratio` (4/3) with `object-fit: cover`; no prescribed px. |
+| `.rf-frame--square` | Same frame, cropped to 1:1. |
+| `.rf-frame--wide` | Same frame, cropped to 16:9. |
+| `.rf-frame--fit` | Same frame, with the crop lifted. The image keeps its real ratio. A large portrait uses this. A 1px `--rf-rule` edge keeps a pale screenshot visible on cream. |
+| `.rf-frame--round` | Same frame, cropped to a circle, at most 18rem (14rem under 40rem). |
+| `.rf-figure` | A frame with `.rf-caption` under it. The caption is as wide as the image. `.rf-figure--compact` uses a smaller name for the square and 16:9 crops. |
+| `.rf-wash` | Stripe across the pane. Cream-deep by default. `.rf-wash--dark` is the moss band. `.rf-wash__inner` keeps the copy on `--rf-max`. On that dark band, `.field label` and `strong` use `on-dark` (`--rf-on-dark`). `.link-text` uses `on-dark` and lightens to cream on hover. On a marketing page the pane is the window. On this docs site the stripe stops at the sidebar. |
+| `.rf-prose` | Long-form type + measure. Direct children share `--rf-space-5`. A following heading uses `--rf-space-6`. |
 | `.rf-prose--wide` | Report long-form: `--rf-measure-report` (`64ch`) + `body-lg`. Wider measured column for analytical HTML reports; not the default for marketing articles. |
 
+**Grid symmetry (contract):** a grid never strands a leftover tile. Pick tracks that fit the count: 2 items → `--two`; 3 → `--three` (or auto-fit `.rf-grid`); 4 → `--two` (2&#215;2) or four across; 5 → `--sym` (3+2 centered) or `--five` across; 6 → two rows of `--three`; 7 → `--sym` (3+3+1, the one centered). If a count fights the layout, change the count or the tracks — do not ship an asymmetric row.
+
 Shell / product chrome may still use grids and sidebars (this docs page’s `.ds-shell` is a sidebar composition). Prefer Stack + Center for article-like content.
+
+### Gestalt proximity
+
+Proximity is the space inside one piece. Related lines sit close. The action takes a step. Stack is the space between pieces, and that gap stays even. The reference site shows this under Primitives, on the specimen named Proximity.
+
+Recipe, in order:
+
+1. A label or eyebrow sits `--rf-space-2` or `--rf-space-3` above the title.
+2. The title sits `--rf-space-3` above the first line. A byline between the title and the lede (`.rf-byline`) tucks at `--rf-space-2`. The lede after that byline takes `--rf-space-6`, the same step as an action, so the credit and the excerpt are two groups.
+3. An action sits `--rf-space-5` or `--rf-space-6` below that line. A form action after fields uses `--rf-space-5`.
+4. A note that belongs to the action sits `--rf-space-4` under it.
+
+Use the space scale. Do not invent `0.35rem` or other off-scale gaps. A field label uses `--rf-space-1` because it is chrome on the control, not a title.
+
+Do not wrap that piece in `.rf-stack` when the lines need more than one gap. One stack gap is one distance for every child. A later `margin: 0` on a child wipes a sibling gap of equal weight, so set `margin-block` on the sides you mean.
+
+These pieces follow the recipe: `.rf-copy` (including `.rf-byline`), `.rf-display`, `.rf-figure`, `.rf-card`, `.rf-review`, `.surface`, `.rf-quote` (the person takes `--rf-space-5`), `.rf-dialog` (the actions take `--rf-space-5`), `.rf-gallery` (the thumb strip takes `--rf-space-5`), `.rf-takeaways` (the title sits `--rf-space-3` above the list), and `.rf-settings` (controls that belong together use `--rf-space-3`; the table takes `--rf-space-5`; a note under the table uses `--rf-space-4`). `.rf-lede { margin: 0 }` must not erase the lede&#39;s start inside `.rf-copy`.
+
+`.rf-prose` and a stack of whole sections stay even. A split or a sidebar gutter is a column gap, not this recipe. The catalog’s own headings hug the line under them at `--rf-space-2` or `--rf-space-3`. A caption under a specimen takes `--rf-space-5` before the next heading.
 
 Hierarchy:
 - One job per section: one heading, one short supporting line, then content
 - Prefer `.rf-stack` (or `spacing.5`–`spacing.7` gaps) between major blocks
-- Heading margin below should usually be larger than the gap into the following paragraph
+- Inside a block, follow the proximity recipe above. Related lines sit close. The action takes the step.
 - Avoid dashboard clutter on brand/marketing surfaces (no stat strips, pill clusters, or competing callout stacks in the first viewport)
 
 Page shell:
-- `--rf-max` (~56rem) may wrap sidebars and specimens; article paragraphs obey `--rf-measure`
+- `--rf-max` (56rem) may wrap sidebars and specimens. 56rem stays. A wider nav is a different chrome width. It is not a second token, and it is not an edit to `--rf-max`. Article paragraphs obey `--rf-measure`
 - `--rf-content-max` (~52rem) wraps tool/product reading columns (task detail, similar app views) when chrome and prose should share one edge
 - Analytical reports: body prose uses `.rf-prose--wide` (`64ch` + `body-lg`); tables and charts may still span the full shell
 - Marketing heroes may go full-bleed for atmosphere; text blocks keep measure
@@ -1829,13 +2868,13 @@ Focus ring: soft green halo (`0 0 0 3px` color-mix of primary at ~35% opacity). 
 
 ## Components
 
-Implement with these behaviors. Class names in this repo: `.btn`, `.input`, `.surface`, `.alert` (including `.alert--note`), `.pill`, `.rf-disclosure`, plus layout primitives `.rf-stack` / `.rf-center` / `.rf-cluster` / `.rf-prose` (see `css/components.css`, `css/disclosure.css`, `css/layouts.css`).
+Implement with these behaviors. Class names in this repo: `.btn`, `.input`, `.textarea`, `.rf-number`, `.rf-slider`, `.surface`, `.rf-card`, `.rf-divider`, `.rf-badge`, `.rf-avatar`, `.rf-time`, `.rf-breadcrumb`, `.rf-pagination`, `.alert` (including `.alert--note`), `.pill`, `.rf-skeleton`, `.rf-tooltip`, `.rf-dialog`, `.rf-toast`, `.rf-quote`, `.rf-cite`, `.rf-review`, `.rf-gallery`, `.rf-disclosure`, `.rf-tabs`, `.rf-toggle`, `.rf-select`, `.rf-display`, `.rf-lede`, `.rf-small`, `.rf-figure`, `.rf-caption`, plus layout primitives `.rf-stack` / `.rf-center` / `.rf-cluster` / `.rf-copy` / `.rf-byline` / `.rf-prose` and the settings column `.rf-settings` (see `css/components.css`, `css/chrome.css`, `css/disclosure.css`, `css/layouts.css`).
 
 **Buttons**
-- `button-primary` (`.btn--primary`): default main action (moss). One primary per section/view on marketing or mixed surfaces.
+- `button-primary` (`.btn--primary`): default main action (moss). One `.btn--primary` per view.
 - `button-secondary`: warm panel fill for secondary actions.
 - `button-tertiary`: outlined green for low-emphasis actions.
-- `button-cta`: orange fill with dark ink text for contrast; at most one high-stakes CTA on a view (Book, Pay, Submit final). Do not use white text on orange. Hover lightens toward cream (`85%` orange / `15%` cream) so contrast improves; do not darken with brown.
+- `button-cta`: orange fill with dark ink text for contrast (Book, Pay, Submit final). A `.btn--cta` on a dark band spends the page&#39;s orange, so the closing job does not get a second accent. Do not use white text on orange. Hover lightens toward cream (`85%` orange / `15%` cream) so contrast improves; do not darken with brown.
 - `button-ghost`: text-like dismissal / tertiary navigation.
 - `button-sm` (`.btn--sm`): compact control size for cards, toolbars, and download rows. Compose with a color variant (e.g. `.btn--tertiary.btn--sm`). Keeps the pill radius; uses denser padding and a 14px control label (not a new body type-scale step — still no `xs` in the type ramp).
 - `button-product` (`.btn--product`): **product UI only** — filled info blue (`blue-nav`) with white text. Use for selected app nav, board switches, and primary in-tool actions inside dashboards (Phloem, plugin chrome, ops boards). Signals “you’re in the product,” not a marketing pitch. Do not use on marketing heroes or as a brand CTA.
@@ -1845,13 +2884,30 @@ Implement with these behaviors. Class names in this repo: `.btn`, `.input`, `.su
 
 **Links**
 - Marketing / long-form: `primary` green, semibold when inline. Never default browser blue.
+- On `.rf-wash--dark`, `.link-text` uses `on-dark` (`--rf-on-dark`) and lightens to cream on hover.
 - Product UI title links may use `info` blue (as in Phloem task titles); do not use that blue for marketing body links.
 
 **Forms**
-- Labels above fields (`typography.label`)
+- Labels above fields (`typography.label`). The label sits `--rf-space-1` above the control (`.field`, `.rf-field-row`). On `.rf-wash--dark` the label uses `on-dark` (`--rf-on-dark`).
 - Inputs: white surface, soft ink border, `rounded.sm`, green focus ring
 - Errors: danger border + text message under the field (never color-only)
 - Selected choice chips / toggles: use `pill-active` (`.pill--active` or `.pill.is-active`) — `primary-soft` fill with `primary-deep` text. Do not use solid `primary` with `ink` (fails contrast). Solid `primary` fills must use `on-primary` (white).
+
+**Product chrome** (`css/chrome.css`)
+- For plugin settings, dashboards, and other tool surfaces on cream. First shipped in Agent Role settings (Agents / Settings / Activity).
+- **Folder tabs** (`.rf-tabs`): a nav list (`.rf-tabs__list`) of tabs (`.rf-tabs__tab`) with an orange dot (`.rf-tabs__dot`) and slanted shoulder SVG (`.rf-tabs__shoulder`). The current tab uses `.is-current` and sits flush on the white panel (`.rf-tabs__panel`). Later tabs stack behind earlier ones so shoulders never cover labels. Production often uses links that reload the screen; the Content patterns specimen uses buttons with `role=&quot;tab&quot;`. WordPress admin may need scoped resets on top of this file.
+- **Toggle** (`.rf-toggle`): a checkbox (`.rf-toggle__input`), tan track (`.rf-toggle__track`), and uppercase state label (`.rf-toggle__state`) with `data-enabled` / `data-disabled` strings. Optional note (`.rf-toggle__note`) after the state. Swap the label text on `change` in JS; do not rely on color alone.
+- **Filter select** (`.rf-select`): taller control for settings selects and filter bars. Bold label, 0.8rem radius, moss chevron. Use on the Forms specimen for `&lt;select&gt;`; pair with `.rf-field-row` / `.rf-filter-row` for Activity-style filter grids. Browsers that support `appearance: base-select` get a card-style picker list; others keep the classic chevron. The lighter `.select` in `components.css` remains for simple marketing forms when you do not need product chrome.
+- **Settings panel** (`.rf-settings`): one column of tool controls. A filter row and the toggle that belongs with it use `--rf-space-3`. The table takes `--rf-space-5`. A note under the table uses `--rf-space-4`. Do not put this panel in `.rf-stack`.
+
+**Textarea** (`.textarea`)
+- Same chrome as `.input`. Multi-line, vertical resize, minimum block size `6rem`.
+
+**Number** (`.rf-number`)
+- A stepper around an `.input` of type `number`. Decrease and increase are buttons with names. The field keeps `min` and `max`. Hide the browser spinner so those buttons are the only step control.
+
+**Slider** (`.rf-slider`)
+- A range input. Moss accent on the panel track. Pair it with an `output` so the value is text, not the thumb alone.
 
 **Pills**
 - Default `.pill`: panel fill + ink
@@ -1860,15 +2916,72 @@ Implement with these behaviors. Class names in this repo: `.btn`, `.input`, `.su
 - Pills are **single-line chips**: `white-space: nowrap` and `flex-shrink: 0` (see `elements.css`). Keep labels short (about 1–3 words or a compact metric). In flex headers next to titles, allow the row to wrap (`flex-wrap: wrap`) so a tight card moves the pill below as a full chip instead of squeezing it into a tall oval.
 - Filled moss buttons use `on-primary`, not bare `ink`
 
+**Quote** (`.rf-quote`)
+- One attribution. The words, a serif quotation mark, and a person. A photo and a role are optional. Omit the `&lt;img&gt;` when there is no photo so the row closes up. The person takes `--rf-space-5` under the words.
+- The card has `2em` of padding, a 2px `--rf-brown` rule on the right and the bottom, and a 6px radius on that corner. The lift is `--rf-shadow`, clipped so the falloff stays on the right and the bottom.
+- Markup is a schema.org [Quotation](https://schema.org/Quotation). `itemprop=&quot;text&quot;` on the words. `itemprop=&quot;author&quot;` is a Person with `name`, and when you have them, `jobTitle` and `image`. A source URL is `citation` on the quotation, outside the Person. The mark is CSS, so it stays out of `text`.
+- `author` is the speaker. `spokenByCharacter` is for a character inside some other work. A rating lives on `.rf-review`.
+- Do not build this as `surface` plus `.rf-lede`. `.surface p` beats the lede and the line goes small and gray.
+
+**Citation** (`.rf-cite`)
+- A passage from a document, with the source under the words. A person stays `.rf-quote`.
+- The words hang on a 4px `--rf-orange` rule. The block shifts `38px` left so the words stay in line with the column and the rule sticks out. The background stays transparent. Padding is `--rf-space-6`. The block stops at `40rem`.
+- A serif quotation mark sits outside the block on the right, at `32rem`, in `--rf-orange` at 28% opacity. The mark is CSS, so it stays out of the words.
+- The words are Knile at `--rf-text-lg`. The source is Nunito at `--rf-text-md`, `--rf-space-5` under the words.
+- Markup is a `blockquote`. The passage is a paragraph. The source is a `cite` with a link.
+
+**Review card** (`.rf-review`)
+- One review. It sits in `.rf-grid--three` with the other reviews. Rating, title, words, person, and a date. The role line is optional. Omit it and the name stands alone.
+- The card is white, so it uses the same 4px `--rf-cream-deep` square edge as a white surface. No shadow.
+- Proximity inside the card: stars sit `--rf-space-2` above the title, the title sits `--rf-space-3` above the words, and the person takes `--rf-space-5`. The person stays with the words. Do not pin the byline to the bottom of the card.
+- Stars use `--rf-orange`. A star without `.rf-review__star--on` stays a quiet orange.
+- Markup is a schema.org [Review](https://schema.org/Review). `reviewRating` is a Rating (`ratingValue`, `bestRating`). `name` is the title. `reviewBody` is the words. `author` is a Person (`name`, and `jobTitle` when the role is a job). `datePublished` is the date. A source link is `url` on the review, outside the Person.
+- Keep the row in the grid. A slider is a later idea, and this is not a new page job. A single attribution stays `.rf-quote`.
+
+**Gallery** (`.rf-gallery`)
+- One image on a white mat, its caption, and a count (`1 of 6`). The thumb strip sits `--rf-space-5` under the mat. The rest of the set is a strip of thumbs that share the mat&#39;s width, up to six across. Fewer images grow to fill the row. On a narrow screen the strip wraps at three across, and each row still fills the width. The current thumb uses the quote&#39;s brown right-and-bottom edge. A single image hides the strip and the count.
+- The mat keeps a steady height. The picture is shown whole (`object-fit: contain`). Opening the mat uses a native dialog with a 5px `--rf-panel` frame. The bar under the picture uses the same panel color. Round previous and next buttons sit outside the picture until the pointer is over it, then they fade and slide in over 500ms. That bar holds the same controls as text, the caption in the middle, and close. Orange stays the page CTA. A tall screenshot scrolls inside the frame so the bar stays put.
+- Thumbs are buttons. The button name is the position plus the caption. The thumb image is decorative. The stage image keeps a real `alt`. The caption is the sentence, and the same text fills the dialog.
+- Left and right change the image only while the gallery or the dialog has focus. Escape closes the dialog and focus returns to the control that opened it. Nothing auto-advances. Reduced motion skips the strip&#39;s smooth scroll.
+- Markup is a schema.org ItemList of ImageObject: `position`, `caption`, `contentUrl`, `width`, `height`. `ImageGallery` is a web page type, so a section on a product page uses the list.
+
 **Surfaces**
-- `surface`: white module on cream
-- `surface-panel`: warm panel grouping without heavy card shadow
-- Cream-deep bands for alternating page sections
-- `surface-dark` (`.surface--dark`): moss-deep callout on cream pages; white titles, muted white body; CTAs use `button-cta` with `ink-deep` on orange (not white on orange). Prefer one dark card per sidebar or section.
-- Do not wrap every block in a shadowed card
+- `surface`: white module on cream. Square corners, no shadow. The edge is 4px `--rf-cream-deep`. Cream is the next paper step, and it is also the page wash, so that edge would disappear.
+- `surface-panel` (`.surface--panel`): warm panel grouping. The edge is the fill taken one step darker, about 0.03 lightness, and it keeps the fill&#39;s hue.
+- `.surface--cream`: cream-deep fill, same edge rule.
+- `.surface--tint`: soft moss tile, same edge rule.
+- `surface-dark` (`.surface--dark`): moss-deep callout on cream pages, same edge rule. Titles in white or cream; meta/eyebrows in soft blue (`info-soft`) or soft orange (`tertiary-soft`). Body may use white / cream / `on-dark-muted`. CTAs use `button-cta` with `ink-deep` on orange. A `.btn--cta` on a dark band spends the page&#39;s orange, so the closing job does not get a second accent. Prefer one dark card per sidebar or section.
+- A quote stays `.rf-quote`. A document passage stays `.rf-cite`. Neither uses this edge.
+- Title sits `--rf-space-2` above the body. The action takes `--rf-space-5`. Do not use an off-scale margin under the title.
+- An eyebrow is a `.rf-meta` directly above the title. It sits `--rf-space-3` above that title. On `.surface--dark` the eyebrow is `tertiary-soft`, because solid orange fails on moss.
+
+**Card** (`.rf-card`)
+- One unit: an optional eyebrow (`.rf-meta`), a title (`.rf-card__title`), a body, and an action in `.rf-card__foot` under a hairline. Use this when the block is a single thing someone can open. The eyebrow sits `--rf-space-3` above the title.
+- The card is white, so it uses the same 4px `--rf-cream-deep` square edge as a white surface. No shadow.
+- The title sits `--rf-space-3` above the body. The footer takes `--rf-space-5`, then the hairline and its padding.
+- A `.surface` stays the looser box for a mix of content. Do not turn every surface into a card.
+
+**Divider** (`.rf-divider`)
+- A 1px `--rf-rule` hairline. `.rf-divider--vertical` sits in a row. It is an `&lt;hr&gt;`, so it stays out of the reading order as decoration only when the regions already have names.
+
+**Badge** (`.rf-badge`)
+- A count, or a status dot (`.rf-badge--dot`). Moss fill with `on-primary` for a plain count. `.rf-badge--danger` uses the danger soft fill and danger text.
+- A `.pill` carries a short label. Do not use a badge for words like “Waiting” or “Info”.
+
+**Avatar** (`.rf-avatar`)
+- Initials, a photo, or the tree mark (`.rf-avatar--mark` on `rf-mark.svg`) when the space is too tight for the wordmark. Give initials an accessible name. The mark image keeps a real `alt`.
+
+**Relative time** (`.rf-time`)
+- A `&lt;time&gt;` element. The visible phrase is relative (“3 hours ago”). The `datetime` attribute keeps the absolute moment, and `title` can repeat that moment for hover.
+
+**Breadcrumb** (`.rf-breadcrumb`)
+- An ordered list inside a nav. Parent links, then the current page with `aria-current=&quot;page&quot;`. The separator is a small dot: `--rf-green-soft` fill with a `--rf-green-deep` outline.
+
+**Pagination** (`.rf-pagination`)
+- Previous, page buttons, next. The current page is `.btn--primary` with `aria-current=&quot;page&quot;`. One current page. These are buttons on a specimen. A real list uses links to the page URL, so it does not spend the view&#39;s `.btn--primary`.
 
 **Key takeaways** (`.rf-takeaways` / `ol.rf-keytakeaways`)
-- Knile title in `primary` green (“Key Takeaways”)
+- Knile title in `primary` green (“Key Takeaways”). The title sits `--rf-space-3` above the list.
 - Ordered items with 2px `tertiary` left rule, zero-padded numbers (`01`, `02`) in orange, body in `ink`
 - Optional lead line: `&lt;strong&gt;` as the first child of each `li` (renders as a block title above the body). Do not put title and body in separate grid columns.
 - Use in article sidebars or after the intro; keep to a short list (about 3–5 items)
@@ -1890,27 +3003,31 @@ Implement with these behaviors. Class names in this repo: `.btn`, `.input`, `.su
 - Alerts for full-sentence page messages (`alert-info`, `alert-success`, `alert-warning`, `alert-danger`)
 - `alert-note` (`.alert--note`): instructional how-to / guidance on `panel-soft` with a moss left rule — not a status message
 - Spinner for indeterminate wait; progress bar only when percent is known
+- **Skeleton** (`.rf-skeleton`): placeholder shapes while content loads. A line, a short line, and an avatar-sized circle. The pulse stops under `prefers-reduced-motion`. Mark the group `aria-hidden` when it is not real content.
+- **Tooltip** (`.rf-tooltip`): a short note in `.rf-tooltip__bubble` with `role=&quot;tooltip&quot;`. It sits under the trigger, aligned to the trigger&#39;s start, on hover and on keyboard focus, so it does not cover the label above. It does not hold actions. A decision belongs in a dialog.
+- **Dialog** (`.rf-dialog`): a native `&lt;dialog&gt;` opened with `showModal()`. One title, one sentence, and two actions (keep working, confirm). The title sits `--rf-space-3` above the sentence. The actions take `--rf-space-5`. Do not put the form in `.rf-stack`. Escape closes it. Focus returns to the control that opened it. The gallery lightbox stays `.rf-gallery` and is not this pattern.
+- **Toast** (`.rf-toast`): a brief confirmation in a live region (`role=&quot;status&quot;`). It leaves on its own after a few seconds, or when dismissed. It does not ask a question. On a product page, pin the stack to the viewport. The specimen pins it inside `.rf-toast-stage` so the docs chrome stays put.
 
 **Disclosure** (`.rf-disclosure` in `css/disclosure.css`)
 - One expandable section via native `&lt;details&gt;` / `&lt;summary&gt;` (a11y name: disclosure). Prefer this over custom accordion JS for a single panel.
-- Closed: bordered white box, meta-style uppercase label, leaf caret pointing right
-- Open: cream panel with generous padding; leaf rotates to point down
+- Closed: bordered white box, meta-style uppercase label, arrow pointing right
+- Open: cream panel with generous padding; the arrow rotates 90&#176; to point down
 - Summary label uses meta tracking; slight size nudge on hover / open is allowed
-- Leaf mark: `icons/leaf-arrow.svg` (Streamline Sharp geometry, CC BY 4.0, CDS greens). Tip is top-right at rest; CSS rotates +45&#176; (closed → right) and +135&#176; (open → down). Not the tree wordmark.
+- The arrow is inline SVG (`.rf-disclosure__arrow`), not an image URL. Light half is `--rf-green-1`, lower half is `--rf-green-2`, outline is `--rf-brown`. It points right at rest.
 - Use for secondary background (context, sources, footnotes) that should stay out of the way. Do not hide the primary action or completion test behind a disclosure.
 - An “accordion” (coordinated group, one-open-at-a-time) is out of scope for this primitive; stack independent `.rf-disclosure` elements when several sections collapse.
 
 **Brand assets (non-token but mandatory)**
 - Wordmark vs tree icon: wordmark when naming the brand; tree icon for favicons, avatars, tight badges
 - **Default wordmark (hard stop):** when Matt says “the logo,” “full logo,” “full wordmark,” “R&amp;F logo,” or similar without naming a variant, use **`logos/SVG/R&amp;F_Logo.svg`** — the multi-tone full-color canopy on cream/light. On dark fields, default to **`logos/SVG/R&amp;F_Logo_DarkBG.svg`**. Do **not** default to `*_Flat_Color_*` (mono moss / simplified) or flat black/white. Flat / mono variants only when he explicitly asks for flat, mono, one-color, or small-size simplification.
-- UI caret leaf: `icons/leaf-arrow.svg` for disclosures and similar expand/collapse chrome (see Disclosure)
+- UI caret: the inline disclosure arrow (see Disclosure). Do not load `icons/leaf-arrow.svg` for this control.
 - Illustrations (`illustrations/roots-1.svg`, `illustrations/apples-1.svg`): atmosphere only. Use tokens `--rf-atmosphere` (≈0.10), `--rf-atmosphere-quiet` (≈0.065 under dense title/hero text), `--rf-atmosphere-spot` (≈0.45 for apples). Utilities: `.rf-atmosphere`, `.rf-atmosphere--quiet`, `.rf-atmosphere--spot`. When small copy sits on roots, prefer `.rf-lede-over-atmosphere` (Nunito 600 + `--rf-ink-muted`) before frosting or further dimming art. One watermark per surface. Never treat illustrations as logos or links.
 - Prefer SVG for on-screen marks; PNG profile/square exports for host uploads that require raster
 
 **Presentations (PDS layer on CDS)**
 - One design system: CDS owns tokens here; the presentation layer (`/rf-reveal`) owns Pitch layouts and reveal.js chrome
 - PDS vendors `css/tokens.css` via `sync-cds-tokens.ps1` (`cds-tokens.css`); do not invent parallel hex, opacities, or lede weights in the deck
-- Presentations pick a PDS **layout id** first, then compose elements from this package (surfaces, quiet `rf-table`, buttons/pills, `code` / `.inline-label`, `.rf-code`). Element-kit gallery slides are operator QA only — not client layout ids (`/rf-reveal` &#183; `company-docs/03-Marketing (CMO)/social/pds/REFERENCE.md`). Vertical social: open `company-docs/03-Marketing (CMO)/social/AGENTS.md` &#183; templates `…/social/templates/` &#183; forks `…/social/presentations/` &#183; `/rf-shorts-li` &#183; `/rf-shorts-yt`
+- Presentations pick a PDS **layout id** first, then compose elements from this package (surfaces, quiet `rf-table`, buttons/pills, `code` / `.inline-label`, `.rf-code`). Element-kit gallery slides are operator QA only — not client layout ids (`/rf-reveal` &#183; `company-docs/03-Marketing/social/pds/REFERENCE.md`). Vertical social: open `company-docs/03-Marketing/social/AGENTS.md` &#183; templates `…/social/templates/` &#183; forks `…/social/presentations/` &#183; `/rf-shorts-li` &#183; `/rf-shorts-yt`
 - Same color/type language; more whitespace; fixed slide canvas is fine
 - One atmosphere treatment per slide; do not stack watermarks
 
@@ -1923,13 +3040,14 @@ Implement with these behaviors. Class names in this repo: `.btn`, `.input`, `.su
 - Check contrast for body text (AA) before shipping
 - Use the spacing and radius scales exactly
 - Keep sections simple: one purpose, clear hierarchy
-- Reuse `css/rf.css` (or tokens + components) when working in this brand package
+- Compose marketing pages from the page jobs; mixed hero / CTA copy lives in `.rf-copy`, not a bare `.rf-stack`
+- Reuse `css/rf.css`, or `css/brand.css` when a surface only needs fonts and tokens
 
 **Don&#39;t**
 - Don&#39;t use purple gradients, indigo glow, cool gray glass, or “AI slop” aesthetic defaults
 - Don&#39;t use Inter, Roboto, Arial, or comic display fonts
 - Don&#39;t make orange a theme color or page background
-- Don&#39;t put more than one primary button (or one orange CTA) in a single view
+- Don&#39;t put more than one `.btn--primary` per view. A `.btn--cta` on a dark band spends the page&#39;s orange, so the closing job does not get a second accent.
 - Don&#39;t use pure black (`#000`) or pure white as the default page wash
 - Don&#39;t invent new hex values when a token exists
 - Don&#39;t use illustrations as logos, or logos as decorative watermarks at full opacity
@@ -1943,14 +3061,16 @@ Implement with these behaviors. Class names in this repo: `.btn`, `.input`, `.su
 - Don&#39;t use cool cyan/gray IDE chrome for code; stay on warm `code-bg` + moss-teal base
 - Don&#39;t outline every inline `code` (that chrome is for `.inline-label` only); don&#39;t use `.inline-label` for ordinary in-flow terms
 - Don&#39;t put white text on orange CTAs (including on dark cards); use `ink-deep` on `tertiary`
+- Don&#39;t put solid `tertiary` orange (or solid `info` blue) text on dark green / `surface-dark` — use `white`, `cream`, `info-soft`, or `tertiary-soft` only
 - Don&#39;t invent a second takeaways pattern (cards, checkmarks, emoji numbers)
 - Don&#39;t introduce an `xs` size or any readable text below `sm` (16px)
 - Don&#39;t invent parallel layout utilities when `.rf-stack`, `.rf-center`, or `.rf-cluster` already fit
+- Don&#39;t invent a ninth page job and don&#39;t auto-fit proof or stats into a leftover tile (three items, three tracks; five items, five tracks)
 - Don&#39;t set paragraph measure in `px`; use `--rf-measure` (`ch`)
 - Don&#39;t nest `--rf-measure` on prose inside a wider tool surface; use `--rf-content-max` for the shared column instead
 - Don&#39;t hide primary next actions inside `.rf-disclosure`
 - Don&#39;t fake Knile italic or add font weights outside 400 / 600 / 700
-- Don&#39;t commit Knile WOFF/WOFF2 binaries to any public GitHub repo (`brand`, `slides`, or forks). Host Knile only on rootsandfruit.com (`/wp-content/uploads/rnf_assets/fonts/`); load via absolute URL in `css/fonts.css` / PDS `tokens.css`. Offline/file opens may fall back to Georgia.
+- Don&#39;t commit Knile or Nunito WOFF/WOFF2 binaries to any public GitHub repo (`brand`, `slides`, or forks). Host them only on rootsandfruit.com (`/wp-content/uploads/rnf_assets/fonts/`); load via absolute URL in `css/fonts.css`. Offline/file opens may fall back to Georgia / system-ui.
 
 ## Agent directives
 
@@ -1960,9 +3080,9 @@ When generating or editing UI for Roots &amp; Fruit:
 2. Prefer token names and `{colors.*}` references over raw hex in reasoning; emit CSS variables `--rf-*` when editing this repo’s brand CSS.
 3. If a request conflicts with Do&#39;s and Don&#39;ts, follow this file and note the conflict briefly.
 4. Validate text/background pairs against WCAG AA for body copy.
-5. After UI changes, self-check: cream paper present? Knile on titles? One primary action? No purple/gray-glass drift? No extra orange?
+5. After UI changes, self-check: cream paper present? Knile on titles? One `.btn--primary` per view? No purple/gray-glass drift? No extra orange?
 6. For brand marks and illustrations, use files under `logos/` and `illustrations/`; do not regenerate lookalikes.
-7. Unknown patterns (modals, tabs, toasts, dark mode) are out of scope until added here; improvise with existing tokens and keep the same constraints rather than inventing a new visual language.
+7. Dark mode stays out of scope. Dialog, toast, tooltip, and folder tabs are specified in this file. Anything still unnamed stays out of scope until it is added here. Improvise with existing tokens and keep the same constraints.
 </code></pre>
         <span class="rf-code__lang">Markdown</span>
       </div>
@@ -1974,66 +3094,137 @@ When generating or editing UI for Roots &amp; Fruit:
     </main>
   </div>
 
+  <script src="js/gallery.js?v=2026-10-05-close"></script>
   <script>
     (function () {
-      var tabs = Array.prototype.slice.call(document.querySelectorAll("[data-ds-tab]"));
-      var tabButtons = tabs.filter(function (el) { return el.getAttribute("role") === "tab"; });
+      var pageIds = ["overview", "brand", "tokens", "components", "patterns-layout", "showcase", "design-md"];
+      var alias = { contract: "design-md", playbook: "design-md" };
+      var sectionPage = {
+        "media-kit": "brand",
+        "logos": "brand",
+        "illustrations": "brand",
+        "color": "tokens",
+        "type": "tokens",
+        "space": "tokens",
+        "inputs": "components",
+        "buttons": "components",
+        "forms": "components",
+        "data": "components",
+        "card": "components",
+        "divider": "components",
+        "badge": "components",
+        "avatar": "components",
+        "time": "components",
+        "navigation": "components",
+        "breadcrumb": "components",
+        "pagination": "components",
+        "feedback": "components",
+        "skeleton": "components",
+        "tooltip": "components",
+        "dialog": "components",
+        "toast": "components",
+        "disclosure": "components",
+        "number": "components",
+        "slider": "components",
+        "primitives": "patterns-layout",
+        "proximity": "patterns-layout",
+        "patterns": "patterns-layout",
+        "pages": "patterns-layout",
+        "landing": "showcase",
+        "plugin": "showcase",
+        "article": "showcase",
+        "tool": "showcase"
+      };
+      var sectionNav = {
+        "buttons": "inputs",
+        "forms": "inputs",
+        "number": "inputs",
+        "slider": "inputs",
+        "card": "data",
+        "divider": "data",
+        "badge": "data",
+        "avatar": "data",
+        "time": "data",
+        "breadcrumb": "navigation",
+        "pagination": "navigation",
+        "skeleton": "feedback",
+        "tooltip": "feedback",
+        "dialog": "feedback",
+        "toast": "feedback",
+        "disclosure": "feedback"
+      };
       var panels = Array.prototype.slice.call(document.querySelectorAll(".ds-panel"));
-      var valid = {};
-      tabButtons.forEach(function (btn) { valid[btn.getAttribute("data-ds-tab")] = true; });
+      var pageLinks = Array.prototype.slice.call(document.querySelectorAll(".ds-nav__page"));
+      var subLinks = Array.prototype.slice.call(document.querySelectorAll(".ds-nav__sub a"));
+
+      function resolve(id) {
+        if (alias[id]) id = alias[id];
+        if (pageIds.indexOf(id) !== -1) return { page: id, section: null };
+        if (sectionPage[id]) return { page: sectionPage[id], section: id };
+        return { page: "overview", section: null };
+      }
 
       function show(id, pushHash) {
-        if (!valid[id]) id = "overview";
-
-        tabButtons.forEach(function (btn) {
-          var on = btn.getAttribute("data-ds-tab") === id;
-          btn.setAttribute("aria-selected", on ? "true" : "false");
-          btn.tabIndex = on ? 0 : -1;
-        });
+        var target = resolve(id);
 
         panels.forEach(function (panel) {
-          var on = panel.id === id;
-          if (on) panel.removeAttribute("hidden");
+          if (panel.id === target.page) panel.removeAttribute("hidden");
           else panel.setAttribute("hidden", "");
         });
 
+        pageLinks.forEach(function (link) {
+          var on = link.getAttribute("href") === "#" + target.page;
+          if (on) link.setAttribute("aria-current", "page");
+          else link.removeAttribute("aria-current");
+        });
+
+        document.querySelectorAll(".ds-nav__group").forEach(function (group) {
+          group.classList.toggle("is-current", group.getAttribute("data-ds-group") === target.page);
+        });
+
+        var navId = target.section ? (sectionNav[target.section] || target.section) : null;
+        subLinks.forEach(function (link) {
+          var on = Boolean(navId) && link.getAttribute("href") === "#" + navId;
+          if (on) link.setAttribute("aria-current", "location");
+          else link.removeAttribute("aria-current");
+        });
+
         if (pushHash) {
-          if (history.replaceState) history.replaceState(null, "", "#" + id);
-          else location.hash = id;
+          var hash = target.section || target.page;
+          if (history.replaceState) history.replaceState(null, "", "#" + hash);
+          else location.hash = hash;
         }
 
-        window.scrollTo(0, 0);
+        var anchor = target.section ? document.getElementById(target.section) : null;
+        if (anchor) anchor.scrollIntoView();
+        else window.scrollTo(0, 0);
       }
 
       function idFromHash() {
-        var raw = (location.hash || "").replace(/^#/, "");
-        return valid[raw] ? raw : "overview";
+        return (location.hash || "").replace(/^#/, "") || "overview";
       }
 
-      tabButtons.forEach(function (btn) {
-        btn.addEventListener("click", function () {
-          show(btn.getAttribute("data-ds-tab"), true);
+      document.querySelectorAll('a[href^="#"]').forEach(function (link) {
+        link.addEventListener("click", function (event) {
+          var href = link.getAttribute("href") || "";
+          var id = href.charAt(0) === "#" ? href.slice(1) : link.getAttribute("data-ds-tab");
+          if (!id || (pageIds.indexOf(id) === -1 && !sectionPage[id])) return;
+          event.preventDefault();
+          show(id, true);
         });
       });
 
-      document.querySelectorAll('a[data-ds-tab]').forEach(function (link) {
-        link.addEventListener("click", function (e) {
-          e.preventDefault();
-          show(link.getAttribute("data-ds-tab"), true);
-        });
-      });
-
-      tabButtons.forEach(function (btn, index) {
-        btn.addEventListener("keydown", function (e) {
+      pageLinks.forEach(function (link, index) {
+        link.addEventListener("keydown", function (event) {
           var next = null;
-          if (e.key === "ArrowDown" || e.key === "ArrowRight") next = tabButtons[(index + 1) % tabButtons.length];
-          if (e.key === "ArrowUp" || e.key === "ArrowLeft") next = tabButtons[(index - 1 + tabButtons.length) % tabButtons.length];
-          if (e.key === "Home") next = tabButtons[0];
-          if (e.key === "End") next = tabButtons[tabButtons.length - 1];
+          if (event.key === "ArrowDown" || event.key === "ArrowRight") next = pageLinks[(index + 1) % pageLinks.length];
+          if (event.key === "ArrowUp" || event.key === "ArrowLeft") next = pageLinks[(index - 1 + pageLinks.length) % pageLinks.length];
+          if (event.key === "Home") next = pageLinks[0];
+          if (event.key === "End") next = pageLinks[pageLinks.length - 1];
           if (!next) return;
-          e.preventDefault();
+          event.preventDefault();
           next.focus();
-          show(next.getAttribute("data-ds-tab"), true);
+          show(next.getAttribute("href").slice(1), true);
         });
       });
 
@@ -2076,7 +3267,9 @@ When generating or editing UI for Roots &amp; Fruit:
           "--rf-green",
           "--rf-green-deep",
           "--rf-orange",
+          "--rf-orange-soft",
           "--rf-blue",
+          "--rf-blue-soft",
           "--rf-danger",
           "--rf-white",
           "--rf-cream"
@@ -2265,6 +3458,106 @@ When generating or editing UI for Roots &amp; Fruit:
         }
         return Promise.resolve(codeTextFrom(block));
       }
+
+      document.querySelectorAll(".rf-toggle__input").forEach(function (input) {
+        var state = input.parentElement.querySelector(".rf-toggle__state");
+        if (!state) return;
+        input.addEventListener("change", function () {
+          state.textContent = input.checked
+            ? state.getAttribute("data-enabled")
+            : state.getAttribute("data-disabled");
+        });
+      });
+
+      document.querySelectorAll(".rf-tabs").forEach(function (root) {
+        var tabs = root.querySelectorAll(".rf-tabs__tab[role='tab']");
+        tabs.forEach(function (tab) {
+          tab.addEventListener("click", function () {
+            var key = tab.getAttribute("data-chrome-tab");
+            tabs.forEach(function (other) {
+              var active = other === tab;
+              other.classList.toggle("is-current", active);
+              other.setAttribute("aria-selected", active ? "true" : "false");
+              other.tabIndex = active ? 0 : -1;
+            });
+            root.querySelectorAll("[data-chrome-panel]").forEach(function (panel) {
+              panel.hidden = panel.getAttribute("data-chrome-panel") !== key;
+            });
+          });
+        });
+      });
+
+      document.querySelectorAll(".rf-number").forEach(function (wrap) {
+        var input = wrap.querySelector("input");
+        wrap.querySelectorAll("[data-rf-step]").forEach(function (btn) {
+          btn.addEventListener("click", function () {
+            var step = Number(btn.getAttribute("data-rf-step"));
+            var next = Number(input.value || 0) + step;
+            var min = input.min === "" ? -Infinity : Number(input.min);
+            var max = input.max === "" ? Infinity : Number(input.max);
+            if (next < min) next = min;
+            if (next > max) next = max;
+            input.value = String(next);
+          });
+        });
+      });
+
+      document.querySelectorAll(".rf-slider").forEach(function (input) {
+        var output = input.id ? document.querySelector('output[for="' + input.id + '"]') : null;
+        if (!output) return;
+        function sync() { output.value = input.value; }
+        input.addEventListener("input", sync);
+        sync();
+      });
+
+      document.querySelectorAll(".rf-time").forEach(function (node) {
+        var offset = Number(node.getAttribute("data-rf-offset"));
+        var then = node.getAttribute("datetime") ? new Date(node.getAttribute("datetime")) : null;
+        if (!isNaN(offset)) then = new Date(Date.now() + offset);
+        if (!then || isNaN(then.getTime())) return;
+        var rtf = new Intl.RelativeTimeFormat(undefined, { numeric: "auto" });
+        var seconds = Math.round((then.getTime() - Date.now()) / 1000);
+        var abs = Math.abs(seconds);
+        var value = seconds;
+        var unit = "second";
+        if (abs >= 86400 * 365) { value = Math.round(seconds / (86400 * 365)); unit = "year"; }
+        else if (abs >= 86400 * 30) { value = Math.round(seconds / (86400 * 30)); unit = "month"; }
+        else if (abs >= 86400) { value = Math.round(seconds / 86400); unit = "day"; }
+        else if (abs >= 3600) { value = Math.round(seconds / 3600); unit = "hour"; }
+        else if (abs >= 60) { value = Math.round(seconds / 60); unit = "minute"; }
+        node.dateTime = then.toISOString();
+        node.textContent = rtf.format(value, unit);
+        node.title = then.toLocaleString();
+      });
+
+      document.querySelectorAll("[data-rf-dialog-open]").forEach(function (btn) {
+        btn.addEventListener("click", function () {
+          var dialog = document.getElementById(btn.getAttribute("data-rf-dialog-open"));
+          if (dialog && typeof dialog.showModal === "function") dialog.showModal();
+        });
+      });
+
+      document.querySelectorAll("[data-rf-toast]").forEach(function (btn) {
+        btn.addEventListener("click", function () {
+          var stage = btn.closest(".rf-toast-stage");
+          if (!stage) return;
+          var toast = stage.querySelector(".rf-toast");
+          var text = toast.querySelector("p");
+          text.textContent = btn.getAttribute("data-rf-toast");
+          toast.hidden = false;
+          clearTimeout(toast._rfTimer);
+          toast._rfTimer = setTimeout(function () { toast.hidden = true; }, 4000);
+        });
+      });
+
+      document.querySelectorAll(".rf-toast__close").forEach(function (btn) {
+        btn.addEventListener("click", function () {
+          var toast = btn.closest(".rf-toast");
+          if (!toast) return;
+          clearTimeout(toast._rfTimer);
+          toast.hidden = true;
+        });
+      });
 
       document.querySelectorAll("[data-rf-copy]").forEach(function (btn) {
         btn.setAttribute("data-rf-copy-label", defaultCopyLabel(btn));

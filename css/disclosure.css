@@ -1,6 +1,6 @@
 /* Roots & Fruit — disclosure (single expandable section).
    Native <details>/<summary>. Prefer this over inventing accordion JS.
-   Load after tokens.css. Tip of icons/leaf-arrow.svg is top-right at rest. */
+   The mark is an inline arrow that points right. Open rotates it 90° so it points down. */
 
 .rf-disclosure {
   --rf-disclosure-label: 0.8rem;
@@ -65,24 +65,19 @@
   display: inline-flex;
   align-items: center;
   justify-content: center;
-  /* Asset tip is top-right; +45° → right (closed), +135° → down (open) */
-  transform: rotate(45deg);
+  transform: none;
   transition: transform var(--rf-disclosure-motion);
 }
 
 .rf-disclosure[open] > .rf-disclosure__summary .rf-disclosure__icon {
-  transform: rotate(135deg);
+  transform: rotate(90deg);
 }
 
-.rf-disclosure__leaf {
+.rf-disclosure__arrow {
   display: block;
   inline-size: var(--rf-disclosure-leaf);
   block-size: var(--rf-disclosure-leaf);
-  transition:
-    inline-size var(--rf-disclosure-motion),
-    block-size var(--rf-disclosure-motion),
-    width var(--rf-disclosure-motion),
-    height var(--rf-disclosure-motion);
+  overflow: visible;
 }
 
 .rf-disclosure__summary:hover .rf-disclosure__label,

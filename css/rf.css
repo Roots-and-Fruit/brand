@@ -1,8 +1,4 @@
-/* Roots & Fruit — shared system entry (fonts + tokens + layouts + components). */
+/* Roots & Fruit — brand kit plus UI kit. Forks and the catalog load this file. */
 
-@import url("fonts.css?v=2026-08-05-btn-sm");
-@import url("tokens.css?v=2026-08-05-btn-sm");
-@import url("layouts.css?v=2026-08-05-btn-sm");
-@import url("elements.css?v=2026-08-05-btn-sm");
-@import url("components.css?v=2026-08-05-btn-sm");
-@import url("disclosure.css?v=2026-08-05-btn-sm");
+@import url("brand.css?v=2026-10-08-entries");
+@import url("ui.css?v=2026-10-08-entries");

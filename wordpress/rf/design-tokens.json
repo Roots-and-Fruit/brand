@@ -1,0 +1,122 @@
+{
+  "$comment": "Generated Layer B registry. Feed to register_design_token(). Do not edit.",
+  "source": {
+    "design": "DESIGN.md",
+    "tokens": "css/tokens.css",
+    "brand": "Roots & Fruit"
+  },
+  "tokens": [
+    {
+      "id": "rf/on-primary",
+      "label": "On primary",
+      "type": "color",
+      "default": "#ffffff",
+      "scope": "global",
+      "custom_key": "rfOnPrimary"
+    },
+    {
+      "id": "rf/on-accent",
+      "label": "On accent",
+      "type": "color",
+      "default": "#1a1a1a",
+      "scope": "global",
+      "custom_key": "rfOnAccent"
+    },
+    {
+      "id": "rf/on-dark",
+      "label": "On dark",
+      "type": "color",
+      "default": "#ffffff",
+      "scope": "global",
+      "custom_key": "rfOnDark"
+    },
+    {
+      "id": "rf/on-dark-muted",
+      "label": "On dark muted",
+      "type": "color",
+      "default": "rgba(255, 255, 255, 0.78)",
+      "scope": "global",
+      "custom_key": "rfOnDarkMuted"
+    },
+    {
+      "id": "rf/rule",
+      "label": "Rule",
+      "type": "color",
+      "default": "rgba(44, 41, 34, 0.14)",
+      "scope": "global",
+      "custom_key": "rfRule"
+    },
+    {
+      "id": "rf/button-radius",
+      "label": "Button radius",
+      "type": "border-radius",
+      "default": "999px",
+      "scope": "global",
+      "custom_key": "rfButtonRadius"
+    },
+    {
+      "id": "rf/button-padding-block",
+      "label": "Button padding block",
+      "type": "spacing",
+      "default": "0.7rem",
+      "scope": "global",
+      "custom_key": "rfButtonPaddingBlock"
+    },
+    {
+      "id": "rf/button-padding-inline",
+      "label": "Button padding inline",
+      "type": "spacing",
+      "default": "1.15rem",
+      "scope": "global",
+      "custom_key": "rfButtonPaddingInline"
+    },
+    {
+      "id": "rf/input-radius",
+      "label": "Input radius",
+      "type": "border-radius",
+      "default": "0.55rem",
+      "scope": "global",
+      "custom_key": "rfInputRadius"
+    },
+    {
+      "id": "rf/surface-radius",
+      "label": "Surface radius",
+      "type": "border-radius",
+      "default": "0.75rem",
+      "scope": "global",
+      "custom_key": "rfSurfaceRadius"
+    },
+    {
+      "id": "rf/surface-padding",
+      "label": "Surface padding",
+      "type": "spacing",
+      "default": "1.5rem",
+      "scope": "global",
+      "custom_key": "rfSurfacePadding"
+    },
+    {
+      "id": "rf/layout-content-size",
+      "label": "Content size",
+      "type": "spacing",
+      "default": "56rem",
+      "scope": "global",
+      "custom_key": "rfLayoutContentSize"
+    },
+    {
+      "id": "rf/layout-wide-size",
+      "label": "Wide size",
+      "type": "spacing",
+      "default": "56rem",
+      "scope": "global",
+      "custom_key": "rfLayoutWideSize"
+    },
+    {
+      "id": "rf/focus-ring",
+      "label": "Focus ring",
+      "type": "text",
+      "default": "--rf-focus",
+      "scope": "global",
+      "custom_key": "rfFocusRing"
+    }
+  ]
+}

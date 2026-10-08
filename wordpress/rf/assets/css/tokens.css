@@ -1,0 +1,172 @@
+/* Roots & Fruit — design tokens
+   Shared CSS custom properties for brand color, type, space, and shape. */
+
+:root {
+  /* Paper & ink */
+  --rf-cream: #faf6ee;
+  --rf-cream-deep: #f3ede2;
+  --rf-white: #ffffff;
+  --rf-ink: #2c2922;
+  --rf-ink-deep: #1a1a1a;
+  --rf-ink-muted: #6b6560;
+  --rf-ink-soft: #9a948c;
+  --rf-brown: #40352a;
+  --rf-rule: rgba(44, 41, 34, 0.14);
+
+  /* Brand accents */
+  --rf-green: #62744d;
+  --rf-green-logo: #505a49; /* designer logo olive, RGB 80 90 73 */
+  --rf-green-deep: #4b5e2e;
+  --rf-green-mid: #6d7d5d;
+  --rf-green-soft: #e4eadc;
+  --rf-green-1: #c5d4b8;
+  --rf-green-2: #9aaf86;
+  --rf-green-3: #7a9268;
+  --rf-green-4: #62744d;
+  --rf-green-5: #4a5a38;
+  --rf-green-6: #2f3a24;
+
+  --rf-orange: #d4844e;
+  --rf-orange-soft: #f0d5c0;
+  --rf-orange-web: #e28b56; /* alternate warmer orange if a host palette requires it */
+  --rf-orange-deep: color-mix(in srgb, var(--rf-orange) 68%, var(--rf-brown)); /* meta / eyebrow accent */
+
+  /* Chart series — high contrast on cream (not adjacent soft greens) */
+  --rf-chart-1: var(--rf-green-deep);
+  --rf-chart-2: var(--rf-orange);
+  --rf-chart-3: var(--rf-blue);
+  --rf-chart-4: var(--rf-brown);
+
+  /* Surfaces */
+  --rf-panel: #ebe4d8;
+  --rf-panel-deep: #dfd6c6;
+  --rf-panel-soft: #f3ece2;
+  --rf-tan: #c4a882;
+  --rf-tan-soft: #f0e8dc;
+
+  /* Product UI */
+  --rf-blue: #1a5276;
+  --rf-blue-mid: #245f8c;
+  --rf-blue-nav: #2a5f8f;
+  --rf-blue-soft: #d6e6f2;
+  --rf-blue-muted: #b8d0e4; /* quieter blue border / focus companion */
+
+  /* Semantic */
+  --rf-success: var(--rf-green);
+  --rf-success-bg: var(--rf-green-soft);
+  --rf-warning: var(--rf-orange);
+  --rf-warning-bg: var(--rf-orange-soft);
+  --rf-danger: #ad3a22; /* brick — warmed to sit with terracotta/brown, still clearly redder than warning orange */
+  --rf-danger-bg: #f7e4dc;
+  --rf-info: var(--rf-blue);
+  --rf-info-bg: var(--rf-blue-soft);
+
+  /* Type */
+  --rf-font-serif: "Knile", Georgia, "Times New Roman", serif;
+  --rf-font-sans: "Nunito Sans", system-ui, sans-serif;
+
+  /* Type scale — sm (16px) is the floor; no xs */
+  --rf-text-sm: 1rem;      /* 16 · compact UI, labels, meta */
+  --rf-text-md: 1.125rem;  /* 18 · default body / long-form */
+  --rf-text-lg: 1.375rem;  /* 22 · lead */
+  --rf-text-xl: 1.75rem;   /* 28 · display-sm */
+  --rf-text-2xl: 2.25rem;  /* 36 · display-md */
+  --rf-text-3xl: 3rem;     /* 48 · display-lg */
+  --rf-text-4xl: 3.5rem;   /* 56 · display-xl */
+
+  /* Optical type (not fluid size ranges) */
+  --rf-leading-display: 1.1;   /* Knile large display */
+  --rf-leading-snug: 1.15;     /* Knile subheads / short titles */
+  --rf-leading-body: 1.65;     /* Nunito: high x-height needs air */
+  --rf-leading-callout: 1.55;  /* Contained notes / cards */
+  --rf-leading-ui: 1.35;       /* Compact UI at sm (16px) */
+
+  /* Weights — Knile: 400 / 600 / 700 only (no italic faces). Nunito: same + italic. */
+  --rf-weight-regular: 400;
+  --rf-weight-semibold: 600;
+  --rf-weight-bold: 700;
+
+  /* Tracking */
+  --rf-tracking-display: -0.02em; /* Knile titles */
+  --rf-tracking-meta: 0.06em;     /* uppercase eyebrows */
+
+  /* Measure axiom: never exceed ~60 characters per line (Every Layout / Bringhurst band) */
+  --rf-measure: 60ch;
+  /* Report narrative: slightly wider measure + pair with --rf-text-lg so the
+     column fills more of --rf-max without dropping the measure axiom */
+  --rf-measure-report: 64ch;
+
+  /* Modular space ratio (Every Layout: seed rhythm from text, multiply by one ratio) */
+  --rf-ratio: 1.5;
+
+  /* Space: fine steps below 1rem for UI chrome; from s0 up, prefer modular * ratio */
+  --rf-space-1: 0.25rem;
+  --rf-space-2: 0.5rem;
+  --rf-space-3: 0.75rem;
+  --rf-space-4: 1rem; /* s0 · text base */
+  --rf-space-5: calc(var(--rf-space-4) * var(--rf-ratio)); /* 1.5 · one line @ lh 1.5 */
+  --rf-space-6: calc(var(--rf-space-5) * var(--rf-ratio)); /* 2.25 */
+  --rf-space-7: calc(var(--rf-space-6) * var(--rf-ratio)); /* 3.375 */
+  --rf-space-8: calc(var(--rf-space-7) * var(--rf-ratio)); /* 5.0625 */
+
+  --rf-gutter: var(--rf-space-5); /* default inset for .rf-center--gutter */
+
+  /* Shape */
+  --rf-radius-sm: 0.55rem;
+  --rf-radius: 0.75rem;
+  --rf-radius-lg: 1.25rem;
+  --rf-radius-pill: 999px;
+  --rf-shadow: 0 2px 12px rgba(44, 41, 34, 0.06);
+  --rf-shadow-md: 0 8px 28px rgba(44, 41, 34, 0.1);
+
+  /* Dark surface (headers, callout cards on cream pages) */
+  --rf-surface-dark: #4b5e2e;
+  --rf-on-dark: #ffffff;
+  --rf-on-dark-muted: rgba(255, 255, 255, 0.78);
+
+  /* Text on filled brand surfaces (pair with primary / info / tertiary fills) */
+  --rf-on-primary: #ffffff; /* on primary / primary-deep moss fills */
+  --rf-on-info: #ffffff; /* on info / blue-nav fills */
+  --rf-on-tertiary: #1a1a1a; /* on orange CTA — never white on orange */
+
+  /* Code (warm paper chrome; syntax base is moss-teal, not cool cyan) */
+  --rf-code-bg: #f3ece2;
+  --rf-code-fg: #3d5c4e;
+  --rf-code-border: rgba(44, 41, 34, 0.12); /* block chrome / quiet hairline if needed */
+  --rf-code-label-border: rgba(44, 41, 34, 0.28); /* .inline-label outline */
+  --rf-code-meta: #9a948c;
+  --rf-font-mono: "JetBrains Mono", "SFMono-Regular", Consolas, "Liberation Mono", Menlo, monospace;
+
+  /* Layout */
+  --rf-max: 56rem; /* outer shell / grid / docs */
+  /* Tool / product reading column (Phloem, dashboards): share one edge for chrome + body.
+     Do not nest --rf-measure inside a wider surface of the same component. */
+  --rf-content-max: 52rem;
+  /* Article prose: --rf-measure; report prose: --rf-measure-report */
+  --rf-focus: 0 0 0 3px color-mix(in srgb, var(--rf-green) 35%, transparent);
+
+  /* Gap jobs (kit parity: one gap per job, aliasing the space scale — not a second scale) */
+  --rf-cluster-gap: var(--rf-space-3); /* buttons, pills, tags — tight chrome */
+  --rf-copy-gap: var(--rf-space-5);    /* mixed marketing copy (proximity) */
+  --rf-grid-gap: var(--rf-space-5);    /* equal tiles; same step as stack until tiles need more air */
+  --rf-section-gap: var(--rf-space-6); /* between page jobs */
+  --rf-split-gap: var(--rf-space-7);   /* copy vs media (Switcher, Sidebar) */
+
+  /* Intrinsic layout minima (kit parity: suggestion over prescription) */
+  --rf-grid-min: 14.5rem;      /* default tile floor; --tight drops it */
+  --rf-grid-min-tight: 11rem;
+  --rf-split-min: 18rem;       /* Switcher wrap threshold */
+  --rf-sidebar-side: 16rem;    /* fixed side while adjacent */
+  --rf-sidebar-min: 50%;       /* fluid track floor before wrapping */
+  --rf-frame-ratio: 4 / 3;     /* media frames — object-fit cover */
+
+  /* Personality knobs (one line each — kit parity) */
+  --rf-button-radius: var(--rf-radius-pill);
+  --rf-heading-font: var(--rf-font-serif);
+
+  /* Atmosphere (illustrations as text background — not logos).
+     PDS vendors a copy via company-docs/03-Marketing/social/pds/sync-cds-tokens.ps1. */
+  --rf-atmosphere: 0.1; /* roots watermark on most surfaces */
+  --rf-atmosphere-quiet: 0.065; /* roots under dense title/hero text */
+  --rf-atmosphere-spot: 0.45; /* apples / corner spot art */
+}

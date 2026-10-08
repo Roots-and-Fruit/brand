@@ -15,6 +15,7 @@
 
   /* Brand accents */
   --rf-green: #62744d;
+  --rf-green-logo: #505a49; /* designer logo olive, RGB 80 90 73 */
   --rf-green-deep: #4b5e2e;
   --rf-green-mid: #6d7d5d;
   --rf-green-soft: #e4eadc;
@@ -144,8 +145,27 @@
   /* Article prose: --rf-measure; report prose: --rf-measure-report */
   --rf-focus: 0 0 0 3px color-mix(in srgb, var(--rf-green) 35%, transparent);
 
-  /* Atmosphere (illustrations as soft background — not logos).
-     PDS vendors a copy via company-docs/03-Marketing (CMO)/social/pds/sync-cds-tokens.ps1. */
+  /* Gap jobs (kit parity: one gap per job, aliasing the space scale — not a second scale) */
+  --rf-cluster-gap: var(--rf-space-3); /* buttons, pills, tags — tight chrome */
+  --rf-copy-gap: var(--rf-space-5);    /* mixed marketing copy (proximity) */
+  --rf-grid-gap: var(--rf-space-5);    /* equal tiles; same step as stack until tiles need more air */
+  --rf-section-gap: var(--rf-space-6); /* between page jobs */
+  --rf-split-gap: var(--rf-space-7);   /* copy vs media (Switcher, Sidebar) */
+
+  /* Intrinsic layout minima (kit parity: suggestion over prescription) */
+  --rf-grid-min: 14.5rem;      /* default tile floor; --tight drops it */
+  --rf-grid-min-tight: 11rem;
+  --rf-split-min: 18rem;       /* Switcher wrap threshold */
+  --rf-sidebar-side: 16rem;    /* fixed side while adjacent */
+  --rf-sidebar-min: 50%;       /* fluid track floor before wrapping */
+  --rf-frame-ratio: 4 / 3;     /* media frames — object-fit cover */
+
+  /* Personality knobs (one line each — kit parity) */
+  --rf-button-radius: var(--rf-radius-pill);
+  --rf-heading-font: var(--rf-font-serif);
+
+  /* Atmosphere (illustrations as text background — not logos).
+     PDS vendors a copy via company-docs/03-Marketing/social/pds/sync-cds-tokens.ps1. */
   --rf-atmosphere: 0.1; /* roots watermark on most surfaces */
   --rf-atmosphere-quiet: 0.065; /* roots under dense title/hero text */
   --rf-atmosphere-spot: 0.45; /* apples / corner spot art */

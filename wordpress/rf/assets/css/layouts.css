@@ -1,0 +1,428 @@
+/* Roots & Fruit — layout primitives
+   Inspired by Every Layout (Pickering & Bell): suggest size, compose with gap,
+   keep vertical rhythm stable. Prefer these over one-off margin stacks. */
+
+/* —— Stack: vertical flow with even gap (2nd ed uses gap) —— */
+.rf-stack {
+  display: flex;
+  flex-direction: column;
+  justify-content: flex-start;
+  gap: var(--rf-stack-space, var(--rf-space-5));
+}
+
+.rf-stack > * {
+  margin-block: 0;
+}
+
+/* Beat component/docs margins so gap owns vertical rhythm */
+.rf-stack > :is(h1, h2, h3, h4, p, .alert, .ds-lede, .ds-type-meta, .ds-footer, .ds-caption, .rf-prose) {
+  margin-block: 0;
+}
+
+.rf-stack--sm {
+  --rf-stack-space: var(--rf-space-3);
+}
+
+.rf-stack--md {
+  --rf-stack-space: var(--rf-space-5);
+}
+
+.rf-stack--lg {
+  --rf-stack-space: var(--rf-space-7);
+}
+
+/* —— Center: measured reading column, auto side margins, optional gutter —— */
+.rf-center {
+  box-sizing: content-box;
+  max-inline-size: var(--rf-measure);
+  margin-inline: auto;
+  padding-inline: var(--rf-gutter, 0);
+}
+
+.rf-center--gutter {
+  --rf-gutter: var(--rf-space-5);
+}
+
+/* —— Cluster: horizontal wrap group (buttons, pills, tags) —— */
+.rf-cluster {
+  display: flex;
+  flex-wrap: wrap;
+  gap: var(--rf-cluster-space, var(--rf-space-3));
+  justify-content: flex-start;
+  align-items: center;
+}
+
+.rf-cluster--center {
+  justify-content: center;
+}
+
+.rf-cluster--end {
+  justify-content: flex-end;
+}
+
+/* —— Copy: Gestalt proximity, not one gap (kit parity) —— */
+/* Mixed marketing column: eyebrow hugs the title, title hugs the lede, the
+   action gets more air, proof meta tucks under the button. One gap would make
+   the whole column a list. */
+.rf-copy {
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
+  gap: 0;
+}
+
+.rf-copy > * {
+  margin-block: 0;
+}
+
+.rf-copy > :is(h1, h2, h3, h4, .ds-h2, .ds-h3),
+.surface.rf-copy > :is(h1, h2, h3, h4, .ds-h2, .ds-h3) {
+  margin-block: 0;
+}
+
+.rf-copy > .field {
+  align-self: stretch;
+}
+
+.rf-copy > * + * {
+  margin-block-start: var(--rf-copy-gap, var(--rf-space-5));
+}
+
+.rf-copy > :is(.pill, .rf-meta, .ds-type-meta) + :is(h1, h2, h3, h4, .ds-h2, .ds-h3) {
+  margin-block-start: var(--rf-space-3);
+}
+
+.rf-copy > .pill + .rf-byline {
+  margin-block-start: var(--rf-space-3);
+}
+
+.rf-copy > :is(h1, h2, h3, h4, .ds-h2, .ds-h3) + :is(.rf-lede, p) {
+  margin-block-start: var(--rf-space-3);
+}
+
+/* A credit line belongs to the title, tighter than the lede under it. */
+.rf-copy > :is(h1, h2, h3, h4, .ds-h2, .ds-h3) + .rf-byline {
+  margin-block-start: var(--rf-space-2);
+}
+
+.rf-copy > img + :is(h1, h2, h3, h4, .ds-h2, .ds-h3) {
+  margin-block-start: var(--rf-space-3);
+}
+
+.rf-copy > .rf-meta + :is(p, .rf-lede) {
+  margin-block-start: var(--rf-space-3);
+}
+
+/* .rf-lede { margin: 0 } loads later. This weight keeps the hug. */
+.rf-copy > * + .rf-lede {
+  margin-block-start: var(--rf-space-3);
+}
+
+/* The byline belongs to the title. The excerpt is the next group, so it steps away. */
+.rf-copy > .rf-byline + .rf-lede {
+  margin-block-start: var(--rf-space-6);
+}
+
+.rf-copy > :is(p, .rf-lede) + .field,
+.rf-copy > .field + .field {
+  margin-block-start: var(--rf-space-3);
+}
+
+.rf-copy > .field + :is(.btn, .rf-cluster) {
+  margin-block-start: var(--rf-space-5);
+}
+
+.rf-copy > :is(.rf-lede, p, h1, h2, h3, h4, .ds-h2, .ds-h3) + :is(.rf-cluster, .btn, a) {
+  margin-block-start: var(--rf-space-6);
+}
+
+.rf-copy > :is(.rf-cluster, .btn) + :is(.rf-cluster, .rf-meta, .ds-type-meta) {
+  margin-block-start: var(--rf-space-4);
+}
+
+/* —— Box: even inset on all sides (paint sits on this) —— */
+.rf-box {
+  box-sizing: border-box;
+  padding: var(--rf-space-6);
+}
+
+/* —— Grid: responsive tiles, no media queries (kit parity) —— */
+/* Tiles grow to fill the row and wrap when they cannot hold --rf-grid-min. */
+.rf-grid {
+  display: grid;
+  gap: var(--rf-grid-gap, var(--rf-space-5));
+  grid-template-columns: repeat(auto-fit, minmax(min(var(--rf-grid-min, 14.5rem), 100%), 1fr));
+}
+
+.rf-grid--tight {
+  --rf-grid-min: var(--rf-grid-min-tight);
+  --rf-grid-gap: var(--rf-space-3);
+}
+
+/* Center each tile's content in its track. Proof stats, not cards. */
+.rf-grid--center {
+  justify-items: center;
+  text-align: center;
+}
+
+.rf-grid--center > * {
+  text-align: center;
+}
+
+/* Five even tracks on wide. Named exception: auto-fitting five into
+   four-plus-one leaves a leftover tile — one breakpoint is the override. */
+.rf-grid--five {
+  display: grid;
+  gap: var(--rf-grid-gap, var(--rf-space-3));
+  grid-template-columns: repeat(5, minmax(0, 1fr));
+  justify-items: center;
+  text-align: center;
+}
+
+.rf-grid--five > * {
+  text-align: center;
+}
+
+@media (max-width: 40rem) {
+  .rf-grid--five {
+    grid-template-columns: 1fr;
+  }
+}
+
+/* —— Named even tracks: grids are symmetrical by contract —— */
+/* Two and three even tracks for pairs, triples, and 2×2 rows. Use these
+   instead of letting auto-fit strand a leftover tile (4 items in a 3-up
+   auto-fit renders 3+1 — that is the bug this prevents). */
+.rf-grid--two,
+.rf-grid--three {
+  display: grid;
+  gap: var(--rf-grid-gap, var(--rf-space-5));
+}
+
+.rf-grid--two {
+  grid-template-columns: repeat(2, minmax(0, 1fr));
+}
+
+.rf-grid--three {
+  grid-template-columns: repeat(3, minmax(0, 1fr));
+}
+
+@media (max-width: 40rem) {
+  .rf-grid--two,
+  .rf-grid--three {
+    grid-template-columns: 1fr;
+  }
+}
+
+/* —— Symmetric rows of three, for odd counts (5, 7, …) —— */
+/* Flex, not grid: every row centers, including the last, so 5 renders 3+2 and
+   7 renders 3+3+1 with the remainder centered — a deliberate row, not a
+   hanging tile. The 11rem floor makes narrow containers wrap to centered
+   rows of 2 or 1 instead of shrinking items to slivers. */
+.rf-grid--sym {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center;
+  gap: var(--rf-grid-gap, var(--rf-space-5));
+}
+
+.rf-grid--sym > * {
+  flex: 0 1 calc((100% - 2 * var(--rf-grid-gap, var(--rf-space-5))) / 3);
+  min-inline-size: min(100%, 11rem);
+}
+
+/* —— Split: two equal tracks that wrap (Every Layout Switcher) —— */
+.rf-split {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: start;
+  gap: var(--rf-split-gap, var(--rf-space-7));
+}
+
+.rf-split > * {
+  flex-grow: 1;
+  flex-basis: var(--rf-split-min, 18rem);
+  min-inline-size: min(100%, var(--rf-split-min, 18rem));
+}
+
+.rf-split img {
+  display: block;
+  width: 100%;
+  height: auto;
+  border-radius: var(--rf-radius-lg);
+}
+
+/* Screenshot beside copy. 60ch is wider than half of a 1200px row, so the
+   copy track is 28rem and will not grow past the measure. The picture
+   takes the rest, on either side. */
+.rf-split--shot > .rf-copy {
+  flex-grow: 0;
+  flex-basis: 28rem;
+  max-inline-size: min(100%, var(--rf-measure));
+}
+
+.rf-split--shot > :not(.rf-copy) {
+  flex-grow: 1;
+  flex-basis: 0;
+  min-inline-size: min(100%, var(--rf-split-min, 18rem));
+}
+
+/* Media on the other side. Narrow screens stack in source order. */
+.rf-split--flip {
+  flex-direction: row-reverse;
+}
+
+@media (max-width: 40rem) {
+  .rf-split--flip {
+    flex-direction: column;
+  }
+}
+
+/* —— Sidebar: one fixed track plus a fluid one —— */
+/* Side stays --rf-sidebar-side while adjacent; both wrap when the content
+   track cannot hold --rf-sidebar-min. */
+.rf-sidebar {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: start;
+  gap: var(--rf-split-gap, var(--rf-space-7));
+}
+
+.rf-sidebar > :first-child {
+  flex-grow: 1;
+  flex-basis: var(--rf-sidebar-side, 16rem);
+}
+
+.rf-sidebar > :last-child {
+  flex-grow: 999;
+  flex-basis: 0;
+  min-inline-size: min(100%, var(--rf-sidebar-min, 50%));
+}
+
+/* —— Frame: media holds a ratio without prescribed px (kit parity) —— */
+/* —— Wash: a stripe across the pane. Copy stays in the column. —— */
+/* On a marketing page the pane is the window. The docs shell overrides this
+   so the stripe stops at the sidebar (see docs.css). */
+.rf-wash {
+  --rf-wash: var(--rf-cream-deep);
+  box-sizing: border-box;
+  width: 100vw;
+  margin-inline: calc(50% - 50vw);
+  padding-block: var(--rf-space-6);
+  background: var(--rf-wash);
+  color: var(--rf-ink);
+}
+
+.rf-wash--dark {
+  --rf-wash: var(--rf-surface-dark);
+  color: var(--rf-on-dark);
+}
+
+.rf-wash--dark :is(h1, h2, h3, h4, .ds-h2, .ds-h3) {
+  color: var(--rf-on-dark);
+}
+
+.rf-wash--dark :is(p, .rf-meta, .ds-caption) {
+  color: var(--rf-on-dark-muted);
+}
+
+.rf-wash--dark .field label,
+.rf-wash--dark strong {
+  color: var(--rf-on-dark);
+}
+
+.rf-wash--dark a.link-text {
+  color: var(--rf-on-dark);
+  text-decoration: underline;
+  text-underline-offset: 0.15em;
+}
+
+.rf-wash--dark a.link-text:hover {
+  color: var(--rf-cream);
+}
+
+.rf-wash__inner {
+  box-sizing: border-box;
+  width: min(100%, var(--rf-max));
+  margin-inline: auto;
+  padding-inline: var(--rf-gutter, 1rem);
+}
+
+.rf-frame img,
+img.rf-frame {
+  display: block;
+  width: 100%;
+  height: auto;
+  aspect-ratio: var(--rf-frame-ratio, 4 / 3);
+  object-fit: cover;
+  border-radius: var(--rf-radius-lg);
+}
+
+img.rf-frame--square {
+  aspect-ratio: 1;
+  object-fit: cover;
+}
+
+img.rf-frame--wide {
+  aspect-ratio: 16 / 9;
+  object-fit: cover;
+}
+
+/* Whole image, at its real ratio. A large portrait and admin screenshots
+   use this. The plain frame still holds the 4/3 crop. */
+.rf-frame--fit img,
+img.rf-frame--fit {
+  box-sizing: border-box;
+  aspect-ratio: auto;
+  object-fit: contain;
+  height: auto;
+  border: 1px solid var(--rf-rule);
+}
+
+img.rf-frame.rf-frame--round {
+  aspect-ratio: 1;
+  border-radius: 50%;
+  object-fit: cover;
+  max-inline-size: 18rem;
+}
+
+@media (max-width: 40rem) {
+  img.rf-frame.rf-frame--round {
+    max-inline-size: 14rem;
+  }
+}
+
+/* Caption follows whatever frame it sits under, so a large portrait and a
+   square crop share one stack. Compact is for the smaller crops. */
+.rf-figure {
+  display: flex;
+  flex-direction: column;
+  gap: var(--rf-space-3);
+  margin: 0;
+  min-inline-size: 0;
+}
+
+.rf-caption {
+  margin: 0;
+}
+
+.rf-caption__name {
+  margin: 0;
+  font-family: var(--rf-font-serif);
+  font-size: var(--rf-text-xl);
+  font-weight: var(--rf-weight-semibold);
+  letter-spacing: var(--rf-tracking-display);
+  line-height: var(--rf-leading-snug);
+  color: var(--rf-green-logo);
+}
+
+.rf-caption__role {
+  margin: var(--rf-space-2) 0 0;
+  color: var(--rf-ink-muted);
+  font-size: var(--rf-text-sm);
+  line-height: var(--rf-leading-body);
+}
+
+.rf-figure--compact .rf-caption__name {
+  font-size: var(--rf-text-lg);
+}

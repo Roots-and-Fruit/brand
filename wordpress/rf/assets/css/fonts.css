@@ -1,0 +1,49 @@
+/* Roots & Fruit — Knile + Nunito Sans (hosted on marketing site; not in this repo).
+   Source: https://rootsandfruit.com/wp-content/uploads/rnf_assets/fonts/
+   Requires CORS on that path (Cloudflare). Do not load Google Fonts. */
+
+@font-face {
+  font-family: "Knile";
+  src: url("https://rootsandfruit.com/wp-content/uploads/rnf_assets/fonts/knile-regular-webfont.woff2") format("woff2");
+  font-weight: 400;
+  font-style: normal;
+  font-display: swap;
+}
+
+@font-face {
+  font-family: "Knile";
+  src: url("https://rootsandfruit.com/wp-content/uploads/rnf_assets/fonts/knile-semibold-webfont.woff2") format("woff2");
+  font-weight: 600;
+  font-style: normal;
+  font-display: swap;
+}
+
+@font-face {
+  font-family: "Knile";
+  src: url("https://rootsandfruit.com/wp-content/uploads/rnf_assets/fonts/knile-bold-webfont.woff2") format("woff2");
+  font-weight: 700;
+  font-style: normal;
+  font-display: swap;
+}
+
+/* Nunito Sans: latin, weight axis only (400–700 on the site; file range is 200–1000).
+   Upload from the Fontsource zip, variable/: nunito-sans-latin-wght-{normal,italic}.woff2 */
+@font-face {
+  font-family: "Nunito Sans";
+  src: url("https://rootsandfruit.com/wp-content/uploads/rnf_assets/fonts/nunito-sans-latin-wght-normal.woff2") format("woff2-variations"),
+       url("https://rootsandfruit.com/wp-content/uploads/rnf_assets/fonts/nunito-sans-latin-wght-normal.woff2") format("woff2");
+  font-weight: 200 1000;
+  font-style: normal;
+  font-display: swap;
+  unicode-range: U+0000-00FF, U+0131, U+0152-0153, U+02BB-02BC, U+02C6, U+02DA, U+02DC, U+0304, U+0308, U+0329, U+2000-206F, U+20AC, U+2122, U+2191, U+2193, U+2212, U+2215, U+FEFF, U+FFFD;
+}
+
+@font-face {
+  font-family: "Nunito Sans";
+  src: url("https://rootsandfruit.com/wp-content/uploads/rnf_assets/fonts/nunito-sans-latin-wght-italic.woff2") format("woff2-variations"),
+       url("https://rootsandfruit.com/wp-content/uploads/rnf_assets/fonts/nunito-sans-latin-wght-italic.woff2") format("woff2");
+  font-weight: 200 1000;
+  font-style: italic;
+  font-display: swap;
+  unicode-range: U+0000-00FF, U+0131, U+0152-0153, U+02BB-02BC, U+02C6, U+02DA, U+02DC, U+0304, U+0308, U+0329, U+2000-206F, U+20AC, U+2122, U+2191, U+2193, U+2212, U+2215, U+FEFF, U+FFFD;
+}

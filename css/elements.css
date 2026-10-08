@@ -250,17 +250,20 @@
 }
 
 /* —— Surfaces —— */
+/* Square 4px edge, one step darker than the fill. White uses cream-deep
+   because the next token, cream, is the page wash. A fill with a hue keeps it. */
 .surface {
-  background: var(--rf-white);
-  border: 1px solid var(--rf-rule);
-  border-radius: var(--rf-radius);
+  --rf-surface-fill: var(--rf-white);
+  background: var(--rf-surface-fill);
+  border: 4px solid var(--rf-cream-deep);
+  border-radius: 0;
   padding: var(--rf-space-5);
-  box-shadow: var(--rf-shadow);
+  box-shadow: none;
 }
 
 .surface h3 {
   font-family: var(--rf-font-serif);
-  margin-block: 0 0.4rem;
+  margin-block: 0 var(--rf-space-2);
   margin-inline: 0;
   font-size: var(--rf-text-xl);
   font-weight: var(--rf-weight-semibold);
@@ -269,27 +272,62 @@
 }
 
 .surface p {
-  margin-block: 0 var(--rf-space-4);
+  margin-block: 0;
   margin-inline: 0;
   color: var(--rf-ink-muted);
   font-size: var(--rf-text-sm);
 }
 
+.surface p + p {
+  margin-block-start: var(--rf-space-3);
+}
+
+/* The title rule above clears its top margin. An eyebrow needs that gap back. */
+.surface > .rf-meta + h3,
+.rf-card > .rf-meta + .rf-card__title {
+  margin-block-start: var(--rf-space-3);
+}
+
+.surface p + :is(.btn, .rf-cluster) {
+  margin-block-start: var(--rf-space-5);
+}
+
 .surface--panel {
-  background: var(--rf-panel);
-  box-shadow: none;
+  --rf-surface-fill: var(--rf-panel);
 }
 
 .surface--cream {
-  background: var(--rf-cream-deep);
-  box-shadow: none;
+  --rf-surface-fill: var(--rf-cream-deep);
+}
+
+/* Soft moss tint: the kit's primary-soft tile. One per marketing tile row —
+   text stays ink (muted fails AA on moss). The outline button inverts on
+   hover so the fill is not the tile colour (kit parity). */
+.surface--tint {
+  --rf-surface-fill: var(--rf-green-soft);
+}
+
+.surface--tint p {
+  color: var(--rf-ink);
+}
+
+.surface--tint .btn--tertiary:hover:not(:disabled),
+.surface--tint .btn--tertiary:focus-visible {
+  background: var(--rf-green-deep);
+  color: var(--rf-on-primary);
+  border-color: var(--rf-green-deep);
 }
 
 .surface--dark {
-  background: var(--rf-surface-dark);
+  --rf-surface-fill: var(--rf-surface-dark);
   color: var(--rf-on-dark);
-  border-color: transparent;
-  box-shadow: none;
+}
+
+.surface--panel,
+.surface--cream,
+.surface--tint,
+.surface--dark {
+  border-color: oklch(from var(--rf-surface-fill) calc(l - 0.03) c h);
 }
 
 .surface--dark h3,
@@ -302,6 +340,10 @@
 .surface--dark p,
 .surface--dark li {
   color: var(--rf-on-dark-muted);
+}
+
+.surface--dark > .rf-meta {
+  color: var(--rf-orange-soft);
 }
 
 .surface--dark .btn--cta {
@@ -319,6 +361,19 @@
   color: var(--rf-green-deep);
 }
 
+/* Outline (tertiary) on moss inverts so it is not a green-on-green ghost. */
+.surface--dark .btn--tertiary {
+  color: var(--rf-on-dark);
+  border-color: var(--rf-on-dark);
+}
+
+.surface--dark .btn--tertiary:hover:not(:disabled),
+.surface--dark .btn--tertiary:focus-visible {
+  background: var(--rf-white);
+  color: var(--rf-green-deep);
+  border-color: var(--rf-white);
+}
+
 /* —— Key takeaways —— */
 .rf-takeaways {
   margin: 0;
@@ -331,7 +386,7 @@
   font-weight: 700;
   letter-spacing: -0.02em;
   color: var(--rf-green);
-  margin: 0 0 var(--rf-space-4);
+  margin: 0 0 var(--rf-space-3);
 }
 
 .rf-takeaways > ol,
