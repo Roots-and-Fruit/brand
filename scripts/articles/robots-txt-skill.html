@@ -1,0 +1,463 @@
+<!-- wp:group {"className":"rf-takeaways","layout":{"type":"default"}} -->
+<div class="wp-block-group rf-takeaways">
+	<!-- wp:heading {"level":3,"className":"rf-takeaways__title"} -->
+	<h3 class="wp-block-heading rf-takeaways__title">Key Takeaways</h3>
+	<!-- /wp:heading -->
+
+	<!-- wp:list {"ordered":true,"className":"rf-keytakeaways"} -->
+	<ol class="wp-block-list rf-keytakeaways">
+<!-- wp:list-item -->
+<li>I audited 136 product sites’ robots.txt files — zero passed a strict max_discovery preset; most inherit open crawl from User-agent: *.</li>
+<!-- /wp:list-item -->
+
+<!-- wp:list-item -->
+<li>The robots-txt-audit skill separates training bots (GPTBot) from discovery bots (Googlebot, OAI-SearchBot) — blocking one does not block the other.</li>
+<!-- /wp:list-item -->
+
+<!-- wp:list-item -->
+<li>@-mention the skill with audit_only, your domain, and optional cornerstone URLs; you get a plain-language verdict in chat and a local detail report with the per-bot matrix and a handoff list.</li>
+<!-- /wp:list-item -->
+	</ol>
+	<!-- /wp:list -->
+</div>
+<!-- /wp:group -->
+
+<!-- wp:image -->
+<figure class="wp-block-image"><img src="/wp-content/themes/rf/assets/articles/robots-txt-skill.png" alt="How I baked 136+ product sites' robots.txt into a skill you can download for free" /></figure>
+<!-- /wp:image -->
+
+<!-- wp:paragraph -->
+<p><strong>Robots.txt</strong> has to be one of the most boring aspects of technical SEO. Well, at least, it used to be. It is now slowly becoming the battleground for AI visibility. After Google basically threw <code>llms.txt</code> under the bus, more and more search and AI platforms are saying they respect and treat <code>robots.txt</code> as authoritative.</p>
+<!-- /wp:paragraph -->
+
+<!-- wp:paragraph -->
+<p>That makes <code>robots.txt</code> the perfect place to kick off my series on agent skills for marketing. Introducing: <code>robots-txt-audit</code>.</p>
+<!-- /wp:paragraph -->
+
+<!-- wp:html -->
+<article class="surface">
+<img src="/wp-content/themes/rf/assets/articles/skills-repo.png" alt="" width="48" height="48">
+<h3><a href="https://github.com/Roots-and-Fruit/skills">skills</a></h3>
+<p>By Roots-and-Fruit</p>
+<p>Cursor agent skills for Roots &amp; Fruit marketing and product development</p>
+</article>
+<!-- /wp:html -->
+
+<!-- wp:paragraph -->
+<p>In this article I am going to walk you through a short history of the file, what it should be doing for your site and why <code>llms.txt</code> is not where I start, what I learned when I batch-audited 136 product vendor websites, and how to run the skill on your own domain in Cursor.</p>
+<!-- /wp:paragraph -->
+
+<!-- wp:heading {"level":2} -->
+<h2 class="wp-block-heading">A short history of robots.txt</h2>
+<!-- /wp:heading -->
+
+<!-- wp:paragraph -->
+<p>This tiny file got <a href="https://www.robotstxt.org/orig.html">its origins in 1994</a>, when the web was small enough that a voluntary convention could work: automated visitors read a note at your site root before they fetch pages. The <a href="https://datatracker.ietf.org/doc/html/rfc9309">Robots Exclusion Protocol</a> was formalized much later — RFC 9309 landed in 2022 — but the habit was already decades old.</p>
+<!-- /wp:paragraph -->
+
+<!-- wp:paragraph -->
+<p>For most of that time, <code>robots.txt</code> was a boring file that did a boring job. Block <code>/wp-admin/</code>, point crawlers at your sitemap. Google and Bing treated the file as the front door. SEO teams only opened it when something was broken.</p>
+<!-- /wp:paragraph -->
+
+<!-- wp:paragraph -->
+<p>Then the AI platforms showed up with a new kind of robot: AI crawlers. <a href="https://platform.openai.com/docs/bots">OpenAI documented GPTBot</a> in 2023. Publishers who had never edited <code>robots.txt</code> suddenly had opinions. Labs split <strong>training</strong> bots from <strong>search and answer</strong> bots — different user-agents, different stakes.</p>
+<!-- /wp:paragraph -->
+
+<!-- wp:paragraph -->
+<p>Then <code>llms.txt</code> arrived as a curated companion file for AI products. Google’s <a href="https://developers.google.com/search/docs/fundamentals/ai-optimization-guide#mythbusting">AI optimization guide</a> told the Search world you do not need that file for rankings. Through all that noise, <code>robots.txt</code> is what major platforms kept citing when they say they will respect your crawl choices.</p>
+<!-- /wp:paragraph -->
+
+<!-- wp:paragraph -->
+<p>That is how a simple text file became an AI visibility lever and why I built a skill to read yours before you change it.</p>
+<!-- /wp:paragraph -->
+
+<!-- wp:heading {"level":2} -->
+<h2 class="wp-block-heading">How robots.txt should be benefitting your website</h2>
+<!-- /wp:heading -->
+
+<!-- wp:paragraph -->
+<p>Before we get into the skill itself, it helps to be clear about what <code>robots.txt</code> is actually for on a marketing site today and where <code>llms.txt</code> fits in the stack without stealing the spotlight.</p>
+<!-- /wp:paragraph -->
+
+<!-- wp:paragraph -->
+<p><code>robots.txt</code> answers a narrow question: <em>may this bot fetch this URL?</em> Crawl permission is the whole job; not indexing, not ranking, and definitely not a “hide-from-Google” switch. A <code>Disallow</code> rule only tells a bot not to request a specific path. By focusing only on telling bots what it should or shouldn’t crawl, your marketing wins become pretty straightforward:</p>
+<!-- /wp:paragraph -->
+
+<!-- wp:list {"ordered":true} -->
+<ol class="wp-block-list">
+<!-- wp:list-item -->
+<li>Declare your sitemap: tell the bots where everything’s at</li>
+<!-- /wp:list-item -->
+<!-- wp:list-item -->
+<li>Disallow admin paths: prevent search result confusion</li>
+<!-- /wp:list-item -->
+<!-- wp:list-item -->
+<li>Allow training or indexing: allow/disallow training bots versus answer crawlers</li>
+<!-- /wp:list-item -->
+</ol>
+<!-- /wp:list -->
+
+<!-- wp:paragraph -->
+<p>That last point is where most of the 2023–2026 confusion comes from. <strong>Training bots</strong> like <a href="https://developers.openai.com/api/docs/bots">GPTBot</a>, CCBot, and <a href="https://developers.google.com/crawling/docs/crawlers-fetchers/google-common-crawlers">Google-Extended</a> ingest content for model training or building their indexes. <strong>Discovery bots</strong> like <a href="https://developers.google.com/search/docs/crawling-indexing/googlebot">Googlebot</a>, OAI-SearchBot, and PerplexityBot find and retrieve content for search results and AI answers. Blocking GPTBot does not block ChatGPT from mentioning your brand when a user asks a question. Those are different fetch paths — and <strong>user-triggered fetches</strong> like <code>ChatGPT-User</code> and <code>Perplexity-User</code> are a third class again. They may not respect <code>robots.txt</code> the same way bulk crawlers do.</p>
+<!-- /wp:paragraph -->
+
+<!-- wp:paragraph -->
+<p>Google documents the training-versus-search split explicitly. Google-Extended is a standalone token for opting out of Gemini training — it does <strong>not</strong> affect your inclusion or ranking in Google Search. If your goal is training-only limits, you block <code>Google-Extended</code>, not <code>Googlebot</code>. OpenAI documents <a href="https://developers.openai.com/api/docs/bots">GPTBot and OAI-SearchBot separately</a> for the same reason. Anthropic now publishes three tokens — <code>ClaudeBot</code>, <code>Claude-SearchBot</code>, and <code>Claude-User</code> — for training, retrieval, and user-triggered fetch respectively.</p>
+<!-- /wp:paragraph -->
+
+<!-- wp:paragraph -->
+<p><code>Robots.txt</code> has become so significant and a bit challenging to understand that Cloudflare now offers a <a href="https://blog.cloudflare.com/control-content-use-for-ai-training/">managed robots.txt</a> service. They prepend training-bot blocks at the edge and keep the list updated so you do not have to chase every new crawler name yourself. That is a real answer if you are on Cloudflare and happy with their default choices for your site. But it isn’t the whole job. When you add your own rules to your file, the crawlers still read one merged file at <code>/robots.txt</code>, your origin rules still matter for sitemaps and path hygiene, and robots.txt is still authoritative for your site.</p>
+<!-- /wp:paragraph -->
+
+<!-- wp:paragraph -->
+<p>But it all depends on your policy. For example, the BBC website has taken a pretty strong stance against all bots in their robots.txt:</p>
+<!-- /wp:paragraph -->
+
+<!-- wp:html -->
+<div class="rf-code">
+<div class="rf-code__chrome">
+<div class="rf-code__dots" aria-hidden="true"><span></span><span></span><span></span></div>
+</div>
+<pre class="rf-code__body"><code># version: 639936d0986d41192594c2578b90fa570430630d
+# The BBC's Terms of Use: https://www.bbc.co.uk/terms
+# - Explain the rules for using our services
+# - Tell you what you can do with our content
+#
+# In short: Please use our site like a human, not a robot.
+# That means:
+# - No scraping, crawling, or systematic extraction of content 
+# - No use of BBC content for training or fine-tuning AI models, including large language models (LLMs)
+# - No retrieval-augmented generation (RAG), AI-powered search, agentic AI or grounding using BBC content
+# - No creating datasets from BBC content
+# - No text and data mining (TDM) under Article 4 of the EU Directive on Copyright in the Digital Single Market
+# - No using BBC content to create summaries for your own use
+# - No business use without permission (details: https://www.bbc.co.uk/usingthebbc/terms/can-i-use-bbc-content-for-my-business/)
+# - The BBC reserves all rights in its content and expressly opts out of any statutory exceptions in any jurisdiction for text and data mining, as permitted by law
+&#8203;
+# TL;DR: Browse, read, watch, enjoy - like a human.</code></pre>
+<span class="rf-code__lang">Bash</span>
+</div>
+<!-- /wp:html -->
+
+<!-- wp:paragraph -->
+<p>“Browser like a human”. I like it. But it’s an opinion catered to their website purpose and content.</p>
+<!-- /wp:paragraph -->
+
+<!-- wp:paragraph -->
+<p>Other online publishers are getting more strongarmed about their use of robots.txt as well. <a href="https://www.adweek.com/media/publishers-opt-out-google-search/">This piece goes deep</a> on how they are trying to opt out of Google Search completely until Google stops using multi-purpose bots that both scrape and train its AI.</p>
+<!-- /wp:paragraph -->
+
+<!-- wp:paragraph -->
+<p>So when I talk about <code>robots.txt</code> benefitting your website, I mean defining a crawl policy that responsible bots are supposed to respect. Simply, it should declare your sitemap, protect wp-admin and cart paths, and optionally also block training crawlers while still welcoming the bots that surface you in search and AI answers.</p>
+<!-- /wp:paragraph -->
+
+<!-- wp:heading {"level":3} -->
+<h3 class="wp-block-heading">What about llms.txt?</h3>
+<!-- /wp:heading -->
+
+<!-- wp:paragraph -->
+<p>In contrast, <code>llms.txt</code> is a different job entirely. It answers: <em>if an AI product looks at us, here is what we want highlighted.</em> I treat the two files as complements — crawl permission on one side, curated AI story on the other — but I do not audit <code>llms.txt</code> in this skill, and I do not recommend leading with it when the question is Google visibility. But your robots.txt could call it out just like it does the sitemap; but that’s purely optional.</p>
+<!-- /wp:paragraph -->
+
+<!-- wp:paragraph -->
+<p>The relationship between the two files is still evolving and not fully proven. The bet I’m operating by is that Google and the major crawlers that respect the Robots Exclusion Protocol will keep treating <code>robots.txt</code> as the authoritative crawl-permission file more reliably than they treat <code>llms.txt</code>. I could be wrong about where this lands in two years, and I want to say that plainly: the GEO file stack is not finished.</p>
+<!-- /wp:paragraph -->
+
+<!-- wp:paragraph -->
+<p>Google’s own <a href="https://developers.google.com/search/docs/fundamentals/ai-optimization-guide#mythbusting">AI optimization guide</a> backs the <code>robots.txt</code> side for Search specifically. They say explicitly that you do not need <code>llms.txt</code> or similar AI text files to appear in Google Search, including AI Overviews — and that creating them is fine for other systems but <strong>neither helps nor hurts</strong> your rankings in Google Search.</p>
+<!-- /wp:paragraph -->
+
+<!-- wp:quote -->
+<blockquote class="wp-block-quote">
+	<!-- wp:paragraph {"className":"rf-lede"} -->
+	<p class="rf-lede">It’s completely fine if you decide to create and maintain LLMS.txt files (or other similar files) for other services or systems that use these files. Doing so will neither harm nor help your site’s visibility or rankings in Google Search, as Google Search ignores them.</p>
+	<!-- /wp:paragraph -->
+	<cite><a href="https://developers.google.com/search/docs/fundamentals/ai-optimization-guide#mythbusting">Google Developer Blog, “Mythbusting generative AI search: what you don’t need to do”</a></cite>
+</blockquote>
+<!-- /wp:quote -->
+
+<!-- wp:paragraph -->
+<p>It’s up to you though; maintaining <code>llms.txt</code> may still be worth your fifteen minutes. The <a href="https://llmstxt.org/">llmstxt.org</a> spec is a community proposal which seems to be gaining some traction. Adoption data depends entirely on which population you measure. In my audit of product websites (more on that below); 71 of 136 targets (roughly 52%) had an <code>llms.txt</code>.</p>
+<!-- /wp:paragraph -->
+
+<!-- wp:paragraph -->
+<p>When <a href="https://caseyrb.com/blog/state-of-llms-txt-adoption/">Casey Burridge ran HTTP Archive data</a> across millions of sites, only about 5.6% of the top 10,000 had a valid llms.txt file. I think the disparity is because I focused specifically on product shops and Saas platforms. These tend to have stronger dev-teams behind them and see AI as being a discoverability opportunity. Product-company marketing sites are sometimes ahead of the broader web.</p>
+<!-- /wp:paragraph -->
+
+<!-- wp:paragraph -->
+<p>Casey also noted that major AI platforms like chatgpt.com, claude.ai, and gemini do not themselves publish <code>llms.txt</code>, while some labs do exclusively on their docs sites. Nobody has publicly confirmed these files change citation behavior yet. Casey draws a parallel I find useful: <code>robots.txt</code> was proposed in 1994 and every major crawler respects it today. <code>llms.txt</code> could follow that arc; I guess we’ll find out.</p>
+<!-- /wp:paragraph -->
+
+<!-- wp:paragraph -->
+<p>With that frame in place, here is what batch research on real product sites taught me and how it informed the skill I built next.</p>
+<!-- /wp:paragraph -->
+
+<!-- wp:heading {"level":2} -->
+<h2 class="wp-block-heading">What analyzing 136 product sites taught me and how that informed this skill</h2>
+<!-- /wp:heading -->
+
+<!-- wp:paragraph -->
+<p>To ground this skill in something other than opinion, I fetched and assessed <code>robots.txt</code> from 136 targets, made up of WordPress plugin and theme vendors, Shopify app marketing sites, and major SaaS brands. I scored each file against the lens of what it would mean to focus on “max discoverability” via your <code>robots.txt</code>: training bots differentiated, answer and search crawlers allowed, sitemap declared, low-value paths tightened.</p>
+<!-- /wp:paragraph -->
+
+<!-- wp:paragraph -->
+<p>Here is the snapshot:</p>
+<!-- /wp:paragraph -->
+
+<!-- wp:html -->
+<div class="table-wrap"><table class="rf-table"><thead><tr><th>Metric</th><th>Count</th></tr></thead><tbody><tr><td>robots.txt captured and assessed</td><td>127 of 136</td></tr><tr><td>No usable robots.txt (403, HTML masquerading as 200, 404)</td><td>9</td></tr><tr><td>max_discovery compliant</td><td>0 of 127</td></tr><tr><td>Sitemap: declared</td><td>110</td></tr><tr><td>Missing Sitemap: entirely</td><td>17</td></tr><tr><td>Sitemap declaration issues (host mismatch, dead URL)</td><td>27</td></tr><tr><td>GPTBot explicitly blocked</td><td>4</td></tr><tr><td>Google-Extended explicitly blocked</td><td>3</td></tr><tr><td>Googlebot blocked at /</td><td>2</td></tr><tr><td>Sites with explicit AI bot rules (any token)</td><td>27</td></tr><tr><td>Reversed pairing (Googlebot blocked + Google-Extended allowed)</td><td>0</td></tr></tbody></table></div>
+<!-- /wp:html -->
+
+<!-- wp:paragraph -->
+<p><strong>Zero of 127</strong> passed the max discovery bar. I don’t take that to mean these sites are broken, just that product marketing sites aren’t optimizing this file and instead mostly run default crawl options with a dash of CMS hygiene here and there.</p>
+<!-- /wp:paragraph -->
+
+<!-- wp:paragraph -->
+<p>If your site does not declare a rule for a given User-agent; then they typically inherit an open <code>User-agent: *</code>. So in the data, you’ll notice only four sites explicitly blocked GPTBot, leaving roughly 111 allowing GPTBot to inherit the wildcard. Maybe that’s an oversight, or accident, or maybe a deliberate bet on staying in the training corpus, hard to say. In contrast, Salesforce and Shopify Partners were among the few with restrictive files; two even blocked <code>Googlebot</code> at <code>/</code>, which is absolutely a discovery problem for a software shop.</p>
+<!-- /wp:paragraph -->
+
+<!-- wp:paragraph -->
+<p>Nine targets never returned any real robots file at all; while some of their files served up HTML instead of <code>.txt</code>. For crawlers, the file has to be a <code>.txt</code> or it behave as if no file exists at all.</p>
+<!-- /wp:paragraph -->
+
+<!-- wp:paragraph -->
+<p>By segment, WordPress vendors mostly just focus on cleaning up the default WP paths — admin-ajax patterns, WooCommerce log paths, etc. Shopify app marketing sites tend toward the shortest files, often just a sitemap and an open wildcard. SaaS files are the longest and most segmented; named user-agent groups show up there most often.</p>
+<!-- /wp:paragraph -->
+
+<!-- wp:paragraph -->
+<p>Overall, while standards and documentation exists, best practices are clearly still not being adopted or advocated for.</p>
+<!-- /wp:paragraph -->
+
+<!-- wp:paragraph -->
+<p>When you search for <code>gptbot robots txt</code>, you get OpenAI’s crawler docs, a two-line <code>Disallow: /</code> snippet, and a lot of Reddit threads asking whether to block everything. That advice treats all AI crawlers as one bucket. Katie Keith at Barn2 Plugins posted about this recently:</p>
+<!-- /wp:paragraph -->
+
+<!-- wp:html -->
+<blockquote class="twitter-tweet"><p lang="en" dir="ltr">I saw a talk at WCEU that advised using robots.txt to block training bots. Since then, I have researched this and discovered that while it's good advice for publishers e.g. news outlets who don't want to give content away for free, it's the absolute wrong advice for software companies wanting AIs to recommend their products. Glad I checked, as that could have been disastrous 😬</p>&mdash; Katie Keith (@KatieKeithBarn2) <a href="https://x.com/KatieKeithBarn2/status/2071889601988370666?ref_src=twsrc%5Etfw">June 30, 2026</a></blockquote>
+<!-- /wp:html -->
+
+<!-- wp:html -->
+<script async src="https://platform.x.com/widgets.js" charset="utf-8"></script>
+<!-- /wp:html -->
+
+<!-- wp:paragraph -->
+<p>It is a good point, and it shows that when it comes to AI discoverability and <code>robots.txt</code> there is no one-size-fits-all policy.</p>
+<!-- /wp:paragraph -->
+
+<!-- wp:paragraph -->
+<p>Publisher networks like <a href="https://raptive.com/blog/how-to-prevent-gptbot-from-crawling-your-site/">Raptive</a> explicitly recommend blocking GPTBot for creator sites; rights groups like EFF frame <code>robots.txt</code> as a voluntary training opt-out. That posture fits ad-supported publishing, but it’s not the posture most product marketing sites should actually be running.</p>
+<!-- /wp:paragraph -->
+
+<!-- wp:paragraph -->
+<p><strong>Yoast.com</strong> is an interesting example case. They publish a rich, hand-curated <code>llms.txt</code> and a <code>robots.txt</code> with their sitemap declared, <code>wp-json</code> blocked, search spam paths blocked, Cloudflare challenge URLs blocked, a named list of scraper bots each hit with <code>Disallow: /</code>, and a link to their own <a href="https://yoa.st/robots-txt">robots.txt explainer</a> at the top of the file. They still do not name GPTBot, Google-Extended, or ClaudeBot, which means those bots all inherit the <code>User-agent: *</code> rules. If you sell SEO trust, separating training blocks from answer crawlers in <code>robots.txt</code> while keeping <code>llms.txt</code> as the curated story is a coherent posture.</p>
+<!-- /wp:paragraph -->
+
+<!-- wp:paragraph -->
+<p>The other big stand-out was <strong>Figma.com/robots.txt</strong>. It’s a whopping 8K+ lines of rules at over 337KB as a text file. Wow! I’m honestly not even sure what to do with that one. I didn’t include Google, Apple, and Microsoft in my audit, but if you compare those to Figma, none of them are even cross 200+ lines.</p>
+<!-- /wp:paragraph -->
+
+<!-- wp:paragraph -->
+<p>The through-line for me: the market is not panic-blocking AI crawlers, most files never name training bots at all, and a strict preset is a policy choice not a fair scorecard for what you should actually publish. This whole exercise and research is what pushed me to develop this skill and have share how you can run it.</p>
+<!-- /wp:paragraph -->
+
+<!-- wp:heading {"level":2} -->
+<h2 class="wp-block-heading">How to use this skill on your website</h2>
+<!-- /wp:heading -->
+
+<!-- wp:paragraph -->
+<p>My <code>robots-txt-audit.md</code> skill lives in the <a href="https://github.com/Roots-and-Fruit/skills/tree/master/marketing/skills/robots-txt-audit">Roots &amp; Fruit skills repo</a>.</p>
+<!-- /wp:paragraph -->
+
+<!-- wp:html -->
+<article class="surface">
+<img src="/wp-content/themes/rf/assets/articles/skills-repo.png" alt="" width="48" height="48">
+<h3><a href="https://github.com/Roots-and-Fruit/skills">skills</a></h3>
+<p>By Roots-and-Fruit</p>
+<p>Cursor agent skills for Roots &amp; Fruit marketing and product development</p>
+</article>
+<!-- /wp:html -->
+
+<!-- wp:paragraph -->
+<p>It audits your <code>/robots.txt</code> as the crawl-permission file for search and AI crawlers. It fetches both apex and <code>www</code>, validates <code>Sitemap:</code> declarations, checks cornerstone URLs if you pass them, and splits Cloudflare managed layers when those markers show up in the live file.</p>
+<!-- /wp:paragraph -->
+
+<!-- wp:paragraph -->
+<p>It has four modes: <strong>audit</strong>, <strong>recommend</strong>, <strong>recheck</strong>, and <strong>generate</strong>. The default is audit only, which describes what is live before prescribing any changes or suggestions. It does not deploy files, guarantee rankings or AI citations, or audit <code>llms.txt</code>.</p>
+<!-- /wp:paragraph -->
+
+<!-- wp:paragraph -->
+<p>If you <a href="https://rootsandfruit.com/articles/marketing-skills-are-overrated/">read the launch post</a>, you already know about my 3-factor skill invocation method:</p>
+<!-- /wp:paragraph -->
+
+<!-- wp:group {"className":"rf-grid rf-grid--three","layout":{"type":"default"}} -->
+<div class="wp-block-group rf-grid rf-grid--three">
+<!-- wp:group {"tagName":"article","className":"rf-card","layout":{"type":"default"}} -->
+<article class="wp-block-group rf-card">
+<!-- wp:paragraph {"className":"rf-card__num"} -->
+<p class="rf-card__num">01</p>
+<!-- /wp:paragraph -->
+
+	<!-- wp:heading {"level":3,"className":"rf-card__title"} -->
+	<h3 class="wp-block-heading rf-card__title">Invoke</h3>
+	<!-- /wp:heading -->
+
+<!-- wp:paragraph -->
+<p>At-mention your skill directly in your prompt. This ensures the Agent goes there first.</p>
+<!-- /wp:paragraph -->
+</article>
+<!-- /wp:group -->
+
+<!-- wp:group {"tagName":"article","className":"rf-card","layout":{"type":"default"}} -->
+<article class="wp-block-group rf-card">
+<!-- wp:paragraph {"className":"rf-card__num"} -->
+<p class="rf-card__num">02</p>
+<!-- /wp:paragraph -->
+
+	<!-- wp:heading {"level":3,"className":"rf-card__title"} -->
+	<h3 class="wp-block-heading rf-card__title">Goal</h3>
+	<!-- /wp:heading -->
+
+<!-- wp:paragraph -->
+<p>State your goal clearly and make sure it’s aligned with the purpose of the skill itself.</p>
+<!-- /wp:paragraph -->
+</article>
+<!-- /wp:group -->
+
+<!-- wp:group {"tagName":"article","className":"rf-card","layout":{"type":"default"}} -->
+<article class="wp-block-group rf-card">
+<!-- wp:paragraph {"className":"rf-card__num"} -->
+<p class="rf-card__num">03</p>
+<!-- /wp:paragraph -->
+
+	<!-- wp:heading {"level":3,"className":"rf-card__title"} -->
+	<h3 class="wp-block-heading rf-card__title">Alignment</h3>
+	<!-- /wp:heading -->
+
+<!-- wp:paragraph -->
+<p>Ensure your prompt goal is aligned with the goal of the skill. Without alignment the Agent infers.</p>
+<!-- /wp:paragraph -->
+</article>
+<!-- /wp:group -->
+</div>
+<!-- /wp:group -->
+
+<!-- wp:paragraph -->
+<p>This is how I use the <a href="https://rootsandfruit.com/term/3-factor-invocation/">3-factor invocation</a> for this skill:</p>
+<!-- /wp:paragraph -->
+
+<!-- wp:html -->
+<div class="rf-code">
+<div class="rf-code__chrome">
+<div class="rf-code__dots" aria-hidden="true"><span></span><span></span><span></span></div>
+</div>
+<pre class="rf-code__body"><code>Use @robots-txt-audit on mattcromwell.com for max discoverability</code></pre>
+<span class="rf-code__lang">Bash</span>
+</div>
+<!-- /wp:html -->
+
+<!-- wp:paragraph -->
+<p>I designed the output for two audiences — you, and whatever agent or script you leverage.</p>
+<!-- /wp:paragraph -->
+
+<!-- wp:paragraph -->
+<p>In chat you get a layperson-first summary: a one-line verdict, what’s working, what still needs attention split into required, optional, and worth fixing, numbered next steps, and an origin-ready copy-paste block when fixes are needed.</p>
+<!-- /wp:paragraph -->
+
+<!-- wp:paragraph -->
+<p>Locally, the skill writes a detail report with the technical details: the full robots content, per-bot crawler matrix, sitemap validation, rubric findings, Cloudflare layer split when applicable, a technical handoff JSON, and any policy violations if you chose a preset. That file is built for agents and playbooks — which are a great way to chain related skills; I have a write-up coming on that soon.</p>
+<!-- /wp:paragraph -->
+
+<!-- wp:paragraph -->
+<p>I also wrote a <a href="https://rootsandfruit.com/docs/marketing-skills/reference/robots-txt-audit-skill-reference-guide/">robots.txt audit reference guide</a> that explains each mode and method so you can understand the opinion and perspective the skill is built from. The reference lets you drill into Cloudflare layers, sitemap rules, or Content-Signals, <a href="https://technologychecker.io/blog/ai-crawler-statistics">industry benchmark reading</a>, crawl-mix and blocking stats from mid-2026; all useful context for when you are deciding which bots to block and not just go on autopilot.</p>
+<!-- /wp:paragraph -->
+
+<!-- wp:heading {"level":3} -->
+<h3 class="wp-block-heading">Prompts to use with this skill</h3>
+<!-- /wp:heading -->
+
+<!-- wp:paragraph -->
+<p>Most importantly, how do you invoke this skill for your website? Keep in mind, while there are some code-like handles in the skill, you are still working with conversational agents. If you know the goal and modes of this skill, you can describe what you want in natural language and it will work. The prompts below show how those handles map to different outcomes; they are examples, not a syntax you have to memorize.</p>
+<!-- /wp:paragraph -->
+
+<!-- wp:paragraph -->
+<p><strong>Audit mode</strong> — learn what is live without prescribing changes:</p>
+<!-- /wp:paragraph -->
+
+<!-- wp:html -->
+<div class="rf-code">
+<div class="rf-code__chrome">
+<div class="rf-code__dots" aria-hidden="true"><span></span><span></span><span></span></div>
+</div>
+<pre class="rf-code__body"><code>Use @robots-txt-audit on example.com with crawl_policy audit_only</code></pre>
+<span class="rf-code__lang">Bash</span>
+</div>
+<!-- /wp:html -->
+
+<!-- wp:paragraph -->
+<p><strong>Policy chosen</strong> — training blocks, AI answer crawlers still welcome:</p>
+<!-- /wp:paragraph -->
+
+<!-- wp:html -->
+<div class="rf-code">
+<div class="rf-code__chrome">
+<div class="rf-code__dots" aria-hidden="true"><span></span><span></span><span></span></div>
+</div>
+<pre class="rf-code__body"><code>Use @robots-txt-audit on example.com with crawl_policy block_training_allow_answers</code></pre>
+<span class="rf-code__lang">Bash</span>
+</div>
+<!-- /wp:html -->
+
+<!-- wp:paragraph -->
+<p><strong>After you publish</strong> — verify the live URL actually changed (edge merge can lag a few minutes):</p>
+<!-- /wp:paragraph -->
+
+<!-- wp:html -->
+<div class="rf-code">
+<div class="rf-code__chrome">
+<div class="rf-code__dots" aria-hidden="true"><span></span><span></span><span></span></div>
+</div>
+<pre class="rf-code__body"><code>Re-run @robots-txt-audit on example.com — recheck after I published the origin file</code></pre>
+<span class="rf-code__lang">Bash</span>
+</div>
+<!-- /wp:html -->
+
+<!-- wp:paragraph -->
+<p>Recheck compares against a saved snapshot from your last run: what improved, what is still open, no full first-audit lecture repeated.</p>
+<!-- /wp:paragraph -->
+
+<!-- wp:paragraph -->
+<p><strong>Cornerstone paths</strong> — pass <code>key_pages</code> (pricing, product, help URLs) so the skill simulates whether Googlebot, bingbot, OAI-SearchBot, Claude-SearchBot, and PerplexityBot can fetch those paths under your effective rules. Crawl permission matters before any <code>noindex</code> on those URLs can be read. The Cornerstone Content Audit playbook passes the same URLs in its crawl-policy phase.</p>
+<!-- /wp:paragraph -->
+
+<!-- wp:paragraph -->
+<p><strong>Cloudflare-managed sites</strong> — no special prompt needed; the skill auto-detects the managed markers and splits layers as described above. See <a href="https://github.com/Roots-and-Fruit/skills/blob/master/marketing/skills/robots-txt-audit/CLOUDFLARE-MANAGED.md">CLOUDFLARE-MANAGED.md</a> for the full edge-versus-origin map.</p>
+<!-- /wp:paragraph -->
+
+<!-- wp:heading {"level":2} -->
+<h2 class="wp-block-heading">Use my robots-txt-audit skill and let me know how it goes</h2>
+<!-- /wp:heading -->
+
+<!-- wp:paragraph -->
+<p>With the research framed and the workflow spelled out, the practical next step is to run it yourself.</p>
+<!-- /wp:paragraph -->
+
+<!-- wp:html -->
+<article class="surface">
+<img src="/wp-content/themes/rf/assets/articles/skills-repo.png" alt="" width="48" height="48">
+<h3><a href="https://github.com/Roots-and-Fruit/skills">skills</a></h3>
+<p>By Roots-and-Fruit</p>
+<p>Cursor agent skills for Roots &amp; Fruit marketing and product development</p>
+</article>
+<!-- /wp:html -->
+
+<!-- wp:paragraph -->
+<p>Clone the skill from <a href="https://github.com/Roots-and-Fruit/skills/tree/master/marketing/skills/robots-txt-audit">GitHub</a>. @-mention it on your own domain and ask for an audit-only read of what is live first. Read the chat verdict before you change anything; open the detail report when you want the full matrix.</p>
+<!-- /wp:paragraph -->
+
+<!-- wp:paragraph -->
+<p>For the longer practitioner walkthrough, like modes, Cloudflare layers, what each check means, see the <a href="https://rootsandfruit.com/docs/marketing-skills/reference/robots-txt-audit-skill-reference-guide/">robots.txt audit reference guide</a>. After you publish fixes, run <strong>recheck</strong> so you compare against what the live URL actually serves.</p>
+<!-- /wp:paragraph -->
+
+<!-- wp:paragraph -->
+<p>If the response surprises you open an issue or find me on X or LinkedIn. I built this for my own marketing work for my sites and my clients’ sites, and the skill gets better when other people run it on sites I did not anticipate.</p>
+<!-- /wp:paragraph -->

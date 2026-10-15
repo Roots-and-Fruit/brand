@@ -1,0 +1,226 @@
+<!-- wp:group {"className":"rf-takeaways","layout":{"type":"default"}} -->
+<div class="wp-block-group rf-takeaways">
+	<!-- wp:heading {"level":3,"className":"rf-takeaways__title"} -->
+	<h3 class="wp-block-heading rf-takeaways__title">Key Takeaways</h3>
+	<!-- /wp:heading -->
+
+	<!-- wp:list {"ordered":true,"className":"rf-keytakeaways"} -->
+	<ol class="wp-block-list rf-keytakeaways">
+<!-- wp:list-item -->
+<li>Agents are better at writing skills than humans, so I wrote a skill to write all my skills</li>
+<!-- /wp:list-item -->
+
+<!-- wp:list-item -->
+<li>It’s got three tiers: A, B, and C, each aligns with the degree of complexity the skill needs</li>
+<!-- /wp:list-item -->
+
+<!-- wp:list-item -->
+<li>You can download and install my write-a-skill for free today</li>
+<!-- /wp:list-item -->
+	</ol>
+	<!-- /wp:list -->
+</div>
+<!-- /wp:group -->
+
+<!-- wp:image -->
+<figure class="wp-block-image"><img src="/wp-content/themes/rf/assets/articles/write-cursor-skills.png" alt="How I Write my Cursor Skills for Marketing Work" /></figure>
+<!-- /wp:image -->
+
+<!-- wp:paragraph -->
+<p>I use Cursor every day for a wide array of marketing-related tasks. Though it’s an IDE, made for developers in mind, I’ve found it ideal for storing local context and producing high-value reports and insights.</p>
+<!-- /wp:paragraph -->
+
+<!-- wp:paragraph -->
+<p>One of the things that took me really long to figure out though was how to leverage skills well. There are a million agent skills out there, and you can just download them into your .skills folder and run; but that doesn’t mean that they’ll actually produce high-quality work.</p>
+<!-- /wp:paragraph -->
+
+<!-- wp:paragraph -->
+<p>After a lot of trial and error and seeing lackluster results and feeling like I spend more time on “tooling” than on producing work; I’ve finally found what I believe to be a more reliable way to write skills. And the irony is, I write my skills now… with a skill.</p>
+<!-- /wp:paragraph -->
+
+<!-- wp:html -->
+<div class="alert alert--note" role="note"><p><strong>TLDR;</strong> skip to the bottom if you just want to download my write-a-skill skill now. If you want to know the nitty-gritty, here’s the details:</p></div>
+<!-- /wp:html -->
+
+<!-- wp:heading {"level":2} -->
+<h2 class="wp-block-heading">The anatomy of an agent skill and why it matters</h2>
+<!-- /wp:heading -->
+
+<!-- wp:paragraph -->
+<p>An agent skill is just a folder with a <code>SKILL.md</code> file inside. Up top is what’s called “frontmatter”. Think of that like “post meta” in WordPress. It’s typically just the skill <code>name</code> and a <code>description</code>. The <code>name</code> field is a shorthand way of invoking this skill directly. You can do that in Cursor with a slash command, like <code>\write-a-skill</code>. The description is what Cursor reads to decide whether the skill is even worth opening or leveraging.</p>
+<!-- /wp:paragraph -->
+
+<!-- wp:paragraph -->
+<p>If you’ve read the other pieces in this series, you know that I find that agents very easily ignore skills. One of the biggest reason is because either the name or the description or both are not written in a way that makes the purpose of the skill more obvious or useful to the agent for the kinds of tasks you are asking it for.</p>
+<!-- /wp:paragraph -->
+
+<!-- wp:paragraph -->
+<p>So combine a clear, focused name and description with what I call my <a href="https://rootsandfruit.com/term/3-factor-invocation/">3-factor invocation</a> method, and now you’re cooking:</p>
+<!-- /wp:paragraph -->
+
+<!-- wp:group {"className":"rf-grid rf-grid--three","layout":{"type":"default"}} -->
+<div class="wp-block-group rf-grid rf-grid--three">
+<!-- wp:group {"tagName":"article","className":"rf-card","layout":{"type":"default"}} -->
+<article class="wp-block-group rf-card">
+<!-- wp:paragraph {"className":"rf-card__num"} -->
+<p class="rf-card__num">01</p>
+<!-- /wp:paragraph -->
+
+	<!-- wp:heading {"level":3,"className":"rf-card__title"} -->
+	<h3 class="wp-block-heading rf-card__title">Invoke</h3>
+	<!-- /wp:heading -->
+
+<!-- wp:paragraph -->
+<p>At-mention your skill directly in your prompt. This ensures the Agent goes there first.</p>
+<!-- /wp:paragraph -->
+</article>
+<!-- /wp:group -->
+
+<!-- wp:group {"tagName":"article","className":"rf-card","layout":{"type":"default"}} -->
+<article class="wp-block-group rf-card">
+<!-- wp:paragraph {"className":"rf-card__num"} -->
+<p class="rf-card__num">02</p>
+<!-- /wp:paragraph -->
+
+	<!-- wp:heading {"level":3,"className":"rf-card__title"} -->
+	<h3 class="wp-block-heading rf-card__title">Goal</h3>
+	<!-- /wp:heading -->
+
+<!-- wp:paragraph -->
+<p>State your goal clearly and make sure it’s aligned with the purpose of the skill itself.</p>
+<!-- /wp:paragraph -->
+</article>
+<!-- /wp:group -->
+
+<!-- wp:group {"tagName":"article","className":"rf-card","layout":{"type":"default"}} -->
+<article class="wp-block-group rf-card">
+<!-- wp:paragraph {"className":"rf-card__num"} -->
+<p class="rf-card__num">03</p>
+<!-- /wp:paragraph -->
+
+	<!-- wp:heading {"level":3,"className":"rf-card__title"} -->
+	<h3 class="wp-block-heading rf-card__title">Alignment</h3>
+	<!-- /wp:heading -->
+
+<!-- wp:paragraph -->
+<p>Ensure your prompt goal is aligned with the goal of the skill. Without alignment the Agent infers.</p>
+<!-- /wp:paragraph -->
+</article>
+<!-- /wp:group -->
+</div>
+<!-- /wp:group -->
+
+<!-- wp:paragraph -->
+<p>After that is the core instructions you want the agent to follow for this particular skill.</p>
+<!-- /wp:paragraph -->
+
+<!-- wp:paragraph -->
+<p>Sometimes you add a <code>REFERENCE.md</code> or <code>EXAMPLES.md</code> alongside it once the detail gets long, but those are optional, not the point. <a href="https://cursor.com/docs/skills">Cursor’s own docs</a> cover the folder-and-frontmatter tour properly, so I won’t repeat it here.</p>
+<!-- /wp:paragraph -->
+
+<!-- wp:paragraph -->
+<p>What actually matters is what goes inside that description and those instructions, because that part is where most tutorials stop and where most of the flakiness actually lives.</p>
+<!-- /wp:paragraph -->
+
+<!-- wp:heading {"level":2} -->
+<h2 class="wp-block-heading">What my write-a-skill skill does</h2>
+<!-- /wp:heading -->
+
+<!-- wp:paragraph -->
+<p>As I experimented over and over with skills, what I eventually realized is that I, as a human, am not best suited to actually write a skill. Skills are intended for agent-consumption, not human consumption. If I get all poetic and hand-wavy the agent won’t know exactly what to do. Ironically, agents are really great at writing instructions for other agents to follow. Thus, a skill for writing skills.</p>
+<!-- /wp:paragraph -->
+
+<!-- wp:paragraph -->
+<p>I use <code>write-a-skill</code> to write all my skills with a prompt specifically aimed at a narrowly defined task that I do all the time that I want an agent to help me with. The skill goes through a short few steps to do what it does: what’s the job of the skill in one sentence, does it branch into different modes, what comes out the other end, who consumes that output, where does the logic get fragile, and what data does it actually need. Answering those six items honestly and I already know how much skill I’m building before I write a single line. Most often my prompt to the agent is direct and clear enough that I don’t have to answer all of those myself, the agent can infer them with enough context; but that’s typically because I’m asking it to write a skill in the middle of a long thread of other work I already did with the agent, so the whole thread and outcomes of that work is the context that informs the skill as well.</p>
+<!-- /wp:paragraph -->
+
+<!-- wp:paragraph -->
+<p>A lot of this thinking started when I stumbled on Matt Pocock’s <a href="https://www.skills.sh/mattpocock/skills/write-a-skill">write-a-skill</a>, and Matt Batchelder’s <a href="https://skillpatterns.ai">skillpatterns.ai</a> shaped a lot of how I think about reusable skill patterns too. Credit where it’s due. Neither of them invented the Agent Skills format, and neither did I, but both influenced my skill heavily.</p>
+<!-- /wp:paragraph -->
+
+<!-- wp:paragraph -->
+<p>In my version there are three tiers, and the tier tells you as much about the job as it does about the skill:</p>
+<!-- /wp:paragraph -->
+
+<!-- wp:html -->
+<div class="table-wrap"><table class="rf-table"><thead><tr><th>Tier</th><th>Anatomy</th><th>When it’s the best path</th></tr></thead><tbody><tr><td>A – Lean</td><td>One SKILL.md</td><td>A human can read the prose and tell if the output is right. This is what 98% of “marketing skills” out there do.</td></tr><tr><td>B – Disclosed</td><td>SKILL.md + REFERENCE.md + EXAMPLES.md</td><td>The detail got long enough that stuffing it into one file makes the skill unreadable. Good place for “use the DataForSEO MCP for this” or a bad-result example.</td></tr><tr><td>C – Regression-gated</td><td>Tier B + fixtures + a verify script</td><td>Another skill downstream consumes structured output from this one, or the task is deterministic enough that I want a script checking it, not another AI opinion.</td></tr></tbody></table></div>
+<!-- /wp:html -->
+
+<!-- wp:paragraph -->
+<p>You can see all three tiers doing real work in <a href="https://github.com/Roots-and-Fruit/skills/tree/master/marketing/skills/robots-txt-audit">robots-txt-audit</a>, the skill I <a href="https://rootsandfruit.com/articles/robots-txt-skill/">wrote about a few weeks back</a>. That one earned its way to Tier C because it hands a JSON matrix off to other skills in the chain. A skill that just rewrites a paragraph in my voice never needs that much scaffolding. It stays Tier A, and that’s fine.</p>
+<!-- /wp:paragraph -->
+
+<!-- wp:heading {"level":2} -->
+<h2 class="wp-block-heading">How I test and improve my skills</h2>
+<!-- /wp:heading -->
+
+<!-- wp:paragraph -->
+<p>After I write a skill, I spend the next 30 minutes testing it. Here’s a habit that felt a little silly the first time I did it and now feels obvious. I keep two agents open side by side. One agent runs the skill on a real job. The second agent’s only job is to read what the first one produced and tell me where it hallucinated, inferred, or skipped a step the skill actually asked for. Or where it just needs more fine-tuning to get closer to the outcome we’re intending. Again, agents are really good at reviewing the work of other agents.</p>
+<!-- /wp:paragraph -->
+
+<!-- wp:paragraph -->
+<p>That second agent catches things I’d never notice reading my own skill file, because I already know what I meant when I wrote it. It doesn’t. It just reads the instructions against the output and tells me if they match.</p>
+<!-- /wp:paragraph -->
+
+<!-- wp:paragraph -->
+<p>For Tier C skills, I don’t lean on a second agent alone. Those skills ship with an actual verify script, so the check is deterministic instead of another AI opinion stacked on top of the first. That’s the whole point of earning Tier C.</p>
+<!-- /wp:paragraph -->
+
+<!-- wp:quote -->
+<blockquote class="wp-block-quote">
+	<!-- wp:paragraph {"className":"rf-lede"} -->
+	<p class="rf-lede">Once a skill’s output needs to be predictable, I’d rather trust a script than trust two agents agreeing with each other.</p>
+	<!-- /wp:paragraph -->
+</blockquote>
+<!-- /wp:quote -->
+
+<!-- wp:heading {"level":2} -->
+<h2 class="wp-block-heading">Try out my write-a-skill skill</h2>
+<!-- /wp:heading -->
+
+<!-- wp:paragraph -->
+<p><code>write-a-skill</code> lives in the <a href="https://github.com/Roots-and-Fruit/skills/tree/master/utilities/write-a-skill">Roots &amp; Fruit skills repo</a>, under <code>utilities</code>. Clone it, or point Cursor at the GitHub URL and ask it to pull the skill in for you. Either way works.</p>
+<!-- /wp:paragraph -->
+
+<!-- wp:html -->
+<article class="surface">
+<img src="/wp-content/themes/rf/assets/articles/skills-repo.png" alt="" width="48" height="48">
+<h3><a href="https://github.com/Roots-and-Fruit/skills">skills</a></h3>
+<p>By Roots-and-Fruit</p>
+<p>Cursor agent skills for Roots &amp; Fruit marketing and product development</p>
+</article>
+<!-- /wp:html -->
+
+<!-- wp:paragraph -->
+<p><strong>Install locally: </strong></p>
+<!-- /wp:paragraph -->
+
+<!-- wp:html -->
+<div class="rf-code">
+<div class="rf-code__chrome">
+<div class="rf-code__dots" aria-hidden="true"><span></span><span></span><span></span></div>
+</div>
+<pre class="rf-code__body"><code>npx skills add Roots-and-Fruit/skills -g -y</code></pre>
+<span class="rf-code__lang">Bash</span>
+</div>
+<!-- /wp:html -->
+
+<!-- wp:paragraph -->
+<p>Pick one marketing job you already do by hand. Answer the six intake questions honestly, even the ones that feel obvious. @-mention write-a-skill in your prompt and tell it the job, the same way I invoke every skill in the library: mention it, state the goal, keep the goal and the skill aimed at the same thing.</p>
+<!-- /wp:paragraph -->
+
+<!-- wp:html -->
+<div class="rf-code">
+<div class="rf-code__chrome">
+<div class="rf-code__dots" aria-hidden="true"><span></span><span></span><span></span></div>
+</div>
+<pre class="rf-code__body"><code>Use @write-a-skill to turn this job into a skill:
+Job: [the one thing you do by hand, in one sentence]
+Output: [prose only, or prose + structured data]
+Ask me once if any intake answer is missing, don't guess.</code></pre>
+</div>
+<!-- /wp:html -->
+
+<!-- wp:paragraph -->
+<p>Most people treat skills like just a file to download instead of something they maintain and should expect the right things from. Write one, watch it drift after a few real runs, and you’ll understand why I stopped hoping the agent would just figure it out and started writing the skill that writes my skills.</p>
+<!-- /wp:paragraph -->

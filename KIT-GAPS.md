@@ -6,7 +6,7 @@ Do not add a ninth page job. Do not build these on the product page alone and le
 
 ## 1. Viewport wash
 
-Shipped 2026-10-05. Class `.rf-wash` (cream-deep) and `.rf-wash--dark` (moss). Copy sits in `.rf-wash__inner` on `--rf-max`. On a marketing page the stripe is the window. On the docs site it stops at the sidebar.
+Shipped 2026-10-05. Class `.rf-wash` (cream-deep) and `.rf-wash--dark` (moss). Copy sits in `.rf-wash__inner` on `--rf-max`. On a marketing page the stripe is the window. On the docs site it stops at the sidebar. `.rf-wash--panel` (2026-10-08) uses `--rf-panel` for a beige stripe.
 
 See it on Space & shape (the specimen), and in use on Page jobs (Proof, Split, Dark band) and Showcase (Landing, Plugin page).
 
@@ -24,7 +24,7 @@ See it on Page jobs. The Synced Pattern Popups reviews use it. A slider is still
 
 ## 4. Gallery
 
-Shipped 2026-10-05. Class `.rf-gallery`. One image on a mat, its caption, and a count. The thumbs share the mat's width, up to six across. The current thumb uses the brown right-and-bottom edge. Open the mat for a dialog with a 5px `--rf-panel` frame. Round arrows sit on the picture. A panel-colored bar holds previous, next, the caption, and close. Schema.org ItemList of ImageObject (`position`, `caption`, `contentUrl`, `width`, `height`).
+Shipped 2026-10-05. Class `.rf-gallery`. One image on a white surface, its caption, and a count. The stage and the thumbs use the 4px cream-deep edge. The picture keeps a steady height, shown whole, with `--rf-panel` in the gaps. Thumbs crop to fill. The current thumb turns that edge `--rf-green`. A Knile title sits in a header the same height as the footer. Open sits in that footer. Round arrows fade onto the picture. The dialog shares that edge and adds `.rf-edge--thick` (6px, square, no shadow). Cards stay 4px. A panel bar holds previous, next, the Knile caption, and close. The same shell can hold other content, such as the discovery-call calendar, which only adds a stage height. Schema.org ItemList of ImageObject (`position`, `caption`, `contentUrl`, `width`, `height`).
 
 See it on Page jobs. The Synced Pattern Popups screenshots use it.
 
@@ -47,6 +47,14 @@ See it on Page jobs (Split with a screenshot). The Synced Pattern Popups "How it
 ## Atoms (2026-10-05)
 
 Shipped on Components: textarea (already styled), number stepper, slider, card, divider, badge, avatar, relative time, breadcrumb, pagination, skeleton, tooltip, dialog, and toast. A badge is a count or a status dot. A pill stays a short label. Dark mode stays out. Paid, experimental, and chart pieces from other libraries stay out.
+
+## Service offer
+
+Shipped 2026-10-08. Class `.rf-offer`, with `.rf-offer--panel` (beige) and `.rf-offer--dark` (moss). A full-width card: eyebrow, title, lede, bullets, and a price column, then a `--rf-green-soft` quote band with a 4.5rem portrait. The edge is the surface rule. See it on Patterns & layout (Content patterns). The services page uses it.
+
+## Case-study pieces
+
+Shipped 2026-10-15. Facts, steps, a three-stat row, people, a photo cluster, a logo row, glyph masks, an icon card, and an icon list. The Subscribe pattern uses the form that already posts to `/api/subscribe`. These are pieces inside the existing page jobs. They are not a ninth page job. Shop, show, reel, and a four-up stat row stay out.
 
 ## Not this round
 

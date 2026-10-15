@@ -30,8 +30,9 @@ Do not hand-edit generated `theme.json`, `design-tokens.json`, or copied CSS. Ed
 - Semantic WordPress palette slugs are kit-compatible jobs (`paper`, `paper-deep`, `surface`, `panel`, `primary`, `accent`, etc.); the compiler maps them to R&F's established names (`neutral`, `neutral-deep`, `tertiary`, and `on-tertiary`).
 - R&F's public CSS remains `--rf-*`; the generated theme uses the same namespace and `.rf-*` layout classes.
 - WordPress theme CSS skips element-reset CSS; `theme.json` owns Core element defaults while the generated assets provide R&F components and layout primitives.
-- Layout jobs are CSS and block styles: Copy, Cluster, Switcher, Sidebar, Center, Box, Frame, and the symmetric grid rules. Page jobs are patterns: Hero, Proof, Card grid, Split, Quote, Dark band, CTA, and Alert.
+- Layout jobs are CSS and block styles: Copy, Cluster, Switcher, Sidebar, Center, Box, Frame, and the symmetric grid rules. Page jobs are patterns: Hero, Proof, Card grid, Split, Quote, Dark band, CTA, and Alert. Case-study pieces are patterns inside those jobs: facts, steps, a three-stat row, people, a photo cluster, a logo row, an icon card, and an icon list. Subscribe is the same form the articles hero and the post rail already post to `/api/subscribe`.
 - Two-up marketing uses Switcher (`.rf-switcher` / `is-style-rf-switcher`), not Core Columns.
+- A constrained child keeps the column's left edge. WordPress would center a narrower piece. Center only with `.rf-center` or an alignment class.
 - Header/footer use native Site Identity blocks. The compiler supplies the R&F mark only as a fallback when no Site Logo is set; the agent must still configure the official full Site Logo and Site Icon in the Site Editor.
 - Pairing tokens (`on-*`), focus, elevation, content/wide sizes, and other non-picker values are custom tokens. Authors do not free-paint them.
 
@@ -54,7 +55,6 @@ See `WORDPRESS-GENERATION-CHECKLIST.md` for the evidence required.
 
 ## Hard stops
 
-- Do not change `company-docs/brand/`; this projection belongs to the isolated `brand-next` comparison fork.
 - Do not commit Knile or Nunito binaries. `css/fonts.css` keeps the hosted R&F font URLs and fallbacks.
 - Do not invent palette slugs, custom hex values, fluid type, or a competing theme.
 - Do not hand-edit generated files. Change `DESIGN.md`, source CSS, patterns, or `block-styles.css`, then compile.

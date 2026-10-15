@@ -11,7 +11,7 @@
  * exceptional escape hatch for file-only work and must be reported as unverified.
  */
 
-import { cpSync, existsSync } from "node:fs";
+import { cpSync, existsSync, readdirSync, unlinkSync } from "node:fs";
 import { spawnSync } from "node:child_process";
 import { dirname, join } from "node:path";
 import { fileURLToPath } from "node:url";
@@ -66,6 +66,25 @@ if (missing.length) {
 }
 
 cpSync(source, dest, { recursive: true });
+const staleBundle = join(dest, "assets", "css", "rf-site.css");
+if (existsSync(staleBundle)) {
+  unlinkSync(staleBundle);
+  console.log("  removed stale rf-site.css so WordPress rebuilds it");
+}
+const sourcePatterns = join(source, "patterns");
+const destPatterns = join(dest, "patterns");
+if (existsSync(destPatterns)) {
+  const owned = new Set(
+    existsSync(sourcePatterns)
+      ? readdirSync(sourcePatterns).filter((name) => name.endsWith(".php"))
+      : [],
+  );
+  for (const name of readdirSync(destPatterns)) {
+    if (!name.endsWith(".php") || owned.has(name)) continue;
+    unlinkSync(join(destPatterns, name));
+    console.log(`  removed stale pattern ${name}`);
+  }
+}
 console.log(`Copied wordpress/rf → ${dest}`);
 
 if (skipTest(argv)) {

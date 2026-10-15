@@ -1,21 +1,37 @@
-<!-- wp:group {"className":"is-style-rf-panel","style":{"spacing":{"blockGap":"var:preset|spacing|space-3"}},"layout":{"type":"constrained"}} -->
-<div class="wp-block-group is-style-rf-panel">
-	<!-- wp:heading {"level":2} -->
-	<h2 class="wp-block-heading">Key takeaways</h2>
-	<!-- /wp:heading -->
+<!-- wp:group {"className":"rf-article-rail","layout":{"type":"default"}} -->
+<div class="wp-block-group rf-article-rail">
+	<!-- wp:group {"className":"is-style-rf-logo","style":{"spacing":{"padding":{"top":"var:preset|spacing|space-5","bottom":"var:preset|spacing|space-5","left":"var:preset|spacing|space-5","right":"var:preset|spacing|space-5"},"blockGap":"var:preset|spacing|space-4"}},"layout":{"type":"default"}} -->
+	<div class="wp-block-group is-style-rf-logo" style="padding-top:var(--wp--preset--spacing--space-5);padding-right:var(--wp--preset--spacing--space-5);padding-bottom:var(--wp--preset--spacing--space-5);padding-left:var(--wp--preset--spacing--space-5)">
+		<!-- wp:paragraph -->
+		<p>Is your product business stagnating? Book a discovery call with Matt.</p>
+		<!-- /wp:paragraph -->
 
-	<!-- wp:list -->
-	<ul class="wp-block-list">
-		<!-- wp:list-item -->
-		<li>The template owns the title, byline, and excerpt.</li>
-		<!-- /wp:list-item -->
-		<!-- wp:list-item -->
-		<li>Body copy stays on the measure.</li>
-		<!-- /wp:list-item -->
-		<!-- wp:list-item -->
-		<li>This rail is a shell. Bind it per post later.</li>
-		<!-- /wp:list-item -->
-	</ul>
-	<!-- /wp:list -->
+		<!-- wp:buttons -->
+		<div class="wp-block-buttons">
+			<!-- wp:button {"className":"btn btn--primary"} -->
+			<div class="wp-block-button btn btn--primary"><a class="wp-block-button__link wp-element-button" href="#book">Book here</a></div>
+			<!-- /wp:button -->
+		</div>
+		<!-- /wp:buttons -->
+	</div>
+	<!-- /wp:group -->
+
+	<!-- wp:html -->
+	<form class="rf-copy rf-subscribe" method="post" action="/api/subscribe">
+		<p class="rf-meta">Subscribe</p>
+		<p>More context and resources, straight from Matt.</p>
+		<div class="field">
+			<label for="subscribe-name">Name</label>
+			<input class="input" id="subscribe-name" type="text" name="name" autocomplete="name" maxlength="100">
+		</div>
+		<div class="field">
+			<label for="subscribe-email">Email</label>
+			<input class="input" id="subscribe-email" type="email" name="email" autocomplete="email" required maxlength="254">
+		</div>
+		<div class="rf-subscribe-turnstile" data-sitekey="0x4AAAAAAFV-KGUd_wkXmGBY" data-action="subscribe"></div>
+		<button class="btn btn--primary" type="submit">Subscribe</button>
+		<p class="rf-meta rf-subscribe-status" role="status"></p>
+	</form>
+	<!-- /wp:html -->
 </div>
 <!-- /wp:group -->

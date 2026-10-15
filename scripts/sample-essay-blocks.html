@@ -1,0 +1,490 @@
+<!-- wp:group {"className":"rf-takeaways","layout":{"type":"default"}} -->
+<div class="wp-block-group rf-takeaways">
+	<!-- wp:heading {"level":3,"className":"rf-takeaways__title"} -->
+	<h3 class="wp-block-heading rf-takeaways__title">Key Takeaways</h3>
+	<!-- /wp:heading -->
+
+	<!-- wp:list {"ordered":true,"className":"rf-keytakeaways"} -->
+	<ol class="wp-block-list rf-keytakeaways">
+		<!-- wp:list-item -->
+		<li>Reliability failures, not feature gaps, drive 42% of the one-star reviews across 77 of WordPress's most popular plugins.</li>
+		<!-- /wp:list-item -->
+
+		<!-- wp:list-item -->
+		<li>A crippled free tier discovered after setup earns more anger than aggressive upsell nags do, by a wide margin.</li>
+		<!-- /wp:list-item -->
+
+		<!-- wp:list-item -->
+		<li>Support barely registers as a reason people leave a one-star review, but it's the third biggest reason they leave a five-star one.</li>
+		<!-- /wp:list-item -->
+	</ol>
+	<!-- /wp:list -->
+</div>
+<!-- /wp:group -->
+
+<!-- wp:paragraph -->
+<p>I believe there’s a short list of people you should listen to when building your product, and it doesn’t start with me. The first fifty people on that list should be your customers.</p>
+<!-- /wp:paragraph -->
+
+<!-- wp:paragraph -->
+<p>I tell my clients this in almost every session: listen to your customers and act on what they say. That’s more valuable than anything I could tell them myself.</p>
+<!-- /wp:paragraph -->
+
+<!-- wp:paragraph -->
+<p>For WordPress plugins, there’s one source of raw customer feedback we all have access to: plugin reviews. Plugin authors dismiss them far too easily. That’s short-sighted. You don’t have to agree with a reviewer to find useful insight in what they wrote.</p>
+<!-- /wp:paragraph -->
+
+<!-- wp:paragraph -->
+<p>So I decided to listen at scale. With Cursor doing the heavy lifting, I scraped and tagged 3,354 one- and five-star reviews from the most popular plugins on WordPress.org, sampling evenly so no single mega-plugin could skew the results. I then analyzed the data meticulously, not just with AI but by hand.</p>
+<!-- /wp:paragraph -->
+
+<!-- wp:paragraph -->
+<p>One thing really surprised me: the things product teams obsess over, especially features, rarely show up as the primary reason customers love or hate a plugin.</p>
+<!-- /wp:paragraph -->
+
+<!-- wp:paragraph -->
+<p>If you want to know the top reasons you lose customers and the top reasons you win them, this is the data you need to make the right calls on your own WordPress product today.</p>
+<!-- /wp:paragraph -->
+
+<!-- wp:heading {"level":2} -->
+<h2 class="wp-block-heading">The full research packages are posted and available</h2>
+<!-- /wp:heading -->
+
+<!-- wp:paragraph -->
+<p>I put together two full research write-ups you can read end to end, with downloadable datasets:</p>
+<!-- /wp:paragraph -->
+
+<!-- wp:list {"ordered":true} -->
+<ol class="wp-block-list">
+<!-- wp:list-item -->
+<li><a href="https://rootsandfruit.com/research/wporg-popular-plugins-one-star/">One-star reviews of popular WordPress.org plugins</a>.</li>
+<!-- /wp:list-item -->
+<!-- wp:list-item -->
+<li><a href="https://rootsandfruit.com/research/wporg-popular-plugins-five-star/">Five-star reviews of popular WordPress.org plugins</a>.</li>
+<!-- /wp:list-item -->
+</ol>
+<!-- /wp:list -->
+
+<!-- wp:paragraph -->
+<p>Here’s the short version of how the data was collected and processed:</p>
+<!-- /wp:paragraph -->
+
+<!-- wp:group {"tagName":"article","className":"rf-card","layout":{"type":"default"}} -->
+<article class="wp-block-group rf-card">
+	<!-- wp:heading {"level":3,"className":"rf-card__title"} -->
+	<h3 class="wp-block-heading rf-card__title">Step 1:</h3>
+	<!-- /wp:heading -->
+
+	<!-- wp:paragraph -->
+	<p>1,539 one-star reviews, pulled from the 100 most popular WordPress.org plugins by active install count. I kept only the plugins with at least 20 lifetime one-star reviews, which naturally dropped the boring, stable utility plugins, leaving 77 plugins in the pool. From each of those, I took the 20 most recent one-star reviews.</p>
+	<!-- /wp:paragraph -->
+</article>
+<!-- /wp:group -->
+
+<!-- wp:group {"tagName":"article","className":"rf-card","layout":{"type":"default"}} -->
+<article class="wp-block-group rf-card">
+	<!-- wp:heading {"level":3,"className":"rf-card__title"} -->
+	<h3 class="wp-block-heading rf-card__title">Step 2:</h3>
+	<!-- /wp:heading -->
+
+	<!-- wp:paragraph -->
+	<p>1,815 five-star reviews got the same treatment: the 100 most popular plugins, removed any that didn’t have at least 20 lifetime five-star reviews, leaving 96 plugins included in the study.</p>
+	<!-- /wp:paragraph -->
+</article>
+<!-- /wp:group -->
+
+<!-- wp:group {"tagName":"article","className":"rf-card","layout":{"type":"default"}} -->
+<article class="wp-block-group rf-card">
+	<!-- wp:heading {"level":3,"className":"rf-card__title"} -->
+	<h3 class="wp-block-heading rf-card__title">Step 3:</h3>
+	<!-- /wp:heading -->
+
+	<!-- wp:paragraph -->
+	<p>I also pulled a small side dataset: any reviewer who mentioned buying or using a pro version somewhere in their review. It’s thin (44 one-star, 6 five-star) so I’m not leaning on it for headline claims, but it’s a useful gut check later.</p>
+	<!-- /wp:paragraph -->
+</article>
+<!-- /wp:group -->
+
+<!-- wp:paragraph -->
+<p>I then ran a deep analysis of the core themes and facets across each review and tagged a single primary reason per review into mutually exclusive categories, then grouped those into the “reasons” below. That is the really interesting part where a lot of the insight comes from.</p>
+<!-- /wp:paragraph -->
+
+<!-- wp:paragraph -->
+<p>Two clear patterns came out of all this: what kills a plugin, and what makes people love it.</p>
+<!-- /wp:paragraph -->
+
+<!-- wp:heading {"level":2} -->
+<h2 class="wp-block-heading">What you should never do with your plugin</h2>
+<!-- /wp:heading -->
+
+<!-- wp:paragraph -->
+<p>So let’s start with the 1-star dataset. Three reasons dominate. Below each one I’m going to show you the numbers, then the actual words people left, because the quotes are where this stops being abstract.</p>
+<!-- /wp:paragraph -->
+
+<!-- wp:image -->
+<figure class="wp-block-image"><img src="/wp-content/themes/rf/assets/articles/one-star.png" alt="Top reasons for one-star WordPress plugin reviews: reliability 42%, monetization 29%, support 5%" /></figure>
+<!-- /wp:image -->
+
+<!-- wp:heading {"level":3} -->
+<h3 class="wp-block-heading">REASON 1: Instability</h3>
+<!-- /wp:heading -->
+
+<!-- wp:paragraph -->
+<p>The biggest, clearest reason a plugin earns a one-star review is instability. People get tired of breakage: the plugin itself, their site, or both. Some reviews are short vents. The ones worth studying name the failure in concrete terms.</p>
+<!-- /wp:paragraph -->
+
+<!-- wp:paragraph -->
+<p>Keep in mind, these are the plugins with the highest active install counts. They often have real teams and real funding. They’re supposed to be our best and brightest. Reliability is still the number one reason they get one-star reviews. We’ve got to do better than this.</p>
+<!-- /wp:paragraph -->
+
+<!-- wp:paragraph -->
+<p>Reliability problems, meaning the plugin plain didn’t do what it promised, an update broke a site, or the whole thing felt slow and bloated, account for 640 of the 1,539 one-star reviews I scraped. That’s 42%, nearly double the next biggest category. The single loudest complaint inside that bucket, 264 reviews on its own, is exactly what it sounds like: the plugin didn’t do the thing it said it would do.</p>
+<!-- /wp:paragraph -->
+
+<!-- wp:paragraph -->
+<p>Sometimes that failure is quiet enough that you only learn about it from a customer. One nonprofit checkout setup put it this way:</p>
+<!-- /wp:paragraph -->
+
+<!-- wp:quote -->
+<blockquote class="wp-block-quote">
+	<!-- wp:paragraph -->
+	<p>I only found out after a customer called, apparently, payments haven’t been working for a week or two.</p>
+	<!-- /wp:paragraph -->
+	<cite><a href="https://wordpress.org/support/topic/newest-plugin-broke-my-setup-with-paypal/">WooCommerce PayPal Payments</a></cite>
+</blockquote>
+<!-- /wp:quote -->
+
+<!-- wp:paragraph -->
+<p>Other times the failure is right in the core workflow. A Fluent Forms Pro reviewer hit multi-step forms and named it plainly:</p>
+<!-- /wp:paragraph -->
+
+<!-- wp:quote -->
+<blockquote class="wp-block-quote">
+	<!-- wp:paragraph -->
+	<p>Multi-step forms don’t work. They break when you try to go to the next step.</p>
+	<!-- /wp:paragraph -->
+	<cite><a href="https://wordpress.org/support/topic/not-worth-the-cost-free-version-of-forminator-is-better/">Fluent Forms</a></cite>
+</blockquote>
+<!-- /wp:quote -->
+
+<!-- wp:heading {"level":3} -->
+<h3 class="wp-block-heading">NOTE: Perception matters more than facts</h3>
+<!-- /wp:heading -->
+
+<!-- wp:paragraph -->
+<p>You might dig deep into the details of each of these and find reasons why you might want start caveating how the customer was too aggressive or exaggerating. And there might be real reasons and context that the customer should have taken into account before writing such strong reviews. But there’s one mantra I’ve told my teams year over year that is a guiding principle for me and it’s simple:</p>
+<!-- /wp:paragraph -->
+
+<!-- wp:paragraph -->
+<p>“<strong><em>Feedback is feedback</em></strong>“</p>
+<!-- /wp:paragraph -->
+
+<!-- wp:paragraph -->
+<p>I say this all that time, especially when I read a very unfair review. Why? Because what do we do with feedback? Receive it, process it, use it to make our product, our systems, and our team stronger. What do we do with unfair criticism? We dismiss it; and that’s the miss. Dismissing these reviews as 100% unfair criticism means you miss the opportunity.</p>
+<!-- /wp:paragraph -->
+
+<!-- wp:heading {"level":3} -->
+<h3 class="wp-block-heading">REASON 2: Monetization that feels like a bait and switch</h3>
+<!-- /wp:heading -->
+
+<!-- wp:paragraph -->
+<p>The second biggest reason plugins earn one-star reviews is how you promote the paid version. How you handle that upsell determines a lot of your business. I know because I’ve lived it at GiveWP, Kadence WP, The Events Calendar, Solid Security, and across almost all of my client plugins. When it works, it prints money. When it doesn’t, it bleeds you dry, and it shows up in public as anger about packaging, not features.</p>
+<!-- /wp:paragraph -->
+
+<!-- wp:paragraph -->
+<p>Monetization complaints are 439 reviews, 29%. The loudest single theme inside that bucket isn’t the nag popup. It’s the free tier that reveals its real limits only after someone’s already built on top of it: 170 reviews on its own, ahead of ads-and-upsell-nags at 102.</p>
+<!-- /wp:paragraph -->
+
+<!-- wp:paragraph -->
+<p>Sometimes the surprise is a basic table feature parked behind premium:</p>
+<!-- /wp:paragraph -->
+
+<!-- wp:quote -->
+<blockquote class="wp-block-quote">
+	<!-- wp:paragraph -->
+	<p>pushes users to buy the premium plans in order to get responsive tables.</p>
+	<!-- /wp:paragraph -->
+	<cite><a href="https://wordpress.org/support/topic/the-worst-table-plugin-for-wordpress/">TablePress</a></cite>
+</blockquote>
+<!-- /wp:quote -->
+
+<!-- wp:paragraph -->
+<p>Sometimes it’s hours of “fix your server” docs that were never going to work, because the ceiling lived in the plugin:</p>
+<!-- /wp:paragraph -->
+
+<!-- wp:quote -->
+<blockquote class="wp-block-quote">
+	<!-- wp:paragraph -->
+	<p>Only after exhausting every legitimate technical fix does the plugin funnel you into a $70 upsell, revealing that the limitation was never solvable without payment.</p>
+	<!-- /wp:paragraph -->
+	<cite><a href="https://wordpress.org/support/topic/beware-artificial-limits-misleading-documentation/">All-in-One WP Migration</a></cite>
+</blockquote>
+<!-- /wp:quote -->
+
+<!-- wp:paragraph -->
+<p>Paywalls don’t earn the anger here. Getting surprised by one, after you’ve already invested time, does.</p>
+<!-- /wp:paragraph -->
+
+<!-- wp:heading {"level":3} -->
+<h3 class="wp-block-heading">REASON 3: Support that doesn’t show up</h3>
+<!-- /wp:heading -->
+
+<!-- wp:paragraph -->
+<p>The third reason is how you support your plugin. I’m passionate about this one, and it’s a validation of something I’ve advocated for years while plenty of founders disagreed with me: do your best support work on the .org forums. It makes good business sense.</p>
+<!-- /wp:paragraph -->
+
+<!-- wp:paragraph -->
+<p>Support failures show up as the primary reason in 83 of the 1,539 one-star reviews, about 5%. That sounds small next to reliability and monetization. It still stacks the deck against you everywhere else. A broken update or a confusing free tier turns into a one-star review a lot faster when nobody answers.</p>
+<!-- /wp:paragraph -->
+
+<!-- wp:paragraph -->
+<p>Support can make a product failure worse. One Smart Slider reviewer got a “fixed” build that took the site down further:</p>
+<!-- /wp:paragraph -->
+
+<!-- wp:quote -->
+<blockquote class="wp-block-quote">
+	<!-- wp:paragraph -->
+	<p>That “fixed” version broke my site to the point that the WP Admin interface wasn’t available, and I had to access the backend via FTP.</p>
+	<!-- /wp:paragraph -->
+	<cite><a href="https://wordpress.org/support/topic/extremely-poor-support-6/">Smart Slider 3</a></cite>
+</blockquote>
+<!-- /wp:quote -->
+
+<!-- wp:paragraph -->
+<p>And premium silence is its own category. A Complianz reviewer on a paid plan put the whole complaint in one line:</p>
+<!-- /wp:paragraph -->
+
+<!-- wp:quote -->
+<blockquote class="wp-block-quote">
+	<!-- wp:paragraph -->
+	<p>Seriously a plugin with premium paid plan with no support is not worthy.</p>
+	<!-- /wp:paragraph -->
+	<cite><a href="https://wordpress.org/support/topic/premium-support-just-ignore-you/">Complianz</a></cite>
+</blockquote>
+<!-- /wp:quote -->
+
+<!-- wp:paragraph -->
+<p>In that small subset of reviewers who mentioned paying for a pro version, support failure was still the single biggest complaint, ahead of billing, ahead of bugs. Paying customers expect support most of all, and they say so loudest when it’s missing.</p>
+<!-- /wp:paragraph -->
+
+<!-- wp:paragraph -->
+<p>So that’s the avoid list. Here’s what to actually build toward.</p>
+<!-- /wp:paragraph -->
+
+<!-- wp:heading {"level":2} -->
+<h2 class="wp-block-heading">The things that earn you five-star reviews and customer loyalty</h2>
+<!-- /wp:heading -->
+
+<!-- wp:paragraph -->
+<p>Same structure on the love side. Three reasons, numbers first, then one sharp sentence from real reviews, with a little bridge between each.</p>
+<!-- /wp:paragraph -->
+
+<!-- wp:image -->
+<figure class="wp-block-image"><img src="/wp-content/themes/rf/assets/articles/five-star.png" alt="Top reasons for five-star WordPress plugin reviews: ease of use 21%, just works 20%, great support 17%" /></figure>
+<!-- /wp:image -->
+
+<!-- wp:heading {"level":3} -->
+<h3 class="wp-block-heading">REASON 1: Make it easy</h3>
+<!-- /wp:heading -->
+
+<!-- wp:paragraph -->
+<p>The single best thing you can do for your plugin is make it intuitive. That’s the clear winner across the five-star set, and I love this subject because it forces you to think like your users, not like a developer. I’ve written before about how <a href="https://mattcromwell.com/not-intuitive-and-time-to-value/">“not intuitive” is often just slow time to value</a>, and this dataset is that lesson at scale.</p>
+<!-- /wp:paragraph -->
+
+<!-- wp:paragraph -->
+<p>Ease of use is the biggest primary reason across all 1,815 five-star reviews: 382 of them, 21%. When it lands, people stop shopping. They just keep starting with you:</p>
+<!-- /wp:paragraph -->
+
+<!-- wp:quote -->
+<blockquote class="wp-block-quote">
+	<!-- wp:paragraph -->
+	<p>Whenever I start a website I make sure Elementor is available to work with.</p>
+	<!-- /wp:paragraph -->
+	<cite><a href="https://wordpress.org/support/topic/very-happy-247/">Elementor</a></cite>
+</blockquote>
+<!-- /wp:quote -->
+
+<!-- wp:paragraph -->
+<p>And when it works for agencies, it shows up as fewer support calls from their own clients:</p>
+<!-- /wp:paragraph -->
+
+<!-- wp:quote -->
+<blockquote class="wp-block-quote">
+	<!-- wp:paragraph -->
+	<p>My non-tech clients can now edit their own posts w/o calling me every time.</p>
+	<!-- /wp:paragraph -->
+	<cite><a href="https://wordpress.org/support/topic/saved-my-sanity-14/">Classic Editor</a></cite>
+</blockquote>
+<!-- /wp:quote -->
+
+<!-- wp:paragraph -->
+<p>Note how they aren’t praising a list of features; they’re praising the results and the impact it makes on their work and their life. That’s the target all product development should be focused towards. Tangible, quality of life benefits to your customers.</p>
+<!-- /wp:paragraph -->
+
+<!-- wp:heading {"level":3} -->
+<h3 class="wp-block-heading">REASON 2: Dependability</h3>
+<!-- /wp:heading -->
+
+<!-- wp:paragraph -->
+<p>Next, a very close second, is dependability. Does your plugin reliably do what it says on the tin across updates and years? This is the mirror image of the biggest one-star driver.</p>
+<!-- /wp:paragraph -->
+
+<!-- wp:paragraph -->
+<p>Right behind ease of use, at 365 reviews and 20%, is “it just works.” Sometimes that praise is one practical outcome:</p>
+<!-- /wp:paragraph -->
+
+<!-- wp:quote -->
+<blockquote class="wp-block-quote">
+	<!-- wp:paragraph -->
+	<p>Never misses an email which is huge for my biz.</p>
+	<!-- /wp:paragraph -->
+	<cite><a href="https://wordpress.org/support/topic/just-works-perfectly-12/">Contact Form 7</a></cite>
+</blockquote>
+<!-- /wp:quote -->
+
+<!-- wp:paragraph -->
+<p>Sometimes it’s the quieter version of the same idea: I can trust this for the long haul.</p>
+<!-- /wp:paragraph -->
+
+<!-- wp:quote -->
+<blockquote class="wp-block-quote">
+	<!-- wp:paragraph -->
+	<p>A reliable plugin for my WPsite.</p>
+	<!-- /wp:paragraph -->
+	<cite><a href="https://wordpress.org/support/topic/reliable-seo-plugin-5/">Yoast SEO</a></cite>
+</blockquote>
+<!-- /wp:quote -->
+
+<!-- wp:paragraph -->
+<p>Notice your two biggest five-star drivers are the same axis your one-star reviewers are screaming about but pointed in the opposite direction. Ease and reliability aren’t nice extras, they dictate whether your product gets adopted or rejected.</p>
+<!-- /wp:paragraph -->
+
+<!-- wp:heading {"level":3} -->
+<h3 class="wp-block-heading">REASON 3: Human support that actually helps</h3>
+<!-- /wp:heading -->
+
+<!-- wp:paragraph -->
+<p>And third is excellent human support, the counterpart to the third one-star driver.</p>
+<!-- /wp:paragraph -->
+
+<!-- wp:paragraph -->
+<p>Great support is the third biggest five-star reason: 315 of 1,815 or 17% of the total. Here’s the part that should get your attention: that’s nearly four times bigger, as a share, than support’s role in one-star reviews. Support failing has real negative impact on driving your one-star numbers, but nowhere near the positive impact it has. Excellent technical support should drive a huge share of your five-star reviews.</p>
+<!-- /wp:paragraph -->
+
+<!-- wp:paragraph -->
+<p>I love it when team members get called out by name like this:</p>
+<!-- /wp:paragraph -->
+
+<!-- wp:quote -->
+<blockquote class="wp-block-quote">
+	<!-- wp:paragraph -->
+	<p>Suzan stayed with the issue from start to finish, following up consistently and patiently over more than a week until we finally identified and resolved the problem.</p>
+	<!-- /wp:paragraph -->
+	<cite><a href="https://wordpress.org/support/topic/outstanding-support-from-suzan/">GTranslate</a></cite>
+</blockquote>
+<!-- /wp:quote -->
+
+<!-- wp:paragraph -->
+<p>And patience during the hardest bugs drives real results:</p>
+<!-- /wp:paragraph -->
+
+<!-- wp:quote -->
+<blockquote class="wp-block-quote">
+	<!-- wp:paragraph -->
+	<p>He stayed with me over 30 minutes and walked me through many troubleshoots.</p>
+	<!-- /wp:paragraph -->
+	<cite><a href="https://wordpress.org/support/topic/best-support-ever-292/">Google for WooCommerce</a></cite>
+</blockquote>
+<!-- /wp:quote -->
+
+<!-- wp:paragraph -->
+<p>That gap, between being ignored and being treated like a person, is the whole ballgame.</p>
+<!-- /wp:paragraph -->
+
+<!-- wp:heading {"level":2} -->
+<h2 class="wp-block-heading">This is how to make products that customers love</h2>
+<!-- /wp:heading -->
+
+<!-- wp:paragraph -->
+<p>Seeing the worst and best lined up like this was educational for me, and I’ve been doing this for years and years. It’s one thing to know anecdotally what customers like the most about your product, it’s another thing to see it realized across over 70 products and the same themes and patterns show up consistently and clearly.</p>
+<!-- /wp:paragraph -->
+
+<!-- wp:paragraph -->
+<p>Here’s what I believe you should take from all of this.</p>
+<!-- /wp:paragraph -->
+
+<!-- wp:heading {"level":3} -->
+<h3 class="wp-block-heading">Defensive development</h3>
+<!-- /wp:heading -->
+
+<!-- wp:paragraph -->
+<p>Defensive development is what WordPress plugins need to learn the most. Graceful failures, actionable logging, built-in tooling, and more robust automated testing against wild WP environments. That is the work that keeps reliability from becoming your loudest one-star bucket.</p>
+<!-- /wp:paragraph -->
+
+<!-- wp:paragraph -->
+<p>All of this feels overwhelming when you stack it next to the feature roadmap. It still pays dividends. The reviews are clear: breakage appears far more often as the primary reason for a one-star review than missing features do.</p>
+<!-- /wp:paragraph -->
+
+<!-- wp:heading {"level":3} -->
+<h3 class="wp-block-heading">The art of paid promotion</h3>
+<!-- /wp:heading -->
+
+<!-- wp:paragraph -->
+<p>The art of paid promotion is really important. How you introduce the paid tier, when you show the limit, and how hard you push for the upgrade all show up in public reviews whether you like it or not.</p>
+<!-- /wp:paragraph -->
+
+<!-- wp:paragraph -->
+<p>Loud and obnoxious are not winning strategies. The anger in the data is less about charging money and more about surprise, pressure, and a free tier that only reveals itself after someone has already built on it.</p>
+<!-- /wp:paragraph -->
+
+<!-- wp:heading {"level":3} -->
+<h3 class="wp-block-heading">Design, QA, and user testing</h3>
+<!-- /wp:heading -->
+
+<!-- wp:paragraph -->
+<p>Product design, UX design, manual QA, and user testing are all necessary parts of a thriving product business. Ease of use and “just works” are the two biggest five-star drivers in this dataset for a reason. They are not polish you add at the end. They are the product people are reacting to. Shrink <a href="https://mattcromwell.com/tips/time-to-value/">time to value</a> and a lot of “not intuitive” feedback disappears before it ever becomes a ticket.</p>
+<!-- /wp:paragraph -->
+
+<!-- wp:paragraph -->
+<p>If you skip that work, you feel it on both sides of the review ledger. One-star reviewers tell you the thing broke or felt impossible. Five-star reviewers tell you it clicked and they can trust it. Same axis.</p>
+<!-- /wp:paragraph -->
+
+<!-- wp:heading {"level":3} -->
+<h3 class="wp-block-heading">Human support, AI-assisted</h3>
+<!-- /wp:heading -->
+
+<!-- wp:paragraph -->
+<p>Human-powered, AI-assisted technical support is an ROI engine. The asymmetry in the data is hard to ignore: support failures are a smaller slice of one-star reviews, but great support is a huge slice of five-star ones. That same listening muscle that turns forum threads into product decisions is the one I wrote about when I <a href="https://rootsandfruit.com/articles/why-i-launched-roots-and-fruit-wp-tavern/">launched Roots & Fruit</a>.</p>
+<!-- /wp:paragraph -->
+
+<!-- wp:paragraph -->
+<p>AI can help you move faster and cover more ground. A person still has to stay with the issue, explain the fix, and make the customer feel handled. That is what people write about when support goes well.</p>
+<!-- /wp:paragraph -->
+
+<!-- wp:paragraph -->
+<p>If you do all of this really well, you should mostly avoid earned one-star reviews. You’ll still get a few of what I call extortion one-stars: reviews used as a lever to get attention or support out of you, not an honest account of the product. That’s a different problem, and this data can’t fix it for you.</p>
+<!-- /wp:paragraph -->
+
+<!-- wp:heading {"level":2} -->
+<h2 class="wp-block-heading">The one thing that never came up</h2>
+<!-- /wp:heading -->
+
+<!-- wp:paragraph -->
+<p>One thing that also really stands out as interesting to me in this analysis is the one thing that didn’t show up at all: Features. We obsess over features in product development. But that’s not what these users focused on. They focused on how they felt, how they experienced the product. Missing features shows up as the primary complaint in just 38 of the 1,539 one-star reviews, 2.5%, dead last among every real category. Compare that to the 640 reliability complaints and 439 monetization complaints.</p>
+<!-- /wp:paragraph -->
+
+<!-- wp:paragraph -->
+<p>The finding is clear: a missing feature was almost never the primary reason someone walked away angry. What I’ll argue from here is my own read on it: getting reliability and support right, consistently, year over year, is what actually builds a product people love and keep using. You might have a roadmap right now that is full of new features and enhancements. But I’d honestly challenge you: where do the things that actually matter sit on your roadmap right now?</p>
+<!-- /wp:paragraph -->
+
+<!-- wp:paragraph -->
+<p>That’s your moat in today’s AI-powered, code-as-a-commodity world. You live or die by the experience you create, not your lines of PHP or JavaScript.</p>
+<!-- /wp:paragraph -->
+
+<!-- wp:heading {"level":2} -->
+<h2 class="wp-block-heading">I can grow your product business</h2>
+<!-- /wp:heading -->
+
+<!-- wp:paragraph -->
+<p>The kinds of products that drive these kinds of reviews are not rocket science. They simply have focus, and they do the right thing really well, over and over and over again. That’s the kind of focus and drive I want to help you build into your business. If you want a second pair of eyes on where your own product’s reviews are pointing, that’s exactly the kind of conversation I like having.</p>
+<!-- /wp:paragraph -->

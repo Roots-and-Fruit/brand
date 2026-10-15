@@ -1,0 +1,768 @@
+/* Site chrome written by the compiler. The kit does not own the header bar or footer. */
+
+.site-header {
+  background: var(--rf-white);
+  border-bottom: 4px solid var(--rf-cream-deep);
+}
+
+.site-header__inner {
+  box-sizing: border-box;
+  display: flex;
+  align-items: stretch;
+  width: min(1200px, calc(100% - 2rem));
+  min-height: calc(4.75rem + var(--rf-space-4));
+  margin-inline: auto;
+  padding-block: var(--rf-space-2);
+}
+
+.site-header .rf-nav {
+  display: flex;
+  align-items: stretch;
+  align-self: stretch;
+  margin: 0;
+}
+
+@media (min-width: 600px) {
+  .site-header .rf-nav .wp-block-navigation__responsive-container,
+  .site-header .rf-nav .wp-block-navigation__responsive-close,
+  .site-header .rf-nav .wp-block-navigation__responsive-dialog,
+  .site-header .rf-nav .wp-block-navigation__responsive-container-content,
+  .site-header .rf-nav .wp-block-navigation__container,
+  .site-header .rf-nav .wp-block-navigation-item,
+  .site-header .rf-nav a.wp-block-navigation-item__content {
+    display: flex;
+    align-items: stretch;
+    height: 100%;
+    margin: 0;
+  }
+}
+
+@media (max-width: 599px) {
+  .site-header .rf-nav:has(.is-menu-open) {
+    overflow: visible;
+  }
+
+  .site-header .wp-block-navigation.rf-nav:not(.has-background) .wp-block-navigation__responsive-container.is-menu-open:not(.disable-default-overlay) {
+    background-color: var(--rf-panel-soft);
+  }
+
+  .site-header .rf-nav .wp-block-navigation__responsive-container.is-menu-open .wp-block-navigation__responsive-container-close {
+    top: var(--rf-space-4);
+    right: var(--rf-space-4);
+  }
+
+  .site-header .rf-nav .wp-block-navigation__responsive-container.is-menu-open .wp-block-navigation__responsive-container-content {
+    box-sizing: border-box;
+    width: 100%;
+    align-items: stretch;
+    gap: var(--rf-space-3);
+    padding: var(--rf-space-7) var(--rf-gutter) var(--rf-space-6);
+  }
+
+  .site-header .rf-nav .wp-block-navigation__responsive-container.is-menu-open .wp-block-navigation__container {
+    align-items: stretch;
+    width: 100%;
+    gap: var(--rf-space-3);
+  }
+
+  .site-header .rf-nav .wp-block-navigation__responsive-container.is-menu-open .wp-block-navigation-item {
+    width: 100%;
+  }
+
+  .site-header .rf-nav .wp-block-navigation__responsive-container.is-menu-open a.wp-block-navigation-item__content {
+    width: 100%;
+    height: auto;
+    box-sizing: border-box;
+    justify-content: flex-end;
+    padding: var(--rf-space-3) var(--rf-space-4);
+    border-left: 0;
+    border-bottom: 1px solid var(--rf-rule);
+    background-image: none;
+  }
+
+  .site-header .rf-nav .wp-block-navigation__responsive-container.is-menu-open a.wp-block-navigation-item__content:hover {
+    background: var(--rf-cream);
+    color: var(--rf-green-deep);
+  }
+
+  .site-header .rf-nav .wp-block-navigation__responsive-container.is-menu-open a.wp-block-navigation-item__content:focus-visible {
+    outline: 2px solid var(--rf-green-deep);
+    outline-offset: 2px;
+  }
+
+  .site-header .rf-nav .wp-block-navigation__responsive-container.is-menu-open a.wp-block-navigation-item__content[aria-current="page"] {
+    background: var(--rf-green-soft);
+    color: var(--rf-green-deep);
+  }
+}
+.site-header .wp-block-site-logo {
+  align-self: center;
+}
+
+.site-header .custom-logo,
+.site-header .site-logo img {
+  display: block;
+  width: 6.7rem;
+  height: auto;
+}
+
+.site-header .rf-nav .wp-block-navigation__container {
+  gap: 0;
+  padding: 0;
+  list-style: none;
+}
+
+.site-header .rf-nav a.wp-block-navigation-item__content {
+  display: flex;
+  align-items: center;
+  height: 100%;
+  box-sizing: border-box;
+  background-color: transparent;
+  background-image: linear-gradient(var(--rf-panel), var(--rf-panel));
+  background-repeat: no-repeat;
+  background-position: bottom;
+  background-size: 100% 0%;
+  color: var(--rf-ink-deep);
+  transition: background-size 250ms ease, color 250ms ease;
+}
+
+.site-header .rf-nav a.wp-block-navigation-item__content:hover,
+.site-header .rf-nav a.wp-block-navigation-item__content:focus-visible {
+  background-size: 100% 100%;
+  color: var(--rf-green-deep);
+  text-decoration: none;
+}
+
+.site-header .rf-nav a.wp-block-navigation-item__content[aria-current="page"] {
+  background: var(--rf-cream);
+  color: var(--rf-green-deep);
+  transition: none;
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .site-header .rf-nav a.wp-block-navigation-item__content {
+    transition: none;
+  }
+}
+
+.wp-block-group.rf-quote,
+.wp-block-group.rf-review {
+  max-inline-size: 100%;
+}
+
+/* WordPress centers a constrained child with margin: auto. A piece
+   narrower than the column (a 36rem list, a 65ch line) then starts
+   in the middle. Keep the column's left edge for every child.
+   Center only with .rf-center or an alignment class. */
+.is-layout-constrained > :where(
+  :not(.alignleft):not(.alignright):not(.alignfull):not(.alignwide):not(.aligncenter):not(.rf-center)
+),
+.wp-block-group.rf-quote,
+.wp-block-group.rf-card,
+.wp-block-group.rf-review {
+  margin-left: max(0px, calc((100% - 1200px) / 2)) !important;
+  margin-right: auto !important;
+}
+
+.page-hero {
+  position: relative;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  min-height: 31.25rem;
+  overflow: hidden;
+  border-bottom: 4px solid var(--rf-panel-deep);
+  background: var(--rf-panel);
+}
+
+.page-hero > .wp-block-post-title,
+.page-hero > .rf-display--lg,
+.page-hero > .rf-lede,
+.page-hero > .wp-block-buttons,
+.page-hero > .rf-display--md,
+.page-hero > .rf-split {
+  margin-left: max(0px, calc((100% - 1200px) / 2)) !important;
+  margin-right: auto !important;
+}
+
+.page-hero > .wp-block-post-title,
+.page-hero > .rf-display--lg,
+.page-hero > .rf-lede,
+.page-hero > .rf-split {
+  max-width: 1200px;
+}
+
+.page-hero .rf-display--lg {
+  color: var(--rf-green-logo);
+}
+
+.page-hero .rf-display--md {
+  max-inline-size: 36.7rem;
+  color: var(--rf-green);
+  font-weight: var(--rf-weight-semibold);
+}
+
+.page-hero .rf-lede {
+  max-inline-size: 1200px;
+  color: var(--rf-brown);
+}
+
+.page-hero .wp-block-buttons {
+  width: fit-content;
+}
+
+.page-hero--articles {
+  min-height: 0;
+}
+
+.page-hero--articles.has-global-padding {
+  padding-left: 0;
+  padding-right: 0;
+}
+
+.page-hero--articles .article-wide,
+.articles-list {
+  box-sizing: border-box;
+  width: min(1200px, calc(100% - 2rem));
+  max-width: none;
+  margin-inline: auto;
+}
+
+.page-hero--articles .wp-block-query-title {
+  max-inline-size: 36.7rem;
+  margin-inline: 0;
+}
+
+.page-hero--articles .rf-lede {
+  max-inline-size: var(--rf-measure);
+  margin-inline: 0;
+}
+
+.page-hero--articles .page-hero__optin {
+  margin-left: 0;
+  margin-right: auto;
+}
+
+.articles-list.has-global-padding {
+  padding-left: 0;
+  padding-right: 0;
+}
+
+.articles-list {
+  padding-block: var(--rf-space-7) var(--rf-space-8);
+}
+
+.articles-list .wp-block-post-template {
+  gap: var(--rf-space-7);
+}
+
+.articles-list .wp-block-post {
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
+}
+
+.articles-list .wp-block-post > * {
+  margin-block: 0;
+}
+
+.articles-list .pill {
+  margin-block-end: var(--rf-space-3);
+}
+
+.articles-list .wp-block-post-title {
+  margin-block-start: 0;
+  font-family: var(--rf-font-serif);
+  font-size: var(--rf-text-2xl);
+  font-weight: var(--rf-weight-semibold);
+  line-height: var(--rf-leading-snug);
+  letter-spacing: 0;
+}
+
+.articles-list .wp-block-post-title a {
+  color: var(--rf-green-deep);
+  font-weight: var(--rf-weight-semibold);
+  text-decoration: none;
+}
+
+.articles-list .wp-block-post-date {
+  margin-block-start: var(--rf-space-2);
+  font-size: var(--rf-text-sm);
+  color: var(--rf-ink-muted);
+}
+
+.articles-list .wp-block-post-excerpt {
+  margin-block-start: var(--rf-space-4);
+  max-inline-size: 42rem;
+}
+
+.articles-list .wp-block-post-excerpt__more-text {
+  margin-block-start: var(--rf-space-3);
+}
+
+.page-hero__optin {
+  position: relative;
+  z-index: 1;
+  width: min(100%, 32rem);
+}
+
+.page-hero__optin-row {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+  gap: var(--rf-space-3);
+}
+
+.page-hero__optin-row .input {
+  flex: 1 1 14rem;
+  inline-size: auto;
+  min-inline-size: 0;
+}
+
+.page-hero__optin-row .btn {
+  flex: none;
+}
+
+/* Section blocks (a hero, then a band) keep a wide step.
+   Running text uses the prose rhythm: space-5 between paragraphs,
+   space-6 before a heading. Articles already opt into .rf-prose. */
+.wp-block-post-content.is-layout-constrained:not(.rf-prose) > * + * {
+  margin-block-start: var(--rf-space-7);
+}
+
+.wp-block-post-content.is-layout-constrained:not(.rf-prose) > * + :is(p, ul, ol) {
+  margin-block-start: var(--rf-space-5);
+}
+
+.wp-block-post-content.is-layout-constrained:not(.rf-prose) > * + :is(h1, h2, h3, h4) {
+  margin-block-start: var(--rf-space-6);
+}
+
+.page-hero::before {
+  content: "";
+  position: absolute;
+  inset: 0;
+  background: url("../illustrations/roots-1.svg") no-repeat 75% 100% / 600px auto;
+  opacity: 0.1;
+  pointer-events: none;
+}
+
+.page-hero--about::before {
+  background: url("../illustrations/apples-1.svg") no-repeat 0% 100% / 28rem auto;
+  opacity: 0.16;
+}
+
+.wp-block-group.rf-stack.is-layout-flow > * + * {
+  margin-block-start: 0;
+}
+
+.wp-block-group.rf-split.is-layout-flow > *,
+.wp-block-group.rf-grid--two.is-layout-flow > *,
+.wp-block-group.rf-grid--three.is-layout-flow > * {
+  margin-block: 0;
+}
+
+.wp-block-group.rf-prose.is-layout-flow > * + * {
+  margin-block-start: var(--rf-space-5);
+}
+
+.wp-block-group.rf-prose.is-layout-flow > * + :is(h1, h2, h3, h4) {
+  margin-block-start: var(--rf-space-6);
+}
+
+.home-brands {
+  text-align: center;
+}
+
+.home-brands :is(h2, h3) {
+  color: var(--rf-on-dark);
+}
+
+.home-brands :is(p, em) {
+  color: var(--rf-on-dark-muted);
+}
+
+.home-brands img {
+  display: block;
+  width: 100%;
+  height: auto;
+}
+
+.about-hero__split {
+  align-items: center;
+}
+
+.about-hero__split > .rf-copy {
+  flex: 1 1 20rem;
+  max-inline-size: 34rem;
+}
+
+.about-hero__split > .wp-block-html,
+.about-hero__split > .rf-figure {
+  flex: 1 1 28rem;
+  max-inline-size: 36rem;
+}
+
+.about-story > .rf-prose,
+.case-study__split > .rf-prose {
+  flex: 1 1 26rem;
+  max-inline-size: none;
+}
+
+.about-story > .about-path {
+  flex: 0 1 22rem;
+  max-inline-size: 22rem;
+}
+
+.about-path {
+  display: flex;
+  flex-direction: column;
+  gap: var(--rf-space-4);
+}
+
+.about-stop {
+  display: flex;
+  align-items: flex-start;
+  gap: var(--rf-space-4);
+}
+
+.about-stop > .wp-block-html,
+.case-study__title > .wp-block-html {
+  flex: none;
+}
+
+img.about-stop__mark,
+img.case-study__mark {
+  height: 2.25rem;
+  width: auto;
+  max-width: 6.5rem;
+  flex: none;
+  margin-top: 0.15rem;
+  border-radius: 0;
+  object-fit: contain;
+}
+
+.case-study__title {
+  display: flex;
+  align-items: flex-start;
+  gap: var(--rf-space-4);
+  align-self: stretch;
+}
+
+.case-study .rf-copy > .rf-meta + .case-study__title {
+  margin-block-start: var(--rf-space-3);
+}
+
+.case-study__title .rf-display {
+  min-inline-size: 0;
+}
+
+.case-study__split > .rf-quote {
+  flex: 0 1 26rem;
+  max-inline-size: 26rem;
+  width: auto;
+}
+
+@media (max-width: 50rem) {
+  .page-hero--articles::before {
+    background-size: 16rem auto;
+    background-position: 80% 100%;
+  }
+
+  .page-hero__optin-row .btn {
+    flex: 1 1 100%;
+  }
+
+  .page-hero--about::before {
+    background-size: 14rem auto;
+  }
+
+  .about-story > .about-path {
+    max-inline-size: none;
+  }
+}
+
+.services-close {
+  position: relative;
+  overflow: hidden;
+  margin: 0;
+  padding-block: var(--rf-space-7);
+  border-top: 4px solid var(--rf-panel-deep);
+  background-color: var(--rf-panel);
+}
+
+.services-close::before {
+  content: "";
+  position: absolute;
+  z-index: 0;
+  top: 50%;
+  right: max(1rem, calc((100% - 1200px) / 2));
+  width: 18rem;
+  aspect-ratio: 623 / 386;
+  transform: translateY(-50%);
+  background: url("../illustrations/apples-1.svg") no-repeat center / contain;
+  opacity: var(--rf-atmosphere-spot);
+  pointer-events: none;
+}
+
+.services-close > * {
+  position: relative;
+  z-index: 1;
+}
+
+@media (max-width: 50rem) {
+  .services-close::before {
+    width: min(14rem, 42%);
+  }
+}
+
+.services-close .wp-block-button__link {
+  background: var(--rf-orange);
+  color: var(--rf-ink);
+  border-radius: var(--rf-radius-pill);
+}
+
+html {
+  scroll-behavior: smooth;
+}
+
+@media (prefers-reduced-motion: reduce) {
+  html {
+    scroll-behavior: auto;
+  }
+}
+
+.book-call {
+  width: min(72rem, calc(100vw - 2rem));
+  height: min(52rem, calc(100dvh - 3rem));
+}
+
+.book-call__frame {
+  flex: 1 1 auto;
+  width: 100%;
+  min-height: 0;
+  border: 0;
+  background: var(--rf-white);
+}
+
+.rf-article-hero {
+  background-color: var(--rf-green-logo);
+  color: var(--rf-on-dark);
+}
+
+.rf-article-hero :is(h1, h2, p, a, time) {
+  color: var(--rf-on-dark);
+}
+
+.rf-article-hero h1 {
+  font-size: var(--rf-text-3xl);
+  font-weight: var(--rf-weight-bold);
+  line-height: var(--rf-leading-display);
+  letter-spacing: var(--rf-tracking-display);
+}
+
+.rf-article-hero .rf-lede {
+  max-inline-size: none;
+  color: var(--rf-on-dark);
+}
+
+.rf-article-hero .wp-block-post-terms a {
+  color: var(--rf-orange-web);
+  font-size: var(--rf-text-sm);
+  font-weight: var(--rf-weight-bold);
+  letter-spacing: var(--rf-tracking-meta);
+  text-decoration: none;
+  text-transform: uppercase;
+}
+
+.rf-article-byline {
+  align-items: center;
+}
+
+.rf-article-byline p,
+.rf-article-byline .wp-block-post-author-name,
+.rf-article-byline .wp-block-post-date {
+  margin: 0;
+}
+
+.rf-article-byline a {
+  color: var(--rf-on-dark);
+  text-decoration: none;
+}
+
+.rf-article-byline img {
+  display: block;
+  width: 1.6rem;
+  height: 1.6rem;
+  border-radius: var(--rf-radius-pill);
+  object-fit: cover;
+}
+
+.rf-article-copy {
+  display: flex;
+  flex-direction: column;
+  gap: var(--rf-space-6);
+  min-inline-size: 0;
+}
+
+@property --rf-prose-column {
+  syntax: "<length>";
+  inherits: true;
+  initial-value: 0px;
+}
+
+.wp-block-post-content.rf-prose,
+.editor-styles-wrapper {
+  --rf-prose-column: 65ch;
+}
+
+.wp-block-post-content.rf-prose {
+  box-sizing: border-box;
+  max-inline-size: none;
+}
+
+/* 65ch on a heading uses the heading's own font, so in the editor the
+   title grows past the prose column and starts further left. The length
+   is resolved on the prose wrapper, then inherited. */
+.wp-block-post-content.rf-prose > :is(h1, h2, h3, h4, h5, h6),
+.editor-styles-wrapper .is-root-container > :is(h1, h2, h3, h4, h5, h6) {
+  max-width: var(--rf-prose-column);
+}
+
+/* block-styles zeros .wp-block-quote margin, which beats the prose gap.
+   The editor spaces blocks with the post block gap instead, so this is
+   the front only. */
+.wp-block-post-content.rf-prose > .wp-block-quote {
+  margin-top: var(--rf-space-6);
+}
+
+/* The code panel's own margin shorthand sets the top to 0, which beats the prose gap. */
+.wp-block-post-content.rf-prose > .rf-code {
+  margin-top: var(--rf-space-5);
+}
+
+.rf-article-rail {
+  display: flex;
+  flex-direction: column;
+  gap: var(--rf-space-6);
+}
+
+.rf-article-rail .is-style-rf-logo .wp-block-button.btn--primary .wp-block-button__link {
+  background-color: var(--rf-white);
+  color: var(--rf-green-deep);
+  border-radius: var(--rf-radius-pill);
+}
+
+.rf-article-close .wp-block-button.btn--cta .wp-block-button__link {
+  background-color: var(--rf-orange);
+  color: var(--rf-ink-deep);
+  border-radius: var(--rf-radius-pill);
+}
+
+.rf-article-author {
+  align-items: center;
+  text-align: center;
+}
+
+.rf-article-author img {
+  width: 5rem;
+  height: 5rem;
+  border-radius: var(--rf-radius-pill);
+  object-fit: cover;
+}
+
+.rf-article-author h2 {
+  font-family: var(--rf-font-serif);
+  font-size: var(--rf-text-xl);
+  font-weight: var(--rf-weight-semibold);
+  line-height: var(--rf-leading-snug);
+}
+
+.rf-article-author h2 a {
+  color: var(--rf-ink-deep);
+  text-decoration: none;
+}
+
+.rf-article-author .rf-icon-link {
+  color: var(--rf-ink);
+}
+
+.rf-updated {
+  color: var(--rf-ink-muted);
+  font-size: var(--rf-text-sm);
+}
+
+.rf-updated .rf-icon {
+  width: 1em;
+  height: 1em;
+  flex: none;
+}
+
+.rf-updated .rf-meta,
+.rf-updated .wp-block-post-date {
+  margin: 0;
+  color: inherit;
+  font-size: inherit;
+  font-weight: var(--rf-weight-bold);
+  letter-spacing: var(--rf-tracking-meta);
+  text-transform: uppercase;
+}
+
+.rf-article-frame {
+  display: grid;
+  grid-template-columns: minmax(0, var(--rf-measure)) minmax(16rem, 1fr);
+  column-gap: 4.5rem;
+  align-items: start;
+  width: min(1200px, calc(100% - 2rem));
+  margin-inline: auto;
+}
+
+.rf-article-frame > :last-child {
+  position: sticky;
+  top: var(--rf-space-5);
+  align-self: start;
+}
+
+@media (max-width: 880px) {
+  .rf-article-frame {
+    grid-template-columns: 1fr;
+  }
+
+  .rf-article-frame > :last-child {
+    position: static;
+  }
+}
+
+.site-footer {
+  background: var(--rf-green-logo);
+  color: var(--rf-on-dark);
+  text-align: center;
+  padding: var(--rf-space-6) var(--rf-gutter) var(--rf-space-5);
+  margin: 0;
+}
+
+.site-footer a {
+  color: var(--rf-on-dark);
+  font-size: var(--rf-text-sm);
+  text-decoration: none;
+}
+
+.site-footer p {
+  margin: var(--rf-space-4) 0 0;
+  font-size: var(--rf-text-sm);
+}
+
+main.wp-block-group {
+  padding-block-end: var(--rf-space-8);
+}
+
+@media (max-width: 800px) {
+  .site-header__inner {
+    flex-wrap: wrap;
+  }
+
+  .site-header .rf-nav {
+    width: 100%;
+    overflow-x: auto;
+  }
+}

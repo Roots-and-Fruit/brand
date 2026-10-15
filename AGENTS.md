@@ -1,6 +1,6 @@
-# R&F CDS sandbox fork agent contract
+# R&F CDS agent contract
 
-This folder is the Roots & Fruit design system that GitHub Pages publishes at [brand.rootsandfruit.com](https://brand.rootsandfruit.com), from [Roots-and-Fruit/brand](https://github.com/Roots-and-Fruit/brand). `company-docs/brand/` is the previous checkout. Do not edit it.
+This folder is the Roots & Fruit design system that GitHub Pages publishes at [brand.rootsandfruit.com](https://brand.rootsandfruit.com), from [Roots-and-Fruit/brand](https://github.com/Roots-and-Fruit/brand).
 
 ## Two stylesheets
 
@@ -56,7 +56,6 @@ Do not hand-edit generated `wordpress/rf/theme.json`, `design-tokens.json`, `bra
 
 ## Hard stops
 
-- Do not edit `company-docs/brand/`.
 - Do not update `DESIGN.md` without following `rf-cds-contract`. Do not regenerate `DESIGN.md` from that skill, from tokens, or from the Example Brand kit.
 - Do not invent tokens, palette slugs, generic kit identity, or custom hex values.
 - Do not commit font binaries or secrets.

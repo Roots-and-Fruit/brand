@@ -90,8 +90,8 @@
   --rf-tracking-display: -0.02em; /* Knile titles */
   --rf-tracking-meta: 0.06em;     /* uppercase eyebrows */
 
-  /* Measure axiom: never exceed ~60 characters per line (Every Layout / Bringhurst band) */
-  --rf-measure: 60ch;
+  /* Comfortable reading length. 65ch is the top of the 60–70 character band. */
+  --rf-measure: 65ch;
   /* Report narrative: slightly wider measure + pair with --rf-text-lg so the
      column fills more of --rf-max without dropping the measure axiom */
   --rf-measure-report: 64ch;

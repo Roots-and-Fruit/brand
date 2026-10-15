@@ -11,8 +11,8 @@
     var dialogImg = dialog.querySelector("img");
     var dialogCaption = dialog.querySelector(".rf-gallery__dialog-caption");
     var dialogCount = dialog.querySelector(".rf-gallery__dialog-count");
-    var prevs = Array.prototype.slice.call(dialog.querySelectorAll(".rf-gallery__prev"));
-    var nexts = Array.prototype.slice.call(dialog.querySelectorAll(".rf-gallery__next"));
+    var prevs = Array.prototype.slice.call(root.querySelectorAll(".rf-gallery__prev"));
+    var nexts = Array.prototype.slice.call(root.querySelectorAll(".rf-gallery__next"));
     var closeBtn = dialog.querySelector(".rf-gallery__close");
     if (!dialogImg || !dialogCaption || !prevs.length || !nexts.length || !closeBtn) return;
     var index = 0;
@@ -50,6 +50,10 @@
         thumb.tabIndex = on ? 0 : -1;
       });
 
+      var single = thumbs.length < 2;
+      prevs.forEach(function (el) { el.hidden = single; });
+      nexts.forEach(function (el) { el.hidden = single; });
+
       if (dialog.open) fillDialog();
       if (fromUser) btn.scrollIntoView({ inline: "nearest", block: "nearest", behavior: reduce ? "auto" : "smooth" });
     }
@@ -84,11 +88,22 @@
       if (fromThumb) thumbs[index].focus();
     });
 
-    open.addEventListener("click", function () {
-      opener = open;
+    function openDialog(trigger) {
+      opener = trigger || open;
       fillDialog();
       dialog.showModal();
+    }
+
+    open.addEventListener("click", function () {
+      openDialog(open);
     });
+
+    var expand = root.querySelector(".rf-gallery__expand");
+    if (expand) {
+      expand.addEventListener("click", function () {
+        openDialog(expand);
+      });
+    }
 
     prevs.forEach(function (el) {
       el.addEventListener("click", function () { show(index - 1, true); });

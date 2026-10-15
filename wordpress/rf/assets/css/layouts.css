@@ -313,6 +313,10 @@
   color: var(--rf-ink);
 }
 
+.rf-wash--panel {
+  --rf-wash: var(--rf-panel);
+}
+
 .rf-wash--dark {
   --rf-wash: var(--rf-surface-dark);
   color: var(--rf-on-dark);

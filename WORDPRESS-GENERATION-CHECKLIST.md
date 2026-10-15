@@ -4,7 +4,7 @@ This is a release gate, not optional background reading. A theme generation is *
 
 ## 0. Scope and safety
 
-- [ ] Work only from `company-docs/brand-next/`; never modify `company-docs/brand/` during this comparison phase.
+- [ ] Work only from `company-docs/brand-next/`.
 - [ ] Confirm the destination is the intended local probe or explicitly approved environment.
 - [ ] Do not deploy to production from this workflow.
 - [ ] Do not commit `.env`, font binaries, database exports, or secrets.

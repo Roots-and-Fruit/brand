@@ -156,12 +156,8 @@
   color: var(--rf-ink);
 }
 
-.pill--green {
-  background: var(--rf-green-soft);
-  color: var(--rf-green-deep);
-}
-
-/* Selected / active chip (DESIGN pill-active). Soft fill — not solid primary + ink. */
+/* Selected chip and the green status chip are the same soft-green recipe. */
+.pill--green,
 .pill--active,
 .pill.is-active {
   background: var(--rf-green-soft);
@@ -250,15 +246,31 @@
 }
 
 /* —— Surfaces —— */
+/* One white edge. Card, quote, review, offer, the fact list, and the gallery dialog share it.
+   They do not become .surface, so they do not inherit surface type.
+   .rf-edge--thick only changes the width. Cards stay 4px. */
+.surface,
+.rf-card,
+.rf-quote,
+.rf-review,
+.rf-offer,
+.rf-gallery__dialog,
+.rf-facts {
+  background: var(--rf-surface-fill, var(--rf-white));
+  border: 4px solid var(--rf-cream-deep);
+  border-radius: 0;
+  box-shadow: none;
+}
+
+.rf-edge--thick {
+  border-width: 6px;
+}
+
 /* Square 4px edge, one step darker than the fill. White uses cream-deep
    because the next token, cream, is the page wash. A fill with a hue keeps it. */
 .surface {
   --rf-surface-fill: var(--rf-white);
-  background: var(--rf-surface-fill);
-  border: 4px solid var(--rf-cream-deep);
-  border-radius: 0;
   padding: var(--rf-space-5);
-  box-shadow: none;
 }
 
 .surface h3 {
@@ -323,52 +335,73 @@
   color: var(--rf-on-dark);
 }
 
+/* Footer olive. Same card edge as a white surface. Type follows the dark surface. */
+.surface.surface--logo {
+  --rf-surface-fill: var(--rf-green-logo);
+  color: var(--rf-on-dark);
+}
+
 .surface--panel,
 .surface--cream,
 .surface--tint,
-.surface--dark {
+.surface--dark,
+.rf-offer--panel,
+.rf-offer--dark {
   border-color: oklch(from var(--rf-surface-fill) calc(l - 0.03) c h);
 }
 
 .surface--dark h3,
-.surface--dark h4 {
+.surface--logo h3,
+.surface--dark h4,
+.surface--logo h4 {
   color: var(--rf-on-dark);
   font-family: var(--rf-font-serif);
   letter-spacing: -0.02em;
 }
 
 .surface--dark p,
-.surface--dark li {
+.surface--logo p,
+.surface--dark li,
+.surface--logo li {
   color: var(--rf-on-dark-muted);
 }
 
-.surface--dark > .rf-meta {
+.surface--dark > .rf-meta,
+.surface--logo > .rf-meta {
   color: var(--rf-orange-soft);
 }
 
-.surface--dark .btn--cta {
+.surface--dark .btn--cta,
+.surface--logo .btn--cta {
   background: var(--rf-orange);
   color: var(--rf-ink-deep);
 }
 
-.surface--dark .btn--primary {
+.surface--dark .btn--primary,
+.surface--logo .btn--primary,
+.rf-offer--dark .btn--primary {
   background: var(--rf-white);
   color: var(--rf-green-deep);
 }
 
-.surface--dark .btn--primary:hover:not(:disabled) {
+.surface--dark .btn--primary:hover:not(:disabled),
+.surface--logo .btn--primary:hover:not(:disabled),
+.rf-offer--dark .btn--primary:hover:not(:disabled) {
   background: var(--rf-cream);
   color: var(--rf-green-deep);
 }
 
 /* Outline (tertiary) on moss inverts so it is not a green-on-green ghost. */
-.surface--dark .btn--tertiary {
+.surface--dark .btn--tertiary,
+.surface--logo .btn--tertiary {
   color: var(--rf-on-dark);
   border-color: var(--rf-on-dark);
 }
 
 .surface--dark .btn--tertiary:hover:not(:disabled),
-.surface--dark .btn--tertiary:focus-visible {
+.surface--logo .btn--tertiary:hover:not(:disabled),
+.surface--dark .btn--tertiary:focus-visible,
+.surface--logo .btn--tertiary:focus-visible {
   background: var(--rf-white);
   color: var(--rf-green-deep);
   border-color: var(--rf-white);

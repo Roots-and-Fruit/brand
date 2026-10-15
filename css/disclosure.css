@@ -50,9 +50,6 @@
 
 .rf-disclosure__label {
   font-size: var(--rf-disclosure-label);
-  font-weight: var(--rf-weight-bold);
-  letter-spacing: var(--rf-tracking-meta);
-  text-transform: uppercase;
   color: var(--rf-ink-muted);
   line-height: var(--rf-leading-ui);
   transition:

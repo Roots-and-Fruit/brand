@@ -1,0 +1,630 @@
+<!-- wp:group {"className":"rf-takeaways","layout":{"type":"default"}} -->
+<div class="wp-block-group rf-takeaways">
+	<!-- wp:heading {"level":3,"className":"rf-takeaways__title"} -->
+	<h3 class="wp-block-heading rf-takeaways__title">Key Takeaways</h3>
+	<!-- /wp:heading -->
+
+	<!-- wp:list {"ordered":true,"className":"rf-keytakeaways"} -->
+	<ol class="wp-block-list rf-keytakeaways">
+<!-- wp:list-item -->
+<li>A skill is just a guideline for your agent; it won’t give the same answer every time or replace your marketing judgment..</li>
+<!-- /wp:list-item -->
+
+<!-- wp:list-item -->
+<li>@-mention the skill to invoke it more directly and ensure the agent leverages it.</li>
+<!-- /wp:list-item -->
+
+<!-- wp:list-item -->
+<li>Use my write-a-skill skill to write your next skill. It’s the formula for most of this article and free on Github.</li>
+<!-- /wp:list-item -->
+	</ol>
+	<!-- /wp:list -->
+</div>
+<!-- /wp:group -->
+
+<!-- wp:image -->
+<figure class="wp-block-image"><img src="/wp-content/themes/rf/assets/articles/marketing-skills-are-overrated.png" alt="Marketing skills are overrated and why I still use them" /></figure>
+<!-- /wp:image -->
+
+<!-- wp:paragraph -->
+<p>If you’re on X or LinkedIn like I am, you’ve probably been buried in posts from AI enthusiasts who want to fire their whole marketing team and just use Claude instead. They plan to do that because of agent Skills.</p>
+<!-- /wp:paragraph -->
+
+<!-- wp:paragraph -->
+<p>There are tons of great libraries out there that have huge promises of how AI can run your whole social media strategy, publish 1000 blog posts at once for you, or just do basic on-page SEO optimization.</p>
+<!-- /wp:paragraph -->
+
+<!-- wp:paragraph -->
+<p>I get it. The hype produces a bit of FOMO in everyone: “I need to try these marketing skills! Can I do a ton more output with a ton less work? Sign me up!”</p>
+<!-- /wp:paragraph -->
+
+<!-- wp:paragraph -->
+<p>I’m here to tell you: Marketing skills are overrated. But I still use them. As a matter of fact, here they are if you want to skip to the good part:</p>
+<!-- /wp:paragraph -->
+
+<!-- wp:html -->
+<article class="surface">
+<img src="/wp-content/themes/rf/assets/articles/skills-repo.png" alt="" width="48" height="48">
+<h3><a href="https://github.com/Roots-and-Fruit/skills">skills</a></h3>
+<p>By Roots-and-Fruit</p>
+<p>Cursor agent skills for Roots &amp; Fruit marketing and product development</p>
+</article>
+<!-- /wp:html -->
+
+<!-- wp:paragraph -->
+<p>So here’s what I’m going to tell you. I’ll explain what a skill is and what it isn’t, how I use them day to day, and point you to the things I’ve built. Let’s jump in.</p>
+<!-- /wp:paragraph -->
+
+<!-- wp:heading {"level":2} -->
+<h2 class="wp-block-heading">What a skill is and isn’t</h2>
+<!-- /wp:heading -->
+
+<!-- wp:paragraph -->
+<p>The word “skill” gets thrown around a bit, so let’s start with a shared definition.</p>
+<!-- /wp:paragraph -->
+
+<!-- wp:paragraph -->
+<p>From a technical perspective, a skill is a markdown file. It opens with what’s called “frontmatter” which is formatted in a way for agents to understand and decide whether the skill is relevant and what to do with it. But don’t think of it like a php function, or a javascript snippet. Those are deterministic things. Every time you run a function, it’s going to do the same thing. Not so with skills.</p>
+<!-- /wp:paragraph -->
+
+<!-- wp:paragraph -->
+<p>Think of a skill as a recipe card taped to the fridge. If you’re anything like my wife, a recipe card taped to the fridge is a high-level idea of something she might refer to here and there almost as inspiration. It doesn’t dictate what she’s going to do or produce because she’s an artist, not a machine! AI loves to think it’s an artist too. It’ll look at your skill and think “well that’s a cute idea, but I’ve got a better one!” and start running where it will.</p>
+<!-- /wp:paragraph -->
+
+<!-- wp:quote -->
+<blockquote class="wp-block-quote">
+	<!-- wp:paragraph {"className":"rf-lede"} -->
+	<p class="rf-lede">Even the most detailed and strongly scoped skills do not dictate what the AI can or can’t do or which files it should or shouldn’t consider.</p>
+	<!-- /wp:paragraph -->
+</blockquote>
+<!-- /wp:quote -->
+
+<!-- wp:paragraph -->
+<p>Let’s take an example. One of my favorite skills is by James Kemp, Product Owner at WooCommerce. He wrote <a href="https://github.com/jamesckemp/claude-plugins/tree/master/voiceprint/skills/voiceprint">a Claude Plugin that walks you through a voiceprint</a> so that when you’re writing with AI the end result sounds a lot more like you and not AI. It works pretty well. It’s very rigorous. But the end result is that it produces a skill that’s supposed to inform the AI of how to sound like you in writing. And the AI will reference it, but the human language is huge and incredibly nuanced and personally, I think the voiceprints I’ve produced only get me about 80% of the way to authentic at all. That’s not James’s fault – that’s just the combination of how AI works and the limitations of skills.</p>
+<!-- /wp:paragraph -->
+
+<!-- wp:heading {"level":2} -->
+<h2 class="wp-block-heading">Skills aren’t your only option</h2>
+<!-- /wp:heading -->
+
+<!-- wp:paragraph -->
+<p>There’s more to working with agents than just skills, and what you want to accomplish can be done more easily depending on which level of guardrail or context you use. Here’s a quick list of other types tools you can use in Cursor with a reference for how these translate to Claude or Codex:</p>
+<!-- /wp:paragraph -->
+
+<!-- wp:html -->
+<table>
+<tr>
+<th>
+
+<p>Cursor Guardrail</p>
+
+</th>
+
+<th>
+
+<p>When it fires</p>
+
+</th>
+
+<th>
+
+<p>Main job</p>
+
+</th>
+
+<th>
+
+<p>Claude</p>
+
+</th>
+
+<th>
+
+<p>Codex</p>
+
+</th>
+</tr>
+
+<tr>
+<th>
+
+<p><a href="https://cursor.com/docs/rules#project-rules" title="">Rules</a> / <a href="https://cursor.com/docs/rules#agentsmd" title="">AGENTS.md</a></p>
+
+</th>
+
+<td>
+
+<p>Often, automatically</p>
+
+</td>
+
+<td>
+
+<p>Tell the Agent how to behave in this project</p>
+
+</td>
+
+<td>
+
+<p><strong>Code</strong>: <code>CLAUDE.md</code> (project memory) + <code>.claude/rules/*.md</code> (path-scoped). <br><strong>CoWork</strong>: same files <em>plus</em> UI layers (Personal Prefs, Cowork Instructions, Project Instructions). Canonical name is <code>CLAUDE.md</code>, not <code>AGENTS.md</code>.</p>
+
+</td>
+
+<td>
+
+<p><code>AGENTS.md</code> is the main surface (merged from repo root → cwd). Not the same as Cursor rules: Codex <code>rules/</code> = Starlark command allow/deny, not voice/style. Style/architecture → <code>AGENTS.md</code> or skills.</p>
+
+</td>
+</tr>
+
+<tr>
+<th>
+
+<p><a href="https://cursor.com/docs/skills" title="">Skills</a></p>
+
+</th>
+
+<td>
+
+<p>When your request matches the frontmatter or you invoke it directly</p>
+
+</td>
+
+<td>
+
+<p>How to run a specific job</p>
+
+</td>
+
+<td>
+
+<p><strong>Code</strong>: <code>.claude/skills/</code> · same <code>SKILL.md</code> pattern · <code>/skill-name</code>. <br><strong>CoWork</strong>: skills in plugins or standalone in settings; can schedule recurring runs. Open Agent Skills standard.</p>
+
+</td>
+
+<td>
+
+<p><code>.agents/skills/</code> or <code>~/.agents/skills/</code> · <code>SKILL.md</code> · <code>/skills</code> or <code>$skill-name</code> · progressive disclosure same idea.</p>
+
+</td>
+</tr>
+
+<tr>
+<th>
+
+<p>Playbooks</p>
+
+</th>
+
+<td>
+
+<p>Multi-step orchestration</p>
+
+</td>
+
+<td>
+
+<p>Run several skills in order</p>
+
+</td>
+
+<td>
+
+<p>Supported in how you write the skill. But CoWork plugins are the closest product version of this idea.</p>
+
+</td>
+
+<td>
+
+<p>Supported in how you write the skill.</p>
+
+</td>
+</tr>
+
+<tr>
+<th>
+
+<p><a href="https://cursor.com/docs/cli/reference/slash-commands" title="">Commands</a></p>
+
+</th>
+
+<td>
+
+<p>When you type <code>/…</code></p>
+
+</td>
+
+<td>
+
+<p>Explicit “start this workflow”, I like using commands as a shortcut to invoke a skill</p>
+
+</td>
+
+<td>
+
+<p><strong>Code</strong>: slash via skills (<code>/code-review</code>, etc.) and plugin commands. <br><strong>CoWork</strong>: plugin slash commands in the prompt menu. No separate  <code>.cursor/commands/</code>  equivalent in Code — usually folded into skills/plugins.</p>
+
+</td>
+
+<td>
+
+<p><code>/skills</code> picker · <code>$skill-name</code> in prompt · less emphasis on a separate <code>commands/</code> folder; skills often <em>are</em> the slash entry point.</p>
+
+</td>
+</tr>
+
+<tr>
+<th>
+
+<p><a href="https://cursor.com/docs/hooks" title="">Hooks</a></p>
+
+</th>
+
+<td>
+
+<p>When agent uses tools</p>
+
+</td>
+
+<td>
+
+<p>Block, audit, or fix what the Agent has done or is doing in real time. These are done with typescript and should be used very carefully and only for very specific purposes.</p>
+
+</td>
+
+<td>
+
+<p><strong>Code</strong>: hooks in <code>settings.json</code> under <code>"hooks"</code> · shell + prompt hooks · enforced, unlike prose rules. <br><strong>CoWork</strong>: hooks via plugins. Official split: prose advises, hooks guarantee.</p>
+
+</td>
+
+<td>
+
+<p><code>.codex/hooks.json</code> or <code>config.toml</code> · <code>PreToolUse</code>, <code>PostToolUse</code>, session events · can block tools or inject messages. Project hooks need trusted project.</p>
+
+</td>
+</tr>
+
+<tr>
+<th>
+
+<p>MCP + config</p>
+
+</th>
+
+<td>
+
+<p>On specific events</p>
+
+</td>
+
+<td>
+
+<p>What external systems the Agent can reach out to for more information or to do specific things.</p>
+
+</td>
+
+<td>
+
+<p>Connectors = MCP · configured in settings / plugins · CoWork plugins ship authenticated SaaS connectors (Slack, Notion, etc.). Admin deployment controls for teams.</p>
+
+</td>
+
+<td>
+
+<p>MCP in <code>config.toml</code> · plugins can declare tool deps · same “what doors exist” job.</p>
+
+</td>
+</tr>
+
+<tr>
+<th>
+
+<p><a href="https://cursor.com/docs/cloud-agent/automations" title="">Automations</a></p>
+
+</th>
+
+<td>
+
+<p>On schedule/trigger</p>
+
+</td>
+
+<td>
+
+<p>Unattended, bounded agent runs. Cursor supports these as “Cloud agents”</p>
+
+</td>
+
+<td>
+
+<p><strong>Code</strong>: less of a first-class “automations” product — you’d use hooks, scripts, or external cron + CLI.<br><strong>CoWork</strong>: scheduled skills / recurring tasks (GUI-native). </p>
+
+</td>
+
+<td>
+
+<p>Codex Automations in the app · standalone (fresh run) or thread-attached (keeps context) · cron schedules · can call <code>$skill-name</code>.</p>
+
+</td>
+</tr>
+
+<tr>
+<th>
+
+<p>Tests / handoffs</p>
+
+</th>
+
+<td>
+
+<p>After a skill runs or before ship</p>
+
+</td>
+
+<td>
+
+<p>Ensure that the skill output stays correct and compatible. Almost all of my skills leverage both tests and handoffs.</p>
+
+</td>
+
+<td>
+
+<p>Supported in how you write the skill.</p>
+
+</td>
+
+<td>
+
+<p>Supported in how you write the skill.</p>
+
+</td>
+</tr>
+</table>
+<!-- /wp:html -->
+
+<!-- wp:heading {"level":2} -->
+<h2 class="wp-block-heading">The “work” of Marketing hasn’t changed, but how you do it has</h2>
+<!-- /wp:heading -->
+
+<!-- wp:paragraph -->
+<p>The thing a lot of the AI enthusiasts who promote their skills aren’t saying is that the work of marketing isn’t a one-shot thing. Skills can point your agent to a series of internal docs and tell it what outcome you want from them; but you have to create those docs in the first place and you have to know what outcome you want.</p>
+<!-- /wp:paragraph -->
+
+<!-- wp:paragraph -->
+<p>Let’s take the example of competitor research. You can go find online a whole bunch of ways you can do these expansive prompts for chatGPT to research your competitors and you’ll get long expansive responses just by pointing it to the right domain. That works. But it doesn’t mean that it’s meaningful or relevant or helpful information at all.</p>
+<!-- /wp:paragraph -->
+
+<!-- wp:paragraph -->
+<p>Real competitor research is a series of activities. You research your competitors one at a time through a series of activities:</p>
+<!-- /wp:paragraph -->
+
+<!-- wp:list -->
+<ul class="wp-block-list">
+<!-- wp:list-item -->
+<li>Their value statement</li>
+<!-- /wp:list-item -->
+<!-- wp:list-item -->
+<li>Their feature set</li>
+<!-- /wp:list-item -->
+<!-- wp:list-item -->
+<li>Their pricing and packaging</li>
+<!-- /wp:list-item -->
+<!-- wp:list-item -->
+<li>Their positive customer sentiment</li>
+<!-- /wp:list-item -->
+<!-- wp:list-item -->
+<li>Their negative customer sentiment</li>
+<!-- /wp:list-item -->
+</ul>
+<!-- /wp:list -->
+
+<!-- wp:paragraph -->
+<p>And then you synthesize all of that and start on the next competitor. And you can get AI to do a lot of that work for you but it’s just simply not a one-shot thing that a one-file skill can do effectively.</p>
+<!-- /wp:paragraph -->
+
+<!-- wp:paragraph -->
+<p>And then what!? What do you now “know” or “do” with all that information? All the marketing skills in the world can give you a million different opinions, but do they matter? Marketers with experience and insight (and a ton of humility, hopefully!) are what you need for that kind of analysis and guidance.</p>
+<!-- /wp:paragraph -->
+
+<!-- wp:heading {"level":2} -->
+<h2 class="wp-block-heading">But I still use skills</h2>
+<!-- /wp:heading -->
+
+<!-- wp:paragraph -->
+<p><strong><em>If skills don’t dictate things for the agent, then why even use them? </em></strong></p>
+<!-- /wp:paragraph -->
+
+<!-- wp:paragraph -->
+<p>Because they’re still highly useful, but more as a shortcut for the agent to be pointed in the right direction more quickly.</p>
+<!-- /wp:paragraph -->
+
+<!-- wp:paragraph -->
+<p>I use them a lot, and they are useful, they just aren’t superpowers, and they have limitations. Using them correctly, writing them well, and leveraging them only when you intend to is how I’ve come to find the most value in skills.</p>
+<!-- /wp:paragraph -->
+
+<!-- wp:paragraph -->
+<p>So, no more soapbox. Here’s what I actually do.</p>
+<!-- /wp:paragraph -->
+
+<!-- wp:heading {"level":2} -->
+<h2 class="wp-block-heading">The 3-factor invocation method</h2>
+<!-- /wp:heading -->
+
+<!-- wp:paragraph -->
+<p>As I’ve mentioned, skills can easily be ignored or inferred instead of adhered to or followed to the letter. The only tactic I’ve found to ensure that the Agent will for sure start with the skill is if you at-mention the skill directly in the prompt.</p>
+<!-- /wp:paragraph -->
+
+<!-- wp:paragraph -->
+<p>For example, I have a robots-txt-audit skill. Whenever I want to use it, I do this:</p>
+<!-- /wp:paragraph -->
+
+<!-- wp:html -->
+<div class="rf-code">
+<div class="rf-code__chrome">
+<div class="rf-code__dots" aria-hidden="true"><span></span><span></span><span></span></div>
+</div>
+<pre class="rf-code__body"><code>Use @robots-txt-audit on mattcromwell.com with a focus on maximum discoverability</code></pre>
+<span class="rf-code__lang">Bash</span>
+</div>
+<!-- /wp:html -->
+
+<!-- wp:paragraph -->
+<p>But notice that my prompt has one goal: maximum discoverability. And that concept is described in detail in the skill itself.</p>
+<!-- /wp:paragraph -->
+
+<!-- wp:paragraph -->
+<p><strong>That’s the 3-factor method</strong>: Ensure the skill has one goal, invoke it directly, and ensure your prompt is aligned with the goal of the skill.</p>
+<!-- /wp:paragraph -->
+
+<!-- wp:group {"className":"rf-grid rf-grid--three","layout":{"type":"default"}} -->
+<div class="wp-block-group rf-grid rf-grid--three">
+<!-- wp:group {"tagName":"article","className":"rf-card","layout":{"type":"default"}} -->
+<article class="wp-block-group rf-card">
+<!-- wp:paragraph {"className":"rf-card__num"} -->
+<p class="rf-card__num">01</p>
+<!-- /wp:paragraph -->
+
+	<!-- wp:heading {"level":3,"className":"rf-card__title"} -->
+	<h3 class="wp-block-heading rf-card__title">Goal</h3>
+	<!-- /wp:heading -->
+
+<!-- wp:paragraph -->
+<p>State your goal clearly and make sure it’s aligned with the purpose of the skill itself.</p>
+<!-- /wp:paragraph -->
+</article>
+<!-- /wp:group -->
+
+<!-- wp:group {"tagName":"article","className":"rf-card","layout":{"type":"default"}} -->
+<article class="wp-block-group rf-card">
+<!-- wp:paragraph {"className":"rf-card__num"} -->
+<p class="rf-card__num">02</p>
+<!-- /wp:paragraph -->
+
+	<!-- wp:heading {"level":3,"className":"rf-card__title"} -->
+	<h3 class="wp-block-heading rf-card__title">Invoke</h3>
+	<!-- /wp:heading -->
+
+<!-- wp:paragraph -->
+<p>At-mention your skill directly in your prompt. This ensures the Agent goes there first.</p>
+<!-- /wp:paragraph -->
+</article>
+<!-- /wp:group -->
+
+<!-- wp:group {"tagName":"article","className":"rf-card","layout":{"type":"default"}} -->
+<article class="wp-block-group rf-card">
+<!-- wp:paragraph {"className":"rf-card__num"} -->
+<p class="rf-card__num">03</p>
+<!-- /wp:paragraph -->
+
+	<!-- wp:heading {"level":3,"className":"rf-card__title"} -->
+	<h3 class="wp-block-heading rf-card__title">Alignment</h3>
+	<!-- /wp:heading -->
+
+<!-- wp:paragraph -->
+<p>Ensure your prompt is aligned with the goal of the skill. Without alignment the Agent might just infer.</p>
+<!-- /wp:paragraph -->
+</article>
+<!-- /wp:group -->
+</div>
+<!-- /wp:group -->
+
+<!-- wp:paragraph -->
+<p>Because my prompt at-mentions the skill, and the goal of my prompt is tightly aligned with the goal of the skill, I’m almost completely assured that the Agent will not only leverage the skill but follow it very closely.</p>
+<!-- /wp:paragraph -->
+
+<!-- wp:heading {"level":2} -->
+<h2 class="wp-block-heading">How and why I write my skills the way I do</h2>
+<!-- /wp:heading -->
+
+<!-- wp:paragraph -->
+<p>First up, here’s the repo for you to test out and review:</p>
+<!-- /wp:paragraph -->
+
+<!-- wp:paragraph -->
+<p>When it comes to creating skills for marketing purposes, I am a lot more controlling than most of the libraries out there. And I don’t mean controlling in a “make the AI say the exact same thing every time” way — I honestly don’t think that’s possible or desirable. I mean controlling in a “follow the same steps every time” way. Do this, then this, then this, and don’t quit early, and don’t skip the tedious part. Those steps are the normal activities I used to do myself manually, and now AI helps me do it a lot more quickly.</p>
+<!-- /wp:paragraph -->
+
+<!-- wp:paragraph -->
+<p>The skill that encodes all of that is called <code>write-a-skill</code>. This was heavily inspired by Matt Pocock’s “<a href="https://github.com/mattpocock/skills/tree/main/skills/productivity/writing-great-skills">writing-great-skills</a>“, but his was intended more for development work.</p>
+<!-- /wp:paragraph -->
+
+<!-- wp:paragraph -->
+<p>Every marketing skill in the library — competitor research, keyword coverage, content briefs, all of it — gets written and maintained through <code>write-a-skill</code>.</p>
+<!-- /wp:paragraph -->
+
+<!-- wp:paragraph -->
+<p>When you review the files in my skills repo, you’ll see folders with multiple files. Here’s a quick reference of what they are and do and why they’re there:</p>
+<!-- /wp:paragraph -->
+
+<!-- wp:paragraph -->
+<p>SKILL.md is the walkthrough — step by step, what to do, when to know you’re done. Everything else in the package exists so this file can stay short enough that the agent (and you) will actually follow it.</p>
+<!-- /wp:paragraph -->
+
+<!-- wp:paragraph -->
+<p>REFERENCE.md is the detail drawer — API names, filter syntax, scoring rules, JSON field definitions, the stuff that’s accurate but boring and long. The agent opens the reference when it needs specifics, not on every run.</p>
+<!-- /wp:paragraph -->
+
+<!-- wp:paragraph -->
+<p>REQUIREMENTS.md is the “do you even have what you need?” page. It tells a human what to set up before bothering the agent — DataForSEO MCP, or Ahrefs, or a CSV export, Node if there are scripts to run, that kind of thing. It separates “what to install first” from “how to run the skill,” because those are two different audiences and mixing them up is how you end up running a keyword analysis with no keyword data and wondering why the output is garbage.</p>
+<!-- /wp:paragraph -->
+
+<!-- wp:paragraph -->
+<p>EXAMPLES.md is “here’s what good looks like” — sample report snippets, sample handoff shapes, case studies of tricky runs like a mixed-intent SERP. Rules alone don’t show you table layout, tone, or how to handle an edge case. Examples teach by showing.</p>
+<!-- /wp:paragraph -->
+
+<!-- wp:paragraph -->
+<p>GLOSSARY.md shows up mostly on meta skills like write-a-skill itself. It defines the words the author uses consistently — right-sizing, handoff, sediment, completion criterion, that kind of thing. When you and the agent (or a co-author) edit a skill six months later, you need one shared vocabulary or you’ll argue about what “done” means instead of fixing behavior.</p>
+<!-- /wp:paragraph -->
+
+<!-- wp:paragraph -->
+<p>examples/*.handoff.sample.json files are fictional “here’s a valid payload” samples. They exist when another skill or playbook needs to consume JSON output from this one. A prose description of JSON is easy to misread. A real file — with fake domains, no client data — gives the agent and any downstream tool a concrete target for field names, modes, and version numbers.</p>
+<!-- /wp:paragraph -->
+
+<!-- wp:paragraph -->
+<p>examples/*.fixture.json is frozen test input — a fixed pile of keyword data or package layout specs that get used every time you run the verifier. “Did we break something?” becomes a yes-or-no question on the same input every time, not “run it live and eyeball whether it feels worse.”</p>
+<!-- /wp:paragraph -->
+
+<!-- wp:paragraph -->
+<p>examples/SCORECARD-*.md is the human-readable test checklist. It lists what each automated check actually means in plain language — something like “email plugin terms must be facet_drift, not serp_native.” When a test fails, you know which rule failed and why it exists, not just that a script exited with an error. It also records version history — v2.2 broke here, v2.3 fixed it — so you don’t delete a check as “noise” because you forgot why it was there.</p>
+<!-- /wp:paragraph -->
+
+<!-- wp:paragraph -->
+<p>scripts/verify-*.mjs is the automatic pass/fail. It runs the fixture through the rules, or checks that the folder layout is correct, and prints PASS or FAIL. It catches regressions in seconds before you ship a skill update — especially for logic that agents get wrong repeatedly, like tier labels, priority order, or required JSON fields.</p>
+<!-- /wp:paragraph -->
+
+<!-- wp:paragraph -->
+<p>scripts/normalize-*.mjs is the boring math the AI shouldn’t re-invent every run — merging keyword lists, applying tier rules, sorting by priority, that kind of deterministic step. Same input, same classification every time. The agent’s job becomes “gather the data and run the script,” not “re-interpret the rubric from scratch again,” which is how you end up with email marketing plugins outranking marketing strategy on the same keyword three runs in a row.</p>
+<!-- /wp:paragraph -->
+
+<!-- wp:paragraph -->
+<p>Each step in my skills is supposed to end with a clear “I’m done when…” line so the agent knows what finished actually means. If it keeps handing me something that looks complete but isn’t, I rewrite those lines before I add another file or a script. Most of the time that’s the whole fix — just being clearer about what done looks like.</p>
+<!-- /wp:paragraph -->
+
+<!-- wp:paragraph -->
+<p>Each skill also ends with a “handoff”, I’ll be writing more about this technique, but it’s essentially the easiest way to chain different skills together in playbooks.</p>
+<!-- /wp:paragraph -->
+
+<!-- wp:paragraph -->
+<p><code>write-a-skill</code> also bakes in stop words, or guardrails to prevent the AI from simply inferring things or skipping things. I did that mostly through testing, tweaking, and testing again against my scorecards.</p>
+<!-- /wp:paragraph -->
+
+<!-- wp:heading {"level":2} -->
+<h2 class="wp-block-heading">Try a skill and tell me what broke</h2>
+<!-- /wp:heading -->
+
+<!-- wp:paragraph -->
+<p>These finished skills look less like a card taped to the fridge and more like one of those full recipe posts you find online — the kind with a little backstory about why the dish exists, photos of what it should look like when it’s done, notes from the author about what you need in your kitchen before you start, and the serving size calculators. A lone SKILL.md is a recipe card, and it’ll get you somewhere. But the whole package — the examples, the setup notes, the different paths for different situations, the tests that prove the thing still works after you tweak it for the fifth time — that’s what actually drives great outcomes for me. That’s the difference between inspiration on the fridge and a recipe you can actually cook from, again and again, and trust what comes out of the oven.</p>
+<!-- /wp:paragraph -->
+
+<!-- wp:paragraph -->
+<p>The library is at <a href="https://github.com/Roots-and-Fruit/skills">github.com/roots-and-fruit/skills</a>. If you’re new to the repo, start with <code>write-a-skill</code> even if you’re not planning to author your own skills yet, it explains why the rest of the library is packaged the way it is. Pick any marketing skill, run it on real work with an @-mention and a goal that matches what the skill was written for. The easiest one to start with is the robots.txt audit skill.</p>
+<!-- /wp:paragraph -->
+
+<!-- wp:paragraph -->
+<p>When something doesn’t work the way you’d expect — wrong output, confusing instructions, a test that doesn’t make sense — open an issue or send a PR. If GitHub isn’t your thing, find me on <a href="https://x.com/learnwithmattc">X</a> or <a href="https://linkedin.com/in/mattcromwell">LinkedIn</a> and tell me what happened. I built this library for my own marketing work, but I’m actively maintaining it, and the skills get better when other people run them on problems I didn’t anticipate.</p>
+<!-- /wp:paragraph -->
+
+<!-- wp:paragraph -->
+<p>Next up in the series I’ll walk through individual marketing skills, what job each one is for, how I prompt them, and what I had to change after real usage exposed the gaps. Grab one, run it, and let me know what you find.</p>
+<!-- /wp:paragraph -->

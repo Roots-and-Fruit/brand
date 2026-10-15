@@ -1,4 +1,4 @@
-﻿/* Roots & Fruit â€” shared UI components.
+/* Roots & Fruit â€” shared UI components.
    Load after tokens.css (and fonts.css when Knile is not already available). */
 
 *,
@@ -34,18 +34,30 @@ body {
   color: var(--rf-ink-muted);
 }
 
-.rf-meta {
-  font-size: var(--rf-text-sm);
+.rf-meta,
+.rf-disclosure__label,
+.rf-toggle__state,
+.rf-offer__eyebrow,
+.ds-sidebar__subtitle,
+.ds-nav__page--group,
+.ds-type-meta {
   font-weight: var(--rf-weight-bold);
   letter-spacing: var(--rf-tracking-meta);
   text-transform: uppercase;
+}
+
+.rf-meta {
+  font-size: var(--rf-text-sm);
   color: var(--rf-ink-muted);
   margin: 0;
 }
 
 /* Knile display. Always pair the base with a size. xl is a full-column
    page title, lg is a title inside a split, md is a section, sm is a subhead. */
-.rf-display {
+.rf-display,
+.ds-section > h2:not(.ds-h2),
+.ds-panel > h2:not(.ds-h2),
+.ds-hero h1 {
   margin: 0;
   font-family: var(--rf-font-serif);
   font-weight: var(--rf-weight-bold);
@@ -54,9 +66,12 @@ body {
   color: var(--rf-ink-deep);
 }
 
-.rf-display--xl { font-size: var(--rf-text-4xl); }
-.rf-display--lg { font-size: var(--rf-text-3xl); }
-.rf-display--md { font-size: var(--rf-text-2xl); }
+.rf-display--xl,
+.ds-hero h1 { font-size: var(--rf-text-4xl); }
+.rf-display--lg,
+.ds-panel > h2:not(.ds-h2) { font-size: var(--rf-text-3xl); }
+.rf-display--md,
+.ds-section > h2:not(.ds-h2) { font-size: var(--rf-text-2xl); }
 
 .rf-display--sm {
   font-size: var(--rf-text-xl);
@@ -76,7 +91,7 @@ body {
 
 /* Analytical reports: keep a real measure, but widen slightly and bump type
    so the reading column fills more of the shell next to full-width tables.
-   Default .rf-prose stays at 60ch / body-md for articles and marketing. */
+   Default .rf-prose stays at 65ch / body-md for articles and marketing. */
 .rf-prose--wide {
   box-sizing: content-box;
   max-inline-size: var(--rf-measure-report); /* 64ch */
@@ -269,18 +284,12 @@ a:hover {
 }
 
 /* Quote. One attribution. Omit the avatar, the role, or both.
-   The edge is brown on the right and bottom. --rf-shadow blurs
-   upward and left, so the clip keeps that falloff off those sides. */
+   White card, the same 4px cream-deep edge as a white surface.
+   The Knile mark sits in the top corner. The words start beside it. */
 .rf-quote {
   margin: 0;
-  max-inline-size: 40rem;
-  padding: 2em;
-  border-style: solid;
-  border-color: var(--rf-brown);
-  border-width: 0 2px 2px 0;
-  border-radius: 0 0 6px 0;
-  box-shadow: var(--rf-shadow);
-  clip-path: inset(0 -2rem -2rem 0);
+  max-inline-size: none;
+  padding: var(--rf-space-5);
 }
 
 .rf-quote blockquote {
@@ -296,7 +305,7 @@ a:hover {
 .rf-quote blockquote p {
   position: relative;
   margin: 0;
-  padding-inline-start: 1.15em;
+  padding-inline-start: 5.75rem;
   font-family: var(--rf-font-serif);
   font-size: var(--rf-text-lg);
   line-height: var(--rf-leading-callout);
@@ -307,14 +316,19 @@ a:hover {
   content: "\201C";
   position: absolute;
   inset-inline-start: 0;
-  font-size: 1.35em;
-  line-height: 0.85;
-  color: var(--rf-green);
+  top: var(--rf-space-2);
+  display: block;
+  margin: 0;
+  font-family: var(--rf-font-serif);
+  font-size: 9.5rem;
+  font-weight: var(--rf-weight-bold);
+  line-height: 0.8;
+  color: var(--rf-cream-deep);
 }
 
 .rf-quote figcaption {
   margin-block-start: var(--rf-space-5);
-  padding-inline-start: 1.15em;
+  padding-inline-start: 5.75rem;
   font-style: normal;
 }
 
@@ -340,12 +354,15 @@ a:hover {
   background: var(--rf-cream-deep);
 }
 
-.rf-quote__name {
+.rf-quote__name,
+.rf-review__name {
   font-weight: var(--rf-weight-bold);
   color: var(--rf-ink);
 }
 
-.rf-quote__role {
+.rf-quote__role,
+.rf-review__role,
+.rf-review__date {
   font-size: var(--rf-text-sm);
   color: var(--rf-ink-muted);
   text-decoration: none;
@@ -419,11 +436,7 @@ a.rf-quote__role:hover {
   gap: 0;
   height: 100%;
   margin: 0;
-  background: var(--rf-white);
-  border: 4px solid var(--rf-cream-deep);
-  border-radius: 0;
   padding: var(--rf-space-5);
-  box-shadow: none;
 }
 
 .rf-review > * + * {
@@ -504,42 +517,36 @@ a.rf-quote__role:hover {
   min-width: 0;
 }
 
-.rf-review__name {
-  font-weight: var(--rf-weight-bold);
-  color: var(--rf-ink);
-}
-
-.rf-review__role,
-.rf-review__date {
-  font-size: var(--rf-text-sm);
-  color: var(--rf-ink-muted);
-  text-decoration: none;
-}
-
 a.rf-review__role:hover {
   text-decoration: underline;
 }
 
-/* Gallery. One image on the mat, a count, and a strip of the rest. */
+/* Gallery. The stage and the thumbs are white surfaces. The picture
+   keeps a steady height. Gaps use the footer panel. */
+.rf-gallery__frame {
+  position: relative;
+  overflow: hidden;
+}
+
 .rf-gallery__stage {
   margin: 0;
-  background: var(--rf-white);
-  border: 1px solid var(--rf-rule);
-  border-radius: var(--rf-radius);
-  box-shadow: var(--rf-shadow);
+}
+
+.rf-gallery__stage.surface,
+.rf-gallery__thumb.surface {
+  padding: 0;
   overflow: hidden;
 }
 
 .rf-gallery__open {
-  position: relative;
   display: flex;
   align-items: center;
   justify-content: center;
   width: 100%;
-  height: clamp(14rem, 56vw, 28rem);
-  padding: var(--rf-space-4);
+  height: clamp(12rem, 46vw, 28rem);
+  padding: 0;
   border: 0;
-  background: var(--rf-white);
+  background: var(--rf-panel);
   cursor: zoom-in;
 }
 
@@ -547,40 +554,23 @@ a.rf-review__role:hover {
 .rf-gallery__thumb:focus-visible,
 .rf-gallery__float:focus-visible,
 .rf-gallery__step:focus-visible,
-.rf-gallery__close:focus-visible {
+.rf-gallery__close:focus-visible,
+.rf-gallery__expand:focus-visible {
   outline: none;
   box-shadow: var(--rf-focus);
 }
 
 .rf-gallery__img {
-  max-width: 100%;
-  max-height: 100%;
+  display: block;
   width: auto;
   height: auto;
+  max-width: 100%;
+  max-height: 100%;
   object-fit: contain;
 }
 
-.rf-gallery__expand {
-  position: absolute;
-  inset-inline-end: var(--rf-space-4);
-  inset-block-end: var(--rf-space-4);
-  padding: 0.25rem 0.7rem;
-  border-radius: var(--rf-radius-pill);
-  background: var(--rf-green);
-  color: var(--rf-on-primary);
-  font-family: var(--rf-font-sans);
-  font-size: var(--rf-text-sm);
-  font-weight: var(--rf-weight-bold);
-  pointer-events: none;
-}
-
 .rf-gallery__caption {
-  display: flex;
-  flex-wrap: wrap;
-  align-items: baseline;
-  gap: 0.35rem 0.75rem;
   margin: 0;
-  padding: var(--rf-space-4) var(--rf-space-5) var(--rf-space-5);
   font-style: normal;
   color: var(--rf-ink);
 }
@@ -606,28 +596,22 @@ a.rf-review__role:hover {
 }
 
 .rf-gallery__thumb {
-  display: flex;
-  align-items: center;
-  justify-content: center;
+  display: block;
   width: 100%;
   aspect-ratio: 4 / 3;
-  padding: 0.35rem;
-  border: 1px solid var(--rf-rule);
-  border-radius: var(--rf-radius-sm);
-  background: var(--rf-white);
   cursor: pointer;
 }
 
 .rf-gallery__thumb[aria-current="true"] {
-  border-color: var(--rf-brown);
-  border-width: 0 2px 2px 0;
-  border-radius: 0 0 6px 0;
+  border-color: var(--rf-green);
 }
 
 .rf-gallery__thumb img {
+  display: block;
   width: 100%;
   height: 100%;
-  object-fit: contain;
+  object-fit: cover;
+  object-position: center top;
 }
 
 .rf-gallery:not(:has(.rf-gallery__item + .rf-gallery__item)) .rf-gallery__strip,
@@ -641,11 +625,7 @@ a.rf-review__role:hover {
   max-height: calc(100dvh - 2rem);
   margin: auto;
   padding: 0;
-  border: 5px solid var(--rf-panel);
-  border-radius: var(--rf-radius-sm);
-  background: var(--rf-white);
   color: var(--rf-ink);
-  box-shadow: var(--rf-shadow-md);
   overflow: hidden;
 }
 
@@ -706,16 +686,22 @@ a.rf-review__role:hover {
   transform: translateY(-50%) translateX(100%);
 }
 
-.rf-gallery__dialog-stage:hover .rf-gallery__float {
+.rf-gallery__dialog-stage:hover .rf-gallery__float,
+.rf-gallery__frame:hover > .rf-gallery__float,
+.rf-gallery__frame:focus-within > .rf-gallery__float {
   opacity: 1;
   pointer-events: auto;
 }
 
-.rf-gallery__dialog-stage:hover .rf-gallery__float.rf-gallery__prev {
+.rf-gallery__dialog-stage:hover .rf-gallery__float.rf-gallery__prev,
+.rf-gallery__frame:hover > .rf-gallery__float.rf-gallery__prev,
+.rf-gallery__frame:focus-within > .rf-gallery__float.rf-gallery__prev {
   transform: translateY(-50%) translateX(var(--rf-space-4));
 }
 
-.rf-gallery__dialog-stage:hover .rf-gallery__float.rf-gallery__next {
+.rf-gallery__dialog-stage:hover .rf-gallery__float.rf-gallery__next,
+.rf-gallery__frame:hover > .rf-gallery__float.rf-gallery__next,
+.rf-gallery__frame:focus-within > .rf-gallery__float.rf-gallery__next {
   transform: translateY(-50%) translateX(calc(var(--rf-space-4) * -1));
 }
 
@@ -725,7 +711,9 @@ a.rf-review__role:hover {
   }
 }
 
-.rf-gallery__dialog-foot {
+.rf-gallery__dialog-foot,
+.rf-gallery__caption,
+.rf-gallery__head {
   position: relative;
   display: grid;
   grid-template-columns: auto minmax(0, 1fr) auto;
@@ -735,13 +723,47 @@ a.rf-review__role:hover {
   background: var(--rf-panel);
 }
 
+.rf-gallery__head,
+.rf-gallery__caption {
+  block-size: 3.25rem;
+}
+
+.rf-gallery__stage.surface .rf-gallery__name {
+  margin: 0;
+  min-width: 0;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  white-space: nowrap;
+  font-family: var(--rf-font-serif);
+  font-size: var(--rf-text-lg);
+  font-weight: var(--rf-weight-semibold);
+  line-height: 1.2;
+  letter-spacing: var(--rf-tracking-display);
+  color: var(--rf-green);
+}
+
+.rf-gallery__text {
+  min-width: 0;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  white-space: nowrap;
+}
+
+.rf-gallery__dialog-foot {
+  grid-template-columns: minmax(0, 1fr) auto minmax(0, 1fr);
+  flex: none;
+}
+
 .rf-gallery__dialog-actions {
   display: flex;
+  grid-column: 1;
+  justify-self: start;
   gap: 0.4rem;
 }
 
 .rf-gallery__step,
-.rf-gallery__close {
+.rf-gallery__close,
+.rf-gallery__expand {
   font-family: var(--rf-font-sans);
   font-size: var(--rf-text-sm);
   font-weight: 500;
@@ -764,29 +786,39 @@ a.rf-review__role:hover {
   border-color: var(--rf-green-2);
 }
 
-.rf-gallery__close {
+.rf-gallery__close,
+.rf-gallery__expand {
   display: inline-flex;
   align-items: center;
   gap: 0.35rem;
+  justify-self: end;
   padding: 0.3rem 0.15rem;
   border: 0;
   background: transparent;
+}
+
+.rf-gallery__dialog-foot > .rf-gallery__close {
+  grid-column: 3;
 }
 
 .rf-gallery__close-icon {
   flex: none;
 }
 
-.rf-gallery__close:hover {
+.rf-gallery__close:hover,
+.rf-gallery__expand:hover {
   color: var(--rf-green);
 }
 
 .rf-gallery__dialog-caption {
+  grid-column: 2;
   margin: 0;
   text-align: center;
+  font-family: var(--rf-font-serif);
   font-size: var(--rf-text-sm);
+  font-weight: var(--rf-weight-bold);
   line-height: 1.4;
-  color: var(--rf-ink-muted);
+  color: var(--rf-ink);
 }
 
 .rf-gallery__dialog-count {
@@ -806,11 +838,16 @@ a.rf-review__role:hover {
     flex: 1 0 calc((100% - 2 * var(--rf-space-3)) / 3);
   }
 
-  .rf-gallery__dialog-foot {
+  .rf-gallery__dialog-foot:has(.rf-gallery__dialog-actions) {
     grid-template-columns: 1fr auto;
   }
 
-  .rf-gallery__dialog-caption {
+  .rf-gallery__dialog-foot:has(.rf-gallery__dialog-actions) .rf-gallery__close {
+    grid-column: 2;
+    grid-row: 1;
+  }
+
+  .rf-gallery__dialog-foot:has(.rf-gallery__dialog-actions) .rf-gallery__dialog-caption {
     grid-column: 1 / -1;
     grid-row: 2;
   }
@@ -897,11 +934,7 @@ a.rf-review__role:hover {
   flex-direction: column;
   gap: 0;
   max-inline-size: 22rem;
-  background: var(--rf-white);
-  border: 4px solid var(--rf-cream-deep);
-  border-radius: 0;
   padding: var(--rf-space-5);
-  box-shadow: none;
 }
 
 .rf-card > * + * {
@@ -1044,6 +1077,92 @@ img.rf-avatar {
 .rf-breadcrumb [aria-current="page"] {
   color: var(--rf-ink);
   font-weight: var(--rf-weight-semibold);
+}
+
+/* Primary nav. A row of links. The bar that holds it stays site chrome. */
+.rf-nav {
+  display: flex;
+  align-items: stretch;
+  flex-shrink: 0;
+}
+
+.rf-nav a {
+  display: flex;
+  align-items: center;
+  white-space: nowrap;
+  padding-inline: var(--rf-space-5);
+  border-left: 1px solid var(--rf-rule);
+  color: var(--rf-ink-deep);
+  font-size: var(--rf-text-sm);
+  font-weight: var(--rf-weight-regular);
+  letter-spacing: var(--rf-tracking-meta);
+  text-decoration: none;
+  text-transform: uppercase;
+  background-color: transparent;
+  background-image: linear-gradient(var(--rf-panel), var(--rf-panel));
+  background-repeat: no-repeat;
+  background-position: bottom;
+  background-size: 100% 0%;
+  transition: background-size 250ms ease, color 250ms ease;
+}
+
+.rf-nav a:hover,
+.rf-nav a:focus-visible {
+  background-size: 100% 100%;
+  color: var(--rf-green-deep);
+}
+
+.rf-nav a[aria-current="page"],
+.rf-nav a[aria-current="page"]:hover,
+.rf-nav a[aria-current="page"]:focus-visible {
+  background: var(--rf-cream);
+  color: var(--rf-green-deep);
+  transition: none;
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .rf-nav a {
+    transition: none;
+  }
+}
+
+/* Brand marks from Simple Icons (CC0), in icons/. They inherit the link color.
+   The link is a fixed square. YouTube's artwork sits inside padding, so that
+   mark is drawn larger to match the others. X is a letter, so it stays lighter. */
+.rf-icon-link {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  flex: none;
+  width: 2.5rem;
+  height: 2.5rem;
+  color: var(--rf-ink);
+  text-decoration: none;
+}
+
+.rf-icon {
+  display: block;
+  width: 1.35rem;
+  height: 1.35rem;
+  fill: currentColor;
+}
+
+.rf-icon--youtube {
+  width: 1.9rem;
+  height: 1.9rem;
+}
+
+/* Stroke marks. The shared icon rule fills the shape, which would turn these solid. */
+.rf-icon--globe,
+.rf-icon--microphone {
+  fill: none;
+  stroke: currentColor;
+  stroke-width: 1.5;
+}
+
+.rf-icon-link:hover,
+.rf-icon-link:focus-visible {
+  color: var(--rf-green);
 }
 
 .rf-pagination {
@@ -1193,8 +1312,467 @@ img.rf-avatar {
   font-size: var(--rf-text-sm);
 }
 
+/* Service offer. One full-width card: copy and price, then a quote band.
+   White, beige, and dark moss. The edge matches .surface. */
+.rf-offer {
+  --rf-surface-fill: var(--rf-white);
+  box-sizing: border-box;
+  width: 100%;
+  overflow: hidden;
+}
+
+.rf-offer--panel {
+  --rf-surface-fill: var(--rf-panel);
+}
+
+.rf-offer--dark {
+  --rf-surface-fill: var(--rf-surface-dark);
+  color: var(--rf-on-dark);
+}
+
+.rf-offer__main {
+  display: grid;
+  grid-template-columns: minmax(0, 1fr) 16.25rem;
+  column-gap: var(--rf-space-6);
+  align-items: start;
+  padding: var(--rf-space-6) var(--rf-space-7) var(--rf-space-5);
+}
+
+.rf-offer__eyebrow {
+  grid-column: 1;
+  grid-row: 1;
+  justify-self: start;
+  margin: 0 0 var(--rf-space-3);
+  padding: var(--rf-space-3) var(--rf-space-6);
+  border-radius: var(--rf-radius-pill);
+  background: var(--rf-panel);
+  color: var(--rf-brown);
+  font-size: 0.875rem;
+  line-height: 1;
+}
+
+.rf-offer--panel .rf-offer__eyebrow {
+  background: var(--rf-surface-dark);
+  color: var(--rf-on-dark);
+}
+
+.rf-offer--dark .rf-offer__eyebrow {
+  background: var(--rf-panel);
+  color: var(--rf-brown);
+}
+
+.rf-offer__copy {
+  grid-column: 1;
+  grid-row: 2;
+  min-width: 0;
+}
+
+.rf-offer__title,
+.rf-offer__amount {
+  margin: 0;
+  font-family: var(--rf-font-serif);
+  font-weight: var(--rf-weight-bold);
+  letter-spacing: var(--rf-tracking-display);
+  color: var(--rf-green-logo);
+}
+
+.rf-offer__title {
+  font-size: var(--rf-text-xl);
+  line-height: var(--rf-leading-snug);
+}
+
+.rf-offer__lede,
+.rf-offer__copy li {
+  margin: 0;
+  font-size: var(--rf-text-lg);
+  line-height: var(--rf-leading-callout);
+  color: var(--rf-brown);
+}
+
+.rf-offer__lede {
+  margin-top: var(--rf-space-4);
+}
+
+.rf-offer__copy ul {
+  margin: var(--rf-space-4) 0 0;
+  padding-inline-start: var(--rf-space-5);
+}
+
+.rf-offer__copy li + li {
+  margin-top: var(--rf-space-2);
+}
+
+.rf-offer__price {
+  grid-column: 2;
+  grid-row: 2;
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
+  gap: var(--rf-space-2);
+}
+
+.rf-offer__amount {
+  font-size: var(--rf-text-lg);
+  line-height: 1.2;
+  letter-spacing: 0;
+}
+
+.rf-offer__cadence {
+  margin: 0 0 var(--rf-space-3);
+  font-size: var(--rf-text-sm);
+  line-height: var(--rf-leading-ui);
+  color: var(--rf-brown);
+}
+
+.rf-offer--dark .rf-offer__title,
+.rf-offer--dark .rf-offer__amount {
+  color: var(--rf-on-dark);
+}
+
+.rf-offer--dark .rf-offer__lede,
+.rf-offer--dark .rf-offer__copy li,
+.rf-offer--dark .rf-offer__cadence {
+  color: var(--rf-on-dark-muted);
+}
+
+.rf-offer__band {
+  display: flex;
+  align-items: center;
+  gap: var(--rf-space-6);
+  padding: var(--rf-space-5) var(--rf-space-7);
+  background: var(--rf-green-soft);
+  color: var(--rf-brown);
+}
+
+.rf-offer__portrait {
+  width: 4.5rem;
+  height: 4.5rem;
+  border-radius: var(--rf-radius-pill);
+  object-fit: cover;
+  flex: none;
+}
+
+.rf-offer__words {
+  margin: 0;
+  min-width: 0;
+}
+
+.rf-offer__quote,
+.rf-offer__by {
+  margin: 0;
+  font-size: var(--rf-text-sm);
+  line-height: var(--rf-leading-callout);
+  color: var(--rf-brown);
+}
+
+.rf-offer__quote {
+  font-style: italic;
+}
+
+.rf-offer__by {
+  margin-top: var(--rf-space-3);
+}
+
+.rf-offer__name {
+  font-weight: var(--rf-weight-bold);
+}
+
+@media (max-width: 40rem) {
+  .rf-offer__main {
+    grid-template-columns: 1fr;
+    padding: var(--rf-space-5);
+  }
+
+  .rf-offer__eyebrow {
+    padding-inline: var(--rf-space-4);
+  }
+
+  .rf-offer__price {
+    grid-column: 1;
+    grid-row: auto;
+    margin-top: var(--rf-space-4);
+  }
+
+  .rf-offer__band {
+    flex-direction: column;
+    align-items: flex-start;
+    gap: var(--rf-space-4);
+    padding: var(--rf-space-5);
+  }
+}
+
 @media (prefers-reduced-motion: reduce) {
   .rf-skeleton {
     animation: none;
   }
 }
+
+/* Glyphs are masks so a pattern can show an icon without inline SVG.
+   .rf-icon stays the inline social mark. These three are the marketing set. */
+.rf-glyph {
+  display: inline-block;
+  flex: none;
+  width: 1.25rem;
+  height: 1.25rem;
+  background-color: currentColor;
+  vertical-align: middle;
+  -webkit-mask: var(--rf-glyph) center / contain no-repeat;
+  mask: var(--rf-glyph) center / contain no-repeat;
+}
+
+.rf-glyph--check { --rf-glyph: url("../icons/check.svg"); }
+.rf-glyph--arrow { --rf-glyph: url("../icons/arrow.svg"); }
+.rf-glyph--mail { --rf-glyph: url("../icons/mail.svg"); }
+
+.rf-glyph-tile {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  width: var(--rf-space-7);
+  height: var(--rf-space-7);
+  background: var(--rf-green-soft);
+  color: var(--rf-green-deep);
+}
+
+.rf-icon-card .rf-glyph-tile {
+  margin-block-end: var(--rf-space-4);
+}
+
+.rf-glyph-list {
+  display: grid;
+  gap: var(--rf-space-5);
+  max-inline-size: 36rem;
+}
+
+.rf-glyph-row {
+  display: grid;
+  grid-template-columns: auto minmax(0, 1fr);
+  gap: var(--rf-space-4);
+  align-items: start;
+}
+
+.rf-glyph-row__copy {
+  display: grid;
+  gap: var(--rf-space-2);
+}
+
+.rf-glyph-row__copy :is(h1, h2, h3, h4, p) {
+  margin: 0;
+}
+
+.rf-glyph-row__copy :is(h1, h2, h3, h4) {
+  font-family: var(--rf-font-serif);
+  color: var(--rf-ink-deep);
+}
+
+/* A fact list beside a case study. The cream edge comes from elements.css. */
+.rf-facts {
+  width: 22rem;
+  max-inline-size: 100%;
+  margin: 0;
+  overflow: hidden;
+}
+
+.rf-facts__title {
+  margin: 0;
+  padding: var(--rf-space-3) var(--rf-space-4);
+  background: var(--rf-green);
+  color: var(--rf-on-primary);
+  font-family: var(--rf-font-serif);
+  font-size: var(--rf-text-lg);
+  line-height: var(--rf-leading-snug);
+}
+
+.rf-facts dl,
+dl.rf-facts {
+  margin: 0;
+}
+
+.rf-facts dl > div,
+dl.rf-facts > div {
+  display: grid;
+  grid-template-columns: minmax(0, 1fr) auto;
+  gap: var(--rf-space-4);
+  align-items: baseline;
+  padding: var(--rf-space-3) var(--rf-space-4);
+  border-block-start: 1px solid var(--rf-rule);
+}
+
+.rf-facts > div:first-child,
+dl.rf-facts > div:first-child {
+  border-block-start: 0;
+}
+
+.rf-facts dt {
+  margin: 0;
+  color: var(--rf-ink-muted);
+}
+
+.rf-facts dd {
+  margin: 0;
+  font-weight: var(--rf-weight-bold);
+  color: var(--rf-ink-deep);
+  text-align: end;
+}
+
+.rf-facts a {
+  color: var(--rf-green);
+}
+
+/* Three stats. Five uses .rf-grid--five. Four is a leftover tile. */
+.rf-stats {
+  display: grid;
+  gap: var(--rf-grid-gap);
+  grid-template-columns: repeat(3, minmax(0, 1fr));
+}
+
+.rf-stat {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: var(--rf-space-2);
+  text-align: center;
+}
+
+.rf-stat__value {
+  margin: 0;
+  font-family: var(--rf-font-serif);
+  font-size: var(--rf-text-3xl);
+  font-weight: var(--rf-weight-bold);
+  letter-spacing: var(--rf-tracking-display);
+  line-height: var(--rf-leading-display);
+  color: var(--rf-green-logo);
+}
+
+/* A sequence with a mark column. Takeaways keep the orange rule. */
+.rf-steps {
+  display: flex;
+  flex-direction: column;
+  margin: 0;
+  padding: 0;
+  list-style: none;
+}
+
+.rf-step {
+  display: grid;
+  grid-template-columns: minmax(7rem, 12rem) minmax(0, 1fr);
+  gap: var(--rf-space-6);
+  align-items: start;
+  padding-block: var(--rf-space-5);
+  border-block-start: 1px solid var(--rf-rule);
+}
+
+.rf-step__mark {
+  margin: 0;
+  font-family: var(--rf-font-serif);
+  font-size: var(--rf-text-xl);
+  font-weight: var(--rf-weight-bold);
+  line-height: var(--rf-leading-snug);
+  color: var(--rf-green-deep);
+}
+
+.rf-step__title {
+  margin: 0 0 var(--rf-space-2);
+  font-family: var(--rf-font-serif);
+  color: var(--rf-ink-deep);
+}
+
+.rf-step p {
+  margin: 0;
+}
+
+.rf-people {
+  display: grid;
+  gap: var(--rf-grid-gap);
+  grid-template-columns: repeat(3, minmax(0, 1fr));
+}
+
+.rf-person {
+  display: flex;
+  flex-direction: column;
+  gap: var(--rf-space-3);
+  min-inline-size: 0;
+}
+
+.rf-person img {
+  display: block;
+  width: 100%;
+  aspect-ratio: 1;
+  object-fit: cover;
+  border: 4px solid var(--rf-cream-deep);
+  border-radius: 0;
+}
+
+.rf-person__name {
+  margin: 0;
+  font-family: var(--rf-font-serif);
+  color: var(--rf-ink-deep);
+}
+
+.rf-person__role {
+  margin: 0;
+  color: var(--rf-ink-muted);
+}
+
+.rf-shots {
+  display: grid;
+  grid-template-columns: 1.4fr 1fr;
+  gap: var(--rf-space-4);
+  align-items: stretch;
+}
+
+.rf-shots img {
+  display: block;
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  border: 4px solid var(--rf-cream-deep);
+  border-radius: 0;
+}
+
+.rf-shots__side {
+  display: grid;
+  gap: var(--rf-space-4);
+}
+
+.rf-shots__side img {
+  aspect-ratio: 16 / 9;
+  height: auto;
+}
+
+.rf-logo-row {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+  justify-content: flex-start;
+  gap: var(--rf-space-6);
+  margin: 0;
+  padding: 0;
+  list-style: none;
+}
+
+.rf-logo-row figure,
+.rf-logo-row li {
+  margin: 0;
+}
+
+.rf-logo-row img {
+  display: block;
+  width: auto;
+  height: 2.25rem;
+  max-width: 9rem;
+}
+
+@media (max-width: 40rem) {
+  .rf-stats,
+  .rf-people,
+  .rf-shots,
+  .rf-step {
+    grid-template-columns: 1fr;
+  }
+
+  .rf-step {
+    gap: var(--rf-space-2);
+  }
+}
+

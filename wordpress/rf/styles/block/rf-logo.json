@@ -1,0 +1,30 @@
+{
+  "$schema": "https://schemas.wp.org/trunk/theme.json",
+  "version": 3,
+  "slug": "rf-logo",
+  "title": "Logo olive",
+  "blockTypes": [
+    "core/group"
+  ],
+  "styles": {
+    "border": {
+      "color": "var:preset|color|paper-deep",
+      "radius": "0",
+      "style": "solid",
+      "width": "4px"
+    },
+    "color": {
+      "background": "var:preset|color|logo",
+      "text": "var:custom|on|dark"
+    },
+    "shadow": "none",
+    "spacing": {
+      "padding": {
+        "top": "var:preset|spacing|space-6",
+        "right": "var:preset|spacing|space-6",
+        "bottom": "var:preset|spacing|space-6",
+        "left": "var:preset|spacing|space-6"
+      }
+    }
+  }
+}

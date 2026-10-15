@@ -270,10 +270,7 @@ a.rf-tabs__tab:visited {
 .rf-toggle__state {
   font-family: var(--rf-font-sans);
   font-size: 0.75rem;
-  font-weight: var(--rf-weight-bold);
-  letter-spacing: var(--rf-tracking-meta);
   line-height: 1;
-  text-transform: uppercase;
 }
 
 .rf-toggle__input:checked ~ .rf-toggle__state {

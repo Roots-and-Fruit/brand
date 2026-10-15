@@ -35,7 +35,7 @@ See `AGENTS.md` for agent workflow.
 
 `CHANGELOG.md` is the only changelog. Write notable changes under `## [Unreleased]` as they land. When a version ships, that section becomes `## [x.y.z] - YYYY-MM-DD`, `package.json` `version` matches it, and the compare links at the bottom of `CHANGELOG.md` are updated. Pushing `main` lets GitHub Actions read that version, take the notes from `CHANGELOG.md`, and open the GitHub release. Do not write release notes from the git log.
 
-This folder is what [brand.rootsandfruit.com](https://brand.rootsandfruit.com) publishes, from [Roots-and-Fruit/brand](https://github.com/Roots-and-Fruit/brand). `company-docs/brand/` is the previous checkout. Do not edit it.
+This folder is what [brand.rootsandfruit.com](https://brand.rootsandfruit.com) publishes, from [Roots-and-Fruit/brand](https://github.com/Roots-and-Fruit/brand).
 
 ## Fonts
 

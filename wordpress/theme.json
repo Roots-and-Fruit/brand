@@ -83,6 +83,11 @@
           "color": "#4b5e2e"
         },
         {
+          "slug": "logo",
+          "name": "Logo olive",
+          "color": "#505a49"
+        },
+        {
           "slug": "success",
           "name": "Success",
           "color": "#62744d"
@@ -283,6 +288,13 @@
       "contentSize": "56rem",
       "wideSize": "56rem"
     },
+    "blocks": {
+      "core/group": {
+        "dimensions": {
+          "width": true
+        }
+      }
+    },
     "custom": {
       "on": {
         "primary": "#ffffff",
@@ -312,7 +324,7 @@
         "bold": "700"
       },
       "layout": {
-        "measure": "60ch",
+        "measure": "65ch",
         "content-size": "56rem",
         "wide-size": "56rem"
       },
@@ -485,15 +497,17 @@
     "blocks": {
       "core/quote": {
         "border": {
-          "color": "var:preset|color|primary",
-          "width": "0 0 0 4px",
-          "style": "solid"
+          "color": "var:preset|color|paper-deep",
+          "width": "4px",
+          "style": "solid",
+          "radius": "0"
         },
+        "color": {
+          "background": "var:preset|color|surface"
+        },
+        "shadow": "none",
         "spacing": {
-          "padding": {
-            "left": "var:preset|spacing|space-5",
-            "right": "var:preset|spacing|space-5"
-          }
+          "padding": "var:preset|spacing|space-5"
         }
       },
       "core/code": {
@@ -548,7 +562,7 @@
       },
       "core/image": {
         "border": {
-          "radius": "var:preset|border-radius|lg"
+          "radius": "0"
         }
       },
       "core/columns": {
@@ -625,10 +639,10 @@
             },
             ":hover": {
               "color": {
-                "text": "var:preset|color|primary"
+                "text": "var:preset|color|primary-deep"
               },
               "typography": {
-                "textDecoration": "underline"
+                "textDecoration": "none"
               }
             }
           }

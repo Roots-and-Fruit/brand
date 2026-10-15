@@ -1,0 +1,33 @@
+<!-- wp:template-part {"slug":"header","tagName":"header"} /-->
+
+<!-- wp:group {"tagName":"main","style":{"spacing":{"margin":{"top":"0","bottom":"0"}}},"layout":{"type":"default"}} -->
+<main class="wp-block-group" style="margin-top:0;margin-bottom:0">
+	<!-- wp:group {"align":"full","className":"page-hero page-hero--articles","backgroundColor":"panel","style":{"border":{"bottom":{"color":"var:custom|panel-deep","width":"4px","style":"solid"}},"spacing":{"blockGap":"var:preset|spacing|space-4","padding":{"top":"var:preset|spacing|space-7","bottom":"var:preset|spacing|space-7"}}},"layout":{"type":"default"}} -->
+	<div class="wp-block-group alignfull page-hero page-hero--articles has-panel-background-color has-background" style="border-bottom-color:var(--wp--custom--panel-deep);border-bottom-style:solid;border-bottom-width:4px;padding-top:var(--wp--preset--spacing--space-7);padding-bottom:var(--wp--preset--spacing--space-7)">
+		<!-- wp:group {"className":"article-wide","style":{"spacing":{"blockGap":"var:preset|spacing|space-4"}},"layout":{"type":"default"}} -->
+		<div class="wp-block-group article-wide">
+			<!-- wp:query-title {"type":"archive","showPrefix":false,"level":1,"className":"rf-display rf-display--lg"} /-->
+
+			<!-- wp:paragraph {"className":"rf-lede"} -->
+			<p class="rf-lede">Studies of the WordPress product business. The write-up is here, and the data package is on the page.</p>
+			<!-- /wp:paragraph -->
+		</div>
+		<!-- /wp:group -->
+	</div>
+	<!-- /wp:group -->
+
+	<!-- wp:query {"className":"articles-list","query":{"perPage":10,"pages":0,"offset":0,"postType":"research","order":"desc","orderBy":"date","inherit":true},"layout":{"type":"default"}} -->
+	<div class="wp-block-query articles-list">
+		<!-- wp:post-template {"layout":{"type":"default"}} -->
+			<!-- wp:post-title {"isLink":true,"level":2} /-->
+			<!-- wp:post-date {"format":"F j, Y"} /-->
+			<!-- wp:post-excerpt {"moreText":"Read the study"} /-->
+		<!-- /wp:post-template -->
+	</div>
+	<!-- /wp:query -->
+</main>
+<!-- /wp:group -->
+
+<!-- wp:template-part {"slug":"book"} /-->
+
+<!-- wp:template-part {"slug":"footer","tagName":"footer"} /-->

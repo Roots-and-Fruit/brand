@@ -3,19 +3,37 @@
  * Title: Quote
  * Slug: rf/quote
  * Categories: rf
- * Description: One attribution. Surface. Not a reviews carousel.
- * Viewport Width: 720
+ * Inserter: true
  */
 ?>
-<!-- wp:group {"align":"wide","className":"is-style-rf-surface","layout":{"type":"constrained","contentSize":"60rem"}} -->
-<div class="wp-block-group alignwide is-style-rf-surface">
+<!-- wp:group {"tagName":"figure","className":"rf-quote","style":{"dimensions":{"width":"65ch"}},"layout":{"type":"default"}} -->
+<figure class="wp-block-group rf-quote" style="width:65ch">
 	<!-- wp:quote -->
 	<blockquote class="wp-block-quote">
 		<!-- wp:paragraph -->
-		<p>The setup was straightforward. When we needed a related fix, the team answered immediately.</p>
+		<p>The work moved in the weeks between the calls, not only during them.</p>
 		<!-- /wp:paragraph -->
-		<cite>Store owner</cite>
 	</blockquote>
 	<!-- /wp:quote -->
-</div>
+
+	<!-- wp:group {"tagName":"figcaption","layout":{"type":"default"}} -->
+	<figcaption class="wp-block-group">
+		<!-- wp:group {"className":"rf-quote__who","layout":{"type":"default"}} -->
+		<div class="wp-block-group rf-quote__who">
+			<!-- wp:group {"className":"rf-quote__id","layout":{"type":"default"}} -->
+			<div class="wp-block-group rf-quote__id">
+				<!-- wp:paragraph {"className":"rf-quote__name"} -->
+				<p class="rf-quote__name">A founder</p>
+				<!-- /wp:paragraph -->
+
+				<!-- wp:paragraph {"className":"rf-quote__role"} -->
+				<p class="rf-quote__role">Product studio</p>
+				<!-- /wp:paragraph -->
+			</div>
+			<!-- /wp:group -->
+		</div>
+		<!-- /wp:group -->
+	</figcaption>
+	<!-- /wp:group -->
+</figure>
 <!-- /wp:group -->

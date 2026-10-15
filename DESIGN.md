@@ -265,7 +265,7 @@ components:
     rounded: "{rounded.md}"
     padding: 1rem
 layout:
-  measure: 60ch
+  measure: 65ch
   content-size: 56rem
   wide-size: 56rem
   gutter: spacing.5
@@ -288,7 +288,7 @@ Roots & Fruit is Matt Cromwell’s practice for WordPress operators and product 
 
 Visual identity feels like warm paper and moss: cream canvas, warm ink, Knile for voice, Nunito Sans for clarity, moss green as the steady accent.
 
-Agents must treat this file as normative for any new UI, page, slide, dashboard, or plugin surface. Load `css/brand.css` for fonts and tokens, `css/ui.css` for layout and components, or `css/rf.css` for both. Map tokens here to `--rf-*` custom properties instead of inventing parallel values. App chrome (the catalog sidebar, and a site header or footer) stays outside those files. The human reference is `index.html` (Overview leads with who we are, then how to use the system).
+Agents must treat this file as normative for any new UI, page, slide, dashboard, or plugin surface. Load `css/brand.css` for fonts and tokens, `css/ui.css` for layout and components, or `css/rf.css` for both. Map tokens here to `--rf-*` custom properties instead of inventing parallel values. The primary nav (`.rf-nav`) lives in those files. App chrome (the catalog sidebar, and a site header bar or footer) stays outside them. The human reference is `index.html` (Overview leads with who we are, then how to use the system).
 
 Brand feel (always):
 - Warm cream paper, not cool gray or pure white as the default page wash
@@ -312,7 +312,7 @@ Tokens come in three layers. Keep the names; only values change on a rebrand.
 2. **Semantic tokens** are jobs: `colors` in the front matter — `neutral` (cream wash), `ink` / `ink-deep` / `secondary` / `ink-soft`, `primary` / `primary-deep` / `primary-soft`, `tertiary` (rare orange CTA), `info` (product blue), `danger`, plus the pairing tokens `on-primary`, `on-info`, `on-tertiary`, `on-dark`, `on-dark-muted`. Compilers and the deck (PDS) use this layer’s names. Each role’s CSS custom property is the Colors table, not `--rf-` plus the semantic name. `--rf-success` and `--rf-warning` alias `--rf-green` and `--rf-orange`; they are not `colors` keys.
 3. **Component tokens** are the `components:` recipes (`button-primary`, `surface`, `pill`, `surface-tint`). Hierarchy words (`primary`, `tertiary`) belong to components, not to leftover brand colours.
 
-Gap jobs (`layout.cluster` / `stack` / `grid` / `section` / `split`) are names on the existing `spacing` scale — one gap, not a second scale — and map to `--rf-cluster-gap` … `--rf-split-gap` in CSS. `layout.content-size` and `layout.wide-size` both resolve to `--rf-max` (56rem). 56rem stays. A wider nav is a different chrome width. It is not a second token, and it is not an edit to `--rf-max`. Reading width stays `layout.measure` (60ch) on flow text and is seeded by `layout.inset` (step 6) for framed modules. Do not put a hue in the semantic map: `green-3` is a ramp member, `primary` is a job.
+Gap jobs (`layout.cluster` / `stack` / `grid` / `section` / `split`) are names on the existing `spacing` scale — one gap, not a second scale — and map to `--rf-cluster-gap` … `--rf-split-gap` in CSS. `layout.content-size` and `layout.wide-size` both resolve to `--rf-max` (56rem). 56rem stays. A wider nav is a different chrome width. It is not a second token, and it is not an edit to `--rf-max`. Reading width stays `layout.measure` (65ch) on flow text and is seeded by `layout.inset` (step 6) for framed modules. Do not put a hue in the semantic map: `green-3` is a ramp member, `primary` is a job.
 
 ## Pages
 
@@ -321,7 +321,7 @@ Marketing pages are stacks of the page jobs documented under the **Page jobs** t
 | Job | Composed from | Wash | CTA | Not |
 | --- | --- | --- | --- | --- |
 | Hero | `.rf-copy` + `.rf-split`; pill, `.rf-display--lg` (or `--xl` when the title has the full column), lede, the view's one `.btn--primary` when the hero holds it, optional proof meta, media right | cream | The view's one `.btn--primary` | A whole page, a bare `.rf-stack`, `core/columns`-style two-up |
-| Proof | Three or five stats in `.rf-grid--center` even tracks, or a logo cluster | cream-deep | None | A feature grid, a leftover tile |
+| Proof | Three or five stats in `.rf-grid--center` even tracks, a three-up `.rf-stats` row, or a `.rf-logo-row` | cream-deep | None | A feature grid, a leftover tile, a four-up stat row |
 | Card grid | Three paired fills in `.rf-grid`: `surface`, `surface--tint`, `surface--dark`. A row of reviews is `.rf-review` in `.rf-grid--three` | cream | One tertiary link only when no `.btn--cta` has spent the page's orange | A dashboard, three identical whites |
 | Split | Copy plus media via `.rf-split`. A screenshot uses `.rf-split--shot` (copy at 28rem, never wider than `--rf-measure`, picture takes the rest) and `.rf-frame--fit` (whole image) | cream | The view's one `.btn--primary` only when no earlier job took it | A blog layout (use `.rf-sidebar` for that) |
 | Quote | `.rf-quote`. Words, a mark, and a person. Photo and role are optional. Schema.org Quotation: `text`, `author` as Person | cream | None | A reviews carousel |
@@ -329,7 +329,7 @@ Marketing pages are stacks of the page jobs documented under the **Page jobs** t
 | CTA | Short display title + one button | panel | No second `.btn--primary`. No second accent after a dark-band `.btn--cta` | Two buttons fighting |
 | Alert | One status note, tones under Feedback | soft status | None | A hero |
 
-Page recipes compose these: `landing` = hero → optional proof → one card grid or split → one CTA. One `.btn--primary` per view. A `.btn--cta` on a dark band spends the page's orange, so the closing job does not get a second accent. `article` is measured prose on cream — it is not this catalog. Washes (`cream-deep`, `surface-dark`) are viewport bands via `.rf-wash` and `.rf-wash--dark`. Copy stays in `.rf-wash__inner` on the header column (`--rf-max`). Never wrap `post-content` in a second constrained group, never mix `content` and `wide` on one landing. Grids are symmetrical (see Layout → Grid symmetry): three items, three tracks; five items, `--sym` or `--five`; never a leftover tile. A wash that is the last thing on the page flushes to the footer.
+Page recipes compose these: `landing` = hero → optional proof → one card grid or split → one CTA. One `.btn--primary` per view. A stack of `.rf-offer` cards is the exception: each offer carries `.btn--primary.btn--sm`. A `.btn--cta` on a dark band spends the page's orange, so the closing job does not get a second accent. A services list is that stack. It is not a card grid, and it is not a ninth page job. A case study is still these jobs. Facts (`.rf-facts`), steps (`.rf-steps`), a three-stat row (`.rf-stats`), a photo cluster (`.rf-shots`), people (`.rf-people`), and a logo row (`.rf-logo-row`) are pieces inside a study. They are not a ninth page job. `article` is measured prose on cream — it is not this catalog. Washes (`cream-deep`, `panel`, `surface-dark`) are viewport bands via `.rf-wash`, `.rf-wash--panel`, and `.rf-wash--dark`. Copy stays in `.rf-wash__inner` on the header column (`--rf-max`). Never wrap `post-content` in a second constrained group, never mix `content` and `wide` on one landing. Grids are symmetrical (see Layout → Grid symmetry): three items, three tracks; five items, `--sym` or `--five`; never a leftover tile. A wash that is the last thing on the page flushes to the footer.
 
 ## Colors
 
@@ -420,7 +420,7 @@ Do not introduce 500 or 800. Prefer semibold before bold for UI chrome.
 - Inside one piece, follow Gestalt proximity (Layout). The label sits with the title at `--rf-space-2` or `--rf-space-3`. The title sits with the first line at `--rf-space-3`. The action takes `--rf-space-5` or `--rf-space-6`.
 - Article body: every direct child of `.rf-prose` (and `.rf-prose--wide`) is separated by `--rf-space-5`. A heading that follows another block uses `--rf-space-6`. Child margins are reset so a paragraph, list, figure, quote, surface, or card cannot sit flush. Same idea as `.rf-stack`.
 - Meta eyebrow → title: `--rf-space-2` or `--rf-space-3`. The step of air is before the action.
-- Measure: `--rf-measure` (`60ch`) on reading lines for articles and marketing; tracking meta `--rf-tracking-meta` (`0.06em`) for uppercase eyebrows.
+- Measure: `--rf-measure` (`65ch`) on reading lines for articles and marketing; tracking meta `--rf-tracking-meta` (`0.06em`) for uppercase eyebrows.
 - Analytical HTML reports (`rf-html-report`): use `.rf-prose--wide` (or report `.prose-block`) at `--rf-measure-report` (`64ch`) and `body-lg` (`--rf-text-lg`). Larger type makes each `ch` wider, so the measured column fills more of the shell without abandoning measure.
 - Tool/product UI: prefer `--rf-content-max` for the shared column; do not nest article measure inside a wider card.
 - Do not mix ad-hoc vertical margins with `.rf-stack` gap on the same children.
@@ -434,7 +434,7 @@ Roles:
 
 Optical rules (size scales alone will not fix these):
 - Constrain reading columns with a `ch` measure, not only the layout shell (`--rf-max`)
-- Use `.rf-prose` for long-form articles: `--rf-measure` (`60ch`) + `body-md` + body leading
+- Use `.rf-prose` for long-form articles: `--rf-measure` (`65ch`) + `body-md` + body leading
 - Use `.rf-prose--wide` in analytical reports: `--rf-measure-report` (`64ch`) + `body-lg` so narrative feels balanced next to full-shell tables
 - Inside callouts, use `--rf-leading-callout` and generous padding
 - Do not rely on fluid viewport type alone to “fix” readability
@@ -455,7 +455,7 @@ Principles drawn from *Every Layout* (Pickering & Bell): clarity and stability c
 
 ### Axioms
 
-- **Measure:** no line of narrative text should exceed its measure token. Use `ch`, never a fixed `px` width, so measure tracks font-size. Articles and marketing use `--rf-measure` (`60ch`). Analytical HTML reports use `--rf-measure-report` (`64ch`) at `body-lg` so the column is physically wider next to full-shell tables while staying measure-constrained. Structural shells (`html`, `body`, `main`, nav, generic wrappers) are not capped by measure.
+- **Measure:** no line of narrative text should exceed its measure token. Use `ch`, never a fixed `px` width, so measure tracks font-size. Articles and marketing use `--rf-measure` (`65ch`). Analytical HTML reports use `--rf-measure-report` (`64ch`) at `body-lg` so the column is physically wider next to full-shell tables while staying measure-constrained. Structural shells (`html`, `body`, `main`, nav, generic wrappers) are not capped by measure.
 - **Tool / product columns:** dashboards and task UIs (Phloem, plugin chrome) use a shared content shell `--rf-content-max` (`52rem`) so title, chrome, and body share one right edge. Do **not** nest `--rf-measure` on paragraphs inside a wider surface of the same component (that pinches copy next to full-width cards). Prefer shell-led width for tools; keep `ch` measure for article and report prose.
 - **Suggestion over prescription:** prefer `max-inline-size`, `min-block-size`, `gap`, and `flex-basis` over fixed `width`/`height`. Avoid data loss from overflow.
 - **One space ratio:** `--rf-ratio` (`1.5`) seeds modular space from `1rem` (`spacing.4` / s0). Larger steps (`5`–`8`) multiply by the ratio. Fine UI steps `1`–`3` stay below s0 for chrome only.
@@ -485,7 +485,7 @@ Principles drawn from *Every Layout* (Pickering & Bell): clarity and stability c
 | `.rf-frame--fit` | Same frame, with the crop lifted. The image keeps its real ratio. A large portrait uses this. A 1px `--rf-rule` edge keeps a pale screenshot visible on cream. |
 | `.rf-frame--round` | Same frame, cropped to a circle, at most 18rem (14rem under 40rem). |
 | `.rf-figure` | A frame with `.rf-caption` under it. The caption is as wide as the image. `.rf-figure--compact` uses a smaller name for the square and 16:9 crops. |
-| `.rf-wash` | Stripe across the pane. Cream-deep by default. `.rf-wash--dark` is the moss band. `.rf-wash__inner` keeps the copy on `--rf-max`. On that dark band, `.field label` and `strong` use `on-dark` (`--rf-on-dark`). `.link-text` uses `on-dark` and lightens to cream on hover. On a marketing page the pane is the window. On this docs site the stripe stops at the sidebar. |
+| `.rf-wash` | Stripe across the pane. Cream-deep by default. `.rf-wash--panel` is `--rf-panel`. `.rf-wash--dark` is the moss band. `.rf-wash__inner` keeps the copy on `--rf-max`. On that dark band, `.field label` and `strong` use `on-dark` (`--rf-on-dark`). `.link-text` uses `on-dark` and lightens to cream on hover. On a marketing page the pane is the window. On this docs site the stripe stops at the sidebar. |
 | `.rf-prose` | Long-form type + measure. Direct children share `--rf-space-5`. A following heading uses `--rf-space-6`. |
 | `.rf-prose--wide` | Report long-form: `--rf-measure-report` (`64ch`) + `body-lg`. Wider measured column for analytical HTML reports; not the default for marketing articles. |
 
@@ -553,10 +553,10 @@ Focus ring: soft green halo (`0 0 0 3px` color-mix of primary at ~35% opacity). 
 
 ## Components
 
-Implement with these behaviors. Class names in this repo: `.btn`, `.input`, `.textarea`, `.rf-number`, `.rf-slider`, `.surface`, `.rf-card`, `.rf-divider`, `.rf-badge`, `.rf-avatar`, `.rf-time`, `.rf-breadcrumb`, `.rf-pagination`, `.alert` (including `.alert--note`), `.pill`, `.rf-skeleton`, `.rf-tooltip`, `.rf-dialog`, `.rf-toast`, `.rf-quote`, `.rf-cite`, `.rf-review`, `.rf-gallery`, `.rf-disclosure`, `.rf-tabs`, `.rf-toggle`, `.rf-select`, `.rf-display`, `.rf-lede`, `.rf-small`, `.rf-figure`, `.rf-caption`, plus layout primitives `.rf-stack` / `.rf-center` / `.rf-cluster` / `.rf-copy` / `.rf-byline` / `.rf-prose` and the settings column `.rf-settings` (see `css/components.css`, `css/chrome.css`, `css/disclosure.css`, `css/layouts.css`).
+Implement with these behaviors. Class names in this repo: `.btn`, `.input`, `.textarea`, `.rf-number`, `.rf-slider`, `.surface`, `.rf-card`, `.rf-offer`, `.rf-divider`, `.rf-badge`, `.rf-avatar`, `.rf-time`, `.rf-breadcrumb`, `.rf-pagination`, `.alert` (including `.alert--note`), `.pill`, `.rf-skeleton`, `.rf-tooltip`, `.rf-dialog`, `.rf-toast`, `.rf-quote`, `.rf-cite`, `.rf-review`, `.rf-gallery`, `.rf-disclosure`, `.rf-tabs`, `.rf-toggle`, `.rf-select`, `.rf-display`, `.rf-lede`, `.rf-small`, `.rf-figure`, `.rf-caption`, `.rf-glyph`, `.rf-facts`, `.rf-steps`, `.rf-stats`, `.rf-people`, `.rf-shots`, `.rf-logo-row`, `.rf-subscribe`, plus layout primitives `.rf-stack` / `.rf-center` / `.rf-cluster` / `.rf-copy` / `.rf-byline` / `.rf-prose` and the settings column `.rf-settings` (see `css/components.css`, `css/chrome.css`, `css/disclosure.css`, `css/layouts.css`).
 
 **Buttons**
-- `button-primary` (`.btn--primary`): default main action (moss). One `.btn--primary` per view.
+- `button-primary` (`.btn--primary`): default main action (moss). One `.btn--primary` per view. A stack of `.rf-offer` cards is the exception: each offer carries `.btn--primary.btn--sm`. Those buttons do not spend the page's orange.
 - `button-secondary`: warm panel fill for secondary actions.
 - `button-tertiary`: outlined green for low-emphasis actions.
 - `button-cta`: orange fill with dark ink text for contrast (Book, Pay, Submit final). A `.btn--cta` on a dark band spends the page's orange, so the closing job does not get a second accent. Do not use white text on orange. Hover lightens toward cream (`85%` orange / `15%` cream) so contrast improves; do not darken with brown.
@@ -577,6 +577,7 @@ Implement with these behaviors. Class names in this repo: `.btn`, `.input`, `.te
 - Inputs: white surface, soft ink border, `rounded.sm`, green focus ring
 - Errors: danger border + text message under the field (never color-only)
 - Selected choice chips / toggles: use `pill-active` (`.pill--active` or `.pill.is-active`) — `primary-soft` fill with `primary-deep` text. Do not use solid `primary` with `ink` (fails contrast). Solid `primary` fills must use `on-primary` (white).
+- Subscribe (`.rf-subscribe`) posts to `/api/subscribe`. The articles hero is the inline email row (`.page-hero__optin`): label, field, and `.btn--primary` on one line, then the Turnstile slot and a status line. The post rail and the Subscribe pattern stack an optional name, a required email, the Turnstile slot, and one `.btn--primary`. Both use the same site key. The theme script binds every `form.rf-subscribe`. The form's button is that form's action. It does not add a second orange button.
 
 **Product chrome** (`css/chrome.css`)
 - For plugin settings, dashboards, and other tool surfaces on cream. First shipped in Agent Role settings (Agents / Settings / Activity).
@@ -603,7 +604,8 @@ Implement with these behaviors. Class names in this repo: `.btn`, `.input`, `.te
 
 **Quote** (`.rf-quote`)
 - One attribution. The words, a serif quotation mark, and a person. A photo and a role are optional. Omit the `<img>` when there is no photo so the row closes up. The person takes `--rf-space-5` under the words.
-- The card has `2em` of padding, a 2px `--rf-brown` rule on the right and the bottom, and a 6px radius on that corner. The lift is `--rf-shadow`, clipped so the falloff stays on the right and the bottom.
+- The card is white. It uses the same 4px `--rf-cream-deep` square edge as a white surface. No radius. No shadow. Padding is `--rf-space-5`.
+- The mark is a Knile opening quote in the top corner, `9.5rem`, `--rf-space-2` from the top, in `--rf-cream-deep` (one step darker than the white fill, the same step as the edge). The words start beside the mark, `5.75rem` in. The person uses that same inset.
 - Markup is a schema.org [Quotation](https://schema.org/Quotation). `itemprop="text"` on the words. `itemprop="author"` is a Person with `name`, and when you have them, `jobTitle` and `image`. A source URL is `citation` on the quotation, outside the Person. The mark is CSS, so it stays out of `text`.
 - `author` is the speaker. `spokenByCharacter` is for a character inside some other work. A rating lives on `.rf-review`.
 - Do not build this as `surface` plus `.rf-lede`. `.surface p` beats the lede and the line goes small and gray.
@@ -624,19 +626,20 @@ Implement with these behaviors. Class names in this repo: `.btn`, `.input`, `.te
 - Keep the row in the grid. A slider is a later idea, and this is not a new page job. A single attribution stays `.rf-quote`.
 
 **Gallery** (`.rf-gallery`)
-- One image on a white mat, its caption, and a count (`1 of 6`). The thumb strip sits `--rf-space-5` under the mat. The rest of the set is a strip of thumbs that share the mat's width, up to six across. Fewer images grow to fill the row. On a narrow screen the strip wraps at three across, and each row still fills the width. The current thumb uses the quote's brown right-and-bottom edge. A single image hides the strip and the count.
-- The mat keeps a steady height. The picture is shown whole (`object-fit: contain`). Opening the mat uses a native dialog with a 5px `--rf-panel` frame. The bar under the picture uses the same panel color. Round previous and next buttons sit outside the picture until the pointer is over it, then they fade and slide in over 500ms. That bar holds the same controls as text, the caption in the middle, and close. Orange stays the page CTA. A tall screenshot scrolls inside the frame so the bar stays put.
+- One image on a white surface, its caption, and a count (`1 of 6`). The stage is `.surface`: the 4px `--rf-cream-deep` square edge, no shadow. The picture keeps a steady height (`clamp(12rem, 46vw, 28rem)`) and is shown whole. When it does not fill that frame, the gap is `--rf-panel`, the same color as the footer. The bar under the picture is the same panel footer as the dialog. A header bar of the same height sits above the picture, with a Knile title. The count and the sentence sit in the footer, and Open sits at the end in the same control as Close. The card and the thumbs fill the column. Round previous and next buttons fade and slide over 500ms, the same as the dialog, and land on the picture. The thumb strip sits `--rf-space-5` under the card. Thumbs share the card's width, up to six across. Fewer images grow to fill the row. On a narrow screen the strip wraps at three across, and each row still fills the width. Each thumb is a `.surface` too, and the picture is cropped to fill it (`object-fit: cover`). The current thumb keeps that edge and turns it `--rf-green`. A single image hides the strip and the count.
+- Opening the card uses a native dialog. The dialog shares the white edge and adds `.rf-edge--thick`, so the frame is 6px `--rf-cream-deep`, square, with no shadow. Cards stay 4px. The bar under the picture uses the same panel color. Round previous and next buttons sit outside the picture until the pointer is over it, then they fade and slide in over 500ms. That bar holds the same controls as text, the caption in the middle, and close. Orange stays the page CTA. A tall screenshot scrolls inside the frame so the bar stays put.
 - Thumbs are buttons. The button name is the position plus the caption. The thumb image is decorative. The stage image keeps a real `alt`. The caption is the sentence, and the same text fills the dialog.
 - Left and right change the image only while the gallery or the dialog has focus. Escape closes the dialog and focus returns to the control that opened it. Nothing auto-advances. Reduced motion skips the strip's smooth scroll.
 - Markup is a schema.org ItemList of ImageObject: `position`, `caption`, `contentUrl`, `width`, `height`. `ImageGallery` is a web page type, so a section on a product page uses the list.
 
 **Surfaces**
-- `surface`: white module on cream. Square corners, no shadow. The edge is 4px `--rf-cream-deep`. Cream is the next paper step, and it is also the page wash, so that edge would disappear.
+- `surface`: white module on cream. Square corners, no shadow. The edge is 4px `--rf-cream-deep`. Cream is the next paper step, and it is also the page wash, so that edge would disappear. `.rf-edge--thick` only sets the width to 6px. The gallery dialog uses it. A card, quote, review, offer, or fact list stays at 4px.
 - `surface-panel` (`.surface--panel`): warm panel grouping. The edge is the fill taken one step darker, about 0.03 lightness, and it keeps the fill's hue.
 - `.surface--cream`: cream-deep fill, same edge rule.
 - `.surface--tint`: soft moss tile, same edge rule.
 - `surface-dark` (`.surface--dark`): moss-deep callout on cream pages, same edge rule. Titles in white or cream; meta/eyebrows in soft blue (`info-soft`) or soft orange (`tertiary-soft`). Body may use white / cream / `on-dark-muted`. CTAs use `button-cta` with `ink-deep` on orange. A `.btn--cta` on a dark band spends the page's orange, so the closing job does not get a second accent. Prefer one dark card per sidebar or section.
-- A quote stays `.rf-quote`. A document passage stays `.rf-cite`. Neither uses this edge.
+- `surface-logo` (`.surface--logo`): the footer olive (`--rf-green-logo`). It keeps the shared 4px cream-deep card edge. Type and buttons follow `.surface--dark`. Use it when a callout should match the footer, not the brighter moss.
+- A quote stays `.rf-quote` and uses this same white edge. A fact list (`.rf-facts`) uses it too. A document passage stays `.rf-cite` and does not.
 - Title sits `--rf-space-2` above the body. The action takes `--rf-space-5`. Do not use an off-scale margin under the title.
 - An eyebrow is a `.rf-meta` directly above the title. It sits `--rf-space-3` above that title. On `.surface--dark` the eyebrow is `tertiary-soft`, because solid orange fails on moss.
 
@@ -645,6 +648,48 @@ Implement with these behaviors. Class names in this repo: `.btn`, `.input`, `.te
 - The card is white, so it uses the same 4px `--rf-cream-deep` square edge as a white surface. No shadow.
 - The title sits `--rf-space-3` above the body. The footer takes `--rf-space-5`, then the hairline and its padding.
 - A `.surface` stays the looser box for a mix of content. Do not turn every surface into a card.
+
+**Service offer** (`.rf-offer`)
+- One engagement, the full width of the column, stacked with the next offer. Not a three-up grid. Not `.rf-card`, and not `.rf-quote`.
+- Two regions. The header is an eyebrow, a Knile title, a lede, and a bullet list, with the price, a cadence line, and `.btn--primary.btn--sm` in a second column (`--rf-space-6` gap). The footer is a quote band on `--rf-green-soft`: a 4.5rem circular portrait, an italic 16px quotation, a bold name, the role, and an optional source link. The band stays that light green on every fill, so the quotation never sits on the moss body.
+- Three fills. White is the default and uses the 4px `--rf-cream-deep` square edge. `.rf-offer--panel` is beige (`--rf-panel`). `.rf-offer--dark` is dark moss (`--rf-surface-dark`). Beige and moss take the surface rule: the edge is the fill, one step darker, and it keeps the fill's hue. Square corners. No shadow.
+- The eyebrow contrasts with the fill. Beige chip and brown text on white and on moss. Moss chip and white text on beige. The label is uppercase at the same 14px control size as `.btn--sm`. That is not a new type step.
+- On white and beige, the title and the price are Knile in `--rf-green-logo`. The title is `--rf-text-xl`. The lede, the list, and the price are `--rf-text-lg`. The cadence line is `--rf-text-sm`.
+- On moss, the title and the price are `--rf-on-dark`. The lede, the list, and the cadence are `--rf-on-dark-muted`. The small primary inverts the same way it does on `.surface--dark`: white fill, `--rf-green-deep` text.
+- Each offer carries its own `.btn--primary.btn--sm`. A page of these cards may have one orange button, on the close. Do not put `.btn--cta` on the offer.
+
+**Facts** (`.rf-facts`)
+- A definition list for one engagement: client, date, services, and a link. The label is muted. The value is bold and end-aligned. A 1px rule sits between rows.
+- The box is the white surface edge: 4px `--rf-cream-deep`, square, no shadow. An optional title (`.rf-facts__title`) is moss with `on-primary` text. The plain list omits that title, and the first row has no rule above it.
+- This sits beside the study. It is not a card grid and not a ninth page job.
+
+**Steps** (`.rf-steps`)
+- An ordered sequence. Each step is a mark column and a sentence. The mark (`.rf-step__mark`) is Knile at `--rf-text-xl` in `primary-deep`. Use `01` or a year. The title (`.rf-step__title`) is Knile. The body is one paragraph.
+- A hairline sits between steps. There is no orange rule and no zero-padded number in the text. Those stay on `.rf-takeaways`.
+- Do not add checkmarks. Do not restyle this as the takeaways list.
+
+**Stat row** (`.rf-stats`)
+- Three centered numbers. The value (`.rf-stat__value`) is Knile at `--rf-text-3xl` in logo olive (`--rf-green-logo`). The label is `.rf-meta`.
+- Three tracks. A five-up proof stays `.rf-grid--center` or `.rf-grid--five`. Do not draw a fourth stat into this row.
+- No button. A dark band is still the dark-band job.
+
+**People** (`.rf-people`)
+- Three people. Each (`.rf-person`) is a square photo, a Knile name (`.rf-person__name`), and a muted role (`.rf-person__role`).
+- The photo uses the 4px `--rf-cream-deep` edge and square corners. The circular portrait stays on `.rf-offer`. Give the photo an empty `alt` when the name is the accessible name.
+
+**Photo cluster** (`.rf-shots`)
+- One lead picture and two beside it (`.rf-shots__side`). Each picture uses the 4px `--rf-cream-deep` edge and square corners. The side pictures hold a 16:9 crop.
+- On a narrow screen the lead stacks above the pair. This is not the gallery. The gallery keeps the stage, the thumbs, and the dialog.
+
+**Logo row** (`.rf-logo-row`)
+- Client marks in a wrapping row, starting at the left edge of the column, 2.25rem tall. Each image has a real `alt` with the client name. A narrower row does not sit in the middle of the column.
+- This is the logo cluster on a proof band. It is not a stat row and not a wordmark lockup.
+
+**Glyphs** (`.rf-glyph`)
+- Check, arrow, and mail. They are CSS masks (`icons/check.svg`, `icons/arrow.svg`, `icons/mail.svg`) so a pattern does not need inline SVG. Color is `currentColor`.
+- `.rf-icon` stays the inline social mark. Do not mask those.
+- `.rf-glyph-tile` is a square of `primary-soft` with `primary-deep` color, `--rf-space-7` on each side.
+- An icon card is `.rf-card.rf-icon-card`: the tile, then the card title and one line. An icon list (`.rf-glyph-list`) is rows (`.rf-glyph-row`) of a tile plus a title and one line. No button on the card.
 
 **Divider** (`.rf-divider`)
 - A 1px `--rf-rule` hairline. `.rf-divider--vertical` sits in a row. It is an `<hr>`, so it stays out of the reading order as decoration only when the regions already have names.
@@ -658,6 +703,11 @@ Implement with these behaviors. Class names in this repo: `.btn`, `.input`, `.te
 
 **Relative time** (`.rf-time`)
 - A `<time>` element. The visible phrase is relative (“3 hours ago”). The `datetime` attribute keeps the absolute moment, and `title` can repeat that moment for hover.
+
+**Primary nav** (`.rf-nav`)
+- A row of links. Uppercase, `--rf-text-sm`, a 1px `--rf-rule` hairline on the left of each link.
+- Hover and keyboard focus raise a `--rf-panel` fill from the bottom of the link. The current page (`aria-current="page"`) is a `--rf-cream` fill with `--rf-green-deep` text, and it does not animate.
+- Reduced motion drops the rise. The header bar, the logo, the page width, and sideways scrolling on a phone stay outside this class. The catalog sidebar is a different nav.
 
 **Breadcrumb** (`.rf-breadcrumb`)
 - An ordered list inside a nav. Parent links, then the current page with `aria-current="page"`. The separator is a small dot: `--rf-green-soft` fill with a `--rf-green-deep` outline.
@@ -706,6 +756,7 @@ Implement with these behaviors. Class names in this repo: `.btn`, `.input`, `.te
 - Wordmark vs tree icon: wordmark when naming the brand; tree icon for favicons, avatars, tight badges
 - **Default wordmark (hard stop):** when Matt says “the logo,” “full logo,” “full wordmark,” “R&F logo,” or similar without naming a variant, use **`logos/SVG/R&F_Logo.svg`** — the multi-tone full-color canopy on cream/light. On dark fields, default to **`logos/SVG/R&F_Logo_DarkBG.svg`**. Do **not** default to `*_Flat_Color_*` (mono moss / simplified) or flat black/white. Flat / mono variants only when he explicitly asks for flat, mono, one-color, or small-size simplification.
 - UI caret: the inline disclosure arrow (see Disclosure). Do not load `icons/leaf-arrow.svg` for this control.
+- Social marks live in `icons/` as `x.svg`, `youtube.svg`, and `linkedin.svg` (Simple Icons, CC0). Use them inline so `currentColor` follows the link. `.rf-icon-link` is a fixed square with an accessible name, and the mark is centered in it. YouTube is drawn larger inside that square because its artwork sits in padding. Do not typeset the network name beside the mark.
 - Illustrations (`illustrations/roots-1.svg`, `illustrations/apples-1.svg`): atmosphere only. Use tokens `--rf-atmosphere` (≈0.10), `--rf-atmosphere-quiet` (≈0.065 under dense title/hero text), `--rf-atmosphere-spot` (≈0.45 for apples). Utilities: `.rf-atmosphere`, `.rf-atmosphere--quiet`, `.rf-atmosphere--spot`. When small copy sits on roots, prefer `.rf-lede-over-atmosphere` (Nunito 600 + `--rf-ink-muted`) before frosting or further dimming art. One watermark per surface. Never treat illustrations as logos or links.
 - Prefer SVG for on-screen marks; PNG profile/square exports for host uploads that require raster
 
@@ -732,7 +783,7 @@ Implement with these behaviors. Class names in this repo: `.btn`, `.input`, `.te
 - Don't use purple gradients, indigo glow, cool gray glass, or “AI slop” aesthetic defaults
 - Don't use Inter, Roboto, Arial, or comic display fonts
 - Don't make orange a theme color or page background
-- Don't put more than one `.btn--primary` per view. A `.btn--cta` on a dark band spends the page's orange, so the closing job does not get a second accent.
+- Don't put more than one `.btn--primary` per view, except a stack of `.rf-offer` cards, which each carry `.btn--primary.btn--sm`. A `.btn--cta` on a dark band spends the page's orange, so the closing job does not get a second accent.
 - Don't use pure black (`#000`) or pure white as the default page wash
 - Don't invent new hex values when a token exists
 - Don't use illustrations as logos, or logos as decorative watermarks at full opacity
@@ -750,7 +801,9 @@ Implement with these behaviors. Class names in this repo: `.btn`, `.input`, `.te
 - Don't invent a second takeaways pattern (cards, checkmarks, emoji numbers)
 - Don't introduce an `xs` size or any readable text below `sm` (16px)
 - Don't invent parallel layout utilities when `.rf-stack`, `.rf-center`, or `.rf-cluster` already fit
-- Don't invent a ninth page job and don't auto-fit proof or stats into a leftover tile (three items, three tracks; five items, five tracks)
+- Don't invent a ninth page job and don't auto-fit proof or stats into a leftover tile (three items, three tracks; five items, five tracks). A case study uses facts, steps, a three-stat row, a photo cluster, people, and a logo row inside the existing jobs
+- Don't restyle `.rf-steps` as key takeaways. Orange numbers and the left rule stay on `.rf-takeaways`
+- Don't draw a fourth number into `.rf-stats`
 - Don't set paragraph measure in `px`; use `--rf-measure` (`ch`)
 - Don't nest `--rf-measure` on prose inside a wider tool surface; use `--rf-content-max` for the shared column instead
 - Don't hide primary next actions inside `.rf-disclosure`
@@ -765,6 +818,6 @@ When generating or editing UI for Roots & Fruit:
 2. Prefer token names and `{colors.*}` references over raw hex in reasoning; emit CSS variables `--rf-*` when editing this repo’s brand CSS.
 3. If a request conflicts with Do's and Don'ts, follow this file and note the conflict briefly.
 4. Validate text/background pairs against WCAG AA for body copy.
-5. After UI changes, self-check: cream paper present? Knile on titles? One `.btn--primary` per view? No purple/gray-glass drift? No extra orange?
+5. After UI changes, self-check: cream paper present? Knile on titles? One `.btn--primary` per view, or one `.btn--primary.btn--sm` on each `.rf-offer`? No purple/gray-glass drift? No extra orange?
 6. For brand marks and illustrations, use files under `logos/` and `illustrations/`; do not regenerate lookalikes.
-7. Dark mode stays out of scope. Dialog, toast, tooltip, and folder tabs are specified in this file. Anything still unnamed stays out of scope until it is added here. Improvise with existing tokens and keep the same constraints.
+7. Dark mode stays out of scope. Dialog, toast, tooltip, folder tabs, facts, steps, the stat row, people, the photo cluster, the logo row, glyphs, and the subscribe form are specified in this file. Anything still unnamed stays out of scope until it is added here. Improvise with existing tokens and keep the same constraints.
