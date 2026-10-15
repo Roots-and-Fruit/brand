@@ -148,6 +148,8 @@ a:hover {
   color: var(--rf-green-deep);
 }
 
+/* Never remove focus affordances. Restyle them instead.
+   Lives here, not brand.css, because the WordPress compiler copies this file. */
 :focus-visible {
   outline: none;
   box-shadow: var(--rf-focus);
@@ -1442,6 +1444,14 @@ img.rf-avatar {
   padding: var(--rf-space-5) var(--rf-space-7);
   background: var(--rf-green-soft);
   color: var(--rf-brown);
+}
+
+.rf-offer__band a {
+  color: var(--rf-brown);
+}
+
+.rf-offer__band a:hover {
+  color: var(--rf-ink-deep);
 }
 
 .rf-offer__portrait {

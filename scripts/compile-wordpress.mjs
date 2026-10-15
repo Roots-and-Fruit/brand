@@ -20,6 +20,8 @@
 import { copyFileSync, cpSync, existsSync, mkdirSync, readdirSync, readFileSync, unlinkSync, writeFileSync } from "node:fs";
 import { dirname, join } from "node:path";
 import { fileURLToPath } from "node:url";
+import { missingAltInKit } from "./a11y-source.mjs";
+import { checkPairs, PROMISED_PAIRS } from "./contrast.mjs";
 import {
   parseCdsTokens,
   parseDesignMdFrontMatter,
@@ -964,6 +966,16 @@ function validate(theme, registry) {
   if (theme.settings.typography.fluid !== false) {
     errors.push("typography.fluid must be false");
   }
+  const palette = {};
+  for (const item of theme.settings.color.palette) {
+    palette[item.slug] = item.color;
+  }
+  for (const token of registry) {
+    if (token.id === "rf/on-primary") palette["on-primary"] = token.default;
+    if (token.id === "rf/on-accent") palette["on-accent"] = token.default;
+    if (token.id === "rf/on-dark") palette["on-dark"] = token.default;
+  }
+  errors.push(...checkPairs(palette, PROMISED_PAIRS));
   if (errors.length) {
     throw new Error(`compile-wordpress checks failed:\n- ${errors.join("\n- ")}`);
   }
@@ -2242,6 +2254,7 @@ function validateChromeParts() {
   for (const needle of [".site-header", "6.7rem", ".site-footer", "--rf-green-logo", ".page-hero"]) {
     if (!chrome.includes(needle)) errors.push(`site-chrome.css missing ${needle}`);
   }
+  errors.push(...missingAltInKit(root));
   if (errors.length) {
     throw new Error(`compile-wordpress chrome checks failed:\n- ${errors.join("\n- ")}`);
   }

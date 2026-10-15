@@ -1,6 +1,6 @@
 {
   "name": "roots-and-fruit-brand",
-  "version": "2.0.0",
+  "version": "2.1.0",
   "private": true,
   "description": "Roots & Fruit design system. Published at brand.rootsandfruit.com.",
   "scripts": {
@@ -8,14 +8,16 @@
     "verify:wordpress": "node scripts/verify-wordpress.mjs",
     "sync:design-md": "powershell.exe -NoProfile -ExecutionPolicy Bypass -File sync-design-md-embed.ps1",
     "sync:theme": "node scripts/sync-theme.mjs",
+    "test:a11y": "node --test scripts/contrast.test.mjs scripts/a11y-source.test.mjs",
     "test:wp": "playwright test",
-"test:wp:smoke": "node scripts/test-wp-smoke.mjs",
-"setup:wp": "node scripts/setup-rf-site.mjs"
+    "test:wp:smoke": "node scripts/test-wp-smoke.mjs",
+    "setup:wp": "node scripts/setup-rf-site.mjs"
   },
   "engines": {
     "node": ">=18"
   },
   "devDependencies": {
+    "@axe-core/playwright": "^4.13.0",
     "@playwright/test": "^1.63.0",
     "@wordpress/e2e-test-utils-playwright": "^2.0.0"
   }

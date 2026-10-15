@@ -364,7 +364,8 @@ Rules:
 - Default stack: `neutral` background + `ink` / `ink-deep` text + `primary` for interaction
 - Marketing surfaces usually omit `info` blue; product UI may use it for nav and info alerts
 - Never promote `tertiary` (orange) into a second brand theme or large background fills
-- Before shipping text-on-color pairs, require WCAG AA (4.5:1) for body text; AA large (3:1) only for Knile headings / big stats
+- Before shipping text-on-color pairs, require WCAG AA (4.5:1) for body text; AA large (3:1) only for Knile headings / big stats. The compile gate is the promised pairs in `scripts/contrast.mjs` (body size, 4.5:1): `on-primary` on `primary` and `primary-deep`, `on-tertiary` on `tertiary` (theme slug `on-accent` on `accent`), `on-dark` on `surface-dark`, `ink` on `neutral` (theme slug `paper`), `surface`, and `primary-soft`, `primary-deep` on `primary-soft`, and muted ink (`secondary`, theme slug `ink-muted`) on `neutral`, `neutral-deep`, `surface`, and `panel`. The Color page matrix is the picture of every pair, including pairs that should fail. It is not the gate. Button labels need AA, not AA large. Include hover (`primary-deep` + `on-primary`)
+- Every `img` in the theme patterns, templates, and parts has an `alt` attribute. Empty `alt` means decorative. An informative photo gets a description. Do not leave the attribute off. The compile scans those files
 - Safe defaults: `ink` or `ink-deep` on `neutral`, `neutral-deep`, `surface`, `panel`, `primary-soft`; `on-primary` on `primary` / `primary-deep`; `on-tertiary` (`ink-deep`) on `tertiary` for CTA fills — never white on orange
 - **Text on dark green** (`primary-deep` / `surface-dark` / `--rf-green-deep`): only `on-dark` (white), `neutral` (cream), `info-soft` (soft blue), or `tertiary-soft` (soft orange). Solid `tertiary` orange and solid `info` blue **fail** contrast on dark green — do not use them for labels, eyebrows, or body on moss-deep heroes. Mid `primary` green is stricter: soft blue / soft orange clear AA large only (headings/stats), not body copy.
 
@@ -549,7 +550,7 @@ Buttons are pills by default. Do not mix sharp 0-radius chrome with pill buttons
 
 Chart / meta accents (shared with presentations): `--rf-orange-deep` for meta text; `--rf-chart-1`…`--rf-chart-4` (green-deep · orange · blue · brown) for multi-series charts. Do not build segments from adjacent soft greens. HTML report bar geometry (single series vs paired dual-metric rows; never two series on one baseline) is owned by the `rf-html-report` skill, not by these tokens.
 
-Focus ring: soft green halo (`0 0 0 3px` color-mix of primary at ~35% opacity). Never remove focus styles.
+Focus ring: soft green halo (`0 0 0 3px` color-mix of primary at ~35% opacity). The rule lives in `css/components.css`, because the theme copies that file. Never remove it, and do not leave it only in `css/brand.css` or `css/docs.css`.
 
 ## Components
 
@@ -651,7 +652,7 @@ Implement with these behaviors. Class names in this repo: `.btn`, `.input`, `.te
 
 **Service offer** (`.rf-offer`)
 - One engagement, the full width of the column, stacked with the next offer. Not a three-up grid. Not `.rf-card`, and not `.rf-quote`.
-- Two regions. The header is an eyebrow, a Knile title, a lede, and a bullet list, with the price, a cadence line, and `.btn--primary.btn--sm` in a second column (`--rf-space-6` gap). The footer is a quote band on `--rf-green-soft`: a 4.5rem circular portrait, an italic 16px quotation, a bold name, the role, and an optional source link. The band stays that light green on every fill, so the quotation never sits on the moss body.
+- Two regions. The header is an eyebrow, a Knile title, a lede, and a bullet list, with the price, a cadence line, and `.btn--primary.btn--sm` in a second column (`--rf-space-6` gap). The footer is a quote band on `--rf-green-soft`: a 4.5rem circular portrait, an italic 16px quotation, a bold name, the role, and an optional source link. The source link uses the band's brown, the same color as the byline, so it stays readable on that light green. The band stays that light green on every fill, so the quotation never sits on the moss body.
 - Three fills. White is the default and uses the 4px `--rf-cream-deep` square edge. `.rf-offer--panel` is beige (`--rf-panel`). `.rf-offer--dark` is dark moss (`--rf-surface-dark`). Beige and moss take the surface rule: the edge is the fill, one step darker, and it keeps the fill's hue. Square corners. No shadow.
 - The eyebrow contrasts with the fill. Beige chip and brown text on white and on moss. Moss chip and white text on beige. The label is uppercase at the same 14px control size as `.btn--sm`. That is not a new type step.
 - On white and beige, the title and the price are Knile in `--rf-green-logo`. The title is `--rf-text-xl`. The lede, the list, and the price are `--rf-text-lg`. The cadence line is `--rf-text-sm`.
@@ -773,7 +774,7 @@ Implement with these behaviors. Class names in this repo: `.btn`, `.input`, `.te
 - Start from cream (`neutral`) + ink + moss (`primary`)
 - Use Knile for titles and Nunito Sans for reading/UI
 - Keep orange (`tertiary`) rare and singular
-- Check contrast for body text (AA) before shipping
+- The compile gate in `scripts/contrast.mjs` checks the promised body pairs at 4.5:1. The Color page matrix is the picture
 - Use the spacing and radius scales exactly
 - Keep sections simple: one purpose, clear hierarchy
 - Compose marketing pages from the page jobs; mixed hero / CTA copy lives in `.rf-copy`, not a bare `.rf-stack`
@@ -790,7 +791,7 @@ Implement with these behaviors. Class names in this repo: `.btn`, `.input`, `.te
 - Don't substitute `*_Flat_Color_*` or flat mono wordmarks when “full logo” / default brand mark is requested — use `R&F_Logo.svg` (light) or `R&F_Logo_DarkBG.svg` (dark)
 - Don't add drop shadows, outlines, recolors, or stretch transforms to official logo files
 - Don't build dense marketing heroes with stats, chip rows, and multiple competing CTAs
-- Don't remove focus indicators
+- Don't remove focus indicators. The ring rule stays in `css/components.css`
 - Don't use blue (`info` / `button-product`) as a marketing accent or site-wide primary; reserve it for product/info UI
 - Don't mix a moss primary and a filled product button as competing “main” actions in the same cluster
 - Don't create a dark-mode palette unless explicitly asked (light cream system is default)
@@ -817,7 +818,7 @@ When generating or editing UI for Roots & Fruit:
 1. Read this file before choosing colors, type, radius, or components.
 2. Prefer token names and `{colors.*}` references over raw hex in reasoning; emit CSS variables `--rf-*` when editing this repo’s brand CSS.
 3. If a request conflicts with Do's and Don'ts, follow this file and note the conflict briefly.
-4. Validate text/background pairs against WCAG AA for body copy.
+4. The compile fails when a promised pair in `scripts/contrast.mjs` is under 4.5:1, or when a theme image has no `alt`. The Color page matrix is the picture. Validate body text against WCAG AA.
 5. After UI changes, self-check: cream paper present? Knile on titles? One `.btn--primary` per view, or one `.btn--primary.btn--sm` on each `.rf-offer`? No purple/gray-glass drift? No extra orange?
 6. For brand marks and illustrations, use files under `logos/` and `illustrations/`; do not regenerate lookalikes.
 7. Dark mode stays out of scope. Dialog, toast, tooltip, folder tabs, facts, steps, the stat row, people, the photo cluster, the logo row, glyphs, and the subscribe form are specified in this file. Anything still unnamed stays out of scope until it is added here. Improvise with existing tokens and keep the same constraints.

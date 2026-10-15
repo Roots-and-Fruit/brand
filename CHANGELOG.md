@@ -7,6 +7,17 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 
 ## [Unreleased]
 
+## [2.1.0] - 2026-10-15
+
+### Added
+
+- The WordPress compile fails when a promised body-text pair is under 4.5:1, or when a theme image has no alt. The Color page matrix stays the picture of every pair.
+- A Playwright check runs axe for WCAG 2 A and AA on the home, articles, and services pages when the Studio probe is up.
+
+### Fixed
+
+- The source link on a service offer uses the band's brown. Mid moss on the light green band was 4.14:1.
+
 ## [2.0.0] - 2026-10-15
 
 ### Added
@@ -53,6 +64,7 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 - A page gets one moss primary button. An orange button on a dark band uses the page's orange, so the closing section does not get a second orange button.
 - The color guide lists the CSS variable beside each color name. Soft orange is `--rf-orange-soft`.
 
-[Unreleased]: https://github.com/Roots-and-Fruit/brand/compare/v2.0.0...HEAD
+[Unreleased]: https://github.com/Roots-and-Fruit/brand/compare/v2.1.0...HEAD
+[2.1.0]: https://github.com/Roots-and-Fruit/brand/compare/v2.0.0...v2.1.0
 [2.0.0]: https://github.com/Roots-and-Fruit/brand/compare/v1.0.0...v2.0.0
 [1.0.0]: https://github.com/Roots-and-Fruit/brand/releases/tag/v1.0.0

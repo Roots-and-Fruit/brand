@@ -62,4 +62,4 @@ See `WORDPRESS-GENERATION-CHECKLIST.md` for the evidence required.
 
 ## Validation status
 
-The compiler currently validates the generated palette, custom-token registry, typography, and Site Identity chrome. `npm run test:wp` requires a reachable WordPress probe and is not run automatically unless one is available.
+The compiler validates the generated palette, the promised body-text contrast pairs, an `alt` on every theme image, the custom-token registry, typography, and Site Identity chrome. `npm run test:wp` requires a reachable WordPress probe and is not run automatically unless one is available. That run includes an axe check for WCAG 2 A and AA on `/`, `/articles/`, and `/services/`.
