@@ -2330,6 +2330,17 @@ function main() {
     console.log(`  copied products/${file} → wordpress/rf/assets/products/${file}`);
   }
 
+  const fontsSrc = join(root, "assets", "fonts");
+  const fontsDest = join(root, "wordpress/rf/assets/fonts");
+  if (existsSync(fontsSrc)) {
+    mkdirSync(fontsDest, { recursive: true });
+    for (const file of readdirSync(fontsSrc)) {
+      if (!/\.(woff2?|ttf|otf|eot)$/i.test(file)) continue;
+      copyFileSync(join(fontsSrc, file), join(fontsDest, file));
+      console.log(`  copied assets/fonts/${file} → wordpress/rf/assets/fonts/${file}`);
+    }
+  }
+
   const logoDir = join(root, "assets", "logos");
   mkdirSync(join(root, "wordpress/rf/assets/logos"), { recursive: true });
   for (const file of ["R&F_Logo.svg", "R&F_Logo_DarkBG.svg"]) {

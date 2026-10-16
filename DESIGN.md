@@ -374,8 +374,8 @@ Green scale (`green-1` … `green-6`) is for charts, illustrations, and progress
 ## Typography
 
 Three families only:
-- **Knile** (serif): display, titles, section headers, accent subheads. Tracking `--rf-tracking-display` (`-0.02em`). Upright weights 400 / 600 / 700 only (WOFF2s hosted on rootsandfruit.com; see `css/fonts.css`). **No italic faces** — do not synthesize Knile italic.
-- **Nunito Sans** (sans): body, UI labels, tables, forms, meta. High x-height: body leading `1.65`. Weights 400 / 600 / 700, each with a true italic. Host the latin variable-weight files (`nunito-sans-latin-wght-normal.woff2` + italic) on rootsandfruit.com next to Knile; load from `css/fonts.css`. Do not load Google Fonts.
+- **Knile** (serif): display, titles, section headers, accent subheads. Tracking `--rf-tracking-display` (`-0.02em`). Upright weights 400 / 600 / 700 only (WOFF2s stored in `assets/fonts/`; see `css/fonts.css`). **No italic faces** — do not synthesize Knile italic.
+- **Nunito Sans** (sans): body, UI labels, tables, forms, meta. High x-height: body leading `1.65`. Weights 400 / 600 / 700, each with a true italic. Variable font files (`nunito-sans-latin-wght-normal.woff2` + italic) stored in `assets/fonts/`; loaded from `css/fonts.css`. Do not load Google Fonts.
 - **JetBrains Mono** (or system mono stack): code only. Never use mono for marketing body copy.
 
 Size scale (CSS `--rf-text-*`; **no `xs`**):
@@ -809,7 +809,7 @@ Implement with these behaviors. Class names in this repo: `.btn`, `.input`, `.te
 - Don't nest `--rf-measure` on prose inside a wider tool surface; use `--rf-content-max` for the shared column instead
 - Don't hide primary next actions inside `.rf-disclosure`
 - Don't fake Knile italic or add font weights outside 400 / 600 / 700
-- Don't commit Knile or Nunito WOFF/WOFF2 binaries to any public GitHub repo (`brand`, `slides`, or forks). Host them only on rootsandfruit.com (`/wp-content/uploads/rnf_assets/fonts/`); load via absolute URL in `css/fonts.css`. Offline/file opens may fall back to Georgia / system-ui.
+- Store Knile and Nunito WOFF2 font files in `assets/fonts/` within this repo. Each project maintains its own copy with relative paths in `css/fonts.css`. Do not reference fonts hosted on another site or project.
 
 ## Agent directives
 

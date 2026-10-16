@@ -2886,8 +2886,8 @@ Green scale (`green-1` … `green-6`) is for charts, illustrations, and progress
 ## Typography
 
 Three families only:
-- **Knile** (serif): display, titles, section headers, accent subheads. Tracking `--rf-tracking-display` (`-0.02em`). Upright weights 400 / 600 / 700 only (WOFF2s hosted on rootsandfruit.com; see `css/fonts.css`). **No italic faces** — do not synthesize Knile italic.
-- **Nunito Sans** (sans): body, UI labels, tables, forms, meta. High x-height: body leading `1.65`. Weights 400 / 600 / 700, each with a true italic. Host the latin variable-weight files (`nunito-sans-latin-wght-normal.woff2` + italic) on rootsandfruit.com next to Knile; load from `css/fonts.css`. Do not load Google Fonts.
+- **Knile** (serif): display, titles, section headers, accent subheads. Tracking `--rf-tracking-display` (`-0.02em`). Upright weights 400 / 600 / 700 only (WOFF2s stored in `assets/fonts/`; see `css/fonts.css`). **No italic faces** — do not synthesize Knile italic.
+- **Nunito Sans** (sans): body, UI labels, tables, forms, meta. High x-height: body leading `1.65`. Weights 400 / 600 / 700, each with a true italic. Variable font files (`nunito-sans-latin-wght-normal.woff2` + italic) stored in `assets/fonts/`; loaded from `css/fonts.css`. Do not load Google Fonts.
 - **JetBrains Mono** (or system mono stack): code only. Never use mono for marketing body copy.
 
 Size scale (CSS `--rf-text-*`; **no `xs`**):
@@ -2972,7 +2972,7 @@ Principles drawn from *Every Layout* (Pickering &amp; Bell): clarity and stabili
 - **Tool / product columns:** dashboards and task UIs (Phloem, plugin chrome) use a shared content shell `--rf-content-max` (`52rem`) so title, chrome, and body share one right edge. Do **not** nest `--rf-measure` on paragraphs inside a wider surface of the same component (that pinches copy next to full-width cards). Prefer shell-led width for tools; keep `ch` measure for article and report prose.
 - **Suggestion over prescription:** prefer `max-inline-size`, `min-block-size`, `gap`, and `flex-basis` over fixed `width`/`height`. Avoid data loss from overflow.
 - **One space ratio:** `--rf-ratio` (`1.5`) seeds modular space from `1rem` (`spacing.4` / s0). Larger steps (`5`–`8`) multiply by the ratio. Fine UI steps `1`–`3` stay below s0 for chrome only.
-- **Boxes:** global `border-box`; logical properties (`margin-block`, `padding-inline`, `max-inline-size`); reading columns may use `content-box` so `ch` measures text, not padding. See also [Every Layout &#183; Boxes](https://every-layout.dev/rudiments/boxes/).
+- **Boxes:** global `border-box`; logical properties (`margin-block`, `padding-inline`, `max-inline-size`); reading columns may use `content-box` so `ch` measures text, not padding. See also [Every Layout · Boxes](https://every-layout.dev/rudiments/boxes/).
 
 ### Primitives (`css/layouts.css`)
 
@@ -2985,7 +2985,7 @@ Principles drawn from *Every Layout* (Pickering &amp; Bell): clarity and stabili
 | `.rf-byline` | Credit line under a title inside `.rf-copy`. Tucks at `spacing.2`. The lede after it takes `spacing.6`. |
 | `.rf-box` | Even inset on all sides (`spacing.6`); paint (surface variants) sits on this. |
 | `.rf-grid` | Auto-fitting tiles that wrap at `--rf-grid-min`, no media query. Variants `--tight`, `--center`. |
-| `.rf-grid--two` / `--three` | Named even tracks for pairs / triples / 2&#215;2 rows. |
+| `.rf-grid--two` / `--three` | Named even tracks for pairs / triples / 2×2 rows. |
 | `.rf-grid--sym` | Symmetric rows of three for odd counts: every row centers, so 5 → 3+2 and 7 → 3+3+1 with the remainder centered. |
 | `.rf-grid--five` | Five even tracks (proof stats). Named exception; stacks to one column when the row cannot hold five. |
 | `.rf-split` | Switcher: two equal tracks that wrap at `--rf-split-min`. |
@@ -3002,7 +3002,7 @@ Principles drawn from *Every Layout* (Pickering &amp; Bell): clarity and stabili
 | `.rf-prose` | Long-form type + measure. Direct children share `--rf-space-5`. A following heading uses `--rf-space-6`. |
 | `.rf-prose--wide` | Report long-form: `--rf-measure-report` (`64ch`) + `body-lg`. Wider measured column for analytical HTML reports; not the default for marketing articles. |
 
-**Grid symmetry (contract):** a grid never strands a leftover tile. Pick tracks that fit the count: 2 items → `--two`; 3 → `--three` (or auto-fit `.rf-grid`); 4 → `--two` (2&#215;2) or four across; 5 → `--sym` (3+2 centered) or `--five` across; 6 → two rows of `--three`; 7 → `--sym` (3+3+1, the one centered). If a count fights the layout, change the count or the tracks — do not ship an asymmetric row.
+**Grid symmetry (contract):** a grid never strands a leftover tile. Pick tracks that fit the count: 2 items → `--two`; 3 → `--three` (or auto-fit `.rf-grid`); 4 → `--two` (2×2) or four across; 5 → `--sym` (3+2 centered) or `--five` across; 6 → two rows of `--three`; 7 → `--sym` (3+3+1, the one centered). If a count fights the layout, change the count or the tracks — do not ship an asymmetric row.
 
 Shell / product chrome may still use grids and sidebars (this docs page’s `.ds-shell` is a sidebar composition). Prefer Stack + Center for article-like content.
 
@@ -3060,7 +3060,7 @@ Corner radii:
 
 Buttons are pills by default. Do not mix sharp 0-radius chrome with pill buttons in the same view unless documenting a deliberate exception.
 
-Chart / meta accents (shared with presentations): `--rf-orange-deep` for meta text; `--rf-chart-1`…`--rf-chart-4` (green-deep &#183; orange &#183; blue &#183; brown) for multi-series charts. Do not build segments from adjacent soft greens. HTML report bar geometry (single series vs paired dual-metric rows; never two series on one baseline) is owned by the `rf-html-report` skill, not by these tokens.
+Chart / meta accents (shared with presentations): `--rf-orange-deep` for meta text; `--rf-chart-1`…`--rf-chart-4` (green-deep · orange · blue · brown) for multi-series charts. Do not build segments from adjacent soft greens. HTML report bar geometry (single series vs paired dual-metric rows; never two series on one baseline) is owned by the `rf-html-report` skill, not by these tokens.
 
 Focus ring: soft green halo (`0 0 0 3px` color-mix of primary at ~35% opacity). The rule lives in `css/components.css`, because the theme copies that file. Never remove it, and do not leave it only in `css/brand.css` or `css/docs.css`.
 
@@ -3259,7 +3259,7 @@ Implement with these behaviors. Class names in this repo: `.btn`, `.input`, `.te
 **Disclosure** (`.rf-disclosure` in `css/disclosure.css`)
 - One expandable section via native `&lt;details&gt;` / `&lt;summary&gt;` (a11y name: disclosure). Prefer this over custom accordion JS for a single panel.
 - Closed: bordered white box, meta-style uppercase label, arrow pointing right
-- Open: cream panel with generous padding; the arrow rotates 90&#176; to point down
+- Open: cream panel with generous padding; the arrow rotates 90° to point down
 - Summary label uses meta tracking; slight size nudge on hover / open is allowed
 - The arrow is inline SVG (`.rf-disclosure__arrow`), not an image URL. Light half is `--rf-green-1`, lower half is `--rf-green-2`, outline is `--rf-brown`. It points right at rest.
 - Use for secondary background (context, sources, footnotes) that should stay out of the way. Do not hide the primary action or completion test behind a disclosure.
@@ -3276,7 +3276,7 @@ Implement with these behaviors. Class names in this repo: `.btn`, `.input`, `.te
 **Presentations (PDS layer on CDS)**
 - One design system: CDS owns tokens here; the presentation layer (`/rf-reveal`) owns Pitch layouts and reveal.js chrome
 - PDS vendors `css/tokens.css` via `sync-cds-tokens.ps1` (`cds-tokens.css`); do not invent parallel hex, opacities, or lede weights in the deck
-- Presentations pick a PDS **layout id** first, then compose elements from this package (surfaces, quiet `rf-table`, buttons/pills, `code` / `.inline-label`, `.rf-code`). Element-kit gallery slides are operator QA only — not client layout ids (`/rf-reveal` &#183; `company-docs/03-Marketing/social/pds/REFERENCE.md`). Vertical social: open `company-docs/03-Marketing/social/AGENTS.md` &#183; templates `…/social/templates/` &#183; forks `…/social/presentations/` &#183; `/rf-shorts-li` &#183; `/rf-shorts-yt`
+- Presentations pick a PDS **layout id** first, then compose elements from this package (surfaces, quiet `rf-table`, buttons/pills, `code` / `.inline-label`, `.rf-code`). Element-kit gallery slides are operator QA only — not client layout ids (`/rf-reveal` · `company-docs/03-Marketing/social/pds/REFERENCE.md`). Vertical social: open `company-docs/03-Marketing/social/AGENTS.md` · templates `…/social/templates/` · forks `…/social/presentations/` · `/rf-shorts-li` · `/rf-shorts-yt`
 - Same color/type language; more whitespace; fixed slide canvas is fine
 - One atmosphere treatment per slide; do not stack watermarks
 
@@ -3321,7 +3321,7 @@ Implement with these behaviors. Class names in this repo: `.btn`, `.input`, `.te
 - Don&#39;t nest `--rf-measure` on prose inside a wider tool surface; use `--rf-content-max` for the shared column instead
 - Don&#39;t hide primary next actions inside `.rf-disclosure`
 - Don&#39;t fake Knile italic or add font weights outside 400 / 600 / 700
-- Don&#39;t commit Knile or Nunito WOFF/WOFF2 binaries to any public GitHub repo (`brand`, `slides`, or forks). Host them only on rootsandfruit.com (`/wp-content/uploads/rnf_assets/fonts/`); load via absolute URL in `css/fonts.css`. Offline/file opens may fall back to Georgia / system-ui.
+- Store Knile and Nunito WOFF2 font files in `assets/fonts/` within this repo. Each project maintains its own copy with relative paths in `css/fonts.css`. Do not reference fonts hosted on another site or project.
 
 ## Agent directives
 

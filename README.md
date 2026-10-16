@@ -39,13 +39,13 @@ This folder is what [brand.rootsandfruit.com](https://brand.rootsandfruit.com) p
 
 ## Fonts
 
-Knile and Nunito Sans WOFF2 files are **not** stored in this repository. `css/fonts.css` loads them from the marketing site:
+Knile and Nunito Sans WOFF2 files are stored in `assets/fonts/` within this repository. `css/fonts.css` loads them with relative paths.
 
-`https://rootsandfruit.com/wp-content/uploads/rnf_assets/fonts/`
+Required font files:
+- `knile-regular-webfont.woff2`, `knile-semibold-webfont.woff2`, `knile-bold-webfont.woff2`
+- `nunito-sans-latin-wght-normal.woff2`, `nunito-sans-latin-wght-italic.woff2` (variable weight, latin only)
 
-Knile: `knile-*-webfont.woff2`. Nunito: `nunito-sans-latin-wght-{normal,italic}.woff2` (variable weight, latin only).
-
-That path must allow CORS (Cloudflare response header on `/wp-content/uploads/rnf_assets/fonts/`).
+Each project stores its own copy of the font files. No cross-project or hosted dependencies.
 
 ## WordPress projection
 
@@ -53,4 +53,4 @@ See `WORDPRESS.md`. The generated block theme is `wordpress/rf/`; source files a
 
 ## License
 
-Brand marks and Knile webfonts are licensed for Roots & Fruit web use. Knile binaries live only on rootsandfruit.com (and other R&F-controlled hosts), not in this public GitHub tree.
+Brand marks and Knile webfonts are licensed for Roots & Fruit web use.

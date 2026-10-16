@@ -338,14 +338,6 @@
   margin-block-start: var(--rf-space-6);
 }
 
-.page-hero::before {
-  content: "";
-  position: absolute;
-  inset: 0;
-  background: url("../illustrations/roots-1.svg") no-repeat 75% 100% / 600px auto;
-  opacity: 0.1;
-  pointer-events: none;
-}
 
 .page-hero--about::before {
   background: url("../illustrations/apples-1.svg") no-repeat 0% 100% / 28rem auto;
@@ -491,30 +483,6 @@ img.case-study__mark {
   background-color: var(--rf-panel);
 }
 
-.services-close::before {
-  content: "";
-  position: absolute;
-  z-index: 0;
-  top: 50%;
-  right: max(1rem, calc((100% - 1200px) / 2));
-  width: 18rem;
-  aspect-ratio: 623 / 386;
-  transform: translateY(-50%);
-  background: url("../illustrations/apples-1.svg") no-repeat center / contain;
-  opacity: var(--rf-atmosphere-spot);
-  pointer-events: none;
-}
-
-.services-close > * {
-  position: relative;
-  z-index: 1;
-}
-
-@media (max-width: 50rem) {
-  .services-close::before {
-    width: min(14rem, 42%);
-  }
-}
 
 .services-close .wp-block-button__link {
   background: var(--rf-orange);

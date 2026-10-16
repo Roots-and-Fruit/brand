@@ -140,6 +140,17 @@ body {
   max-inline-size: none;
 }
 
+/* Mobile overflow fixes: tables and long URLs */
+.rf-prose > table {
+  display: block;
+  max-width: 100%;
+  overflow-x: auto;
+}
+
+.rf-prose a {
+  overflow-wrap: anywhere;
+}
+
 a {
   color: var(--rf-green);
 }
