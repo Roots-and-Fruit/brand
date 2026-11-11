@@ -3,7 +3,7 @@
    The mark is an inline arrow that points right. Open rotates it 90° so it points down. */
 
 .rf-disclosure {
-  --rf-disclosure-label: 0.8rem;
+  --rf-disclosure-label: var(--rf-text-sm);
   --rf-disclosure-leaf: 1rem;
   --rf-disclosure-motion: 0.28s ease;
   margin-block: var(--rf-space-5) 0;
@@ -36,7 +36,7 @@
 .rf-disclosure__summary:hover,
 .rf-disclosure__summary:focus-visible,
 .rf-disclosure[open] > .rf-disclosure__summary {
-  --rf-disclosure-label: 0.9rem;
+  --rf-disclosure-label: var(--rf-text-sm);
   --rf-disclosure-leaf: 1.1rem;
 }
 

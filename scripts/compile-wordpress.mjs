@@ -30,10 +30,16 @@ import {
 } from "./lib/parse-yaml-map.mjs";
 import {
   articleHeroCopy,
+  authorBioBlocks,
+  authorBioPattern,
   bookOpen,
   factsPattern,
   iconCardPattern,
+  numberedCardPattern,
+  outlineIconCardPattern,
+  showcaseCardPattern,
   iconListPattern,
+  outlineIconListPattern,
   logoRowPattern,
   offer,
   pageHero,
@@ -44,6 +50,7 @@ import {
   stepsPattern,
   subscribeForm,
   subscribePattern,
+  dialoguePattern,
 } from "./block-snippets.mjs";
 import { marketingPages } from "./page-blocks.mjs";
 
@@ -929,6 +936,8 @@ function buildThemeJson({ design, tokens, customValues }) {
     templateParts: [
       { name: "header", title: "Header", area: "header" },
       { name: "footer", title: "Footer", area: "footer" },
+      { name: "book", title: "Discovery call", area: "uncategorized" },
+      { name: "author-bio", title: "Author bio", area: "uncategorized" },
       { name: "sidebar-post", title: "Post rail", area: "uncategorized" },
     ],
   };
@@ -988,22 +997,11 @@ function writeText(rel, text) {
   console.log(`  wrote ${rel}`);
 }
 
-function copyHugoIllustrations() {
-  const from = join(
-    root,
-    "..",
-    "..",
-    "..",
-    "..",
-    "Studio",
-    "wiremd-projects",
-    "hugo",
-    "static",
-    "illustrations",
-  );
+function copyKitIllustrations() {
+  const from = join(root, "illustrations");
   const dest = join(root, "wordpress/rf/assets/illustrations");
   if (!existsSync(from)) {
-    console.log("  illustrations not found next to the Hugo site; hero art skipped");
+    console.log("  kit illustrations folder missing; hero art skipped");
     return false;
   }
   mkdirSync(dest, { recursive: true });
@@ -1034,13 +1032,12 @@ function siteChromeCss(hasArt) {
   content: "";
   position: absolute;
   z-index: 0;
-  top: 50%;
-  right: max(1rem, calc((100% - 1200px) / 2));
-  width: 18rem;
+  bottom: -2.25rem;
+  left: max(32rem, calc(50% - 4rem));
+  width: 17.5rem;
   aspect-ratio: 623 / 386;
-  transform: translateY(-50%);
   background: url("../illustrations/apples-1.svg") no-repeat center / contain;
-  opacity: var(--rf-atmosphere-spot);
+  opacity: 0.14;
   pointer-events: none;
 }
 
@@ -1049,9 +1046,14 @@ function siteChromeCss(hasArt) {
   z-index: 1;
 }
 
-@media (max-width: 50rem) {
+@media (max-width: 64rem) {
   .services-close::before {
+    left: auto;
+    right: -1.5rem;
+    top: 1rem;
+    bottom: auto;
     width: min(14rem, 42%);
+    opacity: 0.11;
   }
 }`
     : "";
@@ -1285,6 +1287,13 @@ function siteChromeCss(hasArt) {
   margin-inline: auto;
 }
 
+/* The constrained-column rule pins this child to the left below 1200px,
+   which leaves the hero flush while the article list stays inset. */
+.page-hero--articles .article-wide {
+  margin-left: auto !important;
+  margin-right: auto !important;
+}
+
 .page-hero--articles .wp-block-query-title {
   max-inline-size: 36.7rem;
   margin-inline: 0;
@@ -1351,6 +1360,727 @@ function siteChromeCss(hasArt) {
 .articles-list .wp-block-post-excerpt {
   margin-block-start: var(--rf-space-4);
   max-inline-size: 42rem;
+}
+
+.articles-list .wp-block-post-content.rf-prose {
+  margin-block-start: var(--rf-space-4);
+  max-inline-size: 52.5rem;
+}
+
+/* Articles archive (templates/home.html): split hero, topic filter bar,
+   logo-olive lead spotlight, and scannable editorial essay cards. */
+.page-hero--essays .page-hero__essays-grid {
+  position: relative;
+  z-index: 1;
+  display: grid;
+  grid-template-columns: minmax(0, 1.25fr) minmax(20rem, 26.5rem);
+  gap: var(--rf-space-6) var(--rf-space-7);
+  align-items: center;
+}
+
+.page-hero--essays .page-hero__essays-grid > * {
+  margin: 0 !important;
+  min-inline-size: 0;
+}
+
+.page-hero--essays .page-hero__kicker {
+  background: var(--rf-surface-dark);
+  color: var(--rf-on-dark);
+}
+
+.page-hero--essays .wp-block-query-title {
+  max-inline-size: none;
+  color: var(--rf-green-logo);
+}
+
+.page-hero--essays .page-hero__essays-copy .rf-lede {
+  max-inline-size: 52ch;
+  color: var(--rf-brown);
+}
+
+.wp-block-group.is-style-rf-surface.page-hero__subscribe {
+  padding: var(--rf-space-5);
+  border-color: var(--rf-panel-deep);
+  background: var(--rf-white);
+}
+
+.page-hero__subscribe > * {
+  margin-block: 0;
+}
+
+.page-hero__subscribe-head {
+  display: flex;
+  align-items: flex-start;
+  gap: var(--rf-space-3);
+  margin-block-end: var(--rf-space-4);
+}
+
+.page-hero__subscribe-icon {
+  flex: none;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  width: 2.5rem;
+  height: 2.5rem;
+  background: var(--rf-green-soft);
+  color: var(--rf-green-deep);
+}
+
+.page-hero__subscribe-icon svg {
+  display: block;
+  width: 1.35rem;
+  height: 1.35rem;
+}
+
+.page-hero__subscribe-head .rf-meta {
+  color: var(--rf-green-deep);
+  margin: 0 0 var(--rf-space-1);
+}
+
+.page-hero__subscribe-lede {
+  margin: 0;
+  font-size: var(--rf-text-sm);
+  line-height: var(--rf-leading-ui);
+  color: var(--rf-ink-muted);
+}
+
+.page-hero__subscribe .page-hero__optin {
+  width: 100%;
+}
+
+.rf-articles-index {
+  padding-block: var(--rf-space-6) var(--rf-space-8);
+}
+
+.rf-articles-index .pill {
+  margin-block: 0;
+}
+
+.rf-articles-index [hidden] {
+  display: none !important;
+}
+
+.rf-articles-toolbar {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+  justify-content: space-between;
+  gap: var(--rf-space-4);
+  padding-block-end: var(--rf-space-5);
+  margin-block-end: var(--rf-space-6);
+  border-block-end: 1px solid var(--rf-rule);
+}
+
+.rf-articles-filters {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+  gap: var(--rf-space-2);
+}
+
+button.rf-filter-pill {
+  font-family: var(--rf-font-sans);
+  font-size: var(--rf-text-sm);
+  font-weight: var(--rf-weight-semibold);
+  letter-spacing: 0;
+  text-transform: none;
+  padding: 0.42rem 0.85rem;
+  gap: 0.45rem;
+  background: var(--rf-white);
+  color: var(--rf-ink);
+  border: 1.5px solid var(--rf-panel-deep);
+  cursor: pointer;
+  transition: background-color 150ms ease, color 150ms ease, border-color 150ms ease;
+}
+
+button.rf-filter-pill:hover {
+  background: var(--rf-green-soft);
+  color: var(--rf-green-deep);
+  border-color: var(--rf-green);
+}
+
+button.rf-filter-pill.is-active,
+button.rf-filter-pill[aria-pressed="true"] {
+  background: var(--rf-green-deep);
+  color: var(--rf-on-dark);
+  border-color: var(--rf-green-deep);
+}
+
+.rf-filter-pill .pill__icon {
+  inline-size: 1rem;
+  block-size: 1rem;
+}
+
+.rf-filter-pill__count {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  min-inline-size: 1.45rem;
+  padding-inline: 0.35rem;
+  border-radius: var(--rf-radius-pill);
+  background: var(--rf-cream-deep);
+  color: var(--rf-ink-muted);
+  font-size: var(--rf-text-sm);
+  font-weight: var(--rf-weight-bold);
+  line-height: 1.25;
+  font-variant-numeric: tabular-nums;
+}
+
+button.rf-filter-pill:hover .rf-filter-pill__count {
+  background: var(--rf-white);
+  color: var(--rf-green-deep);
+}
+
+button.rf-filter-pill.is-active .rf-filter-pill__count,
+button.rf-filter-pill[aria-pressed="true"] .rf-filter-pill__count {
+  background: rgba(255, 255, 255, 0.2);
+  color: var(--rf-on-dark);
+}
+
+.rf-articles-status {
+  margin: 0;
+  font-weight: var(--rf-weight-semibold);
+  color: var(--rf-ink-muted);
+}
+
+/* Lead spotlight: latest essay on logo-olive with right-hand key takeaways. */
+.rf-card.rf-card--lead {
+  position: relative;
+  overflow: hidden;
+  max-inline-size: none;
+  width: 100%;
+  margin: 0 0 var(--rf-space-7);
+  padding: var(--rf-space-6);
+  background: var(--rf-green-logo);
+  color: var(--rf-on-dark);
+  border: 4px solid var(--rf-cream-deep);
+  display: grid;
+  grid-template-columns: minmax(0, 1fr);
+  gap: var(--rf-space-6);
+  align-items: stretch;
+}
+
+.rf-card.rf-card--lead.has-takeaways {
+  grid-template-columns: minmax(0, 1.2fr) minmax(19rem, 0.9fr);
+  gap: var(--rf-space-6) var(--rf-space-7);
+}
+
+.rf-card.rf-card--lead::before {
+  content: "";
+  position: absolute;
+  inset: 0;
+  background: url("../illustrations/roots-1.svg") no-repeat 102% 110% / 26rem auto;
+  opacity: 0.08;
+  pointer-events: none;
+}
+
+.rf-card.rf-card--lead > * {
+  margin-block: 0;
+}
+
+.rf-card__lead-main,
+.rf-card__lead-aside {
+  position: relative;
+  z-index: 1;
+  margin: 0;
+  min-inline-size: 0;
+}
+
+.rf-card__lead-main {
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
+  gap: var(--rf-space-4);
+}
+
+.rf-card__lead-eyebrow {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+  gap: var(--rf-space-3);
+}
+
+.rf-card__lead-topic {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.4rem;
+  color: var(--rf-orange-soft);
+  font-size: var(--rf-text-sm);
+  font-weight: var(--rf-weight-bold);
+  letter-spacing: var(--rf-tracking-meta);
+  text-transform: uppercase;
+}
+
+.rf-meta-icon,
+.rf-btn-icon {
+  display: block;
+  width: 1rem;
+  height: 1rem;
+  flex: none;
+}
+
+.rf-articles-index .rf-card.rf-card--lead .rf-card__lead-title {
+  margin: 0;
+  font-family: var(--rf-font-serif);
+  font-size: clamp(var(--rf-text-xl), 2.5vw, 2.65rem);
+  font-weight: var(--rf-weight-bold);
+  line-height: var(--rf-leading-display);
+  letter-spacing: var(--rf-tracking-display);
+  color: var(--rf-on-dark);
+}
+
+.rf-articles-index .rf-card.surface--logo .rf-card__lead-title a {
+  color: var(--rf-on-dark);
+  font-weight: var(--rf-weight-bold);
+  text-decoration: none;
+}
+
+.rf-articles-index .rf-card.surface--logo .rf-card__lead-title a:hover,
+.rf-articles-index .rf-card.surface--logo .rf-card__lead-title a:focus-visible {
+  color: var(--rf-cream);
+  text-decoration: underline;
+  text-decoration-thickness: 2px;
+  text-underline-offset: 0.14em;
+}
+
+.rf-card.rf-card--lead .rf-card__lead-excerpt {
+  margin: 0;
+  max-inline-size: 58ch;
+  font-size: var(--rf-text-lg);
+  line-height: var(--rf-leading-callout);
+  color: var(--rf-cream);
+}
+
+.rf-card__lead-foot {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+  gap: var(--rf-space-4);
+  margin-block-start: auto;
+  padding-block-start: var(--rf-space-2);
+}
+
+.rf-card.rf-card--lead a.btn.rf-card__lead-cta {
+  color: var(--rf-on-dark);
+  border-color: rgba(255, 255, 255, 0.72);
+  text-decoration: none;
+}
+
+.rf-card.rf-card--lead a.btn.rf-card__lead-cta:hover,
+.rf-card.rf-card--lead a.btn.rf-card__lead-cta:focus-visible {
+  background: var(--rf-white);
+  color: var(--rf-green-deep);
+  border-color: var(--rf-white);
+  text-decoration: none;
+}
+
+.rf-card__lead-meta {
+  display: inline-flex;
+  flex-wrap: wrap;
+  align-items: center;
+  gap: var(--rf-space-2);
+  color: var(--rf-cream);
+  font-size: var(--rf-text-sm);
+  font-weight: var(--rf-weight-semibold);
+}
+
+.rf-card__readtime {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.35rem;
+}
+
+.rf-card__lead-aside {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  padding: var(--rf-space-5);
+  background: rgba(0, 0, 0, 0.18);
+  border: 1px solid rgba(255, 255, 255, 0.16);
+}
+
+.rf-card__lead-aside .rf-card__lead-kicker {
+  margin: 0 0 var(--rf-space-3);
+  color: var(--rf-orange-soft);
+}
+
+.rf-card__lead-aside ol.rf-keytakeaways {
+  gap: var(--rf-space-3);
+}
+
+.rf-card__lead-aside ol.rf-keytakeaways > li {
+  border-left-color: var(--rf-orange-soft);
+  color: var(--rf-cream);
+}
+
+.rf-card__lead-aside ol.rf-keytakeaways > li::before {
+  color: var(--rf-orange-soft);
+}
+
+.rf-card__lead-aside ol.rf-keytakeaways > li > strong:first-child {
+  color: var(--rf-on-dark);
+}
+
+.rf-articles-subhead {
+  display: flex;
+  align-items: center;
+  gap: var(--rf-space-4);
+  margin: 0 0 var(--rf-space-5);
+}
+
+.rf-articles-subhead .rf-meta {
+  flex: none;
+  color: var(--rf-ink-muted);
+}
+
+.rf-articles-subhead__rule {
+  flex: 1 1 auto;
+  height: 1px;
+  background: var(--rf-rule);
+}
+
+/* Scannable editorial essay cards. */
+.rf-articles-feed {
+  display: flex;
+  flex-direction: column;
+  gap: var(--rf-space-4);
+}
+
+.rf-card.rf-card--essay {
+  max-inline-size: none;
+  width: 100%;
+  margin: 0;
+  padding: var(--rf-space-5);
+  background: var(--rf-white);
+  border: 4px solid var(--rf-cream-deep);
+  transition: border-color 160ms ease, box-shadow 160ms ease;
+}
+
+.rf-card.rf-card--essay:hover,
+.rf-card.rf-card--essay:focus-within {
+  border-color: var(--rf-panel-deep);
+  box-shadow: inset 4px 0 0 var(--rf-green), var(--rf-shadow);
+}
+
+.rf-card__essay-row {
+  display: grid;
+  grid-template-columns: 3.25rem minmax(0, 1fr) auto;
+  gap: var(--rf-space-5);
+  align-items: start;
+  margin: 0;
+}
+
+.rf-card__topic-tile {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  width: 3.25rem;
+  height: 3.25rem;
+  margin-block-start: 0.15rem;
+  border-radius: var(--rf-radius-sm);
+  background: var(--rf-green-soft);
+  color: var(--rf-green-deep);
+  border: 1px solid color-mix(in srgb, var(--rf-green) 24%, transparent);
+}
+
+.rf-card__topic-tile--ai {
+  background: var(--rf-orange-soft);
+  color: var(--rf-brown);
+  border-color: color-mix(in srgb, var(--rf-orange) 36%, transparent);
+}
+
+.rf-card__topic-tile--news {
+  background: var(--rf-panel);
+  color: var(--rf-brown);
+  border-color: var(--rf-panel-deep);
+}
+
+.rf-card__topic-svg {
+  display: block;
+  width: 1.5rem;
+  height: 1.5rem;
+}
+
+.rf-card__essay-main {
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
+  gap: var(--rf-space-2);
+  min-inline-size: 0;
+}
+
+.rf-card__essay-meta {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+  gap: var(--rf-space-3);
+}
+
+.rf-card__essay-byline {
+  display: inline-flex;
+  flex-wrap: wrap;
+  align-items: center;
+  gap: var(--rf-space-2);
+  color: var(--rf-ink-muted);
+  font-size: var(--rf-text-sm);
+  font-weight: var(--rf-weight-semibold);
+}
+
+.rf-articles-index .rf-card__essay-title {
+  margin: var(--rf-space-1) 0 0;
+  font-family: var(--rf-font-serif);
+  font-size: var(--rf-text-xl);
+  font-weight: var(--rf-weight-bold);
+  line-height: var(--rf-leading-snug);
+  letter-spacing: var(--rf-tracking-display);
+}
+
+.rf-articles-index .rf-card__essay-title a {
+  color: var(--rf-ink-deep);
+  font-weight: var(--rf-weight-bold);
+  text-decoration: none;
+  transition: color 150ms ease;
+}
+
+.rf-articles-index .rf-card__essay-title a:hover,
+.rf-articles-index .rf-card__essay-title a:focus-visible {
+  color: var(--rf-green-deep);
+  text-decoration: underline;
+  text-underline-offset: 0.14em;
+}
+
+.rf-card.rf-card--essay .rf-card__essay-excerpt {
+  margin: 0;
+  max-inline-size: 65ch;
+  font-size: var(--rf-text-md);
+  line-height: var(--rf-leading-body);
+  color: var(--rf-ink);
+}
+
+.rf-card__peek {
+  margin-block-start: var(--rf-space-2);
+  inline-size: fit-content;
+  max-inline-size: 100%;
+  border: 1.5px solid var(--rf-cream-deep);
+  border-radius: var(--rf-radius-pill);
+  background: var(--rf-cream);
+  transition: border-color 150ms ease, background-color 150ms ease;
+}
+
+.rf-card__peek:not([open]):hover {
+  border-color: var(--rf-panel-deep);
+  background: var(--rf-panel-soft);
+}
+
+.rf-card__peek[open] {
+  inline-size: min(100%, 48rem);
+  border-radius: var(--rf-radius-sm);
+}
+
+.rf-card__peek-summary {
+  display: inline-flex;
+  align-items: center;
+  justify-content: space-between;
+  width: 100%;
+  gap: var(--rf-space-2);
+  padding: 0.32rem 0.85rem;
+  font-size: var(--rf-text-sm);
+  font-weight: var(--rf-weight-semibold);
+  color: var(--rf-green-deep);
+  cursor: pointer;
+  list-style: none;
+}
+
+.rf-card__peek[open] .rf-card__peek-summary {
+  padding: var(--rf-space-2) var(--rf-space-4);
+}
+
+.rf-card__peek-summary::-webkit-details-marker,
+.rf-card__peek-summary::marker {
+  display: none;
+  content: "";
+}
+
+.rf-card__peek-arrow {
+  flex: none;
+  transition: transform 220ms ease;
+}
+
+.rf-card__peek[open] .rf-card__peek-arrow {
+  transform: rotate(90deg);
+}
+
+.rf-card__peek-panel {
+  padding: var(--rf-space-4);
+  border-block-start: 1px solid var(--rf-cream-deep);
+  background: var(--rf-white);
+}
+
+.rf-card__peek-panel ol.rf-keytakeaways {
+  gap: var(--rf-space-3);
+}
+
+.rf-card__essay-go {
+  align-self: center;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  width: 2.75rem;
+  height: 2.75rem;
+  border-radius: var(--rf-radius-pill);
+  background: var(--rf-cream);
+  border: 1.5px solid var(--rf-cream-deep);
+  color: var(--rf-green-deep);
+  text-decoration: none;
+  transition: background-color 150ms ease, color 150ms ease, border-color 150ms ease, transform 150ms ease;
+}
+
+.rf-card__go-icon {
+  display: block;
+  width: 1.15rem;
+  height: 1.15rem;
+}
+
+.rf-card.rf-card--essay:hover .rf-card__essay-go,
+.rf-card.rf-card--essay:focus-within .rf-card__essay-go {
+  background: var(--rf-green);
+  border-color: var(--rf-green);
+  color: var(--rf-on-primary);
+  transform: translateX(2px);
+}
+
+@media (max-width: 58rem) {
+  .page-hero--essays .page-hero__essays-grid,
+  .rf-card.rf-card--lead.has-takeaways {
+    grid-template-columns: 1fr;
+  }
+}
+
+@media (max-width: 40rem) {
+  .rf-card.rf-card--lead,
+  .rf-card.rf-card--essay {
+    padding: var(--rf-space-4);
+  }
+
+  .rf-card__essay-row {
+    grid-template-columns: 2.75rem minmax(0, 1fr);
+    gap: var(--rf-space-3);
+  }
+
+  .rf-card__topic-tile {
+    width: 2.75rem;
+    height: 2.75rem;
+  }
+
+  .rf-card__essay-go {
+    display: none;
+  }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  button.rf-filter-pill,
+  .rf-card.rf-card--essay,
+  .rf-articles-index .rf-card__essay-title a,
+  .rf-card__peek-arrow,
+  .rf-card__essay-go {
+    transition: none;
+  }
+
+  .rf-card.rf-card--essay:hover .rf-card__essay-go,
+  .rf-card.rf-card--essay:focus-within .rf-card__essay-go {
+    transform: none;
+  }
+}
+
+.rf-updates-archive {
+  padding-block: var(--rf-space-7) var(--rf-space-8);
+}
+
+.rf-updates-feed .wp-block-post-template {
+  display: flex;
+  flex-direction: column;
+  gap: 0;
+  list-style: none;
+  margin: 0;
+  padding: 0;
+}
+
+.rf-updates-feed .wp-block-post {
+  margin: 0;
+}
+
+.rf-updates-feed .wp-block-post + .wp-block-post {
+  margin-top: var(--rf-space-6);
+  padding-top: var(--rf-space-6);
+  border-top: 2px dotted var(--rf-green);
+}
+
+.wp-block-group.rf-update-item {
+  display: grid;
+  grid-template-columns: auto minmax(0, 1fr);
+  gap: var(--rf-space-4);
+  align-items: start;
+  margin: 0;
+}
+
+.rf-update-item__tile {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  width: 2.75rem;
+  height: 2.75rem;
+  margin-top: 0.15rem;
+  border: 1px solid color-mix(in srgb, var(--rf-green) 28%, transparent);
+  border-radius: var(--rf-radius-sm);
+  background: var(--rf-green-soft);
+  color: var(--rf-green-deep);
+}
+
+.rf-update-item__icon {
+  display: block;
+  width: 1.35rem;
+  height: 1.35rem;
+}
+
+.wp-block-group.rf-update-item__copy {
+  min-width: 0;
+}
+
+.rf-update-item__copy > * {
+  margin-block: 0;
+}
+
+.rf-update-item__title {
+  margin: 0;
+  font-family: var(--rf-font-serif);
+  font-size: var(--rf-text-2xl);
+  font-weight: var(--rf-weight-bold);
+  line-height: var(--rf-leading-snug);
+}
+
+.rf-update-item__title a {
+  color: var(--rf-ink-deep);
+  text-decoration: none;
+}
+
+.rf-update-item__title a:hover,
+.rf-update-item__title a:focus {
+  color: var(--rf-green-deep);
+  text-decoration: underline;
+  text-underline-offset: 0.12em;
+}
+
+.rf-update-item__date {
+  margin-top: var(--rf-space-1) !important;
+  color: var(--rf-ink-muted);
+  font-size: var(--rf-text-sm);
+  font-weight: var(--rf-weight-semibold);
+  line-height: var(--rf-leading-snug);
+}
+
+.rf-update-item__body.wp-block-post-content {
+  margin-top: var(--rf-space-3) !important;
+  max-inline-size: 52.5rem;
 }
 
 .articles-list .wp-block-post-excerpt__more-text {
@@ -1541,10 +2271,148 @@ img.case-study__mark {
 }
 ${apple}
 
+.services-close__grid {
+  box-sizing: border-box;
+  display: grid;
+  grid-template-columns: minmax(0, 1.3fr) minmax(20rem, 25.5rem);
+  gap: var(--rf-space-6) var(--rf-space-7);
+  align-items: center;
+  width: min(1200px, calc(100% - 2rem));
+  max-width: none !important;
+  margin-inline: auto !important;
+}
+
+.services-close__grid > * {
+  margin: 0 !important;
+  min-inline-size: 0;
+}
+
+.services-close__copy {
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
+  gap: var(--rf-space-3);
+}
+
+.services-close__copy > * {
+  margin-block: 0;
+}
+
+.services-close__kicker {
+  background: var(--rf-surface-dark);
+  color: var(--rf-on-dark);
+}
+
+.services-close__title {
+  color: var(--rf-green-logo);
+  max-inline-size: none;
+}
+
+.services-close__lede {
+  max-inline-size: 46ch;
+  color: var(--rf-brown);
+}
+
+.wp-block-group.is-style-rf-surface.services-close__box {
+  display: flex;
+  flex-direction: column;
+  gap: var(--rf-space-4);
+  padding: var(--rf-space-5);
+  border-color: var(--rf-panel-deep);
+  background: var(--rf-white);
+}
+
+.services-close__box > * {
+  margin-block: 0;
+}
+
+.services-close__host {
+  display: flex;
+  align-items: center;
+  gap: var(--rf-space-3);
+  padding-block-end: var(--rf-space-4);
+  border-block-end: 1px solid var(--rf-rule);
+}
+
+.services-close__avatar {
+  flex: none;
+  display: block;
+  width: 3.25rem;
+  height: 3.25rem;
+  border: 3px solid var(--rf-cream-deep);
+  border-radius: 0;
+  object-fit: cover;
+}
+
+.services-close__host-id {
+  display: grid;
+  gap: 0.15rem;
+  min-inline-size: 0;
+}
+
+.services-close__host-name {
+  margin: 0;
+  font-family: var(--rf-font-serif);
+  font-size: var(--rf-text-lg);
+  font-weight: var(--rf-weight-semibold);
+  line-height: var(--rf-leading-snug);
+  letter-spacing: var(--rf-tracking-display);
+  color: var(--rf-ink-deep);
+}
+
+.services-close__host-role {
+  margin: 0;
+  font-size: var(--rf-text-sm);
+  line-height: var(--rf-leading-ui);
+  color: var(--rf-ink-muted);
+}
+
+.services-close .book-call__open {
+  margin: 0;
+  width: 100%;
+}
+
+.services-close #book-call {
+  width: 100%;
+  justify-content: center;
+  gap: 0.5rem;
+  padding-block: 0.85rem;
+  font-size: var(--rf-text-md);
+}
+
+.services-close #book-call .rf-btn-icon {
+  transition: transform 160ms ease;
+}
+
+.services-close #book-call:hover .rf-btn-icon,
+.services-close #book-call:focus-visible .rf-btn-icon {
+  transform: translateX(3px);
+}
+
+.services-close__note {
+  margin: var(--rf-space-3) 0 0;
+  text-align: center;
+  font-size: var(--rf-text-sm);
+  line-height: var(--rf-leading-ui);
+  color: var(--rf-ink-muted);
+}
+
 .services-close .wp-block-button__link {
   background: var(--rf-orange);
   color: var(--rf-ink);
   border-radius: var(--rf-radius-pill);
+}
+
+@media (max-width: 56rem) {
+  .services-close__grid {
+    grid-template-columns: 1fr;
+  }
+}
+
+@media (max-width: 40rem) {
+  .services-close__title {
+    font-size: var(--rf-text-2xl);
+  }
 }
 
 html {
@@ -1591,8 +2459,10 @@ html {
   color: var(--rf-on-dark);
 }
 
-.rf-article-hero .wp-block-post-terms a {
-  color: var(--rf-orange-web);
+.rf-article-hero .wp-block-post-terms a,
+.rf-article-hero .rf-meta {
+  /* #fac9a3 is 4.81:1 on --rf-green-logo. --rf-orange-web is 2.77:1. */
+  color: var(--rf-orange-on-dark, #fac9a3);
   font-size: var(--rf-text-sm);
   font-weight: var(--rf-weight-bold);
   letter-spacing: var(--rf-tracking-meta);
@@ -1638,38 +2508,136 @@ html {
 
 .wp-block-post-content.rf-prose,
 .editor-styles-wrapper {
-  --rf-prose-column: 65ch;
+  /* 70% of the 1200px article shell. A ch length tracks the heading font
+     and the column drifts. This length does not. */
+  --rf-prose-column: 52.5rem;
 }
 
 .wp-block-post-content.rf-prose {
   box-sizing: border-box;
   max-inline-size: none;
+  /* Root padding is for the page shell. This element is already the article
+     column, and the extra inset makes the front narrower than the editor. */
+  padding-inline: 0;
 }
 
-/* 65ch on a heading uses the heading's own font, so in the editor the
-   title grows past the prose column and starts further left. The length
+/* A heading's own font used to widen a ch measure past the body. The length
    is resolved on the prose wrapper, then inherited. */
 .wp-block-post-content.rf-prose > :is(h1, h2, h3, h4, h5, h6),
 .editor-styles-wrapper .is-root-container > :is(h1, h2, h3, h4, h5, h6) {
   max-width: var(--rf-prose-column);
 }
 
-/* block-styles zeros .wp-block-quote margin, which beats the prose gap.
-   The editor spaces blocks with the post block gap instead, so this is
-   the front only. */
-.wp-block-post-content.rf-prose > .wp-block-quote {
-  margin-top: var(--rf-space-6);
+/* Body copy owns the vertical rhythm. A component's margin: 0 must not
+   erase the gap, and the previous element stays at 0 so the gap is not doubled. */
+.wp-block-post-content.rf-prose > * + * {
+  margin-block-start: var(--rf-space-5);
 }
 
-/* The code panel's own margin shorthand sets the top to 0, which beats the prose gap. */
-.wp-block-post-content.rf-prose > .rf-code {
-  margin-top: var(--rf-space-5);
+.wp-block-post-content.rf-prose > * + :is(h1, h2, h3, h4) {
+  margin-block-start: var(--rf-space-6);
 }
 
 .rf-article-rail {
   display: flex;
   flex-direction: column;
-  gap: var(--rf-space-6);
+  gap: var(--rf-space-5);
+}
+
+.wp-block-group.is-style-rf-logo.rf-rail-cta {
+  position: relative;
+  overflow: hidden;
+  display: flex;
+  flex-direction: column;
+  gap: var(--rf-space-3);
+  padding: var(--rf-space-5);
+  background-color: var(--rf-green-logo);
+  color: var(--rf-on-dark);
+  border: 4px solid var(--rf-cream-deep);
+}
+
+.wp-block-group.is-style-rf-logo.rf-rail-cta::before {
+  content: "";
+  position: absolute;
+  inset: 0;
+  background: url("../illustrations/roots-1.svg") no-repeat 115% 115% / 14rem auto;
+  opacity: 0.09;
+  pointer-events: none;
+}
+
+.rf-rail-cta > * {
+  position: relative;
+  z-index: 1;
+  margin-block: 0;
+}
+
+.rf-rail-cta__head {
+  display: flex;
+  align-items: center;
+  gap: var(--rf-space-3);
+}
+
+.rf-rail-cta__avatar {
+  flex: none;
+  display: block;
+  width: 2.5rem;
+  height: 2.5rem;
+  border: 2px solid rgba(255, 255, 255, 0.35);
+  border-radius: 0;
+  object-fit: cover;
+}
+
+.wp-block-group.rf-rail-cta p.rf-rail-cta__eyebrow {
+  margin: 0;
+  color: var(--rf-orange-on-dark, #fac9a3);
+}
+
+.wp-block-group.rf-rail-cta h2.rf-rail-cta__title {
+  margin: 0;
+  font-family: var(--rf-font-serif);
+  font-size: var(--rf-text-lg);
+  font-weight: var(--rf-weight-bold);
+  line-height: var(--rf-leading-snug);
+  letter-spacing: var(--rf-tracking-display);
+  color: var(--rf-on-dark);
+}
+
+.wp-block-group.rf-rail-cta p.rf-rail-cta__copy {
+  margin: 0;
+  font-size: var(--rf-text-sm);
+  line-height: var(--rf-leading-callout);
+  color: var(--rf-cream);
+}
+
+.rf-rail-cta__actions {
+  margin-block-start: var(--rf-space-2) !important;
+  width: 100%;
+}
+
+.wp-block-group.rf-rail-cta a.btn.rf-rail-cta__btn {
+  width: 100%;
+  justify-content: center;
+  gap: 0.45rem;
+  background-color: var(--rf-orange);
+  color: var(--rf-ink-deep);
+  border-radius: var(--rf-radius-pill);
+  text-decoration: none;
+}
+
+.wp-block-group.rf-rail-cta a.btn.rf-rail-cta__btn .rf-btn-icon {
+  transition: transform 160ms ease;
+}
+
+.wp-block-group.rf-rail-cta a.btn.rf-rail-cta__btn:hover,
+.wp-block-group.rf-rail-cta a.btn.rf-rail-cta__btn:focus-visible {
+  background-color: color-mix(in srgb, var(--rf-orange) 86%, var(--rf-white));
+  color: var(--rf-ink-deep);
+  text-decoration: none;
+}
+
+.wp-block-group.rf-rail-cta a.btn.rf-rail-cta__btn:hover .rf-btn-icon,
+.wp-block-group.rf-rail-cta a.btn.rf-rail-cta__btn:focus-visible .rf-btn-icon {
+  transform: translateX(3px);
 }
 
 .rf-article-rail .is-style-rf-logo .wp-block-button.btn--primary .wp-block-button__link {
@@ -1678,38 +2646,288 @@ html {
   border-radius: var(--rf-radius-pill);
 }
 
+.wp-block-group.is-style-rf-surface.rf-rail-subscribe {
+  padding: var(--rf-space-5);
+  background: var(--rf-white);
+  border: 4px solid var(--rf-cream-deep);
+}
+
+.rf-rail-subscribe > * {
+  margin-block: 0;
+}
+
+.rf-rail-subscribe form.rf-subscribe {
+  display: grid;
+  gap: var(--rf-space-3);
+}
+
+.rf-rail-subscribe form.rf-subscribe > * {
+  margin-block: 0;
+}
+
+.rf-subscribe__head {
+  display: flex;
+  align-items: center;
+  gap: var(--rf-space-3);
+}
+
+.rf-subscribe__icon {
+  flex: none;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  width: 2.5rem;
+  height: 2.5rem;
+  background: var(--rf-green-soft);
+  color: var(--rf-green-deep);
+}
+
+.rf-subscribe__icon svg {
+  display: block;
+  width: 1.35rem;
+  height: 1.35rem;
+}
+
+.rf-subscribe__titles {
+  display: grid;
+  gap: 0.1rem;
+  min-inline-size: 0;
+}
+
+.rf-subscribe__titles .rf-meta {
+  margin: 0;
+  color: var(--rf-green-deep);
+}
+
+.rf-subscribe__title {
+  margin: 0;
+  font-family: var(--rf-font-serif);
+  font-size: var(--rf-text-lg);
+  font-weight: var(--rf-weight-semibold);
+  line-height: var(--rf-leading-snug);
+  letter-spacing: var(--rf-tracking-display);
+  color: var(--rf-ink-deep);
+}
+
+.rf-subscribe__lede {
+  margin: 0;
+  font-size: var(--rf-text-sm);
+  line-height: var(--rf-leading-ui);
+  color: var(--rf-ink-muted);
+}
+
+.rf-rail-subscribe .input {
+  background: var(--rf-cream);
+  border-color: color-mix(in srgb, var(--rf-ink) 18%, transparent);
+}
+
+.rf-rail-subscribe .input:focus {
+  background: var(--rf-white);
+}
+
+.rf-subscribe__submit {
+  width: 100%;
+  justify-content: center;
+  gap: 0.45rem;
+  margin-block-start: var(--rf-space-1);
+}
+
+.rf-subscribe__submit .rf-btn-icon {
+  transition: transform 160ms ease;
+}
+
+.rf-subscribe__submit:hover:not(:disabled) .rf-btn-icon,
+.rf-subscribe__submit:focus-visible .rf-btn-icon {
+  transform: translateX(3px);
+}
+
+.rf-rail-subscribe .rf-subscribe-status:empty {
+  display: none;
+}
+
 .rf-article-close .wp-block-button.btn--cta .wp-block-button__link {
   background-color: var(--rf-orange);
   color: var(--rf-ink-deep);
   border-radius: var(--rf-radius-pill);
 }
 
-.rf-article-author {
-  align-items: center;
-  text-align: center;
+.wp-block-group.is-style-rf-surface.rf-article-author {
+  position: relative;
+  overflow: hidden;
+  display: flex;
+  flex-direction: column;
+  gap: var(--rf-space-5);
+  margin-block-start: var(--rf-space-4);
+  padding: var(--rf-space-6);
+  background: var(--rf-white);
+  border: 4px solid var(--rf-cream-deep);
+  text-align: left;
+  align-items: stretch;
 }
 
-.rf-article-author img {
-  width: 5rem;
-  height: 5rem;
-  border-radius: var(--rf-radius-pill);
+.wp-block-group.is-style-rf-surface.rf-article-author::before {
+  content: "";
+  position: absolute;
+  inset: 0;
+  background: url("../illustrations/roots-1.svg") no-repeat 104% 112% / 20rem auto;
+  opacity: 0.06;
+  pointer-events: none;
+}
+
+.rf-article-author > * {
+  position: relative;
+  z-index: 1;
+  margin-block: 0;
+}
+
+.rf-article-author__main {
+  display: grid;
+  grid-template-columns: auto minmax(0, 1fr);
+  gap: var(--rf-space-5);
+  align-items: start;
+}
+
+.rf-article-author__main > * {
+  margin-block: 0;
+}
+
+.rf-article-author__portrait {
+  display: block;
+  flex: none;
+  line-height: 0;
+}
+
+.rf-article-author img.rf-article-author__photo {
+  display: block;
+  width: 5.5rem;
+  height: 5.5rem;
+  border: 4px solid var(--rf-cream-deep);
+  border-radius: 0;
   object-fit: cover;
 }
 
-.rf-article-author h2 {
-  font-family: var(--rf-font-serif);
-  font-size: var(--rf-text-xl);
-  font-weight: var(--rf-weight-semibold);
-  line-height: var(--rf-leading-snug);
+.rf-article-author__body {
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
+  gap: var(--rf-space-2);
+  min-inline-size: 0;
 }
 
-.rf-article-author h2 a {
+.rf-article-author__body > * {
+  margin-block: 0;
+}
+
+.rf-article-author__eyebrow {
+  color: var(--rf-green-deep);
+}
+
+.rf-article-author h2.rf-article-author__name {
+  margin: 0;
+  font-family: var(--rf-font-serif);
+  font-size: var(--rf-text-2xl);
+  font-weight: var(--rf-weight-bold);
+  line-height: var(--rf-leading-snug);
+  letter-spacing: var(--rf-tracking-display);
+}
+
+.rf-article-author h2.rf-article-author__name a {
   color: var(--rf-ink-deep);
   text-decoration: none;
 }
 
-.rf-article-author .rf-icon-link {
+.rf-article-author h2.rf-article-author__name a:hover,
+.rf-article-author h2.rf-article-author__name a:focus-visible {
+  color: var(--rf-green-deep);
+  text-decoration: underline;
+  text-decoration-thickness: 2px;
+  text-underline-offset: 0.14em;
+}
+
+.rf-article-author__role {
+  font-size: var(--rf-text-sm);
+  font-weight: var(--rf-weight-semibold);
+  line-height: var(--rf-leading-ui);
+  color: var(--rf-ink-muted);
+}
+
+.rf-article-author__bio {
+  margin-block-start: var(--rf-space-1) !important;
+  font-size: var(--rf-text-sm);
+  line-height: var(--rf-leading-body);
   color: var(--rf-ink);
+  max-inline-size: 60ch;
+}
+
+.rf-article-author__foot {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+  justify-content: space-between;
+  gap: var(--rf-space-3);
+  padding-block-start: var(--rf-space-4);
+  border-block-start: 1px solid var(--rf-rule);
+}
+
+.rf-article-author__foot > * {
+  margin-block: 0;
+}
+
+.rf-article-author__more {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.45rem;
+  font-size: var(--rf-text-sm);
+  font-weight: var(--rf-weight-bold);
+  color: var(--rf-green-deep);
+  text-decoration: none;
+}
+
+.rf-article-author__more .rf-btn-icon {
+  transition: transform 160ms ease;
+}
+
+.rf-article-author__more:hover,
+.rf-article-author__more:focus-visible {
+  color: var(--rf-green-6);
+  text-decoration: underline;
+  text-underline-offset: 0.16em;
+}
+
+.rf-article-author__more:hover .rf-btn-icon,
+.rf-article-author__more:focus-visible .rf-btn-icon {
+  transform: translateX(3px);
+}
+
+.rf-article-author__socials {
+  gap: var(--rf-space-2);
+}
+
+.rf-article-author .rf-icon-link {
+  width: 2.35rem;
+  height: 2.35rem;
+  background: var(--rf-cream);
+  border: 1.5px solid var(--rf-cream-deep);
+  color: var(--rf-ink);
+  transition: background-color 150ms ease, color 150ms ease, border-color 150ms ease;
+}
+
+.rf-article-author .rf-icon-link:hover,
+.rf-article-author .rf-icon-link:focus-visible {
+  background: var(--rf-green-soft);
+  border-color: var(--rf-green);
+  color: var(--rf-green-deep);
+}
+
+@media (max-width: 36rem) {
+  .wp-block-group.is-style-rf-surface.rf-article-author {
+    padding: var(--rf-space-5);
+  }
+
+  .rf-article-author__main {
+    grid-template-columns: 1fr;
+    gap: var(--rf-space-4);
+  }
 }
 
 .rf-updated {
@@ -1735,7 +2953,8 @@ html {
 
 .rf-article-frame {
   display: grid;
-  grid-template-columns: minmax(0, var(--rf-measure)) minmax(16rem, 1fr);
+  /* Copy is 70% of the shell. The rail keeps a 16rem floor and takes the rest. */
+  grid-template-columns: minmax(0, 70%) minmax(16rem, 1fr);
   column-gap: 4.5rem;
   align-items: start;
   width: min(1200px, calc(100% - 2rem));
@@ -1755,6 +2974,49 @@ html {
 
   .rf-article-frame > :last-child {
     position: static;
+  }
+}
+
+.rf-back-top {
+  position: fixed;
+  z-index: 20;
+  bottom: 1.25rem;
+  left: max(0.75rem, calc((100vw - min(1200px, 100vw - 2rem)) / 2 - 6.5rem));
+  display: grid;
+  place-items: center;
+  width: 2.75rem;
+  height: 2.75rem;
+  border: 2px solid var(--rf-cream-deep);
+  border-radius: 50%;
+  background: var(--rf-green-logo);
+  color: var(--rf-on-dark);
+  text-decoration: none;
+  visibility: hidden;
+}
+
+.rf-back-top.is-visible {
+  visibility: visible;
+}
+
+.rf-back-top svg {
+  width: 1.15rem;
+  height: 1.15rem;
+}
+
+.rf-back-top:hover {
+  background: var(--rf-green-deep);
+  color: var(--rf-on-dark);
+}
+
+@media (max-width: 767px) {
+  .rf-back-top {
+    display: none;
+  }
+}
+
+@media (prefers-reduced-motion: no-preference) {
+  html:has(.rf-back-top) {
+    scroll-behavior: smooth;
   }
 }
 
@@ -1789,6 +3051,19 @@ main.wp-block-group {
   .site-header .rf-nav {
     width: 100%;
     overflow-x: auto;
+  }
+}
+
+/* The overlay menu is the hamburger below 600px. A full-width nav wraps
+   that button onto its own row. Keep it beside the logo. */
+@media (max-width: 599px) {
+  .site-header__inner {
+    flex-wrap: nowrap;
+  }
+
+  .site-header .rf-nav {
+    width: auto;
+    overflow: visible;
   }
 }
 `;
@@ -1833,17 +3108,41 @@ function writeChromeParts(hasArt, measure) {
     "wordpress/rf/parts/book.html",
     `<!-- wp:group {"align":"full","className":"services-close","anchor":"book","style":{"border":{"top":{"color":"var:custom|panel-deep","width":"4px","style":"solid"}},"spacing":{"padding":{"top":"var:preset|spacing|space-7","bottom":"var:preset|spacing|space-7"}}},"layout":{"type":"constrained","contentSize":"1200px"}} -->
 <div class="wp-block-group alignfull services-close" id="book" style="border-top-color:var(--wp--custom--panel-deep);border-top-style:solid;border-top-width:4px;padding-top:var(--wp--preset--spacing--space-7);padding-bottom:var(--wp--preset--spacing--space-7)">
-	<!-- wp:heading {"textAlign":"left","level":2} -->
-	<h2 class="wp-block-heading">Book a discovery call</h2>
-	<!-- /wp:heading -->
+	<!-- wp:group {"className":"services-close__grid","layout":{"type":"default"}} -->
+	<div class="wp-block-group services-close__grid">
+		<!-- wp:group {"className":"rf-copy services-close__copy","layout":{"type":"default"}} -->
+		<div class="wp-block-group rf-copy services-close__copy">
+			<!-- wp:html -->
+			<p class="pill services-close__kicker"><svg class="pill__icon" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true" focusable="false"><circle cx="12" cy="12" r="10"/><path d="m16.24 7.76-1.804 5.411a2 2 0 0 1-1.265 1.265L7.76 16.24l1.804-5.411a2 2 0 0 1 1.265-1.265z"/></svg><span>Advisory &amp; Coaching</span></p>
+			<!-- /wp:html -->
 
-	<!-- wp:paragraph -->
-	<p>Grab a time. We’ll talk about where you are, which package fits, and whether we should work together at all.</p>
-	<!-- /wp:paragraph -->
+			<!-- wp:heading {"textAlign":"left","level":2,"className":"rf-display rf-display--lg services-close__title"} -->
+			<h2 class="wp-block-heading has-text-align-left rf-display rf-display--lg services-close__title">Book a discovery call</h2>
+			<!-- /wp:heading -->
 
-	<!-- wp:html -->
-	${bookOpen()}
-	<!-- /wp:html -->
+			<!-- wp:paragraph {"className":"rf-lede services-close__lede"} -->
+			<p class="rf-lede services-close__lede">Grab a time. We’ll talk about where you are, which package fits, and whether we should work together at all.</p>
+			<!-- /wp:paragraph -->
+		</div>
+		<!-- /wp:group -->
+
+		<!-- wp:group {"className":"is-style-rf-surface services-close__box","layout":{"type":"default"}} -->
+		<div class="wp-block-group is-style-rf-surface services-close__box">
+			<!-- wp:html -->
+			<div class="services-close__host">
+				<img class="services-close__avatar" src="/wp-content/themes/rf/assets/articles/matt.jpg" alt="" width="640" height="640" />
+				<div class="services-close__host-id">
+					<p class="services-close__host-name">Matt Cromwell</p>
+					<p class="services-close__host-role">Founder, Roots &amp; Fruit</p>
+				</div>
+			</div>
+			${bookOpen()}
+			<p class="services-close__note">Direct 1-on-1 with Matt · Pick a time that works</p>
+			<!-- /wp:html -->
+		</div>
+		<!-- /wp:group -->
+	</div>
+	<!-- /wp:group -->
 </div>
 <!-- /wp:group -->
 
@@ -1861,6 +3160,7 @@ function writeChromeParts(hasArt, measure) {
 <!-- /wp:html -->
 `,
   );
+  writeText("wordpress/rf/parts/author-bio.html", `${authorBioBlocks()}\n`);
   const marketing = `<!-- wp:template-part {"slug":"header","tagName":"header"} /-->
 
 <!-- wp:group {"tagName":"main","style":{"spacing":{"margin":{"top":"0","bottom":"0"}}},"layout":{"type":"default"}} -->
@@ -1895,17 +3195,36 @@ function writeChromeParts(hasArt, measure) {
   );
   writeText("wordpress/rf/templates/front-page.html", marketingShell);
   writeText("wordpress/rf/templates/page.html", marketingShell);
-  const articlesHero = `<!-- wp:group {"className":"article-wide","style":{"spacing":{"blockGap":"var:preset|spacing|space-4"}},"layout":{"type":"default"}} -->
-		<div class="wp-block-group article-wide">
-		<!-- wp:query-title {"type":"archive","showPrefix":false,"level":1,"className":"rf-display rf-display--lg"} /-->
+  const articlesHero = `<!-- wp:group {"className":"article-wide page-hero__essays-grid","layout":{"type":"default"}} -->
+		<div class="wp-block-group article-wide page-hero__essays-grid">
+			<!-- wp:group {"className":"rf-copy page-hero__essays-copy","layout":{"type":"default"}} -->
+			<div class="wp-block-group rf-copy page-hero__essays-copy">
+				<!-- wp:html -->
+				<p class="pill page-hero__kicker"><svg class="pill__icon" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true" focusable="false"><path d="M12 7v14"/><path d="M3 18a1 1 0 0 1-1-1V4a1 1 0 0 1 1-1h5a4 4 0 0 1 4 4 4 4 0 0 1 4-4h5a1 1 0 0 1 1 1v13a1 1 0 0 1-1 1h-6a3 3 0 0 0-3 3 3 3 0 0 0-3-3z"/></svg><span>Field notes &amp; essays</span></p>
+				<!-- /wp:html -->
 
-		<!-- wp:paragraph {"className":"rf-lede"} -->
-		<p class="rf-lede">I write these when a problem in the work is worth keeping. Leave your email if you want the next one.</p>
-		<!-- /wp:paragraph -->
+				<!-- wp:query-title {"type":"archive","showPrefix":false,"level":1,"className":"rf-display rf-display--xl"} /-->
 
-		<!-- wp:html -->
-		${subscribeForm({ idPrefix: "articles", layout: "inline" })}
-		<!-- /wp:html -->
+				<!-- wp:paragraph {"className":"rf-lede"} -->
+				<p class="rf-lede">I write these when a problem in the work is worth keeping. Practical notes on WordPress product strategy, customer experience, and the AI workflows I actually use.</p>
+				<!-- /wp:paragraph -->
+			</div>
+			<!-- /wp:group -->
+
+			<!-- wp:group {"className":"is-style-rf-surface page-hero__subscribe","layout":{"type":"default"}} -->
+			<div class="wp-block-group is-style-rf-surface page-hero__subscribe">
+				<!-- wp:html -->
+				<div class="page-hero__subscribe-head">
+					<span class="page-hero__subscribe-icon" aria-hidden="true"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" focusable="false"><path d="m22 7-8.991 5.727a2 2 0 0 1-2.009 0L2 7"/><rect x="2" y="4" width="20" height="16" rx="2"/></svg></span>
+					<div>
+						<p class="rf-meta">Newsletter</p>
+						<p class="page-hero__subscribe-lede">Leave your email if you want the next one when I publish it.</p>
+					</div>
+				</div>
+				${subscribeForm({ idPrefix: "articles", layout: "inline" })}
+				<!-- /wp:html -->
+			</div>
+			<!-- /wp:group -->
 		</div>
 		<!-- /wp:group -->`;
   let home = marketing.replace(
@@ -1913,22 +3232,13 @@ function writeChromeParts(hasArt, measure) {
     articlesHero,
   ).replace(
       "<!-- wp:post-content {\"layout\":{\"type\":\"constrained\",\"contentSize\":\"1200px\"}} /-->",
-      `<!-- wp:query {"className":"articles-list","query":{"perPage":10,"pages":0,"offset":0,"postType":"post","order":"desc","orderBy":"date","inherit":true},"layout":{"type":"default"}} -->
-	<div class="wp-block-query articles-list">
-		<!-- wp:post-template {"layout":{"type":"default"}} -->
-			<!-- wp:post-terms {"term":"category"} /-->
-			<!-- wp:post-title {"isLink":true,"level":2} /-->
-			<!-- wp:post-date /-->
-			<!-- wp:post-excerpt {"moreText":"Read more"} /-->
-		<!-- /wp:post-template -->
-	</div>
-	<!-- /wp:query -->`,
+      `<!-- wp:rf/articles-index /-->`,
   );
   home = home
-    .replace('className":"page-hero"', 'className":"page-hero page-hero--articles"')
+    .replace('className":"page-hero"', 'className":"page-hero page-hero--articles page-hero--essays"')
     .replace(
       'alignfull page-hero has-panel-background-color',
-      'alignfull page-hero page-hero--articles has-panel-background-color',
+      'alignfull page-hero page-hero--articles page-hero--essays has-panel-background-color',
     )
     .replace(
       '"padding":{"top":"var:preset|spacing|space-7","bottom":"var:preset|spacing|space-7"}',
@@ -1963,24 +3273,9 @@ function writeChromeParts(hasArt, measure) {
 	<div class="wp-block-group rf-article-frame">
 		<!-- wp:group {"className":"rf-article-copy","layout":{"type":"default"}} -->
 		<div class="wp-block-group rf-article-copy">
-			<!-- wp:post-content {"className":"rf-prose","style":{"spacing":{"blockGap":"var:preset|spacing|space-6"}},"layout":{"type":"constrained","contentSize":"${measure}"}} /-->
+			<!-- wp:post-content {"className":"rf-prose","style":{"spacing":{"blockGap":"var:preset|spacing|space-6"}},"layout":{"type":"constrained","contentSize":"52.5rem"}} /-->
 
-			<!-- wp:group {"className":"rf-article-author","layout":{"type":"default"}} -->
-			<div class="wp-block-group rf-article-author">
-				<!-- wp:html -->
-				<img src="/wp-content/themes/rf/assets/articles/matt.jpg" alt="Matt Cromwell" width="80" height="80" />
-				<!-- /wp:html -->
-				<!-- wp:heading {"level":2} -->
-				<h2 class="wp-block-heading"><a href="/about-matt/">Matt Cromwell</a></h2>
-				<!-- /wp:heading -->
-				<!-- wp:paragraph -->
-				<p>Matt Cromwell is the founder of Roots &amp; Fruit, a fractional CGO agency helping product companies grow without burning out their teams or their customers. He co-founded, built, and sold GiveWP in an eight-figure acquisition, then led marketing and customer experience at scale across multiple products at StellarWP.</p>
-				<!-- /wp:paragraph -->
-				<!-- wp:html -->
-				<p class="rf-cluster rf-cluster--center"><a class="rf-icon-link" href="https://x.com/learnwithmattc" aria-label="X"><svg class="rf-icon rf-icon--x" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="currentColor" aria-hidden="true"><path d="M14.234 10.162 22.977 0h-2.072l-7.591 8.824L7.251 0H.258l9.168 13.343L.258 24H2.33l8.016-9.318L16.749 24h6.993zm-2.837 3.299-.929-1.329L3.076 1.56h3.182l5.965 8.532.929 1.329 7.754 11.09h-3.182z"/></svg></a><a class="rf-icon-link" href="https://youtube.com/@wpproducttalk" aria-label="YouTube"><svg class="rf-icon rf-icon--youtube" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="currentColor" aria-hidden="true"><path d="M23.498 6.186a3.016 3.016 0 0 0-2.122-2.136C19.505 3.545 12 3.545 12 3.545s-7.505 0-9.377.505A3.017 3.017 0 0 0 .502 6.186C0 8.07 0 12 0 12s0 3.93.502 5.814a3.016 3.016 0 0 0 2.122 2.136c1.871.505 9.376.505 9.376.505s7.505 0 9.377-.505a3.015 3.015 0 0 0 2.122-2.136C24 15.93 24 12 24 12s0-3.93-.502-5.814zM9.545 15.568V8.432L15.818 12l-6.273 3.568z"/></svg></a><a class="rf-icon-link" href="https://linkedin.com/in/mattcromwell" aria-label="LinkedIn"><svg class="rf-icon rf-icon--linkedin" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="currentColor" aria-hidden="true"><path d="M20.447 20.452h-3.554v-5.569c0-1.328-.027-3.037-1.852-3.037-1.853 0-2.136 1.445-2.136 2.939v5.667H9.351V9h3.414v1.561h.046c.477-.9 1.637-1.85 3.37-1.85 3.601 0 4.267 2.37 4.267 5.455v6.286zM5.337 7.433c-1.144 0-2.063-.926-2.063-2.065 0-1.138.92-2.063 2.063-2.063 1.14 0 2.064.925 2.064 2.063 0 1.139-.925 2.065-2.064 2.065zm1.782 13.019H3.555V9h3.564v11.452zM22.225 0H1.771C.792 0 0 .774 0 1.729v20.542C0 23.227.792 24 1.771 24h20.451C23.2 24 24 23.227 24 22.271V1.729C24 .774 23.2 0 22.222 0h.003z"/></svg></a></p>
-				<!-- /wp:html -->
-			</div>
-			<!-- /wp:group -->
+			<!-- wp:template-part {"slug":"author-bio"} /-->
 		</div>
 		<!-- /wp:group -->
 		<!-- wp:template-part {"slug":"sidebar-post","tagName":"aside"} /-->
@@ -2028,8 +3323,14 @@ function writePatterns(measure) {
     "shots.php",
     "logo-row.php",
     "icon-card.php",
+    "numbered-card.php",
+    "outline-icon-card.php",
+    "showcase-card.php",
     "icon-list.php",
+    "outline-icon-list.php",
     "subscribe.php",
+    "author-bio.php",
+    "dialogue.php",
   ]);
   for (const name of readdirSync(patternDir)) {
     if (name.endsWith(".php") && !owned.has(name)) {
@@ -2058,8 +3359,8 @@ function writePatterns(measure) {
       "takeaways",
       `<!-- wp:group {"className":"rf-takeaways","layout":{"type":"default"}} -->
 <div class="wp-block-group rf-takeaways">
-	<!-- wp:heading {"level":3,"className":"rf-takeaways__title"} -->
-	<h3 class="wp-block-heading rf-takeaways__title">Key Takeaways</h3>
+	<!-- wp:heading {"level":2,"className":"rf-takeaways__title"} -->
+	<h2 class="wp-block-heading rf-takeaways__title">Key Takeaways</h2>
 	<!-- /wp:heading -->
 
 	<!-- wp:list {"ordered":true,"className":"rf-keytakeaways"} -->
@@ -2220,8 +3521,14 @@ function writePatterns(measure) {
     ["Photo cluster", "shots", shotsPattern()],
     ["Logo row", "logo-row", logoRowPattern()],
     ["Icon card", "icon-card", iconCardPattern()],
+    ["Numbered card", "numbered-card", numberedCardPattern()],
+    ["Outline icon card", "outline-icon-card", outlineIconCardPattern()],
+    ["Showcase card", "showcase-card", showcaseCardPattern()],
     ["Icon list", "icon-list", iconListPattern()],
+    ["Outline icon list", "outline-icon-list", outlineIconListPattern()],
     ["Subscribe", "subscribe", subscribePattern()],
+    ["Author bio", "author-bio", authorBioPattern()],
+    ["Dialogue", "dialogue", dialoguePattern()],
   ];
   for (const [title, slug, blocks] of pieces) {
     writeText(`wordpress/rf/patterns/${slug}.php`, patternFile(title, slug, blocks));
@@ -2230,11 +3537,45 @@ function writePatterns(measure) {
 
 function writeSidebarSubscribe() {
   const rel = "wordpress/rf/parts/sidebar-post.html";
-  const current = read(rel);
   const form = subscribeForm({ idPrefix: "subscribe", name: true });
-  if (current.includes(form)) return;
-  const next = current.replace(/<form class="rf-copy rf-subscribe"[\s\S]*?<\/form>/, form);
-  if (next === current || !next.includes('id="subscribe-email"')) {
+  const next = `<!-- wp:group {"className":"rf-article-rail","layout":{"type":"default"}} -->
+<div class="wp-block-group rf-article-rail">
+	<!-- wp:group {"className":"is-style-rf-logo rf-rail-cta","layout":{"type":"default"}} -->
+	<div class="wp-block-group is-style-rf-logo rf-rail-cta">
+		<!-- wp:html -->
+		<div class="rf-rail-cta__head">
+			<img class="rf-rail-cta__avatar" src="/wp-content/themes/rf/assets/articles/matt.jpg" alt="" width="640" height="640" />
+			<p class="rf-meta rf-rail-cta__eyebrow">Work with Matt</p>
+		</div>
+		<!-- /wp:html -->
+
+		<!-- wp:heading {"level":2,"className":"rf-rail-cta__title"} -->
+		<h2 class="wp-block-heading rf-rail-cta__title">Is your product business stagnating?</h2>
+		<!-- /wp:heading -->
+
+		<!-- wp:paragraph {"className":"rf-rail-cta__copy"} -->
+		<p class="rf-rail-cta__copy">Book a free discovery call with Matt to look at where growth is stalling and what to fix next.</p>
+		<!-- /wp:paragraph -->
+
+		<!-- wp:html -->
+		<div class="rf-rail-cta__actions">
+			<a class="btn btn--cta rf-rail-cta__btn" href="#book"><span>Book a discovery call</span><svg class="rf-btn-icon" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true" focusable="false"><path d="M5 12h14"/><path d="m12 5 7 7-7 7"/></svg></a>
+		</div>
+		<!-- /wp:html -->
+	</div>
+	<!-- /wp:group -->
+
+	<!-- wp:group {"className":"is-style-rf-surface rf-rail-subscribe","layout":{"type":"default"}} -->
+	<div class="wp-block-group is-style-rf-surface rf-rail-subscribe">
+		<!-- wp:html -->
+		${form}
+		<!-- /wp:html -->
+	</div>
+	<!-- /wp:group -->
+</div>
+<!-- /wp:group -->
+`;
+  if (!next.includes('id="subscribe-email"')) {
     throw new Error("sidebar subscribe form was not refreshed from the shared snippet");
   }
   writeText(rel, next);
@@ -2345,7 +3686,7 @@ function main() {
     console.log("  copied assets/media → wordpress/rf/assets/media");
   }
 
-  const hasArt = copyHugoIllustrations();
+  const hasArt = copyKitIllustrations();
   const staleBundle = join(root, "wordpress/rf/assets/css/rf-site.css");
   if (existsSync(staleBundle)) unlinkSync(staleBundle);
 

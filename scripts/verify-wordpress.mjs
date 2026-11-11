@@ -63,6 +63,7 @@ for (const rel of [
   "wordpress/rf/parts/header.html",
   "wordpress/rf/parts/footer.html",
   "wordpress/rf/parts/book.html",
+  "wordpress/rf/parts/author-bio.html",
   "wordpress/rf/templates/front-page.html",
   "wordpress/rf/templates/page.html",
   "wordpress/rf/templates/home.html",
@@ -185,8 +186,8 @@ const chromeCss = read("wordpress/rf/assets/css/site-chrome.css");
 if (!chromeCss.includes("6.7rem") || !chromeCss.includes("--rf-green-logo")) {
   errors.push("site-chrome.css is missing the Hugo header or footer");
 }
-if (!chromeCss.includes("minmax(0, var(--rf-measure))")) {
-  errors.push("site-chrome.css must size the article prose track to the measure");
+if (!chromeCss.includes("--rf-prose-column: 52.5rem")) {
+  errors.push("site-chrome.css must size the article prose track to 52.5rem");
 }
 if (blockCss.includes("776px") || blockCss.includes("margin-inline-start: max(")) {
   errors.push("block-styles.css must not offset flow text or pin the article column to 776px");
@@ -216,7 +217,7 @@ for (const needle of [
   'className":"rf-article-hero"',
   '"backgroundColor":"logo"',
   '"contentSize":"1200px"',
-  '"contentSize":"65ch"',
+  '"contentSize":"52.5rem"',
   'slug":"sidebar-post"',
   'slug":"header"',
   'slug":"book"',
@@ -385,8 +386,14 @@ const piecePatterns = {
   "wordpress/rf/patterns/shots.php": "rf-shots",
   "wordpress/rf/patterns/logo-row.php": "rf-logo-row",
   "wordpress/rf/patterns/icon-card.php": "rf-glyph--check",
+  "wordpress/rf/patterns/numbered-card.php": "rf-card__num",
+  "wordpress/rf/patterns/outline-icon-card.php": "rf-card__icon",
+  "wordpress/rf/patterns/showcase-card.php": "rf-card__stage",
   "wordpress/rf/patterns/icon-list.php": "rf-glyph-list",
+  "wordpress/rf/patterns/outline-icon-list.php": "rf-icon-list__icon",
   "wordpress/rf/patterns/subscribe.php": 'action="/api/subscribe"',
+  "wordpress/rf/patterns/author-bio.php": "rf-article-author",
+  "wordpress/rf/patterns/dialogue.php": "rf-static/legend",
 };
 for (const [rel, needle] of Object.entries(piecePatterns)) {
   const html = read(rel);
@@ -470,7 +477,7 @@ if (!existsSync(paintBaselinePath)) {
   errors.push("missing scripts/block-styles-paint-baseline.json");
 }
 
-const allowedSurface = /^(?:rf-card|rf-quote|rf-review|page-hero|rf-article-hero)(?:__|--|$)|^is-style-rf-|^wp-block-quote(?:__|$)/;
+const allowedSurface = /^(?:rf-card|rf-quote|rf-review|page-hero|rf-article-hero|rf-product-hero)(?:__|--|$)|^is-style-rf-|^wp-block-quote(?:__|$)/;
 const surfaceRole = /(?:^|-)(?:card|quote|hero|review)(?:-|$)/;
 for (const dir of ["templates", "parts"]) {
   for (const name of readdirSync(join(theme, dir))) {

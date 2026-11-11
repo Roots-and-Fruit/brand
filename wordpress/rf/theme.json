@@ -687,6 +687,16 @@
       "area": "footer"
     },
     {
+      "name": "book",
+      "title": "Discovery call",
+      "area": "uncategorized"
+    },
+    {
+      "name": "author-bio",
+      "title": "Author bio",
+      "area": "uncategorized"
+    },
+    {
       "name": "sidebar-post",
       "title": "Post rail",
       "area": "uncategorized"

@@ -140,6 +140,41 @@ body {
   max-inline-size: none;
 }
 
+/* Lead-in paragraph hugs the card grid or list it introduces; extra air after a grid. */
+.rf-prose > p.rf-lead-in + *,
+.wp-block-post-content.rf-prose > p.rf-lead-in + * {
+  margin-block-start: var(--rf-space-4);
+}
+
+.rf-prose > .rf-grid + p.rf-lead-in,
+.wp-block-post-content.rf-prose > .rf-grid + p.rf-lead-in {
+  margin-block-start: var(--rf-space-6);
+}
+
+.rf-prose > .rf-grid + :is(h1, h2, h3, h4),
+.wp-block-post-content.rf-prose > .rf-grid + :is(h1, h2, h3, h4) {
+  margin-block-start: var(--rf-space-7);
+}
+
+/* A bare table in an essay can be wider than the column. Scroll it inside
+   the prose measure instead of widening the page. Long URL links wrap. */
+.rf-prose > table {
+  display: block;
+  max-width: 100%;
+  overflow-x: auto;
+}
+
+.wp-block-post-content a {
+  overflow-wrap: anywhere;
+}
+
+/* Core pulls alignfull out by the root padding. Article prose padding is 0,
+   so that pull sticks the block past the screen. */
+.rf-prose.has-global-padding > .alignfull {
+  margin-left: 0;
+  margin-right: 0;
+}
+
 a {
   color: var(--rf-green);
 }
@@ -956,6 +991,239 @@ a.rf-review__role:hover {
   margin-block-start: var(--rf-space-3);
 }
 
+/* Lead marks: a step number, or an outline icon. Pick one per card. */
+.rf-card__num {
+  margin: 0;
+  font-family: var(--rf-font-serif);
+  font-size: var(--rf-text-xl);
+  font-weight: var(--rf-weight-bold);
+  letter-spacing: var(--rf-tracking-display);
+  line-height: var(--rf-leading-snug);
+  color: var(--rf-ink-muted);
+}
+
+.rf-card__icon {
+  display: inline-flex;
+  flex: none;
+  align-items: center;
+  justify-content: center;
+  width: 2.5rem;
+  height: 2.5rem;
+  margin: 0;
+  color: var(--rf-orange);
+}
+
+.rf-card__icon svg {
+  display: block;
+  width: 100%;
+  height: 100%;
+  fill: none;
+  stroke: currentColor;
+  stroke-width: 2;
+  stroke-linecap: round;
+  stroke-linejoin: round;
+}
+
+.rf-card > :is(.rf-card__num, .rf-card__icon) + .rf-card__title {
+  margin-block-start: var(--rf-space-4);
+}
+
+/* Inset brand stage: steady height for full wordmarks across a card row. */
+.rf-card__stage {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  height: 5.25rem;
+  margin: 0;
+  padding: var(--rf-space-4) var(--rf-space-5);
+  border-radius: var(--rf-radius-sm);
+  background: var(--rf-cream);
+  border: 1px solid color-mix(in srgb, var(--rf-brown) 9%, transparent);
+  text-decoration: none;
+  flex-shrink: 0;
+}
+
+.rf-card__stage img {
+  display: block;
+  width: auto;
+  height: 2rem;
+  max-width: 100%;
+  object-fit: contain;
+}
+
+.rf-card__stage--dual {
+  gap: var(--rf-space-4);
+  padding-inline: 1.15rem;
+}
+
+.rf-card__stage--dual a {
+  display: inline-flex;
+  align-items: center;
+  text-decoration: none;
+}
+
+.rf-card__stage-sep {
+  width: 1px;
+  height: 1.75rem;
+  background: color-mix(in srgb, var(--rf-brown) 18%, transparent);
+  flex-shrink: 0;
+}
+
+.rf-card__head {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: var(--rf-space-4);
+  margin: 0;
+  padding: 0.85rem 1.1rem;
+  border-radius: var(--rf-radius-sm);
+  background: color-mix(in srgb, var(--rf-white) 72%, var(--rf-green-soft));
+}
+
+.rf-card__head img {
+  display: block;
+  height: 1.85rem;
+  width: auto;
+  max-width: 11.5rem;
+  object-fit: contain;
+}
+
+.rf-card__head-badge {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  width: 2.15rem;
+  height: 2.15rem;
+  border-radius: var(--rf-radius-pill);
+  background: var(--rf-green-soft);
+  color: var(--rf-green-deep);
+  flex-shrink: 0;
+}
+
+.rf-card__head-badge svg {
+  display: block;
+  width: 1.1rem;
+  height: 1.1rem;
+}
+
+.rf-card > :is(.rf-card__stage, .rf-card__head) + .rf-card__title {
+  margin-block-start: var(--rf-space-5);
+}
+
+/* Showcase card: rounded frame, crisp ink body, hover lift, and external cue. */
+.rf-card--showcase,
+.rf-grid--showcase > .rf-card {
+  max-inline-size: none;
+  height: 100%;
+  padding: var(--rf-space-5);
+  border: 1.5px solid color-mix(in srgb, var(--rf-brown) 15%, var(--rf-cream-deep));
+  border-radius: var(--rf-radius);
+  transition: border-color 180ms ease, box-shadow 180ms ease;
+}
+
+.rf-card--showcase:hover,
+.rf-card--showcase:focus-within,
+.rf-grid--showcase > .rf-card:hover,
+.rf-grid--showcase > .rf-card:focus-within {
+  border-color: color-mix(in srgb, var(--rf-green) 52%, var(--rf-panel-deep));
+  box-shadow: var(--rf-shadow);
+}
+
+:is(.rf-card--showcase, .rf-grid--showcase > .rf-card) .rf-card__title {
+  font-size: var(--rf-text-lg);
+  line-height: 1.25;
+  color: var(--rf-ink-deep);
+}
+
+:is(.rf-card--showcase, .rf-grid--showcase > .rf-card) .rf-card__title a {
+  color: var(--rf-ink-deep);
+  text-decoration: none;
+  transition: color 150ms ease;
+}
+
+:is(.rf-card--showcase, .rf-grid--showcase > .rf-card) .rf-card__title a::after {
+  content: "\00a0\2197";
+  display: inline-block;
+  font-family: var(--rf-font-sans);
+  font-size: 0.78em;
+  font-weight: var(--rf-weight-semibold);
+  color: var(--rf-green);
+  opacity: 0.85;
+  transition: opacity 150ms ease, transform 150ms ease;
+}
+
+:is(.rf-card--showcase, .rf-grid--showcase > .rf-card) .rf-card__title a:hover,
+:is(.rf-card--showcase, .rf-grid--showcase > .rf-card) .rf-card__title a:focus-visible {
+  color: var(--rf-green-deep);
+  text-decoration: underline;
+  text-decoration-thickness: 1.5px;
+  text-underline-offset: 0.16em;
+}
+
+:is(.rf-card--showcase, .rf-grid--showcase > .rf-card) .rf-card__title a:hover::after,
+:is(.rf-card--showcase, .rf-grid--showcase > .rf-card) .rf-card__title a:focus-visible::after {
+  opacity: 1;
+  transform: translate(1px, -1px);
+}
+
+:is(.rf-card--showcase, .rf-grid--showcase > .rf-card) > p:not(.rf-meta):not(.rf-card__num) {
+  margin-block-start: var(--rf-space-2);
+  font-size: var(--rf-text-md);
+  line-height: var(--rf-leading-body);
+  color: var(--rf-ink);
+  text-wrap: pretty;
+}
+
+:is(.rf-card--showcase, .rf-grid--showcase > .rf-card) > .rf-card__foot {
+  margin-block-start: auto;
+  padding-top: var(--rf-space-5);
+  border-top: 0;
+}
+
+:is(.surface--tint, .is-style-rf-tint):is(.rf-card--showcase, .rf-grid--showcase > .rf-card) {
+  border-color: color-mix(in srgb, var(--rf-green) 26%, var(--rf-panel-deep));
+}
+
+:is(.surface--tint, .is-style-rf-tint):is(.rf-card--showcase, .rf-grid--showcase > .rf-card) .rf-card__foot :is(.btn--tertiary, .wp-block-button__link) {
+  background: var(--rf-white);
+}
+
+:is(.surface--tint, .is-style-rf-tint):is(.rf-card--showcase, .rf-grid--showcase > .rf-card) .rf-card__foot :is(.btn--tertiary:hover, .btn--tertiary:focus-visible, .wp-block-button__link:hover, .wp-block-button__link:focus-visible) {
+  background: var(--rf-green-deep);
+  color: var(--rf-on-primary);
+  border-color: var(--rf-green-deep);
+}
+
+:is(.surface--dark, .surface--logo, .is-style-rf-dark, .is-style-rf-logo):is(.rf-card--showcase, .rf-grid--showcase > .rf-card) {
+  border-color: oklch(from var(--rf-green-logo) calc(l - 0.06) c h);
+}
+
+:is(.surface--dark, .surface--logo, .is-style-rf-dark, .is-style-rf-logo):is(.rf-card--showcase, .rf-grid--showcase > .rf-card):is(:hover, :focus-within) {
+  border-color: oklch(from var(--rf-green-logo) calc(l - 0.12) c h);
+}
+
+:is(.surface--dark, .surface--logo, .is-style-rf-dark, .is-style-rf-logo) .rf-card__stage {
+  background: rgba(0, 0, 0, 0.18);
+  border-color: rgba(255, 255, 255, 0.14);
+}
+
+:is(.surface--dark, .surface--logo, .is-style-rf-dark, .is-style-rf-logo):is(.rf-card--showcase, .rf-grid--showcase > .rf-card) .rf-card__title,
+:is(.surface--dark, .surface--logo, .is-style-rf-dark, .is-style-rf-logo):is(.rf-card--showcase, .rf-grid--showcase > .rf-card) .rf-card__title a,
+:is(.surface--dark, .surface--logo, .is-style-rf-dark, .is-style-rf-logo):is(.rf-card--showcase, .rf-grid--showcase > .rf-card) > p:not(.rf-meta):not(.rf-card__num) {
+  color: var(--rf-on-dark);
+}
+
+:is(.surface--dark, .surface--logo, .is-style-rf-dark, .is-style-rf-logo):is(.rf-card--showcase, .rf-grid--showcase > .rf-card) .rf-card__title a::after {
+  color: var(--rf-orange-soft);
+  opacity: 0.95;
+}
+
+:is(.surface--dark, .surface--logo, .is-style-rf-dark, .is-style-rf-logo):is(.rf-card--showcase, .rf-grid--showcase > .rf-card) .rf-card__title a:hover,
+:is(.surface--dark, .surface--logo, .is-style-rf-dark, .is-style-rf-logo):is(.rf-card--showcase, .rf-grid--showcase > .rf-card) .rf-card__title a:focus-visible {
+  color: var(--rf-cream);
+  text-decoration-color: var(--rf-cream);
+}
+
 .rf-card p {
   margin-block-end: 0;
   margin-inline: 0;
@@ -963,10 +1231,30 @@ a.rf-review__role:hover {
   font-size: var(--rf-text-sm);
 }
 
+.rf-card > p.rf-card__num {
+  color: var(--rf-ink-muted);
+  font-size: var(--rf-text-xl);
+}
+
 .rf-card > .rf-card__foot {
   margin-block-start: var(--rf-space-5);
   padding-top: var(--rf-space-3);
   border-top: 1px solid var(--rf-rule);
+}
+
+/* A card in a row of links. Same edge and type. Less padding, a smaller title. */
+.rf-card--tight {
+  max-inline-size: 18rem;
+  padding: var(--rf-space-4);
+}
+
+.rf-card--tight > .rf-card__title,
+.rf-card--tight .rf-card__title {
+  font-size: var(--rf-text-lg);
+}
+
+.rf-card--tight > .rf-card__foot {
+  margin-block-start: var(--rf-space-4);
 }
 
 .rf-divider {
@@ -1038,10 +1326,153 @@ img.rf-avatar {
   background: var(--rf-panel);
 }
 
-.rf-avatar--mark {
+img.rf-avatar.rf-avatar--mark {
   object-fit: contain;
   padding: 0.45rem;
   background: var(--rf-cream);
+}
+
+/* Dialogue.
+   Atom: .rf-dialogue__bubble (tail and the tight corner toward the speaker).
+   Molecule: .rf-dialogue__turn. --them starts left. --us ends right.
+   Organism: .rf-dialogue. The face is .rf-avatar. The thread is .rf-stack.
+   .rf-dialogue__more is the optional handoff under the reply. */
+
+.rf-prose > .rf-dialogue {
+  margin-block-start: var(--rf-space-5);
+}
+
+.rf-dialogue {
+  --rf-dialogue-line: var(--rf-green);
+  box-sizing: border-box;
+  min-inline-size: 0;
+  max-inline-size: 100%;
+  margin-inline: 0;
+  padding: var(--rf-space-7);
+  border: 2px dotted var(--rf-dialogue-line);
+  border-radius: var(--rf-radius-sm);
+  background: var(--rf-white);
+}
+
+/* The legend is already inset by the frame padding. Extra start margin
+   would push the pill past the first face. */
+.rf-dialogue__label {
+  margin-inline-start: 0;
+  margin-block: 0;
+  padding-block: var(--rf-space-2);
+  padding-inline: var(--rf-space-4);
+  border: 1px solid var(--rf-dialogue-line);
+  border-radius: var(--rf-radius-pill);
+  background: var(--rf-cream-deep);
+  font-family: var(--rf-font-serif);
+  font-size: var(--rf-text-lg);
+  font-weight: var(--rf-weight-semibold);
+  letter-spacing: var(--rf-tracking-display);
+  line-height: var(--rf-leading-snug);
+  color: var(--rf-ink);
+}
+
+.wp-block-group.rf-dialogue.is-layout-flow > * + * {
+  margin-block-start: 0;
+}
+
+.rf-dialogue__thread {
+  display: flow-root;
+}
+
+.rf-dialogue__turn {
+  display: flex;
+  align-items: flex-end;
+  justify-content: flex-start;
+  gap: var(--rf-space-3);
+  margin: 0;
+}
+
+.rf-dialogue__turn + .rf-dialogue__turn {
+  margin-top: var(--rf-space-3);
+}
+
+.rf-dialogue__turn--us {
+  float: right;
+  clear: right;
+  width: max-content;
+  max-inline-size: 100%;
+}
+
+.rf-dialogue .rf-avatar,
+.rf-dialogue .wp-block-image.rf-avatar {
+  flex: none;
+  margin: 0;
+}
+
+.rf-dialogue .wp-block-image.rf-avatar {
+  line-height: 0;
+}
+
+.rf-dialogue .wp-block-image.rf-avatar img {
+  display: block;
+  inline-size: 2.75rem;
+  block-size: 2.75rem;
+  border-radius: var(--rf-radius-pill);
+  object-fit: cover;
+}
+
+.rf-dialogue .wp-block-image.rf-avatar--mark img {
+  object-fit: contain;
+  padding: 0.3rem;
+  background: var(--rf-white);
+  border: 1px solid var(--rf-green);
+  box-sizing: border-box;
+}
+
+.rf-dialogue__turn--them img.rf-avatar {
+  object-position: center 18%;
+}
+
+.rf-dialogue__bubble {
+  position: relative;
+  margin: 0;
+  max-inline-size: 28rem;
+  padding-block: var(--rf-space-3);
+  padding-inline: var(--rf-space-4);
+  border-radius: var(--rf-radius);
+  border-end-start-radius: var(--rf-radius-sm);
+  background: var(--rf-panel);
+  color: var(--rf-ink);
+  line-height: var(--rf-leading-body);
+}
+
+.rf-dialogue__turn--us .rf-dialogue__bubble {
+  border-end-start-radius: var(--rf-radius);
+  border-end-end-radius: var(--rf-radius-sm);
+  background: var(--rf-green-soft);
+}
+
+.rf-dialogue__bubble::after {
+  content: "";
+  position: absolute;
+  inset-block-end: 0.65rem;
+  inset-inline-start: -0.22rem;
+  inline-size: 0.55rem;
+  block-size: 0.55rem;
+  background: inherit;
+  transform: rotate(45deg);
+}
+
+.rf-dialogue__turn--us .rf-dialogue__bubble::after {
+  inset-inline-start: auto;
+  inset-inline-end: -0.22rem;
+}
+
+.rf-dialogue__more {
+  clear: both;
+  width: fit-content;
+  margin: var(--rf-space-3) 0 0 auto;
+  margin-inline-end: calc(2.75rem + var(--rf-space-3));
+  max-inline-size: min(28rem, calc(100% - 2.75rem - var(--rf-space-3)));
+  color: var(--rf-ink);
+  text-align: end;
+  line-height: var(--rf-leading-body);
 }
 
 .rf-time {
@@ -1242,13 +1673,25 @@ img.rf-avatar {
 }
 
 .rf-dialog {
+  position: fixed;
+  inset: 0;
+  width: min(28rem, calc(100% - 2rem));
+  height: fit-content;
+  max-height: calc(100dvh - 2rem);
+  margin: auto;
+  overflow: auto;
   border: 0;
   padding: var(--rf-space-5);
   border-radius: var(--rf-radius);
   background: var(--rf-white);
   color: var(--rf-ink);
   box-shadow: var(--rf-shadow-md);
-  max-inline-size: min(28rem, calc(100% - 2rem));
+}
+
+/* The prose stack sets margin-block-start on every sibling after the first.
+   That pins a modal dialog to the top. This puts the leftover space back on auto. */
+.wp-block-post-content.rf-prose > .rf-dialog {
+  margin: auto;
 }
 
 .rf-dialog::backdrop {
@@ -1349,7 +1792,7 @@ img.rf-avatar {
   border-radius: var(--rf-radius-pill);
   background: var(--rf-panel);
   color: var(--rf-brown);
-  font-size: 0.875rem;
+  font-size: var(--rf-text-sm);
   line-height: 1;
 }
 
@@ -1575,6 +2018,142 @@ img.rf-avatar {
   color: var(--rf-ink-deep);
 }
 
+/* Single-line summary rows with an outline SVG in the moss tile. */
+ul.rf-icon-list {
+  list-style: none;
+  margin: 0;
+  padding: 0;
+  display: grid;
+  gap: var(--rf-space-4);
+  max-inline-size: var(--rf-measure);
+}
+
+ul.rf-icon-list > li {
+  display: flex;
+  align-items: center;
+  gap: var(--rf-space-4);
+  margin: 0;
+  color: var(--rf-ink);
+  font-size: var(--rf-text-xl);
+  line-height: var(--rf-leading-ui);
+}
+
+ul.rf-icon-list > li strong {
+  color: var(--rf-ink-deep);
+  font-weight: var(--rf-weight-bold);
+}
+
+.rf-icon-list__icon {
+  flex: none;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  width: var(--rf-space-7);
+  height: var(--rf-space-7);
+  background: var(--rf-green-soft);
+  color: var(--rf-green-deep);
+}
+
+.rf-icon-list__icon svg {
+  display: block;
+  width: 1.625rem;
+  height: 1.625rem;
+  fill: none;
+  stroke: currentColor;
+  stroke-width: 2;
+  stroke-linecap: round;
+  stroke-linejoin: round;
+}
+
+ul.rf-icon-list > li.rf-icon-list__item--accent .rf-icon-list__icon {
+  background: var(--rf-green);
+  color: var(--rf-on-primary);
+}
+
+/* Detailed outline icon list: framed surface card, Knile title per row,
+   hairline dividers, and soft moss highlight on the milestone row. */
+ul.rf-icon-list.rf-icon-list--detail {
+  max-inline-size: none;
+  gap: 0;
+  padding: 0;
+  background: var(--rf-white);
+  border: 4px solid var(--rf-cream-deep);
+}
+
+ul.rf-icon-list.rf-icon-list--detail > li {
+  align-items: flex-start;
+  gap: var(--rf-space-4);
+  padding: var(--rf-space-5);
+  font-size: var(--rf-text-md);
+  line-height: var(--rf-leading-body);
+  color: var(--rf-ink-muted);
+}
+
+ul.rf-icon-list.rf-icon-list--detail > li + li {
+  border-block-start: 1px solid var(--rf-rule);
+}
+
+ul.rf-icon-list.rf-icon-list--detail > li.rf-icon-list__item--accent {
+  background: var(--rf-green-soft);
+  color: var(--rf-ink);
+  border-block-color: color-mix(in srgb, var(--rf-green) 24%, transparent);
+}
+
+ul.rf-icon-list.rf-icon-list--detail > li.rf-icon-list__item--accent + li {
+  border-block-start-color: color-mix(in srgb, var(--rf-green) 24%, transparent);
+}
+
+ul.rf-icon-list.rf-icon-list--detail .rf-icon-list__icon {
+  width: 3rem;
+  height: 3rem;
+  margin-block-start: 0.1rem;
+  border-radius: var(--rf-radius-sm);
+  border: 1px solid color-mix(in srgb, var(--rf-green) 22%, transparent);
+}
+
+ul.rf-icon-list.rf-icon-list--detail > li.rf-icon-list__item--accent .rf-icon-list__icon {
+  background: var(--rf-green-deep);
+  border-color: var(--rf-green-deep);
+  color: var(--rf-on-primary);
+}
+
+ul.rf-icon-list.rf-icon-list--detail .rf-icon-list__icon svg {
+  width: 1.45rem;
+  height: 1.45rem;
+}
+
+ul.rf-icon-list.rf-icon-list--detail .rf-icon-list__copy {
+  display: block;
+  min-inline-size: 0;
+}
+
+ul.rf-icon-list.rf-icon-list--detail .rf-icon-list__copy > strong {
+  display: block;
+  margin-block-end: var(--rf-space-1);
+  font-family: var(--rf-font-serif);
+  font-size: var(--rf-text-lg);
+  font-weight: var(--rf-weight-bold);
+  line-height: var(--rf-leading-snug);
+  letter-spacing: var(--rf-tracking-display);
+  color: var(--rf-ink-deep);
+}
+
+ul.rf-icon-list.rf-icon-list--detail > li.rf-icon-list__item--accent .rf-icon-list__copy > strong {
+  color: var(--rf-green-deep);
+}
+
+@media (max-width: 40rem) {
+  ul.rf-icon-list.rf-icon-list--detail > li {
+    padding: var(--rf-space-4);
+    gap: var(--rf-space-3);
+  }
+
+  ul.rf-icon-list.rf-icon-list--detail .rf-icon-list__icon {
+    width: 2.75rem;
+    height: 2.75rem;
+  }
+}
+
 /* A fact list beside a case study. The cream edge comes from elements.css. */
 .rf-facts {
   width: 22rem;
@@ -1689,6 +2268,37 @@ dl.rf-facts > div:first-child {
 
 .rf-step p {
   margin: 0;
+}
+
+/* Multi-beat bodies (finding / why / do this) need air between paragraphs. */
+.rf-step > div > p + p {
+  margin-block-start: var(--rf-space-3);
+}
+
+.rf-step__head {
+  display: flex;
+  align-items: center;
+  flex-wrap: wrap;
+  gap: var(--rf-space-3);
+  margin-block-end: var(--rf-space-3);
+}
+
+.rf-step__head .rf-step__title {
+  margin: 0;
+}
+
+/*
+  Action sequence: tighter mark column + orange numbers (same rare orange as
+  takeaways). Use for prioritized next steps in reports. Default .rf-steps
+  stays moss for case-study timelines.
+*/
+.rf-steps--action .rf-step {
+  grid-template-columns: 3rem minmax(0, 1fr);
+  gap: var(--rf-space-4);
+}
+
+.rf-steps--action .rf-step__mark {
+  color: var(--rf-orange);
 }
 
 .rf-people {

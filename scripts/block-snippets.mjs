@@ -210,8 +210,9 @@ export function articleHeroCopy() {
 
 /** Block wrapper. An inline button in a full-bleed band does not get the column. */
 export function bookOpen(label = "Book a discovery call") {
+  const arrow = `<svg class="rf-btn-icon" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true" focusable="false"><path d="M5 12h14"/><path d="m12 5 7 7-7 7"/></svg>`;
   return `<div class="book-call__open">
-	<button type="button" class="btn btn--cta" id="book-call">${label}</button>
+	<button type="button" class="btn btn--cta" id="book-call"><span>${label}</span>${arrow}</button>
 </div>`;
 }
 
@@ -245,15 +246,23 @@ export function subscribeForm({ idPrefix, name = false, layout = "stacked" }) {
 		</div>
 		`
     : "";
+  const mailIcon = `<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" focusable="false"><path d="m22 7-8.991 5.727a2 2 0 0 1-2.009 0L2 7"/><rect x="2" y="4" width="20" height="16" rx="2"/></svg>`;
+  const arrow = `<svg class="rf-btn-icon" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true" focusable="false"><path d="M5 12h14"/><path d="m12 5 7 7-7 7"/></svg>`;
   return `<form class="rf-copy rf-subscribe" method="post" action="/api/subscribe">
-		<p class="rf-meta">Subscribe</p>
-		<p>More context and resources, straight from Matt.</p>
+		<div class="rf-subscribe__head">
+			<span class="rf-subscribe__icon" aria-hidden="true">${mailIcon}</span>
+			<div class="rf-subscribe__titles">
+				<p class="rf-meta">Newsletter</p>
+				<p class="rf-subscribe__title">Field notes from Matt</p>
+			</div>
+		</div>
+		<p class="rf-subscribe__lede">More context and resources, straight from Matt.</p>
 		${nameField}<div class="field">
 			<label for="${idPrefix}-email">Email</label>
 			<input class="input" id="${idPrefix}-email" type="email" name="email" autocomplete="email" required maxlength="254">
 		</div>
 		${turnstile}
-		<button class="btn btn--primary" type="submit">Subscribe</button>
+		<button class="btn btn--primary rf-subscribe__submit" type="submit"><span>Subscribe</span>${arrow}</button>
 		${status}
 	</form>`;
 }
@@ -279,6 +288,66 @@ export function iconCardPattern() {
 
 	<!-- wp:paragraph -->
 	<p>The reader knows what to do this week.</p>
+	<!-- /wp:paragraph -->
+</article>
+<!-- /wp:group -->`;
+}
+
+export function numberedCardPattern() {
+  return `<!-- wp:group {"tagName":"article","className":"rf-card","layout":{"type":"default"}} -->
+<article class="wp-block-group rf-card">
+	<!-- wp:paragraph {"className":"rf-card__num"} -->
+	<p class="rf-card__num">01</p>
+	<!-- /wp:paragraph -->
+
+	<!-- wp:heading {"level":3,"className":"rf-card__title"} -->
+	<h3 class="wp-block-heading rf-card__title">Email</h3>
+	<!-- /wp:heading -->
+
+	<!-- wp:paragraph -->
+	<p>Treat the list as a relationship channel that starts before someone buys.</p>
+	<!-- /wp:paragraph -->
+</article>
+<!-- /wp:group -->`;
+}
+
+export function outlineIconCardPattern({
+  title = "Email",
+  text = "Treat the list as a relationship channel that starts before someone buys.",
+  paths = `<path d="m22 7-8.991 5.727a2 2 0 0 1-2.009 0L2 7"/><rect x="2" y="4" width="20" height="16" rx="2"/>`,
+} = {}) {
+  return `<!-- wp:group {"tagName":"article","className":"rf-card","layout":{"type":"default"}} -->
+<article class="wp-block-group rf-card">
+	${htmlBlock(`<span class="rf-card__icon" aria-hidden="true"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24">${paths}</svg></span>`)}
+
+	<!-- wp:heading {"level":3,"className":"rf-card__title"} -->
+	<h3 class="wp-block-heading rf-card__title">${title}</h3>
+	<!-- /wp:heading -->
+
+	<!-- wp:paragraph -->
+	<p>${text}</p>
+	<!-- /wp:paragraph -->
+</article>
+<!-- /wp:group -->`;
+}
+
+export function showcaseCardPattern({
+  logoSrc = "/wp-content/themes/rf/assets/case-studies/stellarwp.svg",
+  logoAlt = "StellarWP",
+  href = "#study",
+  title = "StellarWP",
+  text = "Product marketing and customer experience across a portfolio of commercial WordPress brands.",
+} = {}) {
+  return `<!-- wp:group {"tagName":"article","className":"rf-card rf-card--showcase","layout":{"type":"default"}} -->
+<article class="wp-block-group rf-card rf-card--showcase">
+	${htmlBlock(`<a class="rf-card__stage" href="${href}" tabindex="-1" aria-hidden="true"><img src="${logoSrc}" alt="${logoAlt}" /></a>`)}
+
+	<!-- wp:heading {"level":3,"className":"rf-card__title"} -->
+	<h3 class="wp-block-heading rf-card__title"><a href="${href}">${title}</a></h3>
+	<!-- /wp:heading -->
+
+	<!-- wp:paragraph -->
+	<p>${text}</p>
 	<!-- /wp:paragraph -->
 </article>
 <!-- /wp:group -->`;
@@ -316,6 +385,15 @@ export function iconListPattern() {
 ${items}
 </div>
 <!-- /wp:group -->`;
+}
+
+export function outlineIconListPattern() {
+  return htmlBlock(`<ul class="rf-icon-list">
+	<li><span class="rf-icon-list__icon" aria-hidden="true"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><circle cx="12" cy="12" r="10"/><path d="m16.24 7.76-1.804 5.411a2 2 0 0 1-1.265 1.265L7.76 16.24l1.804-5.411a2 2 0 0 1 1.265-1.265z"/></svg></span>6 Fractional CGO clients</li>
+	<li><span class="rf-icon-list__icon" aria-hidden="true"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M16 21v-2a4 4 0 0 0-4-4H6a4 4 0 0 0-4 4v2"/><path d="M16 3.128a4 4 0 0 1 0 7.744"/><path d="M22 21v-2a4 4 0 0 0-3-3.87"/><circle cx="9" cy="7" r="4"/></svg></span>13 Coaching clients</li>
+	<li class="rf-icon-list__item--accent"><span class="rf-icon-list__icon" aria-hidden="true"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M12.83 2.18a2 2 0 0 0-1.66 0L2.6 6.08a1 1 0 0 0 0 1.83l8.58 3.91a2 2 0 0 0 1.66 0l8.58-3.9a1 1 0 0 0 0-1.83z"/><path d="M2 12a1 1 0 0 0 .58.91l8.6 3.91a2 2 0 0 0 1.65 0l8.58-3.9A1 1 0 0 0 22 12"/><path d="M2 17a1 1 0 0 0 .58.91l8.6 3.91a2 2 0 0 0 1.65 0l8.58-3.9A1 1 0 0 0 22 17"/></svg></span><strong>Making 19 total brands supported</strong></li>
+	<li><span class="rf-icon-list__icon" aria-hidden="true"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><circle cx="12" cy="12" r="10"/><path d="M12 2a14.5 14.5 0 0 0 0 20 14.5 14.5 0 0 0 0-20"/><path d="M2 12h20"/></svg></span>Across 10 countries</li>
+</ul>`);
 }
 
 export function factsPattern() {
@@ -425,5 +503,114 @@ ${items}
 }
 
 export function subscribePattern() {
-  return htmlBlock(subscribeForm({ idPrefix: "pattern-subscribe", name: true }));
+  return `<!-- wp:group {"className":"is-style-rf-surface rf-rail-subscribe","layout":{"type":"default"}} -->
+<div class="wp-block-group is-style-rf-surface rf-rail-subscribe">
+	${htmlBlock(subscribeForm({ idPrefix: "pattern-subscribe", name: true }))}
+</div>
+<!-- /wp:group -->`;
+}
+
+export function authorBioBlocks() {
+  const arrow = `<svg class="rf-btn-icon" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true" focusable="false"><path d="M5 12h14"/><path d="m12 5 7 7-7 7"/></svg>`;
+  return `<!-- wp:group {"tagName":"section","className":"is-style-rf-surface rf-article-author","layout":{"type":"default"}} -->
+<section class="wp-block-group is-style-rf-surface rf-article-author">
+	<!-- wp:group {"className":"rf-article-author__main","layout":{"type":"default"}} -->
+	<div class="wp-block-group rf-article-author__main">
+		<!-- wp:html -->
+		<a class="rf-article-author__portrait" href="/about-matt/" tabindex="-1" aria-hidden="true"><img class="rf-article-author__photo" src="/wp-content/themes/rf/assets/articles/matt.jpg" alt="" width="640" height="640" /></a>
+		<!-- /wp:html -->
+
+		<!-- wp:group {"className":"rf-article-author__body","layout":{"type":"default"}} -->
+		<div class="wp-block-group rf-article-author__body">
+			<!-- wp:paragraph {"className":"rf-meta rf-article-author__eyebrow"} -->
+			<p class="rf-meta rf-article-author__eyebrow">Written by</p>
+			<!-- /wp:paragraph -->
+
+			<!-- wp:heading {"level":2,"className":"rf-article-author__name"} -->
+			<h2 class="wp-block-heading rf-article-author__name"><a href="/about-matt/">Matt Cromwell</a></h2>
+			<!-- /wp:heading -->
+
+			<!-- wp:paragraph {"className":"rf-article-author__role"} -->
+			<p class="rf-article-author__role">Founder &amp; Fractional CGO · Co-founder of GiveWP</p>
+			<!-- /wp:paragraph -->
+
+			<!-- wp:paragraph {"className":"rf-article-author__bio"} -->
+			<p class="rf-article-author__bio">Matt Cromwell is the founder of Roots &amp; Fruit, a fractional CGO agency helping product companies grow without burning out their teams or their customers. He co-founded, built, and sold GiveWP in an eight-figure acquisition, then led marketing and customer experience at scale across multiple products at StellarWP.</p>
+			<!-- /wp:paragraph -->
+		</div>
+		<!-- /wp:group -->
+	</div>
+	<!-- /wp:group -->
+
+	<!-- wp:group {"className":"rf-article-author__foot","layout":{"type":"default"}} -->
+	<div class="wp-block-group rf-article-author__foot">
+		<!-- wp:html -->
+		<a class="rf-article-author__more" href="/about-matt/"><span>More about Matt</span>${arrow}</a>
+		<div class="rf-cluster rf-article-author__socials">
+			<a class="rf-icon-link" href="https://x.com/learnwithmattc" aria-label="X"><svg class="rf-icon rf-icon--x" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="currentColor" aria-hidden="true"><path d="M14.234 10.162 22.977 0h-2.072l-7.591 8.824L7.251 0H.258l9.168 13.343L.258 24H2.33l8.016-9.318L16.749 24h6.993zm-2.837 3.299-.929-1.329L3.076 1.56h3.182l5.965 8.532.929 1.329 7.754 11.09h-3.182z"/></svg></a>
+			<a class="rf-icon-link" href="https://youtube.com/@wpproducttalk" aria-label="YouTube"><svg class="rf-icon rf-icon--youtube" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="currentColor" aria-hidden="true"><path d="M23.498 6.186a3.016 3.016 0 0 0-2.122-2.136C19.505 3.545 12 3.545 12 3.545s-7.505 0-9.377.505A3.017 3.017 0 0 0 .502 6.186C0 8.07 0 12 0 12s0 3.93.502 5.814a3.016 3.016 0 0 0 2.122 2.136c1.871.505 9.376.505 9.376.505s7.505 0 9.377-.505a3.015 3.015 0 0 0 2.122-2.136C24 15.93 24 12 24 12s0-3.93-.502-5.814zM9.545 15.568V8.432L15.818 12l-6.273 3.568z"/></svg></a>
+			<a class="rf-icon-link" href="https://linkedin.com/in/mattcromwell" aria-label="LinkedIn"><svg class="rf-icon rf-icon--linkedin" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="currentColor" aria-hidden="true"><path d="M20.447 20.452h-3.554v-5.569c0-1.328-.027-3.037-1.852-3.037-1.853 0-2.136 1.445-2.136 2.939v5.667H9.351V9h3.414v1.561h.046c.477-.9 1.637-1.85 3.37-1.85 3.601 0 4.267 2.37 4.267 5.455v6.286zM5.337 7.433c-1.144 0-2.063-.926-2.063-2.065 0-1.138.92-2.063 2.063-2.063 1.14 0 2.064.925 2.064 2.063 0 1.139-.925 2.065-2.064 2.065zm1.782 13.019H3.555V9h3.564v11.452zM22.225 0H1.771C.792 0 0 .774 0 1.729v20.542C0 23.227.792 24 1.771 24h20.451C23.2 24 24 23.227 24 22.271V1.729C24 .774 23.2 0 22.222 0h.003z"/></svg></a>
+		</div>
+		<!-- /wp:html -->
+	</div>
+	<!-- /wp:group -->
+</section>
+<!-- /wp:group -->`;
+}
+
+export function authorBioPattern() {
+  return authorBioBlocks();
+}
+
+export function dialoguePattern({
+  label = "Problem Statement",
+  themSrc = "/wp-content/themes/rf/assets/portraits/matt.jpg",
+  themAlt = "",
+  themText = "I changed it in English, and the other language stayed put.",
+  usText = "Each language keeps its own order.",
+  usSrc = "/wp-content/themes/rf/assets/mark.svg",
+  usAlt = "Roots and Fruit",
+  more = "The full steps are below.",
+} = {}) {
+  const face = (src, alt, extra = "") => {
+    const classes = ["rf-avatar", extra].filter(Boolean).join(" ");
+    return `<!-- wp:image {"sizeSlug":"full","linkDestination":"none","className":"${classes}"} -->
+<figure class="wp-block-image size-full ${classes}"><img src="${src}" alt="${alt}"/></figure>
+<!-- /wp:image -->`;
+  };
+  const moreBlock = more
+    ? `
+		<!-- wp:paragraph {"className":"rf-dialogue__more"} -->
+		<p class="rf-dialogue__more">${more}</p>
+		<!-- /wp:paragraph -->`
+    : "";
+  return `<!-- wp:group {"tagName":"fieldset","className":"rf-dialogue","layout":{"type":"default"}} -->
+<fieldset class="wp-block-group rf-dialogue">
+	<!-- wp:rf-static/legend {"className":"rf-dialogue__label","content":${JSON.stringify(label)}} /-->
+
+	<!-- wp:group {"className":"rf-dialogue__thread","layout":{"type":"default"}} -->
+	<div class="wp-block-group rf-dialogue__thread">
+		<!-- wp:group {"className":"rf-dialogue__turn","layout":{"type":"default"}} -->
+		<div class="wp-block-group rf-dialogue__turn">
+			${face(themSrc, themAlt)}
+
+			<!-- wp:paragraph {"className":"rf-dialogue__bubble"} -->
+			<p class="rf-dialogue__bubble">${themText}</p>
+			<!-- /wp:paragraph -->
+		</div>
+		<!-- /wp:group -->
+
+		<!-- wp:group {"className":"rf-dialogue__turn rf-dialogue__turn--us","layout":{"type":"default"}} -->
+		<div class="wp-block-group rf-dialogue__turn rf-dialogue__turn--us">
+			<!-- wp:paragraph {"className":"rf-dialogue__bubble"} -->
+			<p class="rf-dialogue__bubble">${usText}</p>
+			<!-- /wp:paragraph -->
+
+			${face(usSrc, usAlt, "rf-avatar--mark")}
+		</div>
+		<!-- /wp:group -->${moreBlock}
+	</div>
+	<!-- /wp:group -->
+</fieldset>
+<!-- /wp:group -->`;
 }

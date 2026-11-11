@@ -8,8 +8,8 @@
 ?>
 <!-- wp:group {"className":"rf-takeaways","layout":{"type":"default"}} -->
 <div class="wp-block-group rf-takeaways">
-	<!-- wp:heading {"level":3,"className":"rf-takeaways__title"} -->
-	<h3 class="wp-block-heading rf-takeaways__title">Key Takeaways</h3>
+	<!-- wp:heading {"level":2,"className":"rf-takeaways__title"} -->
+	<h2 class="wp-block-heading rf-takeaways__title">Key Takeaways</h2>
 	<!-- /wp:heading -->
 
 	<!-- wp:list {"ordered":true,"className":"rf-keytakeaways"} -->

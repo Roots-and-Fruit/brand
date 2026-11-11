@@ -1,0 +1,51 @@
+<!-- wp:template-part {"slug":"header","tagName":"header"} /-->
+
+<!-- wp:group {"tagName":"main","style":{"spacing":{"margin":{"top":"0","bottom":"0"}}},"layout":{"type":"default"}} -->
+<main class="wp-block-group" style="margin-top:0;margin-bottom:0">
+	<!-- wp:group {"align":"full","className":"page-hero page-hero--articles","backgroundColor":"panel","style":{"border":{"bottom":{"color":"var:custom|panel-deep","width":"4px","style":"solid"}},"spacing":{"blockGap":"var:preset|spacing|space-4","padding":{"top":"var:preset|spacing|space-7","bottom":"var:preset|spacing|space-7"}}},"layout":{"type":"default"}} -->
+	<div class="wp-block-group alignfull page-hero page-hero--articles has-panel-background-color has-background" style="border-bottom-color:var(--wp--custom--panel-deep);border-bottom-style:solid;border-bottom-width:4px;padding-top:var(--wp--preset--spacing--space-7);padding-bottom:var(--wp--preset--spacing--space-7)">
+		<!-- wp:group {"className":"article-wide rf-copy","layout":{"type":"default"}} -->
+		<div class="wp-block-group article-wide rf-copy">
+			<!-- wp:rf/product-updates-eyebrow /-->
+
+			<!-- wp:query-title {"type":"archive","showPrefix":false,"level":1,"className":"rf-display rf-display--lg"} /-->
+
+			<!-- wp:rf/product-updates-lede /-->
+		</div>
+		<!-- /wp:group -->
+	</div>
+	<!-- /wp:group -->
+
+	<!-- wp:group {"className":"rf-article-frame rf-updates-archive","layout":{"type":"default"}} -->
+	<div class="wp-block-group rf-article-frame rf-updates-archive">
+		<!-- wp:query {"className":"rf-updates-feed","query":{"perPage":100,"pages":0,"offset":0,"postType":"product_update","order":"desc","orderBy":"date","inherit":true},"layout":{"type":"default"}} -->
+		<div class="wp-block-query rf-updates-feed">
+			<!-- wp:post-template {"layout":{"type":"default"}} -->
+				<!-- wp:group {"className":"rf-update-item","layout":{"type":"default"}} -->
+				<div class="wp-block-group rf-update-item">
+					<!-- wp:html -->
+					<span class="rf-update-item__tile" aria-hidden="true"><svg class="rf-update-item__icon" viewBox="0 0 24 24" width="22" height="22" focusable="false"><path fill="none" stroke="currentColor" stroke-width="1.9" stroke-linecap="round" stroke-linejoin="round" d="M4.5 5.5h12v13a1.5 1.5 0 0 0 1.5 1.5 1.5 1.5 0 0 0 1.5-1.5V9.5h-3M4.5 5.5v13a1.5 1.5 0 0 0 1.5 1.5h12M7.5 9.5h6M7.5 13h6M7.5 16.5h4"/></svg></span>
+					<!-- /wp:html -->
+
+					<!-- wp:group {"className":"rf-update-item__copy","layout":{"type":"default"}} -->
+					<div class="wp-block-group rf-update-item__copy">
+						<!-- wp:post-title {"isLink":true,"level":2,"className":"rf-update-item__title"} /-->
+						<!-- wp:post-date {"format":"F j, Y","className":"rf-update-item__date"} /-->
+						<!-- wp:post-content {"className":"rf-prose rf-update-item__body","style":{"spacing":{"blockGap":"var:preset|spacing|space-4"}},"layout":{"type":"default"}} /-->
+					</div>
+					<!-- /wp:group -->
+				</div>
+				<!-- /wp:group -->
+			<!-- /wp:post-template -->
+		</div>
+		<!-- /wp:query -->
+
+		<!-- wp:template-part {"slug":"sidebar-post","tagName":"aside"} /-->
+	</div>
+	<!-- /wp:group -->
+</main>
+<!-- /wp:group -->
+
+<!-- wp:template-part {"slug":"book"} /-->
+
+<!-- wp:template-part {"slug":"footer","tagName":"footer"} /-->

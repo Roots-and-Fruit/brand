@@ -80,6 +80,11 @@ $sections = array(
 		'file'        => 'icon-list.php',
 	),
 	array(
+		'title'       => 'Outline icon list',
+		'description' => 'Single-line summary statements with outline SVGs in moss tiles and an optional solid-moss accent row.',
+		'file'        => 'outline-icon-list.php',
+	),
+	array(
 		'title'       => 'Subscribe',
 		'description' => 'The same form as the articles hero and the post rail. It posts to /api/subscribe.',
 		'file'        => 'subscribe.php',

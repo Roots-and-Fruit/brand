@@ -207,6 +207,27 @@
   grid-template-columns: repeat(3, minmax(0, 1fr));
 }
 
+/* A card's longest word (a title like theme.json) is its min-content size.
+   The default min-width: auto then grows that one track and the gaps go uneven.
+   Stretch every tile to its column, and cancel the left-edge margin that would
+   shrink a card back to its text. */
+.rf-grid > .rf-card,
+.rf-grid > .wp-block-group.rf-card {
+  min-inline-size: 0;
+  max-inline-size: none;
+  margin-left: 0 !important;
+  margin-right: 0 !important;
+  justify-self: stretch;
+}
+
+/* The prose column caps children at 65ch of their own font, so a grid renders
+   narrower on the front than in the editor. Fill the column instead. */
+.wp-block-post-content.rf-prose > .rf-grid,
+.editor-styles-wrapper .rf-grid {
+  max-inline-size: none;
+  inline-size: 100%;
+}
+
 @media (max-width: 40rem) {
   .rf-grid--two,
   .rf-grid--three {

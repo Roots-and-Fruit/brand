@@ -269,7 +269,7 @@ a.rf-tabs__tab:visited {
 
 .rf-toggle__state {
   font-family: var(--rf-font-sans);
-  font-size: 0.75rem;
+  font-size: var(--rf-text-sm);
   line-height: 1;
 }
 
@@ -352,7 +352,7 @@ a.rf-tabs__tab:visited {
 .rf-field-row__label {
   color: var(--rf-ink-muted);
   font-family: var(--rf-font-sans);
-  font-size: 0.8rem;
+  font-size: var(--rf-text-sm);
   font-weight: var(--rf-weight-bold);
   letter-spacing: 0.01em;
   overflow: hidden;

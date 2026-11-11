@@ -1,5 +1,10 @@
 /* Roots & Fruit — design tokens
-   Shared CSS custom properties for brand color, type, space, and shape. */
+   Shared CSS custom properties for brand color, type, space, and shape.
+   1rem is 16px. Type does not go below 1rem. */
+
+html {
+  font-size: 16px;
+}
 
 :root {
   /* Paper & ink */
@@ -66,7 +71,7 @@
   --rf-font-sans: "Nunito Sans", system-ui, sans-serif;
 
   /* Type scale — sm (16px) is the floor; no xs */
-  --rf-text-sm: 1rem;      /* 16 · compact UI, labels, meta */
+  --rf-text-sm: 1rem;      /* 16px floor · compact UI, labels, meta */
   --rf-text-md: 1.125rem;  /* 18 · default body / long-form */
   --rf-text-lg: 1.375rem;  /* 22 · lead */
   --rf-text-xl: 1.75rem;   /* 28 · display-sm */

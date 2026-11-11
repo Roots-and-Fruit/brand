@@ -56,6 +56,10 @@ Shipped 2026-10-08. Class `.rf-offer`, with `.rf-offer--panel` (beige) and `.rf-
 
 Shipped 2026-10-15. Facts, steps, a three-stat row, people, a photo cluster, a logo row, glyph masks, an icon card, and an icon list. The Subscribe pattern uses the form that already posts to `/api/subscribe`. These are pieces inside the existing page jobs. They are not a ninth page job. Shop, show, reel, and a four-up stat row stay out.
 
+## Dialogue
+
+Shipped 2026-10-22. Class `.rf-dialogue`. A speech bubble (`.rf-dialogue__bubble`), a turn (`.rf-dialogue__turn`, `--them` or `--us`), and a dotted frame whose legend lines up with the first face. WordPress inserts that legend with the Legend block (`rf-static/legend`) inside a fieldset Group. The pattern is `rf/dialogue`. The handoff (`.rf-dialogue__more`) is optional. See it on Components (the bubble and the turn) and on Patterns & layout (the frame).
+
 ## Not this round
 
 - A larger disclosure, so a sales question is not the size of a design-system note. Size only. The component exists.

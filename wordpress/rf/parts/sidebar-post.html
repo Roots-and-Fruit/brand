@@ -1,25 +1,42 @@
 <!-- wp:group {"className":"rf-article-rail","layout":{"type":"default"}} -->
 <div class="wp-block-group rf-article-rail">
-	<!-- wp:group {"className":"is-style-rf-logo","style":{"spacing":{"padding":{"top":"var:preset|spacing|space-5","bottom":"var:preset|spacing|space-5","left":"var:preset|spacing|space-5","right":"var:preset|spacing|space-5"},"blockGap":"var:preset|spacing|space-4"}},"layout":{"type":"default"}} -->
-	<div class="wp-block-group is-style-rf-logo" style="padding-top:var(--wp--preset--spacing--space-5);padding-right:var(--wp--preset--spacing--space-5);padding-bottom:var(--wp--preset--spacing--space-5);padding-left:var(--wp--preset--spacing--space-5)">
-		<!-- wp:paragraph -->
-		<p>Is your product business stagnating? Book a discovery call with Matt.</p>
+	<!-- wp:group {"className":"is-style-rf-logo rf-rail-cta","layout":{"type":"default"}} -->
+	<div class="wp-block-group is-style-rf-logo rf-rail-cta">
+		<!-- wp:html -->
+		<div class="rf-rail-cta__head">
+			<img class="rf-rail-cta__avatar" src="/wp-content/themes/rf/assets/articles/matt.jpg" alt="" width="640" height="640" />
+			<p class="rf-meta rf-rail-cta__eyebrow">Work with Matt</p>
+		</div>
+		<!-- /wp:html -->
+
+		<!-- wp:heading {"level":2,"className":"rf-rail-cta__title"} -->
+		<h2 class="wp-block-heading rf-rail-cta__title">Is your product business stagnating?</h2>
+		<!-- /wp:heading -->
+
+		<!-- wp:paragraph {"className":"rf-rail-cta__copy"} -->
+		<p class="rf-rail-cta__copy">Book a free discovery call with Matt to look at where growth is stalling and what to fix next.</p>
 		<!-- /wp:paragraph -->
 
-		<!-- wp:buttons -->
-		<div class="wp-block-buttons">
-			<!-- wp:button {"className":"btn btn--primary"} -->
-			<div class="wp-block-button btn btn--primary"><a class="wp-block-button__link wp-element-button" href="#book">Book here</a></div>
-			<!-- /wp:button -->
+		<!-- wp:html -->
+		<div class="rf-rail-cta__actions">
+			<a class="btn btn--cta rf-rail-cta__btn" href="#book"><span>Book a discovery call</span><svg class="rf-btn-icon" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true" focusable="false"><path d="M5 12h14"/><path d="m12 5 7 7-7 7"/></svg></a>
 		</div>
-		<!-- /wp:buttons -->
+		<!-- /wp:html -->
 	</div>
 	<!-- /wp:group -->
 
-	<!-- wp:html -->
-	<form class="rf-copy rf-subscribe" method="post" action="/api/subscribe">
-		<p class="rf-meta">Subscribe</p>
-		<p>More context and resources, straight from Matt.</p>
+	<!-- wp:group {"className":"is-style-rf-surface rf-rail-subscribe","layout":{"type":"default"}} -->
+	<div class="wp-block-group is-style-rf-surface rf-rail-subscribe">
+		<!-- wp:html -->
+		<form class="rf-copy rf-subscribe" method="post" action="/api/subscribe">
+		<div class="rf-subscribe__head">
+			<span class="rf-subscribe__icon" aria-hidden="true"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" focusable="false"><path d="m22 7-8.991 5.727a2 2 0 0 1-2.009 0L2 7"/><rect x="2" y="4" width="20" height="16" rx="2"/></svg></span>
+			<div class="rf-subscribe__titles">
+				<p class="rf-meta">Newsletter</p>
+				<p class="rf-subscribe__title">Field notes from Matt</p>
+			</div>
+		</div>
+		<p class="rf-subscribe__lede">More context and resources, straight from Matt.</p>
 		<div class="field">
 			<label for="subscribe-name">Name</label>
 			<input class="input" id="subscribe-name" type="text" name="name" autocomplete="name" maxlength="100">
@@ -29,9 +46,11 @@
 			<input class="input" id="subscribe-email" type="email" name="email" autocomplete="email" required maxlength="254">
 		</div>
 		<div class="rf-subscribe-turnstile" data-sitekey="0x4AAAAAAFV-KGUd_wkXmGBY" data-action="subscribe"></div>
-		<button class="btn btn--primary" type="submit">Subscribe</button>
+		<button class="btn btn--primary rf-subscribe__submit" type="submit"><span>Subscribe</span><svg class="rf-btn-icon" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true" focusable="false"><path d="M5 12h14"/><path d="m12 5 7 7-7 7"/></svg></button>
 		<p class="rf-meta rf-subscribe-status" role="status"></p>
 	</form>
-	<!-- /wp:html -->
+		<!-- /wp:html -->
+	</div>
+	<!-- /wp:group -->
 </div>
 <!-- /wp:group -->

@@ -43,14 +43,14 @@ function services() {
       { classes: "btn btn--tertiary", href: "#packages", label: "See the packages" },
     ],
   });
-  const intro = `<!-- wp:group {"anchor":"packages","className":"rf-copy","layout":{"type":"default"}} -->
-<div class="wp-block-group rf-copy" id="packages">
+  const intro = `<!-- wp:group {"className":"rf-copy","layout":{"type":"default"}} -->
+<div class="wp-block-group rf-copy">
 	<!-- wp:paragraph {"className":"rf-meta"} -->
 	<p class="rf-meta">Choose your path</p>
 	<!-- /wp:paragraph -->
 
-	<!-- wp:heading -->
-	<h2 class="wp-block-heading">Three ways to work together</h2>
+	<!-- wp:heading {"className":"rf-display rf-display--md"} -->
+	<h2 class="wp-block-heading rf-display rf-display--md">Three ways to work together</h2>
 	<!-- /wp:heading -->
 
 	<!-- wp:paragraph -->
@@ -111,7 +111,14 @@ function services() {
       by: '<span class="rf-offer__name">Andrew Wilder</span> Founder, NerdPress',
     }),
   ];
-  return [hero, intro, ...offers].join("\n\n");
+  const section = `<!-- wp:group {"anchor":"packages","className":"rf-stack rf-stack--md","layout":{"type":"default"}} -->
+<div class="wp-block-group rf-stack rf-stack--md" id="packages">
+${intro}
+
+${offers.join("\n\n")}
+</div>
+<!-- /wp:group -->`;
+  return [hero, section].join("\n\n");
 }
 
 function caseStudy({ mark, width, height, title, body, quoteText, name, role }) {

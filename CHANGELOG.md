@@ -7,6 +7,26 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 
 ## [Unreleased]
 
+### Added
+
+- Author bio template part (`parts/author-bio.html`) and block pattern (`rf/author-bio`): framed `is-style-rf-surface` card with a `roots-1.svg` watermark, square portrait, Knile author link, role line, and a footer row pairing `More about Matt` with bordered social tiles.
+- Icon pills: `.pill__icon` for a leading inline SVG on `.pill` chips (evidence, horizon, status).
+- Action steps: `.rf-steps--action` for a tight mark column and orange step numbers, plus `.rf-step__head` for a title beside a pill.
+- Numbered and outline-icon card leads: `.rf-card__num` for a muted Knile step, `.rf-card__icon` for a 2.5rem orange outline SVG. Patterns `rf/numbered-card` and `rf/outline-icon-card`. The green glyph-tile icon card stays its own piece.
+- Outline icon list (`ul.rf-icon-list`, pattern `rf/outline-icon-list`): single-line summary rows at `--rf-text-xl` paired with outline SVGs in `--rf-space-7` moss tiles (`.rf-icon-list__icon`), `.rf-icon-list__item--accent` for a solid-moss milestone row, and `.rf-icon-list--detail` for multi-line titled rows in a framed white surface card.
+- A dialogue pattern (`rf/dialogue`): a fieldset Group, the Legend block for the label, two turns, and an optional handoff line.
+- Showcase cards (`.rf-card--showcase` / `.rf-grid--showcase`, pattern `rf/showcase-card`): a `5.25rem` inset brand stage (`.rf-card__stage`, `.rf-card__stage--dual`) or media header (`.rf-card__head`), rounded `1.5px` frame, `--rf-text-lg` linked titles with an inline `↗` cue, full-ink `body-md` copy, and `.rf-lead-in` prose proximity.
+
+### Changed
+
+- Articles archive (`templates/home.html`): split hero with a framed subscribe surface, client-side topic filter pills, a logo-olive latest-essay spotlight with key takeaways, and scannable essay cards with outline icons, reading time, and an expandable key-takeaways disclosure.
+- Discovery call band (`parts/book.html`) and post sidebar (`parts/sidebar-post.html`, `patterns/subscribe.php`): split closing band with an `Advisory & Coaching` kicker and framed host/booking card, plus an elevated logo-olive rail CTA and framed newsletter subscribe card.
+
+### Fixed
+
+- Dynamic theme template blocks (`rf/articles-index`, `rf/term-*`, `rf/product-*`) register in `assets/js/editor-layout.js` so the Site Editor renders `rf/articles-index` via `ServerSideRender` without unsupported-block warnings.
+- Article blocks keep the prose gap. A quote, a heading, and an embed sit on the same rhythm as the paragraphs.
+
 ## [2.1.0] - 2026-10-15
 
 ### Added

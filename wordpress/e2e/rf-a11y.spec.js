@@ -2,7 +2,7 @@ import AxeBuilder from "@axe-core/playwright";
 import { expect, test } from "@playwright/test";
 
 const TAGS = ["wcag2a", "wcag2aa", "wcag21aa"];
-const ROUTES = ["/", "/articles/", "/services/"];
+const ROUTES = ["/", "/articles/", "/services/", "/articles/wordpress-product-advice-2027/"];
 
 function axe(page) {
   return new AxeBuilder({ page }).withTags(TAGS).analyze();

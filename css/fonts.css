@@ -1,10 +1,12 @@
-/* Roots & Fruit — Knile + Nunito Sans (hosted on marketing site; not in this repo).
-   Source: https://rootsandfruit.com/wp-content/uploads/rnf_assets/fonts/
-   Requires CORS on that path (Cloudflare). Do not load Google Fonts. */
+/* Roots & Fruit — Knile + Nunito Sans.
+   The Studio theme keeps the files in ../fonts/ so the static export
+   carries them. Do not point this file at /wp-content/uploads/. Those
+   URLs 404, and this public kit does not store the Knile binaries.
+   Do not load Google Fonts. */
 
 @font-face {
   font-family: "Knile";
-  src: url("https://rootsandfruit.com/wp-content/uploads/rnf_assets/fonts/knile-regular-webfont.woff2") format("woff2");
+  src: url("../fonts/knile-regular-webfont.woff2") format("woff2");
   font-weight: 400;
   font-style: normal;
   font-display: swap;
@@ -12,7 +14,7 @@
 
 @font-face {
   font-family: "Knile";
-  src: url("https://rootsandfruit.com/wp-content/uploads/rnf_assets/fonts/knile-semibold-webfont.woff2") format("woff2");
+  src: url("../fonts/knile-semibold-webfont.woff2") format("woff2");
   font-weight: 600;
   font-style: normal;
   font-display: swap;
@@ -20,18 +22,17 @@
 
 @font-face {
   font-family: "Knile";
-  src: url("https://rootsandfruit.com/wp-content/uploads/rnf_assets/fonts/knile-bold-webfont.woff2") format("woff2");
+  src: url("../fonts/knile-bold-webfont.woff2") format("woff2");
   font-weight: 700;
   font-style: normal;
   font-display: swap;
 }
 
-/* Nunito Sans: latin, weight axis only (400–700 on the site; file range is 200–1000).
-   Upload from the Fontsource zip, variable/: nunito-sans-latin-wght-{normal,italic}.woff2 */
+/* Nunito Sans: latin, weight axis only (400–700 on the site; file range is 200–1000). */
 @font-face {
   font-family: "Nunito Sans";
-  src: url("https://rootsandfruit.com/wp-content/uploads/rnf_assets/fonts/nunito-sans-latin-wght-normal.woff2") format("woff2-variations"),
-       url("https://rootsandfruit.com/wp-content/uploads/rnf_assets/fonts/nunito-sans-latin-wght-normal.woff2") format("woff2");
+  src: url("../fonts/nunito-sans-latin-wght-normal.woff2") format("woff2-variations"),
+       url("../fonts/nunito-sans-latin-wght-normal.woff2") format("woff2");
   font-weight: 200 1000;
   font-style: normal;
   font-display: swap;
@@ -40,8 +41,8 @@
 
 @font-face {
   font-family: "Nunito Sans";
-  src: url("https://rootsandfruit.com/wp-content/uploads/rnf_assets/fonts/nunito-sans-latin-wght-italic.woff2") format("woff2-variations"),
-       url("https://rootsandfruit.com/wp-content/uploads/rnf_assets/fonts/nunito-sans-latin-wght-italic.woff2") format("woff2");
+  src: url("../fonts/nunito-sans-latin-wght-italic.woff2") format("woff2-variations"),
+       url("../fonts/nunito-sans-latin-wght-italic.woff2") format("woff2");
   font-weight: 200 1000;
   font-style: italic;
   font-display: swap;

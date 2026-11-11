@@ -61,6 +61,59 @@ main.wp-block-group:has(
   object-fit: cover;
 }
 
+/* Single docs. HydroKE only marks the regions. This theme paints the article frame. */
+.hydroke-doc-hero {
+  box-sizing: border-box;
+  background-color: var(--rf-green-logo);
+  color: var(--rf-on-dark);
+  margin: 0 0 var(--rf-space-6);
+  padding-block: var(--rf-space-7);
+  padding-inline: var(--rf-space-5);
+}
+
+.hydroke-doc-hero > .hydroke-doc-header {
+  display: flex;
+  flex-direction: column;
+  gap: var(--rf-space-3);
+  width: min(1200px, 100%);
+  margin-inline: auto;
+}
+
+.hydroke-doc-hero .hydroke-doc-title {
+  margin: 0;
+  color: var(--rf-on-dark);
+  font-size: var(--rf-text-3xl);
+  font-weight: var(--rf-weight-bold);
+  line-height: var(--rf-leading-display);
+  letter-spacing: var(--rf-tracking-display);
+}
+
+.hydroke-doc-hero .hydroke-doc-meta {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+  gap: var(--rf-space-4);
+  margin: 0;
+}
+
+.hydroke-doc-hero .hydroke-doc-meta-updated,
+.hydroke-doc-hero .hydroke-doc-meta-chip {
+  color: var(--rf-orange-on-dark, #fac9a3);
+  font-size: var(--rf-text-sm);
+  font-weight: var(--rf-weight-bold);
+  letter-spacing: var(--rf-tracking-meta);
+  text-decoration: none;
+  text-transform: uppercase;
+}
+
+.hydroke-doc-hero .hydroke-doc-breadcrumbs,
+.hydroke-doc-hero .hydroke-doc-breadcrumbs a,
+.hydroke-doc-hero .hydroke-doc-breadcrumbs [aria-current="page"] {
+  color: var(--rf-on-dark);
+  font-size: var(--rf-text-sm);
+  text-decoration: none;
+}
+
 /* Posts index: one column, section gap. Not card-grid. */
 .wp-block-query .wp-block-post-template {
   display: flex;
@@ -79,6 +132,38 @@ main.wp-block-group:has(
   border-color: var(--rf-primary-deep);
 }
 
+/* Group styles are printed as :where(.is-style-rf-logo--2). That loses to
+   .rf-card's white fill, so a Logo olive card goes blank (white type on white). */
+.wp-block-group.is-style-rf-logo {
+  background-color: var(--wp--preset--color--logo);
+  color: var(--wp--custom--on--dark);
+  padding: var(--wp--preset--spacing--space-6);
+}
+
+.wp-block-group.is-style-rf-tint {
+  background-color: var(--wp--preset--color--primary-soft);
+  color: var(--wp--preset--color--ink);
+  padding: var(--wp--preset--spacing--space-6);
+}
+
+.wp-block-group.is-style-rf-dark {
+  background-color: var(--wp--preset--color--surface-dark);
+  color: var(--wp--custom--on--dark);
+  padding: var(--wp--preset--spacing--space-6);
+}
+
+.wp-block-group.is-style-rf-panel {
+  background-color: var(--wp--preset--color--panel);
+  color: var(--wp--preset--color--ink);
+  padding: var(--wp--preset--spacing--space-6);
+}
+
+/* Showcase cards keep even padding across white, tint, panel, dark, and olive fills. */
+.rf-grid--showcase > .wp-block-group.rf-card:is(.is-style-rf-logo, .is-style-rf-tint, .is-style-rf-dark, .is-style-rf-panel),
+.wp-block-group.rf-card--showcase:is(.is-style-rf-logo, .is-style-rf-tint, .is-style-rf-dark, .is-style-rf-panel) {
+  padding: var(--rf-space-5);
+}
+
 /* Dark fills. Kit takeaways pin ink and solid orange, which fail on moss.
    Body and titles stay white. Numbers and the rule use soft orange. */
 .wp-block-group:is(.is-style-rf-dark, .is-style-rf-logo) :is(h1, h2, h3, h4, h5, h6, p, li, a) {
@@ -91,6 +176,15 @@ main.wp-block-group:has(
 
 .wp-block-group:is(.is-style-rf-dark, .is-style-rf-logo) ol.rf-keytakeaways > li::before {
   color: var(--rf-orange-soft);
+}
+
+.wp-block-group:is(.is-style-rf-dark, .is-style-rf-logo) ul.rf-icon-list > li strong {
+  color: var(--rf-on-dark);
+}
+
+.wp-block-group:is(.is-style-rf-dark, .is-style-rf-logo) ul.rf-icon-list > li.rf-icon-list__item--accent .rf-icon-list__icon {
+  background: var(--rf-white);
+  color: var(--rf-green-deep);
 }
 
 .wp-block-group.alignfull.is-style-rf-dark {
@@ -209,42 +303,6 @@ header .wp-block-site-title a {
 header .wp-block-site-title a:hover {
   color: var(--rf-primary);
   text-decoration: none;
-}
-
-header .wp-block-navigation a {
-  color: var(--rf-ink);
-  font-weight: var(--rf-weight-semibold);
-  text-decoration: none;
-}
-
-header .wp-block-navigation a:hover,
-header .wp-block-navigation a:focus {
-  color: var(--rf-primary);
-  text-decoration: underline;
-}
-
-header .wp-block-navigation .wp-block-navigation__submenu-container {
-  background: var(--rf-paper);
-  border: 1px solid var(--rf-rule);
-  border-radius: var(--rf-radius);
-  box-shadow: var(--rf-shadow);
-  padding-block: var(--rf-space-2);
-  min-inline-size: 12rem;
-  z-index: 20;
-}
-
-header .wp-block-navigation .wp-block-navigation__submenu-container .wp-block-navigation-item a {
-  padding-inline: var(--rf-space-4);
-}
-
-header .wp-block-navigation .wp-block-navigation__container > .wp-block-navigation-item:last-child > .wp-block-navigation__submenu-container {
-  inset-inline-end: 0;
-  inset-inline-start: auto;
-}
-
-header .wp-block-navigation .wp-block-navigation__submenu-container .wp-block-navigation__submenu-container {
-  inset-inline-start: 100%;
-  inset-block-start: 0;
 }
 
 .wp-block-site-logo img {
@@ -385,6 +443,50 @@ footer .wp-block-social-links .wp-block-social-link.wp-social-link:focus-within 
   padding: 0.5rem 1rem 0.7rem;
 }
 
+/* Facts spec on a core table: square cream edge, moss title, muted label, bold value. */
+.wp-block-table.rf-facts {
+  width: 100%;
+  margin: 0;
+  overflow: hidden;
+  background: var(--rf-white);
+  border: 4px solid var(--rf-cream-deep);
+  border-radius: 0;
+  box-shadow: none;
+}
+
+.wp-block-table.rf-facts table {
+  font-size: var(--rf-text-md);
+}
+
+.wp-block-table.rf-facts thead th {
+  background: var(--rf-green);
+  color: var(--rf-on-primary);
+  font-family: var(--rf-font-serif);
+  font-size: var(--rf-text-lg);
+  font-weight: 400;
+  text-align: start;
+  border: 0;
+  padding: var(--rf-space-3) var(--rf-space-4);
+}
+
+.wp-block-table.rf-facts tbody td {
+  border: 0;
+  border-block-start: 1px solid var(--rf-rule);
+  padding: var(--rf-space-3) var(--rf-space-4);
+  color: var(--rf-ink-muted);
+  text-align: start;
+}
+
+.wp-block-table.rf-facts tbody td + td {
+  font-weight: var(--rf-weight-bold);
+  color: var(--rf-ink-deep);
+  text-align: end;
+}
+
+.wp-block-table.rf-facts tr:last-child td {
+  border-bottom: 0;
+}
+
 .wp-block-details {
   box-sizing: border-box;
   inline-size: 100%;
@@ -471,6 +573,55 @@ footer .wp-block-social-links .wp-block-social-link.wp-social-link:focus-within 
   margin-block-start: var(--wp--style--block-gap, var(--rf-space-5));
 }
 
+/* Disclosure style: the kit's leaf arrow and cream panel, on a core details block. */
+.wp-block-details.is-style-rf-disclosure {
+  border: 1.5px solid var(--rf-cream-deep);
+  background: var(--rf-white);
+}
+
+.wp-block-details.is-style-rf-disclosure > summary {
+  justify-content: space-between;
+  gap: var(--rf-space-3);
+  padding-block: var(--rf-space-3);
+  padding-inline: var(--rf-space-4);
+  font-weight: 400;
+  color: var(--rf-ink-muted);
+}
+
+.wp-block-details.is-style-rf-disclosure > summary::before {
+  display: none;
+}
+
+.wp-block-details.is-style-rf-disclosure > summary::after {
+  content: "";
+  flex: 0 0 auto;
+  width: 1rem;
+  height: 1rem;
+  background: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 36 32'%3E%3Cpath fill='%23c5d4b8' d='M6 5L30 16L6 16Z'/%3E%3Cpath fill='%239aaf86' d='M6 16L30 16L6 27Z'/%3E%3Cpath fill='none' stroke='%2340352a' stroke-width='2.6' stroke-linejoin='round' stroke-linecap='round' d='M6 5L30 16L6 27Z'/%3E%3C/svg%3E") center / contain no-repeat;
+  transition: transform 0.28s ease;
+}
+
+.wp-block-details.is-style-rf-disclosure[open] > summary {
+  background: transparent;
+  border-bottom: 0;
+  color: var(--rf-ink);
+}
+
+.wp-block-details.is-style-rf-disclosure[open] > summary::after {
+  transform: rotate(90deg);
+}
+
+.wp-block-details.is-style-rf-disclosure > :not(summary) {
+  background: var(--rf-cream);
+  border-block-start: 1px solid var(--rf-cream-deep);
+  padding: var(--rf-space-5) var(--rf-space-5) var(--rf-space-6);
+  font-size: var(--rf-text-md);
+}
+
+.wp-block-details.is-style-rf-disclosure + .wp-block-details.is-style-rf-disclosure {
+  margin-block-start: var(--rf-space-3);
+}
+
 .wp-block-quote {
   margin: 0;
   font-size: var(--rf-text-lg);
@@ -506,6 +657,18 @@ footer .wp-block-social-links .wp-block-social-link.wp-social-link:focus-within 
   margin: 0;
 }
 
+.rf-review__platform a {
+  display: inline-flex;
+  align-items: center;
+  gap: var(--rf-space-2);
+}
+
+.rf-review__platform .rf-icon {
+  width: 1em;
+  height: 1em;
+  flex: none;
+}
+
 .wp-block-button.btn {
   border: 0;
   padding: 0;
@@ -534,6 +697,17 @@ footer .wp-block-social-links .wp-block-social-link.wp-social-link:focus-within 
   color: var(--rf-on-primary);
 }
 
+:is(.surface--dark, .surface--logo, .rf-offer--dark) .wp-block-button.btn.btn--primary .wp-block-button__link {
+  background-color: var(--rf-white);
+  color: var(--rf-green-deep);
+}
+
+:is(.surface--dark, .surface--logo, .rf-offer--dark) .wp-block-button.btn.btn--primary .wp-block-button__link:hover,
+:is(.surface--dark, .surface--logo, .rf-offer--dark) .wp-block-button.btn.btn--primary .wp-block-button__link:focus-visible {
+  background-color: var(--rf-cream);
+  color: var(--rf-green-deep);
+}
+
 .wp-block-button.btn.btn--cta .wp-block-button__link {
   background-color: var(--rf-orange);
   color: var(--rf-ink-deep);
@@ -558,7 +732,7 @@ footer .wp-block-social-links .wp-block-social-link.wp-social-link:focus-within 
 }
 
 .wp-block-button.btn.btn--sm .wp-block-button__link {
-  font-size: 0.875rem;
+  font-size: var(--rf-text-sm);
   line-height: 1.25;
   padding: 0.28rem 0.7rem;
   border-width: 1px;
@@ -795,7 +969,7 @@ footer .wp-block-social-links .wp-block-social-link.wp-social-link:focus-within 
 }
 
 .rf-research-study code {
-  font-size: 0.92em;
+  font-size: var(--rf-text-sm);
 }
 
 @media (max-width: 50rem) {
@@ -1034,5 +1208,184 @@ body.rf-editing-term .is-root-container > :is(h1, h2, h3, h4, h5, h6) {
   .wp-block-group.rf-shots {
     grid-template-columns: 1fr;
   }
+}
+
+/* Screenshot dialog grows out of the picture that opened it. */
+#rf-shot-dialog {
+  transform-origin: center center;
+}
+
+#rf-shot-dialog::backdrop {
+  background: color-mix(in srgb, var(--rf-panel) 78%, transparent);
+}
+
+/* Product hero. The page-hero tree is painted on the right, which is where
+   the screenshot sits, so this hero drops it. Copy is 60%, the shot 40%. */
+.page-hero.page-hero--product::before {
+  content: none;
+}
+
+.page-hero--product .wp-block-group.rf-product-hero {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+  gap: var(--rf-space-6);
+}
+
+.page-hero--product .rf-product-hero > .rf-copy {
+  flex: 1 1 18rem;
+  width: calc(60% - var(--rf-space-6) / 2);
+  max-inline-size: 60%;
+}
+
+.page-hero--product .rf-product-hero > img {
+  flex: 1 1 16rem;
+  width: calc(40% - var(--rf-space-6) / 2);
+  max-inline-size: 40%;
+  height: auto;
+  border-radius: 0;
+  border: 4px solid var(--rf-panel);
+  box-shadow: var(--rf-space-3) var(--rf-space-3) 0 var(--rf-green-5);
+}
+
+.wp-block-image.is-style-rf-shot {
+  margin: 0;
+  cursor: zoom-in;
+}
+
+.wp-block-image.is-style-rf-shot img,
+.editor-styles-wrapper .wp-block-image.is-style-rf-shot img {
+  width: 100%;
+  height: auto !important;
+  aspect-ratio: auto;
+}
+
+.rf-split--shot .is-style-rf-shot img {
+  border-radius: 0;
+  border: 4px solid var(--rf-white);
+  box-shadow: var(--rf-space-3) var(--rf-space-3) 0 var(--rf-green-5);
+}
+
+.rf-split--shot.rf-split--flip .is-style-rf-shot img {
+  border-color: var(--rf-panel);
+  box-shadow: calc(var(--rf-space-3) * -1) var(--rf-space-3) 0 var(--rf-green-5);
+}
+
+.wp-block-column .rf-facts {
+  width: 100%;
+}
+
+/* Stats sit in the space under the intro, centered against the facts table. */
+.wp-block-columns:has(.rf-facts):has(.rf-stats) {
+  align-items: stretch;
+}
+
+.wp-block-columns:has(.rf-facts) > .wp-block-column:has(.rf-stats) {
+  display: flex;
+  flex-direction: column;
+}
+
+.wp-block-columns:has(.rf-facts) > .wp-block-column:has(.rf-stats) > .wp-block-group.rf-stats {
+  flex: 1 1 auto;
+  align-content: center;
+}
+
+@media (max-width: 40rem) {
+  .page-hero--product .rf-product-hero > .rf-copy,
+  .page-hero--product .rf-product-hero > img {
+    width: 100%;
+    max-inline-size: 100%;
+  }
+}
+
+/* HydroKE's TOC is 13px. This site's type floor is 16px. */
+.hydroke-doc .hydroke-doc-toc {
+  font-family: var(--rf-font-sans);
+  font-size: var(--rf-text-sm);
+  color: var(--rf-ink);
+  border-left-color: var(--rf-rule);
+}
+
+.rf-doc-sidebar-search {
+  margin-block-end: var(--rf-space-5);
+}
+
+.hydroke-doc .hydroke-doc-toc-title,
+.hydroke-doc .hydroke-doc-toc-title-text {
+  font-family: var(--rf-font-serif);
+  font-size: var(--rf-text-md);
+  font-weight: var(--rf-weight-semibold);
+  color: var(--rf-ink-deep);
+}
+
+.hydroke-doc .hydroke-doc-toc-top-link,
+.hydroke-doc .hydroke-doc-toc-top-link-text {
+  font-size: var(--rf-text-sm);
+  font-weight: var(--rf-weight-regular, 400);
+  color: var(--rf-ink-muted);
+}
+
+.hydroke-doc .hydroke-doc-toc-list a,
+.hydroke-doc .hydroke-doc-toc-level-3 a {
+  font-size: var(--rf-text-sm);
+  color: var(--rf-ink);
+}
+
+.hydroke-doc .hydroke-doc-toc-list a:hover,
+.hydroke-doc .hydroke-doc-toc-list a.is-active {
+  color: var(--rf-green);
+  background: var(--rf-green-soft);
+}
+
+.hydroke-doc .hydroke-doc-related {
+  border-top-color: var(--rf-rule);
+}
+
+.hydroke-doc .hydroke-doc-related-title {
+  font-family: var(--rf-font-serif);
+  font-size: var(--rf-text-xl);
+  font-weight: var(--rf-weight-semibold);
+  letter-spacing: var(--rf-tracking-display);
+  color: var(--rf-ink-deep);
+}
+
+.hydroke-doc .hydroke-doc-related-grid {
+  gap: var(--rf-space-4);
+}
+
+.hydroke-doc a.hydroke-doc-related-card {
+  gap: 0;
+  max-inline-size: none;
+  padding: var(--rf-space-4);
+  background: var(--rf-white);
+  border: 4px solid var(--rf-cream-deep);
+  border-radius: 0;
+  box-shadow: none;
+  color: var(--rf-ink);
+  text-decoration: none;
+  transform: none;
+}
+
+.hydroke-doc a.hydroke-doc-related-card:hover,
+.hydroke-doc a.hydroke-doc-related-card:focus-visible {
+  border-color: var(--rf-cream-deep);
+  transform: none;
+  text-decoration: none;
+}
+
+.hydroke-doc .hydroke-doc-related-card-title {
+  font-family: var(--rf-font-serif);
+  font-size: var(--rf-text-lg);
+  font-weight: var(--rf-weight-semibold);
+  letter-spacing: var(--rf-tracking-display);
+  line-height: var(--rf-leading-snug);
+  color: var(--rf-ink-deep);
+}
+
+.hydroke-doc .hydroke-doc-related-card-excerpt {
+  margin-block-start: var(--rf-space-3);
+  font-size: var(--rf-text-sm);
+  line-height: var(--rf-leading-body);
+  color: var(--rf-ink-muted);
 }
 

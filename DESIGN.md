@@ -419,7 +419,7 @@ Do not introduce 500 or 800. Prefer semibold before bold for UI chrome.
 ### Spacing around type
 
 - Inside one piece, follow Gestalt proximity (Layout). The label sits with the title at `--rf-space-2` or `--rf-space-3`. The title sits with the first line at `--rf-space-3`. The action takes `--rf-space-5` or `--rf-space-6`.
-- Article body: every direct child of `.rf-prose` (and `.rf-prose--wide`) is separated by `--rf-space-5`. A heading that follows another block uses `--rf-space-6`. Child margins are reset so a paragraph, list, figure, quote, surface, or card cannot sit flush. Same idea as `.rf-stack`.
+- Article body: every direct child of `.rf-prose` (and `.rf-prose--wide`) is separated by `--rf-space-5`. A heading that follows another block uses `--rf-space-6`. A lead-in paragraph (`p.rf-lead-in`) hugs the grid or list it introduces at `--rf-space-4`, while a grid steps away from a following heading at `--rf-space-7`. Child margins are reset so a paragraph, list, figure, quote, surface, or card cannot sit flush. Same idea as `.rf-stack`.
 - Meta eyebrow → title: `--rf-space-2` or `--rf-space-3`. The step of air is before the action.
 - Measure: `--rf-measure` (`65ch`) on reading lines for articles and marketing; tracking meta `--rf-tracking-meta` (`0.06em`) for uppercase eyebrows.
 - Analytical HTML reports (`rf-html-report`): use `.rf-prose--wide` (or report `.prose-block`) at `--rf-measure-report` (`64ch`) and `body-lg` (`--rf-text-lg`). Larger type makes each `ch` wider, so the measured column fills more of the shell without abandoning measure.
@@ -554,7 +554,7 @@ Focus ring: soft green halo (`0 0 0 3px` color-mix of primary at ~35% opacity). 
 
 ## Components
 
-Implement with these behaviors. Class names in this repo: `.btn`, `.input`, `.textarea`, `.rf-number`, `.rf-slider`, `.surface`, `.rf-card`, `.rf-offer`, `.rf-divider`, `.rf-badge`, `.rf-avatar`, `.rf-time`, `.rf-breadcrumb`, `.rf-pagination`, `.alert` (including `.alert--note`), `.pill`, `.rf-skeleton`, `.rf-tooltip`, `.rf-dialog`, `.rf-toast`, `.rf-quote`, `.rf-cite`, `.rf-review`, `.rf-gallery`, `.rf-disclosure`, `.rf-tabs`, `.rf-toggle`, `.rf-select`, `.rf-display`, `.rf-lede`, `.rf-small`, `.rf-figure`, `.rf-caption`, `.rf-glyph`, `.rf-facts`, `.rf-steps`, `.rf-stats`, `.rf-people`, `.rf-shots`, `.rf-logo-row`, `.rf-subscribe`, plus layout primitives `.rf-stack` / `.rf-center` / `.rf-cluster` / `.rf-copy` / `.rf-byline` / `.rf-prose` and the settings column `.rf-settings` (see `css/components.css`, `css/chrome.css`, `css/disclosure.css`, `css/layouts.css`).
+Implement with these behaviors. Class names in this repo: `.btn`, `.input`, `.textarea`, `.rf-number`, `.rf-slider`, `.surface`, `.rf-card`, `.rf-offer`, `.rf-divider`, `.rf-badge`, `.rf-avatar`, `.rf-dialogue`, `.rf-time`, `.rf-breadcrumb`, `.rf-pagination`, `.alert` (including `.alert--note`), `.pill`, `.rf-skeleton`, `.rf-tooltip`, `.rf-dialog`, `.rf-toast`, `.rf-quote`, `.rf-cite`, `.rf-review`, `.rf-gallery`, `.rf-disclosure`, `.rf-tabs`, `.rf-toggle`, `.rf-select`, `.rf-display`, `.rf-lede`, `.rf-small`, `.rf-figure`, `.rf-caption`, `.rf-glyph`, `.rf-icon-list`, `.rf-facts`, `.rf-steps`, `.rf-stats`, `.rf-people`, `.rf-shots`, `.rf-logo-row`, `.rf-subscribe`, plus layout primitives `.rf-stack` / `.rf-center` / `.rf-cluster` / `.rf-copy` / `.rf-byline` / `.rf-prose` and the settings column `.rf-settings` (see `css/components.css`, `css/chrome.css`, `css/disclosure.css`, `css/layouts.css`).
 
 **Buttons**
 - `button-primary` (`.btn--primary`): default main action (moss). One `.btn--primary` per view. A stack of `.rf-offer` cards is the exception: each offer carries `.btn--primary.btn--sm`. Those buttons do not spend the page's orange.
@@ -600,6 +600,10 @@ Implement with these behaviors. Class names in this repo: `.btn`, `.input`, `.te
 - Default `.pill`: panel fill + ink
 - `.pill--active` / `.pill.is-active`: selected state (`pill-active` in front matter)
 - `.pill--green`: same soft-green recipe as active (status “success / in play”)
+- `.pill--blue`: soft info blue fill with info text (product / observed status)
+- `.pill--orange`: soft tertiary fill with brown text (horizon / mixed / rare accent)
+- `.pill--danger`: soft danger fill with danger text
+- Optional leading icon: inline SVG with class `.pill__icon` (0.875rem, `currentColor`). Put the icon before the label. Do not invent a second badge type for labeled chips.
 - Pills are **single-line chips**: `white-space: nowrap` and `flex-shrink: 0` (see `elements.css`). Keep labels short (about 1–3 words or a compact metric). In flex headers next to titles, allow the row to wrap (`flex-wrap: wrap`) so a tight card moves the pill below as a full chip instead of squeezing it into a tall oval.
 - Filled moss buttons use `on-primary`, not bare `ink`
 
@@ -648,7 +652,12 @@ Implement with these behaviors. Class names in this repo: `.btn`, `.input`, `.te
 - One unit: an optional eyebrow (`.rf-meta`), a title (`.rf-card__title`), a body, and an action in `.rf-card__foot` under a hairline. Use this when the block is a single thing someone can open. The eyebrow sits `--rf-space-3` above the title.
 - The card is white, so it uses the same 4px `--rf-cream-deep` square edge as a white surface. No shadow.
 - The title sits `--rf-space-3` above the body. The footer takes `--rf-space-5`, then the hairline and its padding.
+- A lead mark can sit above the title instead of an eyebrow. `.rf-card__num` is a Knile step (`01`) in muted ink at the extra-large title size. `.rf-card__icon` is a 2.5rem outline SVG in `--rf-orange` with a 2px stroke. Pick one lead mark. Do not stack a number and an icon. The mark sits `--rf-space-4` above the title.
+- `.rf-card__stage` is a `5.25rem` inset brand stage on `--rf-cream` for full wordmarks when cards sit in a directory or recommendation row. `.rf-card__stage--dual` pairs two marks with `.rf-card__stage-sep`. `.rf-card__head` is the compact header bar for podcast or media cards, pairing a wordmark with `.rf-card__head-badge`. Either stage sits `--rf-space-5` above `.rf-card__title`.
+- `.rf-card--showcase` (or `.rf-grid--showcase > .rf-card`) rounds the card to `--rf-radius` with a `1.5px` warm rule, drops the title to `--rf-text-lg` in `ink-deep` with an inline `↗` cue on linked titles, sets the body in `body-md` (`ink`) at `--rf-space-2` under the title, and keeps `--rf-space-5` padding across white, tint, panel, dark, and logo-olive fills.
+- `.rf-card--tight` is the same card for a row of links. Padding is `--rf-space-4`. The title is `--rf-text-lg`. The card maxes at `18rem`.
 - A `.surface` stays the looser box for a mix of content. Do not turn every surface into a card.
+- The green soft tile on `.rf-icon-card` is a different piece. It stays under Glyphs. Do not use that tile when the lead is `.rf-card__icon`.
 
 **Service offer** (`.rf-offer`)
 - One engagement, the full width of the column, stacked with the next offer. Not a three-up grid. Not `.rf-card`, and not `.rf-quote`.
@@ -665,9 +674,11 @@ Implement with these behaviors. Class names in this repo: `.btn`, `.input`, `.te
 - This sits beside the study. It is not a card grid and not a ninth page job.
 
 **Steps** (`.rf-steps`)
-- An ordered sequence. Each step is a mark column and a sentence. The mark (`.rf-step__mark`) is Knile at `--rf-text-xl` in `primary-deep`. Use `01` or a year. The title (`.rf-step__title`) is Knile. The body is one paragraph.
-- A hairline sits between steps. There is no orange rule and no zero-padded number in the text. Those stay on `.rf-takeaways`.
-- Do not add checkmarks. Do not restyle this as the takeaways list.
+- An ordered sequence. Each step is a mark column and a sentence. The mark (`.rf-step__mark`) is Knile at `--rf-text-xl` in `primary-deep`. Use `01` or a year. The title (`.rf-step__title`) is Knile. The body is one paragraph by default. Extra paragraphs under the title may stack with `--rf-space-3` between them.
+- Optional title row (`.rf-step__head`): title plus a short `.pill` (horizon, status). The title margin clears when it sits in that head.
+- A hairline sits between steps. Default steps keep moss marks. There is no orange left rule on the step body. Zero-padded orange numbers with a left rule stay on `.rf-takeaways`.
+- **Action sequence** (`.rf-steps--action`): tighter mark column (`3rem`) and orange marks (`--rf-orange`), for prioritized next steps in analytical reports. Do not use this on case-study timelines that should stay moss.
+- Do not add checkmarks. Do not restyle default steps as the takeaways list.
 
 **Stat row** (`.rf-stats`)
 - Three centered numbers. The value (`.rf-stat__value`) is Knile at `--rf-text-3xl` in logo olive (`--rf-green-logo`). The label is `.rf-meta`.
@@ -691,6 +702,13 @@ Implement with these behaviors. Class names in this repo: `.btn`, `.input`, `.te
 - `.rf-icon` stays the inline social mark. Do not mask those.
 - `.rf-glyph-tile` is a square of `primary-soft` with `primary-deep` color, `--rf-space-7` on each side.
 - An icon card is `.rf-card.rf-icon-card`: the tile, then the card title and one line. An icon list (`.rf-glyph-list`) is rows (`.rf-glyph-row`) of a tile plus a title and one line. No button on the card.
+- A numbered-card lead that needs an orange outline mark uses `.rf-card__icon` on the Card, not this tile.
+
+**Outline icon list** (`ul.rf-icon-list`)
+- A summary list of single-line statements, each paired with an outline SVG inside a `--rf-space-7` moss tile (`.rf-icon-list__icon`, `primary-soft` fill with `primary-deep` 2px stroke).
+- Each item sits at `--rf-text-xl` (`--rf-leading-ui`) in `ink`, vertically centered against its tile. `<strong>` uses `ink-deep`.
+- Optional rollup or milestone row: `.rf-icon-list__item--accent` on the `<li>` flips that row's tile to solid `primary` moss with `on-primary` white stroke. Keep at most one accented row per list.
+- Use `.rf-glyph-list` when each row carries a Knile title plus a separate sentence; use `ul.rf-icon-list` when each row is one scannable fact or metric line.
 
 **Divider** (`.rf-divider`)
 - A 1px `--rf-rule` hairline. `.rf-divider--vertical` sits in a row. It is an `<hr>`, so it stays out of the reading order as decoration only when the regions already have names.
@@ -700,7 +718,22 @@ Implement with these behaviors. Class names in this repo: `.btn`, `.input`, `.te
 - A `.pill` carries a short label. Do not use a badge for words like “Waiting” or “Info”.
 
 **Avatar** (`.rf-avatar`)
-- Initials, a photo, or the tree mark (`.rf-avatar--mark` on `rf-mark.svg`) when the space is too tight for the wordmark. Give initials an accessible name. The mark image keeps a real `alt`.
+- Initials, a photo, or the tree mark (`.rf-avatar--mark` on `rf-mark.svg`) when the space is too tight for the wordmark. Give initials an accessible name. The mark image keeps a real `alt`. Show the mark whole. Do not crop it.
+
+**Speech bubble** (`.rf-dialogue__bubble`)
+- One message. The fill is `--rf-panel`. The corner toward the speaker is the small radius. A tail points at that speaker.
+- On a reply (`.rf-dialogue__turn--us`), the fill is `--rf-green-soft` and the tight corner is on the end side.
+
+**Dialogue turn** (`.rf-dialogue__turn`)
+- One face (`.rf-avatar`) and one bubble. `.rf-dialogue__turn--them` starts at the left: face, then bubble. `.rf-dialogue__turn--us` ends at the right: bubble, then the tree mark.
+- Do not put a name on the turn. The face is the speaker. The mark keeps a real `alt`.
+
+**Dialogue** (`.rf-dialogue`)
+- A fieldset. The legend (`.rf-dialogue__label`) sits in the border gap and lines up with the first face. Pill radius. Fill is `--rf-cream-deep`, one step under the page. The border is 1px solid `--rf-green`. The words are large Knile in ink.
+- The frame is white, with a 2px dotted `--rf-green` line, the small radius, and `--rf-space-7` padding.
+- The thread is `.rf-stack.rf-stack--sm`.
+- The handoff (`.rf-dialogue__more`) is optional. It sits under the reply, lined up with that bubble's end, and it is not another turn.
+- The label is a legend, not a heading, so a doc table of contents does not list it. In WordPress that legend is the Legend block (`rf-static/legend`) inside a Group whose tag is fieldset.
 
 **Relative time** (`.rf-time`)
 - A `<time>` element. The visible phrase is relative (“3 hours ago”). The `datetime` attribute keeps the absolute moment, and `title` can repeat that moment for hover.
